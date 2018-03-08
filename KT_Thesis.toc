@@ -1,1 +1,11 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {chapter}{\numberline {2}Literature Review}{3}
+\contentsline {chapter}{\numberline {3}VNB Model}{4}
+\contentsline {section}{\numberline {3.1}Network Area Definitions}{4}
+\contentsline {section}{\numberline {3.2}Stochastic Optimization}{4}
+\contentsline {chapter}{\numberline {4}Approximation Approaches}{5}
+\contentsline {section}{\numberline {4.1}Deterministic Equivalent Program}{5}
+\contentsline {subsection}{\numberline {4.1.1}Adaptive Slicing}{5}
+\contentsline {section}{\numberline {4.2}Genetic Algorithm}{5}
+\contentsline {chapter}{\numberline {5}Testing and Simulations}{6}
+\contentsline {chapter}{\numberline {6}Conclusions}{7}

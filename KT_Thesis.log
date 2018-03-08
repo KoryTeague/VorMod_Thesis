@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2018.2.13)  8 MAR 2018 11:39
+This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2018.2.13)  8 MAR 2018 14:05
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -26,41 +26,45 @@ File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 LaTeX Warning: Unused global option(s):
     [dvips].
 
-No file KT_Thesis.aux.
+(KT_Thesis.aux)
 \openout1 = `KT_Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-[1
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
+LaTeX Font Info:    ... okay on input line 24.
+ [1
 
-] [2]
-No file KT_Thesis.toc.
+] [2] (KT_Thesis.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 4.
+)
 \tf@toc=\write3
 \openout3 = `KT_Thesis.toc'.
 
-[3
+ [3
 
-]
-No file KT_Thesis.lof.
+] (KT_Thesis.lof)
 \tf@lof=\write4
 \openout4 = `KT_Thesis.lof'.
 
-[4
+ [4
 
-]
-No file KT_Thesis.lot.
+] (KT_Thesis.lot)
 \tf@lot=\write5
 \openout5 = `KT_Thesis.lot'.
 
@@ -68,22 +72,40 @@ No file KT_Thesis.lot.
 
 ]
 Chapter 1.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 164.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 164.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 164.
 [1
 
-] (KT_Thesis.aux) ) 
-Here is how much of TeX's memory you used:
- 262 strings out of 427839
- 2940 string characters out of 3152538
- 63990 words of memory out of 3000000
- 4282 multiletter control sequences out of 15000+200000
- 6432 words of font info for 30 fonts, out of 3000000 for 9000
- 1328 hyphenation exceptions out of 8191
- 22i,7n,19p,169b,237s stack positions out of 5000i,500n,10000p,200000b,50000s
+] [2]
+Chapter 2.
+[3
 
-Output written on KT_Thesis.pdf (6 pages).
+]
+Chapter 3.
+[4
+
+]
+Chapter 4.
+[5
+
+]
+Chapter 5.
+[6
+
+]
+Chapter 6.
+[7
+
+] (KT_Thesis.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 281 strings out of 427839
+ 3215 string characters out of 3152538
+ 62990 words of memory out of 3000000
+ 4292 multiletter control sequences out of 15000+200000
+ 6448 words of font info for 32 fonts, out of 3000000 for 9000
+ 1328 hyphenation exceptions out of 8191
+ 23i,7n,19p,169b,235s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on KT_Thesis.pdf (12 pages).
