@@ -1,11 +1,23 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}
-\contentsline {chapter}{\numberline {2}Literature Review}{3}
-\contentsline {chapter}{\numberline {3}VNB Model}{4}
-\contentsline {section}{\numberline {3.1}Network Area Definitions}{4}
-\contentsline {section}{\numberline {3.2}Stochastic Optimization}{4}
-\contentsline {chapter}{\numberline {4}Approximation Approaches}{5}
-\contentsline {section}{\numberline {4.1}Deterministic Equivalent Program}{5}
-\contentsline {subsection}{\numberline {4.1.1}Adaptive Slicing}{5}
-\contentsline {section}{\numberline {4.2}Genetic Algorithm}{5}
-\contentsline {chapter}{\numberline {5}Testing and Simulations}{6}
-\contentsline {chapter}{\numberline {6}Conclusions}{7}
+\contentsline {section}{\numberline {1.1}Literature Review}{1}
+\contentsline {chapter}{\numberline {2}VNB Model}{3}
+\contentsline {section}{\numberline {2.1}Network Area Definitions}{3}
+\contentsline {section}{\numberline {2.2}Stochastic Optimization}{4}
+\contentsline {chapter}{\numberline {3}Approximation Approaches}{5}
+\contentsline {section}{\numberline {3.1}Deterministic Equivalent Program}{5}
+\contentsline {subsection}{\numberline {3.1.1}Sampling Approaches}{6}
+\contentsline {subsubsection}{Sample Average Approximation}{6}
+\contentsline {subsection}{\numberline {3.1.2}Adaptive Slicing}{6}
+\contentsline {section}{\numberline {3.2}Genetic Algorithm}{7}
+\contentsline {chapter}{\numberline {4}Testing and Simulations}{8}
+\contentsline {section}{\numberline {4.1}VWN Construction for a Single SP}{9}
+\contentsline {subsection}{\numberline {4.1.1}Case I: Homogeneous Urban Cellular Network}{9}
+\contentsline {subsection}{\numberline {4.1.2}Case II: Impact of Heterogeneous Resources}{9}
+\contentsline {section}{\numberline {4.2}VWN Construction for Multiple SPs}{9}
+\contentsline {subsection}{\numberline {4.2.1}Case III: Two Similar Urban Cellular Networks}{9}
+\contentsline {subsubsection}{Homogeneous Resources}{9}
+\contentsline {subsubsection}{Heterogeneous Resources}{9}
+\contentsline {subsection}{\numberline {4.2.2}Case IV: SPs with Specialized Demands}{9}
+\contentsline {subsubsection}{Homogeneous Resources}{9}
+\contentsline {subsubsection}{Heterogeneous Resources}{9}
+\contentsline {chapter}{\numberline {5}Conclusions}{10}
