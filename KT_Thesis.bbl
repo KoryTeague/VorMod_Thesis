@@ -26,4 +26,31 @@ C.~Beckman and G.~Smith, ``Shared networks: making wireless communication
   affordable,'' \emph{IEEE Wireless Communications Magazine}, vol.~12, no.~2,
   pp. 78--85, April 2005.
 
+\bibitem{686105}
+U.~Gotzner and R.~Rathgeber, ``Spatial traffic distribution in cellular
+  networks,'' in \emph{Proceedings of the IEEE Vehicular Technology Conference
+  (VTC)}, May 1998, pp. 1994--1998, vol. 3.
+
+\bibitem{5936263}
+M.~Michalopoulou, J.~Riihijärvi, and P.~Mähönen, ``Towards characterizing
+  primary usage in cellular networks: A traffic-based study,'' in
+  \emph{Proceedings of the IEEE International Symposium on Dynamic Spectrum
+  Access Networks (DySPAN)}, May 2011, pp. 652--655.
+
+\bibitem{eigenplaces}
+J.~Reades, F.~Calabrese, and C.~Ratti, ``Eigenplaces: analysing cities using
+  the space - time structure of the mobile phone network,'' \emph{Environment
+  and Planning B: Planning and Design}, vol.~36, pp. 824--836, 2009.
+
+\bibitem{6554749}
+D.~Lee, S.~Zhou, and Z.~Niu, ``Spatial modeling of scalable
+  spatially-correlated log-normal distributed traffic inhomogeneity and
+  energy-efficient network planning,'' in \emph{Proceedings of the IEEE
+  Wireless Communications and Networking Conference (WCNC)}, April 2013, pp.
+  1285--1290.
+
+\bibitem{stochprogramming}
+P.~Kall and S.~W. Wallace, \emph{Stochastic Programming}.\hskip 1em plus 0.5em
+  minus 0.4em\relax John Wiley and Sons, 1994.
+
 \end{thebibliography}
