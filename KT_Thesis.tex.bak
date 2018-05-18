@@ -32,7 +32,6 @@
 \usepackage{subcaption}
 \usepackage{amsfonts}
 \usepackage{bbm}
-\usepackage{color}
 \usepackage{setspace}
 
 %\onehalfspacing
@@ -160,13 +159,21 @@ coincidental.
 
 \chapter{Introduction} \label{ch:intro}
 % The following line is to allow document to publish while it doesn't have any normal citations.  Remove once actual citations are present. 
-\textcolor{blue}{\textit{Placeholder to make bibTeX happy:}} \cite{1421931}
+\textit{Placeholder to make bibTeX happy: \cite{1421931}}
 
 \textit{Here I introduce the problem I have been working on (BS selection and dynamic slicing within a VWN).  Start the paragraph talking about the increasing demands within the cellular network; IoT devices, trends toward massive demands.  Mention how costs to maintain and increase the capacity of the network with current costs are rising.  Lead into necessary needs for 5G as intended to be implemented over the next two years, and how virtualization is a potential solution to increase capacity while minimizing cost within 5G networks.}
 
-\section{Literature Review} \label{sec:litreview}
+\section{Motivation} \label{sec:motivation}
 
-\textit{Discuss the previously existing literature that I have been reading.  Discuss wireless cellular networks, virtualization and their use in wireless networks.  Likely work discussing the network without borders paradigm that is at the core of the work.  Discuss optimization and stochastic optimization.  Discuss metaheuristic algorithms, especially genetic algorithms, and perhaps how they have been used for and to simplify optimization.}
+\textit{Discuss the motivation behind this thesis.  Invoke the idea of virtualization, and the limitations of }
+
+\section{Review of Trends in Wireless Networking} \label{sec:netreview}
+
+\textit{Discuss the previously existing literature that I have been reading regarding wireless networking trends.  Discuss wireless cellular networks, virtualization and their use in wireless networks.  Likely work discussing the network without borders paradigm that is at the core of the work.}
+
+\section{Review of Optimization Methods} \label{sec:optreview}
+
+\textit{Discuss the previously existing literature that I have been reading with regards to optimization methods.  Discuss optimization and stochastic optimization.  Discuss metaheuristic algorithms, especially genetic algorithms, and how they have been used for and to simplify optimization.}
 
 \iffalse
 %\markright{Albert J. Kippleby \hfill Chapter 1. Introduction \hfill}
@@ -269,7 +276,7 @@ Constraints (\ref{eq:P1S1C1}), (\ref{eq:P1S2C1}), and (\ref{eq:P1S2C3}) implemen
 \[ \mathbbm{1}_{\{*\}} \myeq
 	\begin{cases}
 		1,& \text{if condition $\{*\}$ is true,}\\
-		0,& \text{otherwise}
+		0,& \text{otherwise}.
 	\end{cases}
 \]
 
@@ -320,10 +327,69 @@ Problem 2 provides an equivalent deterministic form of Problem 1 for the (finite
 
 \textit{Now that we have a (close) approximation to the DEP and the original stochastic optimization problem, we have a method for deriving the minimum cost BS selection and adaptive slicing for the desired VWN.  However, this selection is overly time consuming to constantly run, and the BSs selected for the VWN(s) by the VNB are fairly constant, so all that is needed is to dynamically (read: adaptively) slice the selected BSs to the various SPs.  To do this, we simplify the sampled DEP such that it has only one scenario - ostensibly, the current scenario in time - and the BSs selected set to be a constant rather than a decision variable.  The resulting problem is a single stage linear program that is much simpler to solve.  This is used to adaptively slice resources to the demand.}
 
+After the solution to the sampled DEP of Section \ref{subsec:dep} has been found, the VNB has determined the joint BS selection that forms the VWN and a proposed resource slicing of considered possible scenarios, $\hat{\Omega}$, that allocates the resources to the SP's demand points.  Since $O$ is not infinite, any given scenario present in the formed VWN is unlikely to be an element of $\hat{\Omega}$.  Further, as demand points move between BSs or enter or exit the VWN, a new scenario $\omega \notin \hat{\Omega}$ is formed.  The VWN must adapt its resource slicing to these new demand points to maintain maximal demand satisfaction.  With the VWN built, the joint BS selection, $z_s$, becomes a constant of the network, simplifying Problem 2 to a single-stage optimization problem.
+
+\vspace{3mm}
+\begin{tcolorbox}[title = Problem 3 (Deterministic Adaptive Slicing)]
+\begin{align}
+& \underset{\left\{ \substack{
+	\delta_{ms},\,	s \in \mathcal{S},\, m \in \mathcal{M}} \right\}} {\text{maximize}}
+\left\{ \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms} \; u_{ms} \right\} \label{eq:P3}\\
+& \text{subject to:}  \nonumber \\
+& \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms} \; u_{ms} \leq d_m,\, \forall m \in \mathcal{M} \label{eq:P3C1}\\
+& \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms} \leq r_s \; z_s,\, \forall s \in \mathcal{S}. \label{eq:P3C2}
+\end{align}
+\end{tcolorbox}
+
+It is worth noting that Problem 3 is more tractable than Problem 2 as it only contains the single continuous decision variable for resource slicing, simplifying the objective function (\ref{eq:P3}) and constraint (\ref{eq:P3C2}) from a mixed integer linear program to a linear programming problem.
+
 \section{Genetic Algorithm} \label{sec:ga}
 
 \textit{Now that the first approach - DEP and its sampling - has been tackled, and the necessary tool to evaluate it has been derived from it - the simplified adaptive slicing program - move on to the genetic algorithm approach for approximating the BS selection process.  Discuss the core algorithm of a genetic algorithm, then the various approaches that I used in its process (e.g., binary chromosomes, elitism, uniqueness, uniform crossover, bitwise mutation).}
 
+The Problem 2 formulation becomes intractable as $O$, $S$, or $M$ increases.  Most importantly, the accuracy of the sampled DEP is directly dependent on the size of $\hat{\Omega}$, $O$, directly causing a trade off between the accuracy of the sampled DEP and its computability in a reasonable amount of time.  In this subsection, we reformulate the problem of joint BS selection for the VWN as a genetic algorithm, circumventing the need to discretize demand or to establish $\hat{\Omega}$, thereby simplifying the original problem into a more scalable form.
+
+A genetic algorithm is an iterative metaheuristic in which an approximate solution to a given optimization problem is arrived at via a series of progressive generations.  Each generation contains a number of candidate solutions, called individuals, each of which is defined by a chromosome.  During a given generation, a fitness heuristic is assessed for each individual based on its chromosome.  Then individuals are selected at random, with more fit individuals being selected with higher probability.  Pairs of selected individuals will crossover with probability $p_\text{xov}$, a process similar to genetic recombination in biology.  The resulting chromosomes then have probability $p_\text{mut}$ to mutate, altering the chromosome slightly.  Once enough new individual chromosomes have been selected and possibly undergone crossover and mutation, this set of new individuals, called children, forms the next generation to repeat the process.  %(\textcolor{blue}{\textit{Trim paragraph and cite someone else?}})
+
+For the genetic algorithm, $\rho$ is not sampled for discrete demand points.  Instead, we assume that all demand over the region is allocated to the closest resource.  The subset of $\mathcal{S}$, $\mathcal{S}'$, that is selected for a given possible VWN forms a Voronoi tessellation from the point locations of the selected resources.  The total demand allocated to a selected resource $s \in \mathcal{S}' \subseteq \mathcal{S}$ is $\iint_{V_s} \rho\left(x,\, y\right) \,dx \,dy$, where $V_s$ is the region bounded by the cell of resource \textit{s} in the Voronoi tessellation.  If the total demand allocated to \textit{s} exceeds $r_s$, \textit{s} is considered to be \textit{overcapacity}.  If $V_s$ is not wholly contained within the coverage area of resource \textit{s}, \textit{s} is considered to be \textit{overcoverage}.
+
+Let $\mathcal{G} \myeq \left\{1,\, 2,\, \ldots,\, G\right\}$ be the set of generations used in the genetic algorithm and $\mathcal{I}_g \myeq \left\{1,\, 2,\, \ldots,\, I\right\}, g \in \mathcal{G}$ be the set of individuals within generation \textit{g}.  Each individual $i \in \mathcal{I}_{g \in \mathcal{G}}$ has a binary chromosome $z^{\{ig\}}$ of length \textit{S}.  $z_s^{\{ig\}}, s \in \mathcal{S}$, denoting each individual bit of the chromosome, is defined as follows:
+\[ z_s^{\{ig\}} =
+	\begin{cases}
+		1,& \text{if BS $s$ is selected for the VWN for}\\
+		& \hspace{0.4in} \text{individual $i$ in generation $g$,}\\
+		0,& \text{otherwise}
+	\end{cases}
+\]
+
+The fitness heuristic of each individual chromosome, $z^{\{ig\}}$, is assessed as the reciprocal of the chromosome's cost, which is defined as
+
+\begin{equation} \label{eq:GAFit}
+\text{fitness}\left(z^{\{ig\}}\right) = \frac{1}{\text{cost}\left(z^{\{ig\}}\right)}
+\end{equation}
+\vspace{0.2in}
+\begin{equation}
+\nonumber
+\end{equation}
+%\vspace{0.01in}
+\begin{multline} \label{eq:GACost}
+\text{cost}\left(z^{\{ig\}}\right) = \sum_{s \in \mathcal{S}} \Biggl( c_s \; z_s^{\{ig\}} + c_\text{cov} \; \mathbbm{1}_{\left\{ V_s \not\subseteq R_s \right\}} + \\ \left(c_\text{cap}^g - 1\right) \; \max\left( 0,\, \iint_{R_s} \rho\left(x,\, y\right)\, dx\, dy - r_s \right) \Biggr)
+\end{multline}
+
+\noindent where $R_s$ is the coverage area region of resource $s \in \mathcal{S}$.
+
+The cost function (\ref{eq:GACost}) indicates cost increases not only based on the cost of the resources selected, but also with imperfection costs $c_\text{cov}$ and $c_\text{cap}$, the costs of a selected resource being overcoverage or overcapacity, respectively.  The overcapacity cost grows with each successive generation.  For early generations, this allows for imperfect solutions to temporarily exist to seed later generations and improve diversity to increase the probability of finding a better final approximate solution.
+
+Elitism is used, where the \textit{n} most fit individuals of a given generation are automatically selected without crossover or mutation to be the first children of the next generation.  Selection occurs via the roulette wheel selection method.  Every individual $i$ of a given generation $g$ has a probability of being selected given by
+\[
+\frac{\text{fitness}\left( z^{\{ig\}} \right)}{\sum_{i \in \mathcal{I}} \text{fitness}\left( z^{\{ig\}} \right)}
+\]
+
+When crossover is performed on selected individuals, it is via the uniform crossover method with a mixing ratio of 0.5.  That is, if two selected parent individuals crossover, each equivalent bit in the parents will swap with a probability of 50\%.  Mutation occurs on a bit-by-bit level, with each bit mutating (i.e., flipping) with probability $\frac{1}{S}$.  The uniqueness property is then enforced on the resulting children to ensure diversity; if a child chromosome is identical to another child chromosome in the next generation, the child is discarded and a new child generated, ensuring that each individual of any given generation is unique within that generation.
+
+The genetic algorithm iterates for a number of generations $G$.  If the genetic algorithm settles on a single individual for a number of continuous generations, $G_\text{halt}$, it will halt and present that individual's chromosome as the final approximate solution for $z_s$.  Otherwise, the chromosome of the fittest individual of generation $G$ determines $z_s$.
+
+The genetic algorithm only determines an approximate solution to the BS selection forming the VWN, informing the VNB of which BSs to obtain from the RPs.  With this selection, $z_s$, the SP's demand points can be dynamically allocated resource slices as described by Problem 3 in Section \ref{subsec:dep_slicing}.
 
 \pagebreak
 \chapter{Testing and Simulations} \label{ch:testsim}

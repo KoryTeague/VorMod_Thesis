@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  11 MAY 2018 01:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  18 MAY 2018 17:24
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -412,18 +412,18 @@ Package: setspace 2011/12/19 v6.7a set line spacing
 ) (KT_Thesis.aux)
 \openout1 = `KT_Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count117
@@ -556,6 +556,10 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 Non-PDF special ignored!] (KT_Thesis.lof)
 \tf@lof=\write7
 \openout7 = `KT_Thesis.lof'.
@@ -584,8 +588,6 @@ Non-PDF special ignored!
 
 
 Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
 Non-PDF special ignored!] [2
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -607,7 +609,7 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 263.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 270.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\bbm\ubbm.fd"
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [6
@@ -634,7 +636,7 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
 
-LaTeX Warning: Reference `sec:model' on page 9 undefined on input line 309.
+LaTeX Warning: Reference `sec:model' on page 9 undefined on input line 316.
 
 [9
 Non-PDF special ignored!
@@ -652,7 +654,7 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
 
-LaTeX Warning: Reference `subsec:dep' on page 11 undefined on input line 323.
+LaTeX Warning: Reference `subsec:dep' on page 11 undefined on input line 330.
 
 [11
 Non-PDF special ignored!
@@ -734,11 +736,11 @@ Non-PDF special ignored!] (KT_Thesis.aux)
 LaTeX Warning: There were undefined references.
 
  )
-(\end occurred when \ifx on line 43 was incomplete) 
+(\end occurred when \ifx on line 42 was incomplete) 
 Here is how much of TeX's memory you used:
  12903 strings out of 493312
- 252351 string characters out of 3138900
- 295711 words of memory out of 3000000
+ 252355 string characters out of 3138900
+ 295732 words of memory out of 3000000
  16196 multiletter control sequences out of 15000+200000
  12938 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -761,7 +763,7 @@ sfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 
-Output written on KT_Thesis.pdf (26 pages, 249604 bytes).
+Output written on KT_Thesis.pdf (26 pages, 250179 bytes).
 PDF statistics:
  162 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

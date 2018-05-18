@@ -32,7 +32,6 @@
 \usepackage{subcaption}
 \usepackage{amsfonts}
 \usepackage{bbm}
-\usepackage{color}
 \usepackage{setspace}
 
 %\onehalfspacing
@@ -160,13 +159,21 @@ coincidental.
 
 \chapter{Introduction} \label{ch:intro}
 % The following line is to allow document to publish while it doesn't have any normal citations.  Remove once actual citations are present. 
-\textcolor{blue}{\textit{Placeholder to make bibTeX happy:}} \cite{1421931}
+\textit{Placeholder to make bibTeX happy: \cite{1421931}}
 
 \textit{Here I introduce the problem I have been working on (BS selection and dynamic slicing within a VWN).  Start the paragraph talking about the increasing demands within the cellular network; IoT devices, trends toward massive demands.  Mention how costs to maintain and increase the capacity of the network with current costs are rising.  Lead into necessary needs for 5G as intended to be implemented over the next two years, and how virtualization is a potential solution to increase capacity while minimizing cost within 5G networks.}
 
-\section{Literature Review} \label{sec:litreview}
+\section{Motivation} \label{sec:motivation}
 
-\textit{Discuss the previously existing literature that I have been reading.  Discuss wireless cellular networks, virtualization and their use in wireless networks.  Likely work discussing the network without borders paradigm that is at the core of the work.  Discuss optimization and stochastic optimization.  Discuss metaheuristic algorithms, especially genetic algorithms, and perhaps how they have been used for and to simplify optimization.}
+\textit{Discuss the motivation behind this thesis.  Invoke the idea of virtualization and the problem of generating a virtual network from a subset of resources.}
+
+\section{Review of Trends in Wireless Networking} \label{sec:netreview}
+
+\textit{Discuss the previously existing literature that I have been reading regarding wireless networking trends.  Discuss wireless cellular networks, virtualization and their use in wireless networks.  Likely work discussing the network without borders paradigm that is at the core of the work.}
+
+\section{Review of Optimization Methods} \label{sec:optreview}
+
+\textit{Discuss the previously existing literature that I have been reading with regards to optimization methods.  Discuss optimization and stochastic optimization.  Discuss metaheuristic algorithms, especially genetic algorithms, and how they have been used for and to simplify optimization.}
 
 \iffalse
 %\markright{Albert J. Kippleby \hfill Chapter 1. Introduction \hfill}
@@ -269,7 +276,7 @@ Constraints (\ref{eq:P1S1C1}), (\ref{eq:P1S2C1}), and (\ref{eq:P1S2C3}) implemen
 \[ \mathbbm{1}_{\{*\}} \myeq
 	\begin{cases}
 		1,& \text{if condition $\{*\}$ is true,}\\
-		0,& \text{otherwise}
+		0,& \text{otherwise}.
 	\end{cases}
 \]
 
