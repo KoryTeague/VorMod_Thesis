@@ -165,7 +165,7 @@ coincidental.
 
 \section{Motivation} \label{sec:motivation}
 
-\textit{Discuss the motivation behind this thesis.  Invoke the idea of virtualization, and the limitations of }
+\textit{Discuss the motivation behind this thesis.  Invoke the idea of virtualization and the problem of generating a virtual network from a subset of resources.}
 
 \section{Review of Trends in Wireless Networking} \label{sec:netreview}
 

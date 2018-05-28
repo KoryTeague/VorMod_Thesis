@@ -1,5 +1,5 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}
-\contentsline {section}{\numberline {1.1}Motivation}{1}
+\contentsline {section}{\numberline {1.1}Wireless Network Virtualization}{1}
 \contentsline {section}{\numberline {1.2}Review of Trends in Wireless Networking}{2}
 \contentsline {section}{\numberline {1.3}Review of Optimization Methods}{2}
 \contentsline {chapter}{\numberline {2}VNB Model}{3}
