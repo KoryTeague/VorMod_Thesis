@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  30 MAY 2018 09:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  3 JUN 2018 18:10
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -600,37 +600,31 @@ Non-PDF special ignored!] [3
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
+Non-PDF special ignored!] [4
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 Non-PDF special ignored!]
 Chapter 2.
-[4
+[5
 Non-PDF special ignored!
 Non-PDF special ignored!
 
 
-Non-PDF special ignored!
-Non-PDF special ignored!] [5
-Non-PDF special ignored!
-Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!] [6
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
+Non-PDF special ignored!] [7
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 Non-PDF special ignored!]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 276.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 280.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\bbm\ubbm.fd"
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [7
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!] [8
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
+) [8
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -638,15 +632,25 @@ Non-PDF special ignored!] [9
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!] [10
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 Non-PDF special ignored!]
 Chapter 3.
-[10
+[11
 Non-PDF special ignored!
 Non-PDF special ignored!
 
 
 Non-PDF special ignored!
-Non-PDF special ignored!] [11
+Non-PDF special ignored!] [12
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -658,31 +662,27 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
 
-LaTeX Warning: Reference `sec:model' on page 12 undefined on input line 322.
-
-[12
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!]
-
-LaTeX Warning: Reference `subsec:dep' on page 13 undefined on input line 336.
+LaTeX Warning: Reference `sec:model' on page 13 undefined on input line 326.
 
 [13
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
-Non-PDF special ignored!] [14
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
+Non-PDF special ignored!]
+
+LaTeX Warning: Reference `subsec:dep' on page 14 undefined on input line 340.
+
+[14
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!] [15
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -698,17 +698,17 @@ Non-PDF special ignored!] [18
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
+Non-PDF special ignored!] [19
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 Non-PDF special ignored!]
 Chapter 4.
-[19
+[20
 Non-PDF special ignored!
 Non-PDF special ignored!
 
 
-Non-PDF special ignored!
-Non-PDF special ignored!] [20
-Non-PDF special ignored!
-Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!] [21
 Non-PDF special ignored!
@@ -718,9 +718,13 @@ Non-PDF special ignored!] [22
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
+Non-PDF special ignored!] [23
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 Non-PDF special ignored!]
 Chapter 5.
-(KT_Thesis.bbl [23
+(KT_Thesis.bbl [24
 Non-PDF special ignored!
 Non-PDF special ignored!
 
@@ -733,7 +737,7 @@ Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¤ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¶ in font cmr12!
- [24
+ [25
 Non-PDF special ignored!
 Non-PDF special ignored!
 
@@ -749,7 +753,7 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
-Non-PDF special ignored!]) [25
+Non-PDF special ignored!]) [26
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -768,7 +772,7 @@ Here is how much of TeX's memory you used:
  16198 multiletter control sequences out of 15000+200000
  12938 words of font info for 50 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 54i,19n,73p,1184b,432s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 54i,19n,73p,1246b,432s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\teagu\AppData\Loc
 al\MiKTeX\2.9\fonts\pk\ljfour\public\bbm\dpi600\bbm12.pk><C:/Program Files/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/f
@@ -787,9 +791,9 @@ sfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 
-Output written on KT_Thesis.pdf (31 pages, 253014 bytes).
+Output written on KT_Thesis.pdf (32 pages, 254511 bytes).
 PDF statistics:
- 178 PDF objects out of 1000 (max. 8388607)
+ 181 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

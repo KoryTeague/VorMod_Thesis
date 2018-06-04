@@ -177,9 +177,13 @@ coincidental.
 
 \section{Thesis Objective} \label{sec:objective}
 
+The objective of this thesis is to develop two approaches of joint resource allocation to construct a set of a VWNs and adaptively slice the selected resources to the individual VWNs.  A model will be presented 
+
+These approaches are intended be performed within the VNB.  Accordingly, the efficacy of these approaches will be measured by the optimality of the solutions
+
 \section{Thesis Outline} \label{sec:outline}
 
-
+This thesis is organized as follows.  Chapter \ref{ch:intro} establishes the motivation for investigating resource selection for virtual network construction.  Chapter \ref{ch:intro} also presents the associated background information and literature review regarding virtualization, wireless networks, and optimization.  Chapter \ref{ch:vnbmodel} defines the model used for the resource allocation methods explored in this thesis.  Further, Chapter \ref{ch:vnbmodel} also details the two-stage stochastic optimization problem which optimally performs resource selection and slicing as a basis of approaches presented within this work. Chapter \ref{ch:approaches} establishes the two approaches investigated to provide solutions to the optimization problem posed in Chapter \ref{ch:vnbmodel}: a sampled Deterministic Equivalent Program which solves the problem as a whole and a genetic algorithm that simplifies the problem by providing an estimated optimal resource selection.  Chapter \ref{ch:testsim} tests these two approaches by presenting four data sets that mimic real world cellular networks and evaluates the results.  Chapter \ref{ch:conc} contains the conclusions and proposed future work in this area.
 
 \iffalse
 %\markright{Albert J. Kippleby \hfill Chapter 1. Introduction \hfill}
