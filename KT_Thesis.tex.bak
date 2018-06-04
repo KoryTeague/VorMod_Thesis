@@ -158,10 +158,10 @@ coincidental.
 \pagestyle{myheadings}
 
 \chapter{Introduction} \label{ch:intro}
-% The following line is to allow document to publish while it doesn't have any normal citations.  Remove once actual citations are present. 
-\textit{Placeholder to make bibTeX happy: \cite{1421931}}
 
 \textit{Here I introduce the problem I have been working on (BS selection and dynamic slicing within a VWN).  Start the paragraph talking about the increasing demands within the cellular network; IoT devices, trends toward massive demands.  Mention how costs to maintain and increase the capacity of the network with current costs are rising.  Lead into necessary needs for 5G as intended to be implemented over the next two years, and how virtualization is a potential solution to increase capacity while minimizing cost within 5G networks.}
+
+
 
 \section{Wireless Network Virtualization} \label{sec:virtualization}
 
@@ -177,9 +177,7 @@ coincidental.
 
 \section{Thesis Objective} \label{sec:objective}
 
-The objective of this thesis is to develop two approaches of joint resource allocation to construct a set of a VWNs and adaptively slice the selected resources to the individual VWNs.  A model will be presented 
-
-These approaches are intended be performed within the VNB.  Accordingly, the efficacy of these approaches will be measured by the optimality of the solutions
+The objective of this thesis is to develop two approaches of joint resource allocation to construct a set of a VWNs and adaptively slice the selected resources to the individual VWNs.  A model will be presented as the context for these approaches.  The validity of this model will be restricted to the scope of cellular networks using generic base stations as its resources with perfect connections to demand points within range.  The two proposed approaches will be performed within the VNB.  Accordingly, efficacy of these approaches will be measured primarily by the optimality of the solutions and the run time, providing the VNB with a sufficient solution in a reasonable amount of time.
 
 \section{Thesis Outline} \label{sec:outline}
 
@@ -312,8 +310,7 @@ Let $\Omega$ be defined as the sample space, i.e., the set of all scenarios.  Le
 	z_s,\, \delta_{ms}^{(\omega)},\\
 	s \in \mathcal{S},\, m \in \mathcal{M},\\
 	\omega \in \hat{\Omega}} \right\}} {\text{minimize}}
-\Biggl\{ \sum_{s \in \mathcal{S}} c_s \; z_s - \nonumber \\
-& \hspace{0.4in} \alpha \sum_{\omega \in \Omega} p^{(\omega)} \left( \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms}^{(\omega)} \; u_{ms}^{(\omega)} \right) \Biggr\} \label{eq:P2}\\
+\left\{ \sum_{s \in \mathcal{S}} c_s \; z_s - \alpha \sum_{\omega \in \Omega} p^{(\omega)} \left( \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms}^{(\omega)} \; u_{ms}^{(\omega)} \right) \right\} \label{eq:P2}\\
 & \text{subject to:}  \nonumber \\
 & \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms}^{(\omega)} \; u_{ms}^{(\omega)} \leq d_m,\, \forall m \in \mathcal{M},\, \forall \omega \in \hat{\Omega} \label{eq:P2C1}\\
 & \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms}^{(\omega)} \leq r_s \; z_s,\, \forall s \in \mathcal{S},\, \forall \omega \in \hat{\Omega} \label{eq:P2C2}\\
@@ -366,8 +363,7 @@ For the genetic algorithm, $\rho$ is not sampled for discrete demand points.  In
 Let $\mathcal{G} \myeq \left\{1,\, 2,\, \ldots,\, G\right\}$ be the set of generations used in the genetic algorithm and $\mathcal{I}_g \myeq \left\{1,\, 2,\, \ldots,\, I\right\}, g \in \mathcal{G}$ be the set of individuals within generation \textit{g}.  Each individual $i \in \mathcal{I}_{g \in \mathcal{G}}$ has a binary chromosome $z^{\{ig\}}$ of length \textit{S}.  $z_s^{\{ig\}}, s \in \mathcal{S}$, denoting each individual bit of the chromosome, is defined as follows:
 \[ z_s^{\{ig\}} =
 	\begin{cases}
-		1,& \text{if BS $s$ is selected for the VWN for}\\
-		& \hspace{0.4in} \text{individual $i$ in generation $g$,}\\
+		1,& \text{if BS $s$ is selected for the VWN for} \text{individual $i$ in generation $g$,}\\
 		0,& \text{otherwise}
 	\end{cases}
 \]
@@ -377,11 +373,6 @@ The fitness heuristic of each individual chromosome, $z^{\{ig\}}$, is assessed a
 \begin{equation} \label{eq:GAFit}
 \text{fitness}\left(z^{\{ig\}}\right) = \frac{1}{\text{cost}\left(z^{\{ig\}}\right)}
 \end{equation}
-\vspace{0.2in}
-\begin{equation}
-\nonumber
-\end{equation}
-%\vspace{0.01in}
 \begin{multline} \label{eq:GACost}
 \text{cost}\left(z^{\{ig\}}\right) = \sum_{s \in \mathcal{S}} \Biggl( c_s \; z_s^{\{ig\}} + c_\text{cov} \; \mathbbm{1}_{\left\{ V_s \not\subseteq R_s \right\}} + \\ \left(c_\text{cap}^g - 1\right) \; \max\left( 0,\, \iint_{R_s} \rho\left(x,\, y\right)\, dx\, dy - r_s \right) \Biggr)
 \end{multline}
