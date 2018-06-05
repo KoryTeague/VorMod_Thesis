@@ -5,23 +5,23 @@
 \contentsline {section}{\numberline {1.4}Thesis Objective}{2}
 \contentsline {section}{\numberline {1.5}Thesis Outline}{3}
 \contentsline {chapter}{\numberline {2}VNB Model}{4}
-\contentsline {section}{\numberline {2.1}Network Area Definitions}{4}
-\contentsline {section}{\numberline {2.2}Stochastic Optimization}{7}
-\contentsline {chapter}{\numberline {3}Approximation Approaches}{10}
-\contentsline {section}{\numberline {3.1}Deterministic Equivalent Program}{10}
-\contentsline {subsection}{\numberline {3.1.1}Sampling Approaches}{12}
-\contentsline {subsubsection}{Sample Average Approximation}{12}
-\contentsline {subsection}{\numberline {3.1.2}Adaptive Slicing}{13}
-\contentsline {section}{\numberline {3.2}Genetic Algorithm}{15}
-\contentsline {chapter}{\numberline {4}Testing and Simulations}{19}
-\contentsline {section}{\numberline {4.1}VWN Construction for a Single SP}{19}
-\contentsline {subsection}{\numberline {4.1.1}Case I: Homogeneous Urban Cellular Network}{20}
-\contentsline {subsection}{\numberline {4.1.2}Case II: Impact of Heterogeneous Resources}{20}
-\contentsline {section}{\numberline {4.2}VWN Construction for Multiple SPs}{20}
-\contentsline {subsection}{\numberline {4.2.1}Case III: Two Similar Urban Cellular Networks}{20}
-\contentsline {subsubsection}{Homogeneous Resources}{21}
-\contentsline {subsubsection}{Heterogeneous Resources}{21}
-\contentsline {subsection}{\numberline {4.2.2}Case IV: SPs with Specialized Demands}{21}
-\contentsline {subsubsection}{Homogeneous Resources}{22}
-\contentsline {subsubsection}{Heterogeneous Resources}{22}
-\contentsline {chapter}{\numberline {5}Conclusions}{23}
+\contentsline {section}{\numberline {2.1}Network Area Definitions}{5}
+\contentsline {section}{\numberline {2.2}Stochastic Optimization}{8}
+\contentsline {chapter}{\numberline {3}Approximation Approaches}{11}
+\contentsline {section}{\numberline {3.1}Deterministic Equivalent Program}{12}
+\contentsline {subsection}{\numberline {3.1.1}Sampling Approaches}{14}
+\contentsline {subsubsection}{Sample Average Approximation}{14}
+\contentsline {subsection}{\numberline {3.1.2}Adaptive Slicing}{15}
+\contentsline {section}{\numberline {3.2}Genetic Algorithm}{16}
+\contentsline {chapter}{\numberline {4}Testing and Simulations}{21}
+\contentsline {section}{\numberline {4.1}VWN Construction for a Single SP}{21}
+\contentsline {subsection}{\numberline {4.1.1}Case I: Homogeneous Urban Cellular Network}{22}
+\contentsline {subsection}{\numberline {4.1.2}Case II: Impact of Heterogeneous Resources}{22}
+\contentsline {section}{\numberline {4.2}VWN Construction for Multiple SPs}{22}
+\contentsline {subsection}{\numberline {4.2.1}Case III: Two Similar Urban Cellular Networks}{22}
+\contentsline {subsubsection}{Homogeneous Resources}{23}
+\contentsline {subsubsection}{Heterogeneous Resources}{23}
+\contentsline {subsection}{\numberline {4.2.2}Case IV: SPs with Specialized Demands}{23}
+\contentsline {subsubsection}{Homogeneous Resources}{24}
+\contentsline {subsubsection}{Heterogeneous Resources}{24}
+\contentsline {chapter}{\numberline {5}Conclusions}{25}

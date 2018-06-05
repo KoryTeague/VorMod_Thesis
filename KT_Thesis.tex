@@ -35,9 +35,11 @@
 \usepackage{amsfonts}
 \usepackage{bbm}
 \usepackage{setspace}
+\usepackage{cleveref}
 
 
 \newcommand\myeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily def}}}{=}}}
+\newcommand{\crefrangeconjunction}{--}
 
 \begin{document}
 
@@ -217,11 +219,13 @@ Shakespearean festival and continuing into the present ...
 \pagebreak
 \chapter{VNB Model} \label{ch:vnbmodel}
 
+\textit{Replace with an introduction paragraph describing the work of this chapter.  This chapter discusses the model upon which the approaches that are run within the VNB are defined.  It discusses the assumptions that the VNB runs within and lays out the optimization problem that the VNB is tasked with solving.}
+
 \textit{Begin breaking down the model used as the basis for the work.  Start with a lead in, then start defining the model in the first subsection.  Expound on some of the definitions and descriptions that I moved past in the conference paper (perhaps describing the SSLT model more fully).  Make sure that the definitions and work are generalized for writing about a constructed VWN (or constructed VWNs, depending on the terminology I intend to use) for multiple RPs and SPs.}
 
 \section{Network Area Definitions} \label{sec:networkdefs}
 
-\textit{Lay out the how the network and area is structured here.  Define the SSLT demand field.  This is effectively section 2 of my previous conference paper.}
+\textit{Change ``we''s to ``I''s or alternate voice.  Expand SSLT description: a mention of $\rho^S$, the specific autocorrelation which is dependent on $\omega_{\max}$, the differences between my implementation and Lee's, and any other pertinent information (review ``Lee, Zhou, and Niu'' \cite{6554749}).  Expound directly on the assumption I make that demand has a perfect connection within range and no connection out of range (i.e., $u_{ms} = 1$ if DP m is less than or equal to $b_s$ distance from BS s and $u_{ms} = 0$ otherwise).  Expound on nonstationary PPP procedure; provide more information laying out the process, and include the possibility of generating a set number of demand points if desired - this does alter the PPP slightly, in that the PPP no longer has a specific overall density of points, but it does maintain the structure of the overall density function, scaled to a desired degree.  Ensure equations are spaced well for full page, and devoid of unnecessary horizontal and vertical spacing (from when the conference paper was trimmed).  A figure demonstrating continuous SSLT model and a possible scenario of demand points would be appropriate here.  Improve on the overall wording/phrasing regarding the capability for multiple RPs and SPs to be present; that is BSs come from the overall pool of RP resources which the VNB is selecting to build its VWNs of interest, then slices those selected resources into forming the specific, individual VWNs for each SP.  When referring to ``Problem''s (e.g., Problem 1 from section \ref{sec:stochopt}), refer to the equations that make up that problem; see first reference of Problem 1 in Chapter \ref{ch:approaches} for reference.}
 
 We consider a geographical area of width $X$ (m) and length $Y$ (m) that contains a set $\mathcal{S} \myeq \left\{1,\, 2,\, \ldots,\, S\right\}$ of BSs available to be leased to the VNB by a set of $\mathcal{N} \myeq \left\{1,\, 2,\, \ldots,\, N\right\}$ RPs.  The rate capacity of BS $s \in \mathcal{S}$ is denoted by $r_s$, its cost is denoted by $c_s$, and its coverage radius is denoted by $b_s$.
 
@@ -249,7 +253,7 @@ Throughout this paper, stochastic variables will be differentiated from determin
 
 \section{Stochastic Optimization} \label{sec:stochopt}
 
-\textit{Now the that model, area, and definitions are defined, proceed to use those terms and define the overall generalized stochastic optimization problem.  This is effectively section 3 (a) of my conference paper, but with, perhaps, a little more focus.}
+\textit{Replace ``we''s to ``I''s or find alternate wording/tense/voice.  Ensure equations are spaced appropriately for full page column and that there are no unnecessary vertical or horizontal spacing.  Expounding on the various components of the stochastic optimization problem might be worthwhile.  Might be worthwhile to also mention that the stochastic nature of this specific formulation is limited to handling stochastic demand point locations.  As with \ref{sec:networkdefs}, modify wording and phrasing accordingly to accommodate the possibility for multiple RPs and SPs in the model.  When referring to ``Problem''s (e.g., Problem 1 from section \ref{sec:stochopt}), refer to the equations that make up that problem; see first reference of  Problem 1 in Chapter \ref{ch:approaches} for reference.}
 
 We formulate the presented problem as a two-stage stochastic optimization problem.  We introduce $z_s, s \in \mathcal{S}$ as a binary decision variable defined as
 \[ z_s \myeq
@@ -293,13 +297,17 @@ Constraint (\ref{eq:P1S2C2}) ensures a demand point $m \in \mathcal{M}$ is not a
 \pagebreak
 \chapter{Approximation Approaches} \label{ch:approaches}
 
+\textit{Replace with introduction paragraph to this chapter.  This chapter lays out the two major approaches I am using in this thesis: the sampled DEP and genetic algorithm, and the foundation those approaches are built on.  These approaches are built on the stochastic optimization problem as laid out in \ref{sec:stochopt}, and meant to provide a solution (i.e., the DEP) or an estimate (i.e., the sampled DEP and genetic algorithm) as the original problem is not directly solvable.}
+
 \textit{In this chapter, I work on defining the approximation approaches used in my work.  Lead in to discussing the need to approximate the stochastic optimization problem from section \ref{sec:stochopt} to adequately solve my work, then introduce the two approaches I used to approximate the optimization problem: the DEP/its sampling/generalized post-selection slicing and the genetic algorithm as a selection method.}
 
 \section{Deterministic Equivalent Program} \label{sec:dep}
 
+\textit{Replace all ``we''s with ``I''s or with alternate phrasing/tense/voice.  When referring to ``Problem''s (e.g., Problem 1 from section \ref{sec:stochopt}), refer to the equations that make up that problem; see first reference of Problem 1 in Chapter \ref{ch:approaches} for reference.}
+
 \textit{Introduce the idea of a DEP as an approach for solving the original stochastic problem.  Present the solved problem here in the form of the true deterministic equivalent program - as in, it is actually an equivalent to the original stochastic problem - with all the necessary expansions and additional variables.  Focus on how this formulation no longer includes any stochastic variables and is purely deterministic.  Mention that the trade off is that the deterministic variables are part of a infinitely large set of potential scenarios.}
 
-In order to solve the two-stage stochastic optimization formulation (Problem 1), we need to convert it to a deterministic equivalent program (DEP) that does not contain any stochastic variables (only deterministic variables) \cite{stochprogramming}.
+In order to solve the two-stage stochastic optimization formulation (Problem 1, \cref{eq:P1S1,eq:P1S1C1,eq:P1S2,eq:P1S2C1,eq:P1S2C2,eq:P1S2C3}), we need to convert it to a deterministic equivalent program (DEP) that does not contain any stochastic variables (only deterministic variables) \cite{stochprogramming}.
 
 Let $\Omega$ be defined as the sample space, i.e., the set of all scenarios.  Let $\hat{\Omega} \myeq \{1,\, 2,\, \ldots,\, O\}$ be a discrete set containing sampled scenarios.  The probability a given scenario $\omega \in \hat{\Omega}$ occurs is denoted by $p^{(\omega)},\, \omega \in \hat{\Omega}$, where $\sum_{\omega \in \hat{\Omega}} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.
 
