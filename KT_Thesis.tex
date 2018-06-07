@@ -161,13 +161,13 @@ coincidental.
 
 \chapter{Introduction} \label{ch:intro}
 
-\textit{Here I introduce the problem I have been working on (BS selection and dynamic slicing within a VWN).  Start the paragraph talking about the increasing demands within the cellular network; IoT devices, trends toward massive demands.  Mention how costs to maintain and increase the capacity of the network with current costs are rising.  Lead into necessary needs for 5G as intended to be implemented over the next two years, and how virtualization is a potential solution to increase capacity while minimizing cost within 5G networks.}
+\textit{Discuss the motivation behind the work.  In basic, why am I investigating the concept of resource selection and adaptive slicing in virtualized wireless networks.}
 
-
+Resource infrastructure sharing has been a common practice between mobile network operators (MNOs) to fulfill two separate needs.  First, MNOs needed to offer coverage for their users in regions where they had no infrastructure, leading to the creation of roaming agreements.  Second, the cost to maintain the wireless infrastructure is high in some areas.  Sharing of passive infrastructure, such as physical sites, tower masts, power, and air-conditioning, led to considerable cost savings \cite{1421931}.  These benefits motivated the use of more active sharing approaches, such as the reuse of backhaul and the sharing of radio access networks (RANs) in the form of base stations (BSs) and antenna systems.  The technologies developed for MNO sharing have allowed for the rise of mobile virtual network operators (MVNOs), which provide MNO-like mobile services without directly owning a physical RAN.
 
 \section{Wireless Network Virtualization} \label{sec:virtualization}
 
-\textit{Discuss the motivation behind this thesis.  Invoke the idea of virtualization and the problem of generating a virtual network from a subset of resources.}
+Wireless virtualization is one of the most promising approaches for efficient sharing of radio resources in next-generation mobile networks \cite{6824752}.  In \cite{6553675, 6571315}, the opportunities for cost saving and additional flexibility are the motivations behind introducing virtualization schemes for LTE networks, focusing on resource sharing.  Doyle \textit{et al.} \cite{6737248} presented the Network without Borders (NwoB) paradigm which broadly explores the concepts of virtualization.  The authors proposed removing the traditional constraints on spectrum and presented a virtualization-centric structure for mobile wireless networks.  In this paradigm, a service provider (SP) provides a specified service to its users, which could be in the form of traditional general data, voice, and messaging services or a more specific application (e.g., emergency services, Internet of Things, or video streaming).  The virtual network builder (VNB) aggregates and selects resources from resource providers (RPs) to build virtual networks designed for the needs of the SPs.  RPs, such as traditional MNOs, are the owners and maintainers of the physical resources and infrastructure that are provided for the virtualized wireless networks (VWNs) via contracts established with VNBs.
 
 \section{Review of Trends in Wireless Networking} \label{sec:netreview}
 
@@ -176,6 +176,8 @@ coincidental.
 \section{Review of Optimization Methods} \label{sec:optreview}
 
 \textit{Discuss the previously existing literature that I have been reading with regards to optimization methods.  Discuss optimization and stochastic optimization.  Discuss metaheuristic algorithms, especially genetic algorithms, and how they have been used for and to simplify optimization.}
+
+Considering the uncertainty of user equipment (demand point) locations, in this paper we consider solving two problems jointly.  The first problem is to optimally orchestrate a set of BSs from a set of RPs to meet the demands of a set of SPs.  The second problem is to slice the set of selected BSs adaptively (in response to the change in the users distribution) between the demand points of various SPs.  Stochastic programming provides a powerful mathematical tool to handle optimization under uncertainty.  It had been recently exploited to optimize resource allocation in various types of wireless networks operating under uncertainties (examples include~\cite{MJ_TW_13, CC_OFDMA, MJ_MECOMM_17, MJ_CCNC_16, MJ_WCNC_16, MJ_DySPAN_15, CC_video}).  We establish a stochastic optimization problem from the perspective of the VNB to determine the optimal selection of resources to be leased from the RPs and adaptively sliced and allocated to form VWNs that satisfy the demands of the SPs.  Then, we develop two approaches that would be run in the VNB to reach a near-optimal solution of the stochastic optimization problem.  We consider two optimality criteria: maximizing demand satisfaction of SP users and minimizing the cost of the BS resources to satisfy the demand.  Finally, we consider the efficacy of the approaches with a single SP with log-normal spatially-correlated demand modeled to mimic real cellular networks.
 
 \section{Thesis Objective} \label{sec:objective}
 
@@ -217,7 +219,7 @@ Shakespearean festival and continuing into the present ...
 \fi
 
 \pagebreak
-\chapter{VNB Model} \label{ch:vnbmodel}
+\chapter{Virtual Network Builder Model} \label{ch:vnbmodel}
 
 \textit{Replace with an introduction paragraph describing the work of this chapter.  This chapter discusses the model upon which the approaches that are run within the VNB are defined.  It discusses the assumptions that the VNB runs within and lays out the optimization problem that the VNB is tasked with solving.}
 
