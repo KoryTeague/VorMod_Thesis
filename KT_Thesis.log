@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  6 JUN 2018 15:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  8 JUN 2018 00:54
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -415,18 +415,18 @@ Package: cleveref 2018/03/27 v0.21.4 Intelligent cross-referencing
 ) (KT_Thesis.aux)
 \openout1 = `KT_Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 46.
+LaTeX Font Info:    ... okay on input line 46.
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count117
@@ -565,8 +565,6 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
 Non-PDF special ignored!] (KT_Thesis.lof)
 \tf@lof=\write7
 \openout7 = `KT_Thesis.lof'.
@@ -611,17 +609,17 @@ Non-PDF special ignored!] [5
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
+Non-PDF special ignored!] [6
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 Non-PDF special ignored!]
 Chapter 2.
-[6
+[7
 Non-PDF special ignored!
 Non-PDF special ignored!
 
 
-Non-PDF special ignored!
-Non-PDF special ignored!] [7
-Non-PDF special ignored!
-Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!] [8
 Non-PDF special ignored!
@@ -635,11 +633,15 @@ Non-PDF special ignored!] [10
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
+Non-PDF special ignored!] [11
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 Non-PDF special ignored!]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 284.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 296.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\bbm\ubbm.fd"
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [11
+) [12
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -649,27 +651,27 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
-Non-PDF special ignored!] [12
+Non-PDF special ignored!] [13
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
 Chapter 3.
-[13
+[14
 Non-PDF special ignored!
 Non-PDF special ignored!
 
 
 Non-PDF special ignored!
-Non-PDF special ignored!] [14
+Non-PDF special ignored!] [15
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
 
-LaTeX Warning: Reference `sec:model' on page 15 undefined on input line 333.
+LaTeX Warning: Reference `sec:model' on page 16 undefined on input line 345.
 
-[15
+[16
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -679,29 +681,25 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
-Non-PDF special ignored!] [16
+Non-PDF special ignored!] [17
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
 
-LaTeX Warning: Reference `subsec:dep' on page 17 undefined on input line 347.
+LaTeX Warning: Reference `subsec:dep' on page 18 undefined on input line 359.
 
-[17
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!] [18
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
+[18
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!] [19
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -717,17 +715,17 @@ Non-PDF special ignored!] [22
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
+Non-PDF special ignored!] [23
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 Non-PDF special ignored!]
 Chapter 4.
-[23
+[24
 Non-PDF special ignored!
 Non-PDF special ignored!
 
 
-Non-PDF special ignored!
-Non-PDF special ignored!] [24
-Non-PDF special ignored!
-Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!] [25
 Non-PDF special ignored!
@@ -737,34 +735,56 @@ Non-PDF special ignored!] [26
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
+Non-PDF special ignored!] [27
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 Non-PDF special ignored!]
 Chapter 5.
-(KT_Thesis.bbl [27
+(KT_Thesis.bbl [28
 Non-PDF special ignored!
 Non-PDF special ignored!
 
 
+Non-PDF special ignored!
+Non-PDF special ignored!]
+Underfull \hbox (badness 1127) in paragraph at lines 25--29
+[]\OT1/cmr/m/n/12 Cisco, ``Cisco vi-sual net-work-ing in-dex: Fore-cast and met
+hod-ol-ogy, 2016-2021,''
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--29
+\OT1/cmr/m/n/12 [On-line]. Avail-able: https://www.cisco.com/c/en/us/solutions/
+collateral/service-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--29
+\OT1/cmr/m/n/12 provider/visual-networking-index-vni/complete-white-paper-c11-4
+81360.pdf, June
+ []
+
+[29
+Non-PDF special ignored!
+Non-PDF special ignored!
+
+
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
 Missing character: There is no Å in font cmr12!
 Missing character: There is no ‚ in font cmr12!
- [28
-Non-PDF special ignored!
-Non-PDF special ignored!
-
-
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!] [29
+ [30
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -787,7 +807,7 @@ Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¤ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¶ in font cmr12!
-) [30
+ [31
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -798,6 +818,12 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!]) [32
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -808,14 +834,14 @@ Non-PDF special ignored!] (KT_Thesis.aux)
 LaTeX Warning: There were undefined references.
 
  )
-(\end occurred when \ifx on line 44 was incomplete) 
+(\end occurred when \ifx on line 46 was incomplete) 
 Here is how much of TeX's memory you used:
  14675 strings out of 493312
- 292252 string characters out of 3138900
- 343929 words of memory out of 3000000
- 17964 multiletter control sequences out of 15000+200000
+ 292236 string characters out of 3138900
+ 343928 words of memory out of 3000000
+ 17963 multiletter control sequences out of 15000+200000
  12938 words of font info for 50 fonts, out of 3000000 for 9000
- 1141 hyphenation exceptions out of 8191
+ 1142 hyphenation exceptions out of 8191
  54i,19n,73p,1736b,432s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\teagu\AppData\Loc
 al\MiKTeX\2.9\fonts\pk\ljfour\public\bbm\dpi600\bbm12.pk><C:/Program Files/MiKT
@@ -835,9 +861,9 @@ sfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 
-Output written on KT_Thesis.pdf (36 pages, 265744 bytes).
+Output written on KT_Thesis.pdf (38 pages, 269538 bytes).
 PDF statistics:
- 193 PDF objects out of 1000 (max. 8388607)
+ 202 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

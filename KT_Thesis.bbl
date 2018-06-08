@@ -21,10 +21,22 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{ciscoVNI2017}
+Cisco, ``Cisco visual networking index: Forecast and methodology, 2016-2021,''
+  [Online]. Available:
+  \url{https://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/complete-white-paper-c11-481360.pdf},
+  June 2017, white paper at Cisco.com.
+
 \bibitem{1421931}
 C.~Beckman and G.~Smith, ``Shared networks: making wireless communication
   affordable,'' \emph{IEEE Wireless Communications Magazine}, vol.~12, no.~2,
   pp. 78--85, April 2005.
+
+\bibitem{MJ_CCNC_16}
+M.~J. Abdel-Rahman, K.~Cardoso, A.~B. MacKenzie, and L.~A. DaSilva,
+  ``Dimensioning virtualized wireless access networks from a common pool of
+  resources,'' in \emph{Proceedings of the IEEE CCNC Conference}, January 2016,
+  pp. 1049--1054.
 
 \bibitem{6824752}
 J.~G. Andrews, S.~Buzzi, W.~Choi, S.~V. Hanly, A.~Lozano, A.~C.~K. Soong, and
@@ -62,12 +74,6 @@ K.~V. Cardoso, M.~J. Abdel-Rahman, A.~B. MacKenzie, and L.~A. DaSilva,
   ``Virtualization and programmability in mobile wireless networks:
   Architecture and resource management,'' in \emph{Proceedings of the Workshop
   on Mobile Edge Communications (MECOMM'17)}, 2017, pp. 1--6.
-
-\bibitem{MJ_CCNC_16}
-M.~J. Abdel-Rahman, K.~Cardoso, A.~B. MacKenzie, and L.~A. DaSilva,
-  ``Dimensioning virtualized wireless access networks from a common pool of
-  resources,'' in \emph{Proceedings of the IEEE CCNC Conference}, January 2016,
-  pp. 1049--1054.
 
 \bibitem{MJ_WCNC_16}
 M.~J. Abdel-Rahman, M.~AbdelRaheem, A.~B. MacKenzie, K.~Cardoso, and M.~Krunz,
