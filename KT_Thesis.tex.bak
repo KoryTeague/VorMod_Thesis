@@ -17,7 +17,7 @@
 \setlength{\parskip}{0.1in}
 
 % Uncomment for double-spaced document.
-\renewcommand{\baselinestretch}{2}
+%\renewcommand{\baselinestretch}{2}
 %\onehalfspacing
 %\doublespacing
 
@@ -163,8 +163,6 @@ coincidental.
 
 \chapter{Introduction} \label{ch:intro}
 
-%Resource infrastructure sharing has been a common practice between mobile network operators (MNOs) to fulfill two separate needs.  First, MNOs needed to offer coverage for their users in regions where they had no infrastructure, leading to the creation of roaming agreements.  Second, the cost to maintain the wireless infrastructure is high in some areas.  Sharing of passive infrastructure, such as physical sites, tower masts, power, and air-conditioning, led to considerable cost savings \cite{1421931}.  These benefits motivated the use of more active sharing approaches, such as the reuse of backhaul and the sharing of radio access networks (RANs) in the form of base stations (BSs) and antenna systems.  The technologies developed for MNO sharing have allowed for the rise of mobile virtual network operators (MVNOs), which provide MNO-like mobile services without directly owning a physical RAN.
-
 The ever increasing desires of users to remain connected to one another and to access the wealth of knowledge and content available on the internet have driven explosive growth in both the volume of users and the demands of those users within mobile carrier networks.  Previously unforeseen data-driven applications, such as audio/video streaming, social networking, and the Internet of Things have also placed increasing demand upon the networks.  In 2016, the amount of IP data handled by mobile networks exceeded 86 exabytes; it is projected to reach almost 200 exabytes in 2018, and 580 exabytes in 2021 \cite{ciscoVNI2017}.  Due to this exponential growth, incremental approaches to improve the network will fail to satisfy demand. \iffalse This growth has been possible up to this point because of the progress of cellular network technologies allowing for new network topologies and more efficient use of spectrum. \fi As this growth continues to progress into the near future, new architectures like 5G and its associated technologies will be needed to keep pace with the demand.
 
 However, deployment of these technologies and networks can be a costly, prohibitive venture.  To meet these demands requires a similar increase in capital (CapEx) and operational expenditures (OpEx).  As volumes and costs rise and margins shrink, approaches to reduce these expenditures become increasingly necessary.  Resource infrastructure sharing has been a common practice for MNOs going back to 2G and 3G networks.  First, MNOs needed to offer coverage for their users in regions where they had no infrastructure, leading to the creation of roaming agreements, eliminating the need for deploying new infrastructure in that region and reducing CapEx.  Second, by sharing passive elements of the infrastructure, such as physical sites, tower masts, power, and air-conditioning, the CapEx of deploying new backhaul and radio access networks (RANs), such as cellular base stations (BSs), has decreased \cite{1421931}.
@@ -179,13 +177,17 @@ Wireless virtualization is one of the most promising approaches for efficient sh
 
 \textit{Discuss the 5G paper.  Broad view of the technology proposed to be used in 5G.  Discuss the trends the require the use of 5G instead of incremental increases on 4G and LTE networks - cisco VNI.  Discuss the }
 
+---
+
+\textit{Talk about the growth in data in cellular networks}
+
+\textit{Talk about the changes in wireless networks, namely 5G (the why) and the technology behind it.  5G paper is great here.}
+
 \subsubsection{Virtualized Wireless Networks and the Networks without Borders Architecture}
 
-\textit{Discuss the concepts of virtualization, the broad terminology, the direct benefits.  Doyle paper, colleagues.}
+\textit{Discuss the concept of virtualization in a wider lens than in the intro lede.  The terminology as it exists.  The benefits it can provide.}
 
-%\section{Review of Trends in Wireless Networking} \label{sec:netreview}
-
-%\textit{Discuss the previously existing literature that I have been reading regarding wireless networking trends.  Discuss wireless cellular networks, virtualization and their use in wireless networks.  Likely work discussing the network without borders paradigm that is at the core of the work.}
+\textit{Talk about the NwoB paradigm (Doyle paper).  Lead into the specific virtualization model we use, it's various mechanisms and entities within it, and how they interact.}
 
 \section{Review of Optimization Methods} \label{sec:optreview}
 
