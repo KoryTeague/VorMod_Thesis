@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  15 JUN 2018 11:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  16 JUN 2018 00:59
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -618,7 +618,7 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 304.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 306.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\bbm\ubbm.fd"
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [7
@@ -645,7 +645,7 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
 
-LaTeX Warning: Reference `sec:model' on page 10 undefined on input line 353.
+LaTeX Warning: Reference `sec:model' on page 10 undefined on input line 355.
 
 [10
 Non-PDF special ignored!
@@ -659,7 +659,7 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
 
-LaTeX Warning: Reference `subsec:dep' on page 11 undefined on input line 367.
+LaTeX Warning: Reference `subsec:dep' on page 11 undefined on input line 369.
 
 [11
 Non-PDF special ignored!
@@ -789,7 +789,7 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  14672 strings out of 493312
  292165 string characters out of 3138900
- 345928 words of memory out of 3000000
+ 345927 words of memory out of 3000000
  17960 multiletter control sequences out of 15000+200000
  12938 words of font info for 50 fonts, out of 3000000 for 9000
  1142 hyphenation exceptions out of 8191
@@ -812,7 +812,7 @@ sfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 
-Output written on KT_Thesis.pdf (26 pages, 262742 bytes).
+Output written on KT_Thesis.pdf (26 pages, 262659 bytes).
 PDF statistics:
  162 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
