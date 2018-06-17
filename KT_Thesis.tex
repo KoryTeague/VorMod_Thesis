@@ -161,9 +161,10 @@ coincidental.
 \pagenumbering{arabic}
 \pagestyle{myheadings}
 
+\iftrue
 \chapter{Introduction} \label{ch:intro}
 
-The ever increasing desires of users to remain connected to one another and to access the wealth of knowledge and content available on the internet have driven explosive growth in both the volume of users and the demands of those users within mobile carrier networks.  Previously unforeseen data-driven applications, such as audio/video streaming, social networking, and the Internet of Things have also placed increasing demand upon the networks.  In 2016, the amount of IP data handled by mobile networks exceeded 86 Exabytes; it is projected to reach almost 200 Exabytes in 2018, and 580 Exabytes in 2021 \cite{ciscoVNI2017}.  Due to this exponential growth, incremental approaches to improve the network will fail to satisfy demand. \iffalse This growth has been possible up to this point because of the progress of cellular network technologies allowing for new network topologies and more efficient use of spectrum. \fi As this growth continues to progress into the near future, new architectures like 5G and its associated technologies will be needed to keep pace with the demand.
+The ever increasing desires of users to remain connected to one another and to access the wealth of knowledge and content available on the internet have driven explosive growth in both the volume of users and the demands of those users within mobile carrier networks.  Previously unforeseen data-driven applications, such as audio/video streaming, social networking, and the Internet of Things have also placed increasing demand upon the networks.  In 2016, the amount of IP data handled by mobile networks exceeded 86 Exabytes; it is projected to reach almost 200 Exabytes in 2018, and 580 Exabytes in 2021 \cite{ciscoVNI2017}.  Due to this exponential growth, incremental approaches to improve the network will fail to satisfy demand.  As this growth continues to progress into the near future, new architectures like 5G and its associated technologies will be needed to keep pace with the demand.
 
 However, deployment of these technologies and networks can be a costly, prohibitive venture.  To meet these demands requires a similar increase in capital (CapEx) and operational expenditures (OpEx).  As volumes and costs rise and margins shrink, approaches to reduce these expenditures become increasingly necessary.  Resource infrastructure sharing has been a common practice for MNOs going back to 2G and 3G networks.  First, MNOs needed to offer coverage for their users in regions where they had no infrastructure, leading to the creation of roaming agreements, eliminating the need for deploying new infrastructure in that region and reducing CapEx.  Second, by sharing passive elements of the infrastructure, such as physical sites, tower masts, power, and air-conditioning, the CapEx of deploying new backhaul and radio access networks (RANs), such as cellular base stations (BSs), has decreased \cite{1421931}.
 
@@ -189,7 +190,7 @@ Consumer IP traffic comprises a majority share of global IP traffic, and this sh
 
 \textit{Talk about what this increase means; what is the cause and the origin of this change.  What is this increased demand being used for?}
 
-
+In both the consumer and business markets, this demand includes enormous growth in video applications, specifically that of video streaming.  By 2021, global IP video traffic will reach 82\% of all consumer internet traffic, up from 73\% in 2016.  This is represented by a threefold increase of all global IP video traffic over the period and a fourfold increase on just the internet backbone.  By 2021, internet live video streaming will account for 13\% of this video traffic, growing 15-fold over the period.  Similarly, internet video surveillance will occupy 3.4\% of internet video traffic, increasing sevenfold, and internet video to tv will increase by a factor of three and a half, growing to comprise 26\% of internet video traffic.  While these are all values for increases on the internet backbone, mobile data should see similar, but smaller, growth in these areas.  Virtual and augmented reality uses will see the largest increase, growing at a 82\% CAGR, and expected to reach a 20-fold increase between 2016-2021. \cite{ciscoVNI2017}
 
 \textit{Talk about how this increased demand will be handled - 5G - and the various technologies within.  Move towards discussing virtualization.  5G just got it's second main specification this week.  Read into those?}
 
@@ -212,38 +213,9 @@ The objective of this thesis is to develop two approaches of joint resource allo
 \section{Thesis Outline} \label{sec:outline}
 
 This thesis is organized as follows.  Chapter \ref{ch:intro} establishes the motivation for investigating resource selection for virtual network construction.  Chapter \ref{ch:intro} also presents the associated background information and literature review regarding virtualization, wireless networks, and optimization.  Chapter \ref{ch:vnbmodel} defines the model used for the resource allocation methods explored in this thesis.  Further, Chapter \ref{ch:vnbmodel} also details the two-stage stochastic optimization problem which optimally performs resource selection and slicing as a basis of approaches presented within this work. Chapter \ref{ch:approaches} establishes the two approaches investigated to provide solutions to the optimization problem posed in Chapter \ref{ch:vnbmodel}: a sampled Deterministic Equivalent Program which solves the problem as a whole and a genetic algorithm that simplifies the problem by providing an estimated optimal resource selection.  Chapter \ref{ch:testsim} tests these two approaches by presenting four data sets that mimic real world cellular networks and evaluates the results.  Chapter \ref{ch:conc} contains the conclusions and proposed future work in this area.
-
-\iffalse
-%\markright{Albert J. Kippleby \hfill Chapter 1. Introduction \hfill}
-
-William Shakespeare has profoundly affected the field of literature
-worldwide \cite{1421931}.  In the United States there was a surge of Shakespearean
-literature starting in the 1960s, with the opening of the Montgomery
-Shakespearean festival and continuing into the present ...
-\pagebreak
-
-%%%%%%%%%%%%%%%%%
-%
-% Include an EPS figure with this command:
-%   \epsffile{filename.eps}
-%
-
-%%%%%%%%%%%%%%%%
-%
-% Do tables like this:
-
- \begin{table}
- \caption{The Graduate School wants captions above the tables.}
-\begin{center}
- \begin{tabular}{ccc}
- x & 1 & 2 \\ \hline
- 1 & 1 & 2 \\
- 2 & 2 & 4 \\ \hline
- \end{tabular}
-\end{center}
- \end{table}
 \fi
 
+\iftrue
 \pagebreak
 \chapter{Virtual Network Builder Model} \label{ch:vnbmodel}
 
@@ -321,7 +293,9 @@ Constraints (\ref{eq:P1S1C1}), (\ref{eq:P1S2C1}), and (\ref{eq:P1S2C3}) implemen
 \]
 
 Constraint (\ref{eq:P1S2C2}) ensures a demand point $m \in \mathcal{M}$ is not allocated more resources than it demands.
+\fi
 
+\iftrue
 \pagebreak
 \chapter{Approximation Approaches} \label{ch:approaches}
 
@@ -427,7 +401,9 @@ When crossover is performed on selected individuals, it is via the uniform cross
 The genetic algorithm iterates for a number of generations $G$.  If the genetic algorithm settles on a single individual for a number of continuous generations, $G_\text{halt}$, it will halt and present that individual's chromosome as the final approximate solution for $z_s$.  Otherwise, the chromosome of the fittest individual of generation $G$ determines $z_s$.
 
 The genetic algorithm only determines an approximate solution to the BS selection forming the VWN, informing the VNB of which BSs to obtain from the RPs.  With this selection, $z_s$, the SP's demand points can be dynamically allocated resource slices as described by Problem 3 in Section \ref{subsec:dep_slicing}.
+\fi
 
+\iftrue
 \pagebreak
 \chapter{Testing and Simulations} \label{ch:testsim}
 
@@ -474,27 +450,14 @@ The genetic algorithm only determines an approximate solution to the BS selectio
 \subsubsection{Heterogeneous Resources} \label{subsubsec:mulsp_spec_hetres}
 
 \textit{also with heterogeneous resources.}
+\fi
 
-
+\iftrue
 \pagebreak
 \chapter{Conclusions} \label{ch:conc}
 
 \textit{Consider conclusions of my work.  I don't think this chapter would be long, but condense my findings into some coherent thoughts, and redirect to what they are.  Also expound on some of the further work that my research could be expanded to (e.g., further use cases investigating my approaches, use of (meta)heuristics other than a genetic algorithm to approximate the optimization problem, improve the basic capacity function used in my optimization model).}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% If you are using BibTeX, uncomment the following:
-%\thebibliography
-%
-% Otherwise, uncomment the following:
-% \chapter*{Bibliography}
-
-% \appendix
-
-% In LaTeX, each appendix is a "chapter"
-% \chapter{Program Source}
-
-
+\fi
 
 \bibliography{KT_Thesis}
 \bibliographystyle{IEEEtran}
