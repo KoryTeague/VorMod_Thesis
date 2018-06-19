@@ -2,7 +2,7 @@
 \contentsline {section}{\numberline {1.1}Trends in Wireless Networks and Network Virtualization}{2}
 \contentsline {section}{\numberline {1.2}Virtualization, Virtualized Wireless Networks, and the Networks without Borders Paradigm}{4}
 \contentsline {section}{\numberline {1.3}Review of Optimization Methods}{6}
-\contentsline {section}{\numberline {1.4}Thesis Objective}{6}
+\contentsline {section}{\numberline {1.4}Thesis Objective}{7}
 \contentsline {section}{\numberline {1.5}Thesis Outline}{7}
 \contentsline {chapter}{\numberline {2}Virtual Network Builder Model}{8}
 \contentsline {section}{\numberline {2.1}Network Area Definitions}{8}
