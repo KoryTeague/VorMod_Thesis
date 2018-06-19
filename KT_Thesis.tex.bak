@@ -204,9 +204,11 @@ Wireless virtualization is one of the most promising approaches for efficient sh
 
 One approach towards minimizing CAPEX and OPEX of networks has been the utilization of resource sharing.  Resource sharing encompases the sharing of resources between multiple networks, and can take the form of \textit{passive sharing} - referring to the sharing of physical sites, tower masts, cabling, power supplies, and other components that are not actively on part of the network architecture - and \textit{active sharing} - referring to the sharing of the active network architecture itself, such as backhaul and RAN.  The practice has been utilized since 2G and 3G networks as a tool for reducing CAPEX in expanding the network \cite{1421931}.  Since then, resource sharing has become more common, where it is now available, standardized \cite{3GPP_TS_23.251}, and implemented in many major carrier networks.  As reported in \cite{6553675}, a 2010 market survey \cite{NetSharingReport} found that over 65\% of European MNOs have deployed mobile infrastructure sharing in some form.  It was further reported \cite{6553675} that 20\% of cells carry about 50\% of total network traffic, with the other 80\% of cells still causing OPEX without gain.  Through active resource sharing, networks can avoid redundant deployments and wasted capacity, reducing overall CAPEX and OPEX.
 
-
+\textit{Bridge from resource sharing to virtualization.  Maybe mention how this impacts the value chain for cellular networks.}
 
 As an extension of this active resource sharing, wireless virtualization is very promising approach for reducing expenditures in next-generation mobile networks.
+
+The increasing prominence of active resource sharing challenges the traditional model of ownership of the various network layers and elements.  By allowing network operators to utilize 
 
 %Through efficient sharing of radio resources, wireless virtualization is one the most promising approaches for reducing expenditures in next-generation mobile networks \cite{6824752, 6553675, 6571315}.  With the introduction of virtual resources
 
