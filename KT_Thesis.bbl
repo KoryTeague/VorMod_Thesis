@@ -21,6 +21,11 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
+\bibitem{6737248}
+L.~Doyle, J.~Kibiłda, T.~K. Forde, and L.~DaSilva, ``Spectrum without bounds,
+  networks without borders,'' \emph{Proceedings of the IEEE}, vol. 102, no.~3,
+  pp. 351--365, March 2014.
+
 \bibitem{ciscoVNI2017}
 Cisco, ``Cisco visual networking index: Forecast and methodology, 2016-2021,''
   [Online]. Available:
@@ -68,11 +73,6 @@ X.~Costa-Perez, J.~Swetina, T.~Guo, R.~Mahindra, and S.~Rangarajan, ``Radio
 J.~S. Panchal, R.~D. Yates, and M.~M. Buddhikot, ``Mobile network resource
   sharing options: Performance comparisons,'' \emph{IEEE Transactions on
   Wireless Communications}, vol.~12, no.~9, pp. 4470--4482, September 2013.
-
-\bibitem{6737248}
-L.~Doyle, J.~Kibiłda, T.~K. Forde, and L.~DaSilva, ``Spectrum without bounds,
-  networks without borders,'' \emph{Proceedings of the IEEE}, vol. 102, no.~3,
-  pp. 351--365, March 2014.
 
 \bibitem{3GPP_TS_23.251}
 {3GPP TS 23.251}, ``Network sharing; architecture and functional description,''
