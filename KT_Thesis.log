@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  20 JUN 2018 12:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  20 JUN 2018 14:24
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -610,13 +610,13 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
-<Figures/ClassicNetworkValueChain.png, id=40, 1202.24156pt x 218.31563pt>
-File: Figures/ClassicNetworkValueChain.png Graphic file (type png)
-<use Figures/ClassicNetworkValueChain.png>
-Package pdftex.def Info: Figures/ClassicNetworkValueChain.png  used on input li
-ne 218. on input line 218.
-Package pdftex.def Info: Requested size: 469.75499pt x 85.30264pt on input line
- 218.
+<Figures/test.png, id=40, 484.05844pt x 85.82062pt>
+File: Figures/test.png Graphic file (type png)
+<use Figures/test.png>
+Package pdftex.def Info: Figures/test.png  used on input line 219. on input lin
+e 219.
+Package pdftex.def Info: Requested size: 469.75499pt x 83.2891pt on input line 
+219.
  [5
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -631,7 +631,7 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
-Non-PDF special ignored! <./Figures/ClassicNetworkValueChain.png>] [7
+Non-PDF special ignored! <./Figures/test.png>] [7
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
@@ -648,7 +648,7 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 312.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 313.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\bbm\ubbm.fd"
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [10
@@ -675,7 +675,7 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
 
-LaTeX Warning: Reference `sec:model' on page 13 undefined on input line 363.
+LaTeX Warning: Reference `sec:model' on page 13 undefined on input line 364.
 
 [13
 Non-PDF special ignored!
@@ -689,7 +689,7 @@ Non-PDF special ignored!
 Non-PDF special ignored!
 Non-PDF special ignored!]
 
-LaTeX Warning: Reference `subsec:dep' on page 14 undefined on input line 377.
+LaTeX Warning: Reference `subsec:dep' on page 14 undefined on input line 378.
 
 [14
 Non-PDF special ignored!
@@ -832,7 +832,7 @@ LaTeX Warning: There were undefined references.
 (\end occurred when \ifx on line 46 was incomplete) 
 Here is how much of TeX's memory you used:
  14691 strings out of 493312
- 292584 string characters out of 3138900
+ 292484 string characters out of 3138900
  345928 words of memory out of 3000000
  17976 multiletter control sequences out of 15000+200000
  13238 words of font info for 51 fonts, out of 3000000 for 9000
@@ -856,9 +856,9 @@ sfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.p
 fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
 
-Output written on KT_Thesis.pdf (30 pages, 426675 bytes).
+Output written on KT_Thesis.pdf (30 pages, 297132 bytes).
 PDF statistics:
- 177 PDF objects out of 1000 (max. 8388607)
+ 175 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
