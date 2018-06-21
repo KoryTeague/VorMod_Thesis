@@ -211,14 +211,14 @@ One approach towards minimizing CAPEX and OPEX of networks has been the utilizat
 
 The increasing prominence of active resource sharing challenges the traditional model of ownership of the various network layers and elements.  Once it became feasible for network operators to utilize resources owned and maintained by other operators, it became possible for these MNOs to operate networks primarily or only using these shared resources.  A given shared resource can be decoupled from a specific physical resource, instead enabling it to be adaptively associated with any of a given pool of qualifying physical resources as network conditions allow, establishing the shared resource as a virtual resource.  Further, virtual networks can adapt to changing network conditions, adding and removing virtual resources as capacity requirements change.  For example, a MVNO with a network of virtual resources can add additional virtual resources during the peak hour when additional capacity for end user satisfaction is needed, and removing unneeded resources during the night to reduce OPEX of the network.
 
-This concept of virtualization partitions the classical wireless networking value chain, allowing for specialization of segments of the value chain into new entities such as resource providers and service providers \cite{1421931}.  Within the classical mobile network value chain (Figure \ref{fig:ClassicNetworkValueChain}) Doyle \textit{et al.} \cite{6737248} investigates the value chain with this segmentation in mind, and introduces the Networks without Borders (NwoB) paradigm as a new market based around constructing VWNs using pools of virtual resources.
+This concept of virtualization partitions the classical wireless networking value chain, allowing for specialization of segments of the value chain into new entities such as resource providers and service providers \cite{1421931}.  Within the classical mobile network value chain (Figure \ref{fig:ClassicNetworkValueChain}) 
+
+Doyle \textit{et al.} \cite{6737248} investigates the value chain with this segmentation in mind, and introduces the Networks without Borders (NwoB) paradigm as a new market based around constructing VWNs using pools of virtual resources.
 
 \begin{figure}
 	\centering
-%	\includegraphics[width=.45\textwidth]{ClassicNetworkValueChain}
-%	\includegraphics[width=\linewidth]{ClassicNetworkValueChain_1.png}
-	\includegraphics[width=\linewidth]{ClassicNetworkValueChain.png}
-	\caption{\small test figure}
+	\includegraphics[width=\linewidth]{ClassicNetworkValueChain}
+	\caption{\small Value chain for a typical MNO \cite{6737248}}
 	\label{fig:ClassicNetworkValueChain}
 \end{figure}
 
