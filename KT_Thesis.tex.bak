@@ -19,7 +19,7 @@
 \setlength{\parskip}{0.1in}
 
 % Uncomment for double-spaced document.
-%\renewcommand{\baselinestretch}{2}
+\renewcommand{\baselinestretch}{2}
 %\usepackage{setspace}
 %\onehalfspacing
 %\doublespacing
@@ -202,28 +202,17 @@ The third strategy involves the use of massive MIMO to increase spectral efficie
 
 3GPP (the Third-Generation Partnership Project) is currently working on finalizing the standard for 5G implementations.  In December 2017, 3GPP froze the first half of release 15 of the 5G standard, establishing the specifications of non-standalone 5G which utilizes existing LTE networks.  It is expected that 3GPP will freeze the second half of release 15, covering 5G New Radio (5G-NR) which establishes specifications for new standalone 5G deployments, in Summer of 2018.
 
-\section{Virtualization, Virtualized Wireless Networks, and the Networks without Borders Paradigm}
-
-\change{Old work\\Update and Remove!}%
-\textit{Wireless virtualization is one of the most promising approaches for efficient sharing of radio resources in next-generation mobile networks~\cite{6824752}.  As described by Costa-Perez et al. and Panchal et al.~\cite{6553675, 6571315}, the opportunities for cost saving and additional flexibility are the motivations behind introducing virtualization schemes for LTE networks, focusing on resource sharing.  Doyle et al.~\cite{6737248} presented the Network without Borders (NwoB) paradigm which broadly explores the concepts of virtualization.  The authors proposed removing the traditional constraints on spectrum and presented a virtualization-centric structure for mobile wireless networks.  In this paradigm, a service provider (SP) provides a specified service to its users, which could be in the form of traditional general data, voice, and messaging services or a more specific application (e.g., emergency services, Internet of Things, or video streaming).  The virtual network builder (VNB) aggregates and selects resources from resource providers (RPs) to build virtual networks designed for the needs of the SPs.  RPs, such as traditional MNOs, are the owners and maintainers of the physical resources and infrastructure that are provided for the virtualized wireless networks (VWNs) via contracts established with VNBs.}
-
-\improvement{Discuss the concept of virtualization in a wider lens than in the intro lede.  The terminology as it exists.  The benefits it can provide.}
+\section{Virtualization, Virtualized Wireless Networks, and the Networks without Borders Paradigm} \label{sec:virtualization}
 
 One approach towards minimizing CAPEX and OPEX of networks has been the utilization of resource sharing.  Resource sharing encompases the sharing of resources between multiple networks, and can take the form of \textit{passive sharing} - referring to the sharing of physical sites, tower masts, cabling, power supplies, and other components that are not actively on part of the network architecture - and \textit{active sharing} - referring to the sharing of the active network architecture itself, such as backhaul and RAN.  The practice has been utilized since 2G and 3G networks as a tool for reducing CAPEX in expanding the network~\cite{1421931}.  Since then, resource sharing has become more common, where it is now available, standardized~\cite{3GPP_TS_23.251}, and implemented in many major carrier networks.  As reported by Costa-Perez et al.~\cite{6553675}, a 2010 market survey~\cite{NetSharingReport} found that over 65\% of European MNOs have deployed mobile infrastructure sharing in some form.  It was further reported~\cite{6553675} that 20\% of cells carry about 50\% of total network traffic, with the remaining 80\% of cells still causing OPEX without gain.  Through active resource sharing, networks can avoid redundant deployments and wasted capacity, reducing overall CAPEX and OPEX.
 
-\improvement{Bridge from resource sharing to virtualization.  Maybe mention how this impacts the value chain for cellular networks.}
-
 The increasing prominence of active resource sharing challenges the traditional model of ownership of the various network layers and elements.  Once it became feasible for network operators to utilize resources owned and maintained by other operators, it became possible for these MNOs to operate networks primarily or only using these shared resources.  A given shared resource can be decoupled from a specific physical resource, instead enabling it to be adaptively associated with any of a given pool of qualifying physical resources as network conditions allow, establishing the shared resource as a virtual resource.  Further, virtual networks can adapt to changing network conditions, adding and removing virtual resources as capacity requirements change.  For example, a MVNO with a network of virtual resources can add additional virtual resources during the peak hour when additional capacity for end user satisfaction is needed, and removing unneeded resources during the night to reduce OPEX of the network.
 
-Other research in virtualization has been shown to improve performance in wireless networks.  Panchal and Yates~\cite{6571315} have shown on an LTE testbed that active inter-operator resource sharing improves performance of overloaded networks in terms of decreased drop probability and overloaded sectors.  Virtualized sharing methods provided further, albeit marginal, performance improvements at an increased complexity, but would be more suitable on adaptive DSA based systems.  In this capacity, improved performance allows for smaller networks reducing CAPEX and OPEX.  Costa-Perez et al.~\cite{6553675} found in LTE testbeds that network virtualization substrate (NVS) provides improved overall throughput  
+Other research in virtualization has been shown to improve performance in wireless networks.  Panchal and Yates~\cite{6571315} have shown on an LTE testbed that active inter-operator resource sharing improves performance of overloaded networks in terms of decreased drop probability and overloaded sectors.  Virtualized sharing methods provided further, albeit marginal, performance improvements at an increased complexity, but would be more suitable on adaptive DSA based systems.  In this capacity, improved performance allows for smaller networks reducing CAPEX and OPEX.  Costa-Perez et al.~\cite{6553675} found in LTE testbeds that network virtualization substrate (NVS), a suggested virtualization technique, provides improved overall throughput compared networks without resource sharing.
+
+\subsection{Virtualization and the Network Value Chain} \label{subsec:virtualization_valuechain}
 
 This concept of virtualization partitions the classical wireless networking value chain, allowing for specialization of segments of the value chain into new entities such as resource providers and service providers~\cite{1421931}.  Traditional MNOs control every segment of the typical mobile network value chain (Fig. \ref{fig:ClassicNetworkValueChain}~\cite{6737248}), from spectrum to the end user.  With the introduction of virtualization techniques, MVNOs can obtain access to bulk network services available from an MNO.  This allows for MVNOs to specialize into specific formulations without the CAPEX or responsibility to deploy and maintain the radio infrastructure while incurring no significant cost~\cite{6737248}.  For example, an MVNO could focus on marketing, working solely within the distribution channel to the network's customers, or the MVNO could establish itself earlier in the value chain, focusing on operating the network from the core network.
-
-Specialization of the networks and the entities involved in the network can improve the cost efficiency of the netowork.  According to Beckman and Smith~\cite{1421931}: ``Extensive vertical integration is a characteristic of an immature product.  As the product increases in complexity, it is no longer possible to [provide] an end-to-end solution.'' In both examples, the MVNO adds value to the traditional value chain by specializing in segments (e.g., marketing or service creation) that are different from the segments (e.g., network maintenance) still handled by the owner and operator of the network resources.
-
-By focusing on the strengths provided by virtualization, more value can be generated through specialization.  Doyle et al.~\cite{6737248} investigates the value chain with this segmentation in mind and introduces the Networks without Borders (NwoB) approach as a new service-oriented network market with a proposed new value chain (Fig. \ref{fig:NwoBValueChain}~\cite{6737248}).  The network under the NwoB approach is entirely service-oriented, where the network responds to services, and connectivity is tailored for the service.  Services are more specific than the voice, text, and data of a typical MNO, and instead that of Netflix-like or real-time video streaming, Internet-of-Things (IoT) applications, or various other types of over-the-top services.  Each service would be provided by service provider which compensates the virtual network operator operating a virtual network constructed specifically for the purpose of that service; the virtual network is the service.  Unlike an MVNO which manages resources provided to it by agreement, the virtual network operator manages slices of virtual resources from a pool of all resources as provided through resource aggregating services.
-
-The benefits of this paradigm as proposed by Doyle et al.~\cite{6737248} are four-fold.  First, it provides specialization and independence for each stage, allowing service providers to focus on generating value from services provided.  Second, networks can be specialized for a service, reducing OPEX through extensive resource sharing.  Thirdly, as resources are virtualized and pooled together, any resource could be added with the pool and utilized for a network as its properties fit the networks needs.  Fourthly, it lowers the barrier for entry and establishes services for new entities to fulfill.
 
 \begin{figure}
 	\centering
@@ -232,6 +221,10 @@ The benefits of this paradigm as proposed by Doyle et al.~\cite{6737248} are fou
 	\label{fig:ClassicNetworkValueChain}
 \end{figure}
 
+Specialization of the networks and the entities involved in the network can improve the cost efficiency of the netowork.  According to Beckman and Smith~\cite{1421931}: ``Extensive vertical integration is a characteristic of an immature product.  As the product increases in complexity, it is no longer possible to [provide] an end-to-end solution.'' In both examples, the MVNO adds value to the traditional value chain by specializing in segments (e.g., marketing or service creation) that are different from the segments (e.g., network maintenance) still handled by the owner and operator of the network resources.
+
+By focusing on the strengths provided by virtualization, more value can be generated through specialization.  Doyle et al.~\cite{6737248} investigates the value chain with this segmentation in mind and introduces the Networks without Borders (NwoB) approach as a new service-oriented network market with a proposed new value chain (Fig. \ref{fig:NwoBValueChain}~\cite{6737248}).  The network under the NwoB approach is entirely service-oriented, where the network responds to services, and connectivity is tailored for the service.  Services are more specific than the voice, text, and data of a typical MNO, and instead that of Netflix-like or real-time video streaming, Internet-of-Things (IoT) applications, or various other types of over-the-top services.  Each service would be provided by service provider which compensates the virtual network operator operating a virtual network constructed specifically for the purpose of that service; the virtual network is the service.  Unlike an MVNO which manages resources provided to it by agreement, the virtual network operator manages slices of virtual resources from a pool of all resources as provided through resource aggregating services.
+
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{NwoBValueChain}
@@ -239,18 +232,32 @@ The benefits of this paradigm as proposed by Doyle et al.~\cite{6737248} are fou
 	\label{fig:NwoBValueChain}
 \end{figure}
 
-%Through efficient sharing of radio resources, wireless virtualization is one the most promising approaches for reducing expenditures in next-generation mobile networks \cite{6824752, 6553675, 6571315}.  With the introduction of virtual resources
+The benefits of this paradigm as proposed by Doyle et al.~\cite{6737248} are four-fold.  First, it provides specialization and independence for each stage, allowing service providers to focus on generating value from services provided.  Second, networks can be specialized for a service, reducing OPEX through extensive resource sharing.  Thirdly, as resources are virtualized and pooled together, any resource (e.g., typical RAN, WiFi, mmWave, raw spectrum) could be added with the pool and utilized for a network as its properties fit the network's needs.  Fourthly, it lowers the barrier for entry and establishes services for new entities to fulfill.
 
-\textit{Network sharing has been used as a expenditure saving measure going back to 2G and 3G networks.  It was typically viewed within the industry as a CAPEX saving measure.  However, it also allows for a decomposition of the network value chain ``into network operators, neutral hosts, mobile virtual network operators (MVNOs), service providers, and other entities''.  Allows for increasing specialization of products within the market.  MVNOs are capable of targeting specific classes of users, such as ``students, road warriors, tradespeople, executives, and so on.'' ``Network operation and maintenance and service creation and development are quite obviously very different businesses, and network sharing provides an efficient, manageable means for them to operate with greater independence of each other.''}%
-\info{1421931 - Shared Networks: Making Wireless Communication Affordable (2005)}
+\subsection{Virtualization Architecture in this Work} \label{subsec:virtualization_architecture}
 
-\textit{Resource sharing as a concept is a fairly well investigated practice, and is already available and standardized among the major carrier networks.  This can take form as passive and active sharing.  ``Passive sharing refers to the reuse of components such as physical sites, tower masts, cabling, cabinets, power supply, air-conditioning, and so-on.  Active sharing refers to the reuse of backhaul, base stations, and antenna systems, the reuse of the latter two labeles as active RAN sharing.''}%
-\info{6553675 - Radio Access Network Virtualization for Future Mobile Carrier Networks (2013)}
+This thesis uses a virtualization architecture based on the NwoB paradigm presented by Doyle et al.~\cite{6737248}.%
+\improvement{Continue expanding this in the morning.}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{VWNArchitecture}
+	\caption[\small VWN architecture as used in this work]{\small VWN architecture as used in this work~\cite{p1-Cardoso} <- \col}
+	\label{fig:VWNArchitecture}
+\end{figure}
+
+\textit{Info from Kleber's paper here}%
+\info{p1-Cardoso - Virtualization and Programmability in Mobile Wireless Networks: Architecture and Resource Management (2017)}
+
+\unsure{What other group papers do I want to consider here?  Look.}
 
 \section{Review of Optimization Methods} \label{sec:optreview}
 
-\textit{Considering the uncertainty of user equipment (demand point) locations, in this paper we consider solving two problems jointly.  The first problem is to optimally orchestrate a set of BSs from a set of RPs to meet the demands of a set of SPs.  The second problem is to slice the set of selected BSs adaptively (in response to the change in the users distribution) between the demand points of various SPs.  Stochastic programming provides a powerful mathematical tool to handle optimization under uncertainty.  It had been recently exploited to optimize resource allocation in various types of wireless networks operating under uncertainties (examples include~\cite{MJ_TW_13, CC_OFDMA, MJ_MECOMM_17, MJ_CCNC_16, MJ_WCNC_16, MJ_DySPAN_15, CC_video}).  We establish a stochastic optimization problem from the perspective of the VNB to determine the optimal selection of resources to be leased from the RPs and adaptively sliced and allocated to form VWNs that satisfy the demands of the SPs.  Then, we develop two approaches that would be run in the VNB to reach a near-optimal solution of the stochastic optimization problem.  We consider two optimality criteria: maximizing demand satisfaction of SP users and minimizing the cost of the BS resources to satisfy the demand.  Finally, we consider the efficacy of the approaches with a single SP with log-normal spatially-correlated demand modeled to mimic real cellular networks.}%
-\improvement{Discuss the previously existing literature that I have been reading with regards to optimization methods.  Discuss optimization and stochastic optimization.  Discuss metaheuristic algorithms, especially genetic algorithms, and how they have been used for and to simplify optimization.}
+\change{Old work\\Update and Remove!}%
+\textit{Considering the uncertainty of user equipment (demand point) locations, in this paper we consider solving two problems jointly.  The first problem is to optimally orchestrate a set of BSs from a set of RPs to meet the demands of a set of SPs.  The second problem is to slice the set of selected BSs adaptively (in response to the change in the users distribution) between the demand points of various SPs.  Stochastic programming provides a powerful mathematical tool to handle optimization under uncertainty.  It had been recently exploited to optimize resource allocation in various types of wireless networks operating under uncertainties (examples include~\cite{MJ_TW_13, CC_OFDMA, MJ_MECOMM_17, MJ_CCNC_16, MJ_WCNC_16, MJ_DySPAN_15, CC_video}).  We establish a stochastic optimization problem from the perspective of the VNB to determine the optimal selection of resources to be leased from the RPs and adaptively sliced and allocated to form VWNs that satisfy the demands of the SPs.  Then, we develop two approaches that would be run in the VNB to reach a near-optimal solution of the stochastic optimization problem.  We consider two optimality criteria: maximizing demand satisfaction of SP users and minimizing the cost of the BS resources to satisfy the demand.  Finally, we consider the efficacy of the approaches with a single SP with log-normal spatially-correlated demand modeled to mimic real cellular networks.}
+
+\textit{Discuss the previously existing literature that I have been reading with regards to optimization methods.  Discuss optimization and stochastic optimization.  Discuss metaheuristic algorithms, especially genetic algorithms, and how they have been used for and to simplify optimization.}%
+\improvement{Do this!}
 
 Stochastic programming provides a powerful mathematical tool to handle optimization under uncertainty.
 
@@ -267,6 +274,8 @@ This thesis is organized as follows.  Chapter \ref{ch:intro} establishes the mot
 \iftrue
 \pagebreak
 \chapter{Virtual Network Builder Model} \label{ch:vnbmodel}
+
+\improvement{Go through chapter notes, and break them down to where and what.}
 
 \textit{Replace with an introduction paragraph describing the work of this chapter.  This chapter discusses the model upon which the approaches that are run within the VNB are defined.  It discusses the assumptions that the VNB runs within and lays out the optimization problem that the VNB is tasked with solving.}
 
@@ -347,6 +356,8 @@ Constraint (\ref{eq:P1S2C2}) ensures a demand point $m \in \mathcal{M}$ is not a
 \iftrue
 \pagebreak
 \chapter{Approximation Approaches} \label{ch:approaches}
+
+\improvement{Go through chapter notes, and break them down to where and what.}
 
 \textit{Replace with introduction paragraph to this chapter.  This chapter lays out the two major approaches I am using in this thesis: the sampled DEP and genetic algorithm, and the foundation those approaches are built on.  These approaches are built on the stochastic optimization problem as laid out in \ref{sec:stochopt}, and meant to provide a solution (i.e., the DEP) or an estimate (i.e., the sampled DEP and genetic algorithm) as the original problem is not directly solvable.}
 
@@ -456,6 +467,8 @@ The genetic algorithm only determines an approximate solution to the BS selectio
 \pagebreak
 \chapter{Testing and Simulations} \label{ch:testsim}
 
+\improvement{Start this chapter ASAP.  Start running Case I data now.}
+
 \textit{In this chapter I will be introducing four different cases to test the provided approximation approaches.  The first will be the test case used in my conference paper (one SP, with homogeneous resources).  The second will be an expansion of the test case used in my conference paper, but with heterogeneous resources.  The third will extend to service multiple similar cellular SPs.  The fourth will extend to a case with multiple SPs with various, specialized demands.}
 
 \section{VWN Construction for a Single SP} \label{sec:onesp}
@@ -463,6 +476,8 @@ The genetic algorithm only determines an approximate solution to the BS selectio
 \textit{Lead into the first two cases, which test the approaches while using a single SP.}
 
 \subsection{Case I: Homogeneous Urban Cellular Network} \label{subsec:onesp_homres}
+
+\improvement{Start this!}
 
 \textit{Basically as presented in my conference paper.  One SP, homogeneous resources within the RPs.  Might need to use a new data set, though, with a larger data set.}
 
@@ -505,6 +520,7 @@ The genetic algorithm only determines an approximate solution to the BS selectio
 \pagebreak
 \chapter{Conclusions} \label{ch:conc}
 
+\change{Old work\\Update and Remove!}%
 \textit{Consider conclusions of my work.  I don't think this chapter would be long, but condense my findings into some coherent thoughts, and redirect to what they are.  Also expound on some of the further work that my research could be expanded to (e.g., further use cases investigating my approaches, use of (meta)heuristics other than a genetic algorithm to approximate the optimization problem, improve the basic capacity function used in my optimization model).}
 \fi
 

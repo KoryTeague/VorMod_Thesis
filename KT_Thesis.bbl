@@ -59,10 +59,18 @@ T.~L. Marzetta, ``Noncooperative cellular wireless with unlimited numbers of
   base station antennas,'' \emph{IEEE Transactions on Wireless Communications},
   vol.~9, no.~11, pp. 3590--3600, November 2010.
 
+\bibitem{3GPP_TS_23.251}
+{3GPP TS 23.251}, ``Network sharing; architecture and functional description,''
+  v. 14.1.0, September 2017.
+
 \bibitem{6553675}
 X.~Costa-Perez, J.~Swetina, T.~Guo, R.~Mahindra, and S.~Rangarajan, ``Radio
   access network virtualization for future mobile carrier networks,''
   \emph{IEEE Communications Magazine}, vol.~51, no.~7, pp. 27--35, July 2013.
+
+\bibitem{NetSharingReport}
+``Mobile network sharing report 2010-2015 - developments, analysis \&
+  forecasts,'' Visiongain, Tech. Rep., 2010.
 
 \bibitem{6571315}
 J.~S. Panchal, R.~D. Yates, and M.~M. Buddhikot, ``Mobile network resource
@@ -74,13 +82,11 @@ L.~Doyle, J.~Kibiłda, T.~K. Forde, and L.~DaSilva, ``Spectrum without bounds,
   networks without borders,'' \emph{Proceedings of the IEEE}, vol. 102, no.~3,
   pp. 351--365, March 2014.
 
-\bibitem{3GPP_TS_23.251}
-{3GPP TS 23.251}, ``Network sharing; architecture and functional description,''
-  v. 14.1.0, September 2017.
-
-\bibitem{NetSharingReport}
-``Mobile network sharing report 2010-2015 - developments, analysis \&
-  forecasts,'' Visiongain, Tech. Rep., 2010.
+\bibitem{MJ_MECOMM_17}
+K.~V. Cardoso, M.~J. Abdel-Rahman, A.~B. MacKenzie, and L.~A. DaSilva,
+  ``Virtualization and programmability in mobile wireless networks:
+  Architecture and resource management,'' in \emph{Proceedings of the Workshop
+  on Mobile Edge Communications (MECOMM'17)}, 2017, pp. 1--6.
 
 \bibitem{MJ_TW_13}
 M.~J. Abdel-Rahman and M.~Krunz, ``Stochastic guard-band-aware channel
@@ -92,12 +98,6 @@ M.~J. Abdel-Rahman and M.~Krunz, ``Stochastic guard-band-aware channel
 N.~Y. Soltani, S.~J. Kim, and G.~B. Giannakis, ``Chance-constrained
   optimization of {OFDMA} cognitive radio uplinks,'' \emph{IEEE Transactions on
   Wireless Communications}, vol.~12, no.~3, pp. 1098--1107, March 2013.
-
-\bibitem{MJ_MECOMM_17}
-K.~V. Cardoso, M.~J. Abdel-Rahman, A.~B. MacKenzie, and L.~A. DaSilva,
-  ``Virtualization and programmability in mobile wireless networks:
-  Architecture and resource management,'' in \emph{Proceedings of the Workshop
-  on Mobile Edge Communications (MECOMM'17)}, 2017, pp. 1--6.
 
 \bibitem{MJ_WCNC_16}
 M.~J. Abdel-Rahman, M.~AbdelRaheem, A.~B. MacKenzie, K.~Cardoso, and M.~Krunz,
