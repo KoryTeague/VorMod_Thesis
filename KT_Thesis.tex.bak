@@ -19,7 +19,7 @@
 \setlength{\parskip}{0.1in}
 
 % Uncomment for double-spaced document.
-\renewcommand{\baselinestretch}{2}
+%\renewcommand{\baselinestretch}{2}
 %\usepackage{setspace}
 %\onehalfspacing
 %\doublespacing
@@ -204,7 +204,7 @@ The third strategy involves the use of massive MIMO to increase spectral efficie
 
 \section{Virtualization, Virtualized Wireless Networks, and the Networks without Borders Paradigm} \label{sec:virtualization}
 
-One approach towards minimizing CAPEX and OPEX of networks has been the utilization of resource sharing.  Resource sharing encompases the sharing of resources between multiple networks, and can take the form of \textit{passive sharing} - referring to the sharing of physical sites, tower masts, cabling, power supplies, and other components that are not actively on part of the network architecture - and \textit{active sharing} - referring to the sharing of the active network architecture itself, such as backhaul and RAN.  The practice has been utilized since 2G and 3G networks as a tool for reducing CAPEX in expanding the network~\cite{1421931}.  Since then, resource sharing has become more common, where it is now available, standardized~\cite{3GPP_TS_23.251}, and implemented in many major carrier networks.  As reported by Costa-Perez et al.~\cite{6553675}, a 2010 market survey~\cite{NetSharingReport} found that over 65\% of European MNOs have deployed mobile infrastructure sharing in some form.  It was further reported~\cite{6553675} that 20\% of cells carry about 50\% of total network traffic, with the remaining 80\% of cells still causing OPEX without gain.  Through active resource sharing, networks can avoid redundant deployments and wasted capacity, reducing overall CAPEX and OPEX.
+One approach towards minimizing CAPEX and OPEX of networks has been the utilization of resource sharing.  Resource sharing encompases the sharing of resources between multiple networks, and can take the form of \emph{passive sharing} - referring to the sharing of physical sites, tower masts, cabling, power supplies, and other components that are not actively on part of the network architecture - and \emph{active sharing} - referring to the sharing of the active network architecture itself, such as backhaul and RAN.  The practice has been utilized since 2G and 3G networks as a tool for reducing CAPEX in expanding the network~\cite{1421931}.  Since then, resource sharing has become more common, where it is now available, standardized~\cite{3GPP_TS_23.251}, and implemented in many major carrier networks.  As reported by Costa-Perez et al.~\cite{6553675}, a 2010 market survey~\cite{NetSharingReport} found that over 65\% of European MNOs have deployed mobile infrastructure sharing in some form.  It was further reported~\cite{6553675} that 20\% of cells carry about 50\% of total network traffic, with the remaining 80\% of cells still causing OPEX without gain.  Through active resource sharing, networks can avoid redundant deployments and wasted capacity, reducing overall CAPEX and OPEX.
 
 The increasing prominence of active resource sharing challenges the traditional model of ownership of the various network layers and elements.  Once it became feasible for network operators to utilize resources owned and maintained by other operators, it became possible for these MNOs to operate networks primarily or only using these shared resources.  A given shared resource can be decoupled from a specific physical resource, instead enabling it to be adaptively associated with any of a given pool of qualifying physical resources as network conditions allow, establishing the shared resource as a virtual resource.  Further, virtual networks can adapt to changing network conditions, adding and removing virtual resources as capacity requirements change.  For example, a MVNO with a network of virtual resources can add additional virtual resources during the peak hour when additional capacity for end user satisfaction is needed, and removing unneeded resources during the night to reduce OPEX of the network.
 
@@ -212,7 +212,7 @@ Other research in virtualization has been shown to improve performance in wirele
 
 \subsection{Virtualization and the Network Value Chain} \label{subsec:virtualization_valuechain}
 
-This concept of virtualization partitions the classical wireless networking value chain, allowing for specialization of segments of the value chain into new entities such as resource providers and service providers~\cite{1421931}.  Traditional MNOs control every segment of the typical mobile network value chain (Fig. \ref{fig:ClassicNetworkValueChain}~\cite{6737248}), from spectrum to the end user.  With the introduction of virtualization techniques, MVNOs can obtain access to bulk network services available from an MNO.  This allows for MVNOs to specialize into specific formulations without the CAPEX or responsibility to deploy and maintain the radio infrastructure while incurring no significant cost~\cite{6737248}.  For example, an MVNO could focus on marketing, working solely within the distribution channel to the network's customers, or the MVNO could establish itself earlier in the value chain, focusing on operating the network from the core network.
+This concept of virtualization partitions the classical wireless networking value chain, allowing for specialization of segments of the value chain into new entities such as resource providers and service providers~\cite{1421931}.  Traditional MNOs control every segment of the typical mobile network value chain (Fig. \unsure{Cite here, or just on figure?} \ref{fig:ClassicNetworkValueChain}), from spectrum to the end user.  With the introduction of virtualization techniques, MVNOs can obtain access to bulk network services available from an MNO.  This allows for MVNOs to specialize into specific formulations without the CAPEX or responsibility to deploy and maintain the radio infrastructure while incurring no significant cost~\cite{6737248}.  For example, an MVNO could focus on marketing, working solely within the distribution channel to the network's customers, or the MVNO could establish itself earlier in the value chain, focusing on operating the network from the core network.
 
 \begin{figure}
 	\centering
@@ -223,7 +223,7 @@ This concept of virtualization partitions the classical wireless networking valu
 
 Specialization of the networks and the entities involved in the network can improve the cost efficiency of the netowork.  According to Beckman and Smith~\cite{1421931}: ``Extensive vertical integration is a characteristic of an immature product.  As the product increases in complexity, it is no longer possible to [provide] an end-to-end solution.'' In both examples, the MVNO adds value to the traditional value chain by specializing in segments (e.g., marketing or service creation) that are different from the segments (e.g., network maintenance) still handled by the owner and operator of the network resources.
 
-By focusing on the strengths provided by virtualization, more value can be generated through specialization.  Doyle et al.~\cite{6737248} investigates the value chain with this segmentation in mind and introduces the Networks without Borders (NwoB) approach as a new service-oriented network market with a proposed new value chain (Fig. \ref{fig:NwoBValueChain}~\cite{6737248}).  The network under the NwoB approach is entirely service-oriented, where the network responds to services, and connectivity is tailored for the service.  Services are more specific than the voice, text, and data of a typical MNO, and instead that of Netflix-like or real-time video streaming, Internet-of-Things (IoT) applications, or various other types of over-the-top services.  Each service would be provided by service provider which compensates the virtual network operator operating a virtual network constructed specifically for the purpose of that service; the virtual network is the service.  Unlike an MVNO which manages resources provided to it by agreement, the virtual network operator manages slices of virtual resources from a pool of all resources as provided through resource aggregating services.
+By focusing on the strengths provided by virtualization, more value can be generated through specialization.  Doyle et al.~\cite{6737248} investigates the value chain with this segmentation in mind and introduces the Networks without Borders (NwoB) approach as a new service-oriented network market with a proposed new value chain (Fig. \unsure{Cite here, or just on figure?} \ref{fig:NwoBValueChain}).  The network under the NwoB approach is entirely service-oriented, where the network responds to services, and connectivity is tailored for the service.  Services have a wider meaning than the voice, text, and data of a typical MNO, and instead including that of Netflix-like or real-time video streaming, Internet-of-Things (IoT) applications, or various types of over-the-top services.  Each service would be provided by service provider which compensates the virtual network operator operating a virtual network constructed specifically for the purpose of that service; the virtual network is the service.  Unlike an MVNO which manages resources provided to it by agreement, the virtual network operator manages slices of virtual resources from a pool of all resources as provided through resource aggregating services.
 
 \begin{figure}
 	\centering
@@ -234,22 +234,31 @@ By focusing on the strengths provided by virtualization, more value can be gener
 
 The benefits of this paradigm as proposed by Doyle et al.~\cite{6737248} are four-fold.  First, it provides specialization and independence for each stage, allowing service providers to focus on generating value from services provided.  Second, networks can be specialized for a service, reducing OPEX through extensive resource sharing.  Thirdly, as resources are virtualized and pooled together, any resource (e.g., typical RAN, WiFi, mmWave, raw spectrum) could be added with the pool and utilized for a network as its properties fit the network's needs.  Fourthly, it lowers the barrier for entry and establishes services for new entities to fulfill.
 
+The discussion above establishes the needs and benefits of resource sharing and virtualization techniques in next-generation wireless networks.  This leads to further %
+\improvement{Improve on the transition from this our work}
+
 \subsection{Virtualization Architecture in this Work} \label{subsec:virtualization_architecture}
 
-This thesis uses a virtualization architecture based on the NwoB paradigm presented by Doyle et al.~\cite{6737248}.%
-\improvement{Continue expanding this in the morning.}
+This thesis uses a virtualization architecture based on the NwoB paradigm presented by Doyle et al.~\cite{6737248}.  Fig. \unsure{Cite here, or just on figure?} \ref{fig:VWNArchitecture} illustrates the three primary roles in this architecture: (1) the Resource Providers (RPs), (2) the Virtual Network Builders (VNBs), and (3) the Service Providers (SPs).
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{VWNArchitecture}
-	\caption[\small VWN architecture as used in this work]{\small VWN architecture as used in this work~\cite{p1-Cardoso} <- \col}
+	\caption[\small VWN architecture as used in this work]{\small VWN architecture as used in this work~\cite{MJ_MECOMM_17} \color{red}{\textless -- Double Check Citation!}}
 	\label{fig:VWNArchitecture}
 \end{figure}
 
-\textit{Info from Kleber's paper here}%
-\info{p1-Cardoso - Virtualization and Programmability in Mobile Wireless Networks: Architecture and Resource Management (2017)}
+RPs deploy and maintain the physical resources that are to be virtualized and offered for use within the virtualization framework.  These resources can be in the form of any network-capable resource.  For example, the resources could be BSs as provided by a traditional MNO, a company-or individual-owned WLAN, femtocell access points, available licensed or unlicensed spectrum, or cloud computing.  The RPs are any entity that offers a virtualizable resource, such as a traditional MNO, company, or individual.  The RP maintains the resources, but also determines how the resource would be sliced and shared.  The underlying infrastructure of this virtualization framework is highly heterogeneous.
 
-\unsure{What other group papers do I want to consider here?  Look.}
+The VNB acts as resource aggregator and network 
+
+The SP operates very similarly to the service providers in the NwoB approach.  An SP 1
+
+\textit{Info from Kleber's paper here}%
+\info{MJ-MECOMM-17 (hyphens = underscore) - Virtualization and Programmability in Mobile Wireless Networks: Architecture and Resource Management (2017)}
+
+\textit{What other group papers do I want to consider here?}%
+\unsure{Read.}
 
 \section{Review of Optimization Methods} \label{sec:optreview}
 
