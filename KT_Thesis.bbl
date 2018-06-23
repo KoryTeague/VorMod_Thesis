@@ -94,11 +94,6 @@ M.~J. Abdel-Rahman and M.~Krunz, ``Stochastic guard-band-aware channel
   Transactions on Wireless Communications}, vol.~14, no.~7, pp. 3888--3898,
   July 2015.
 
-\bibitem{CC_OFDMA}
-N.~Y. Soltani, S.~J. Kim, and G.~B. Giannakis, ``Chance-constrained
-  optimization of {OFDMA} cognitive radio uplinks,'' \emph{IEEE Transactions on
-  Wireless Communications}, vol.~12, no.~3, pp. 1098--1107, March 2013.
-
 \bibitem{MJ_WCNC_16}
 M.~J. Abdel-Rahman, M.~AbdelRaheem, A.~B. MacKenzie, K.~Cardoso, and M.~Krunz,
   ``On the orchestration of robust virtual {LTE-U} networks from hybrid
@@ -110,6 +105,11 @@ M.~J. Abdel-Rahman, M.~AbdelRaheem, and A.~B. MacKenzie, ``Stochastic resource
   allocation in opportunistic {LTE-A} networks with heterogeneous
   self-interference cancellation capabilities,'' in \emph{Proceedings of the
   IEEE DySPAN Conference}, September/October 2015, pp. 200--208.
+
+\bibitem{CC_OFDMA}
+N.~Y. Soltani, S.~J. Kim, and G.~B. Giannakis, ``Chance-constrained
+  optimization of {OFDMA} cognitive radio uplinks,'' \emph{IEEE Transactions on
+  Wireless Communications}, vol.~12, no.~3, pp. 1098--1107, March 2013.
 
 \bibitem{CC_video}
 R.~Atawia, H.~Abou-zeid, H.~S. Hassanein, and A.~Noureldin, ``Joint

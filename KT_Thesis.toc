@@ -1,29 +1,29 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}
-\contentsline {section}{\numberline {1.1}Trends in Wireless Networking}{3}
-\contentsline {section}{\numberline {1.2}Virtualization, Virtualized Wireless Networks, and the Networks without Borders Paradigm}{7}
-\contentsline {subsection}{\numberline {1.2.1}Virtualization and the Network Value Chain}{9}
-\contentsline {subsection}{\numberline {1.2.2}Virtualization Architecture in this Work}{12}
-\contentsline {section}{\numberline {1.3}Review of Optimization Methods}{17}
-\contentsline {section}{\numberline {1.4}Thesis Objective}{18}
-\contentsline {section}{\numberline {1.5}Thesis Outline}{19}
-\contentsline {chapter}{\numberline {2}Virtual Network Builder Model}{20}
-\contentsline {section}{\numberline {2.1}Network Area Definitions}{21}
-\contentsline {section}{\numberline {2.2}Stochastic Optimization}{24}
-\contentsline {chapter}{\numberline {3}Approximation Approaches}{27}
-\contentsline {section}{\numberline {3.1}Deterministic Equivalent Program}{28}
-\contentsline {subsection}{\numberline {3.1.1}Sampling Approaches}{30}
-\contentsline {subsubsection}{Sample Average Approximation}{30}
-\contentsline {subsection}{\numberline {3.1.2}Adaptive Slicing}{31}
-\contentsline {section}{\numberline {3.2}Genetic Algorithm}{32}
-\contentsline {chapter}{\numberline {4}Testing and Simulations}{37}
-\contentsline {section}{\numberline {4.1}VWN Construction for a Single SP}{37}
-\contentsline {subsection}{\numberline {4.1.1}Case I: Homogeneous Urban Cellular Network}{38}
-\contentsline {subsection}{\numberline {4.1.2}Case II: Impact of Heterogeneous Resources}{38}
-\contentsline {section}{\numberline {4.2}VWN Construction for Multiple SPs}{38}
-\contentsline {subsection}{\numberline {4.2.1}Case III: Two Similar Urban Cellular Networks}{38}
-\contentsline {subsubsection}{Homogeneous Resources}{39}
-\contentsline {subsubsection}{Heterogeneous Resources}{39}
-\contentsline {subsection}{\numberline {4.2.2}Case IV: SPs with Specialized Demands}{39}
-\contentsline {subsubsection}{Homogeneous Resources}{40}
-\contentsline {subsubsection}{Heterogeneous Resources}{40}
-\contentsline {chapter}{\numberline {5}Conclusions}{41}
+\contentsline {section}{\numberline {1.1}Trends in Wireless Networking}{2}
+\contentsline {section}{\numberline {1.2}Virtualization, Virtualized Wireless Networks, and the Networks without Borders Paradigm}{4}
+\contentsline {subsection}{\numberline {1.2.1}Virtualization and the Network Value Chain}{5}
+\contentsline {subsection}{\numberline {1.2.2}Virtualization Architecture in this Work}{7}
+\contentsline {section}{\numberline {1.3}Review of Optimization Methods}{10}
+\contentsline {section}{\numberline {1.4}Thesis Objective}{11}
+\contentsline {section}{\numberline {1.5}Thesis Outline}{11}
+\contentsline {chapter}{\numberline {2}Virtual Network Builder Model}{13}
+\contentsline {section}{\numberline {2.1}Network Area Definitions}{13}
+\contentsline {section}{\numberline {2.2}Stochastic Optimization}{15}
+\contentsline {chapter}{\numberline {3}Approximation Approaches}{17}
+\contentsline {section}{\numberline {3.1}Deterministic Equivalent Program}{17}
+\contentsline {subsection}{\numberline {3.1.1}Sampling Approaches}{18}
+\contentsline {subsubsection}{Sample Average Approximation}{19}
+\contentsline {subsection}{\numberline {3.1.2}Adaptive Slicing}{19}
+\contentsline {section}{\numberline {3.2}Genetic Algorithm}{20}
+\contentsline {chapter}{\numberline {4}Testing and Simulations}{23}
+\contentsline {section}{\numberline {4.1}VWN Construction for a Single SP}{23}
+\contentsline {subsection}{\numberline {4.1.1}Case I: Homogeneous Urban Cellular Network}{23}
+\contentsline {subsection}{\numberline {4.1.2}Case II: Impact of Heterogeneous Resources}{23}
+\contentsline {section}{\numberline {4.2}VWN Construction for Multiple SPs}{24}
+\contentsline {subsection}{\numberline {4.2.1}Case III: Two Similar Urban Cellular Networks}{24}
+\contentsline {subsubsection}{Homogeneous Resources}{24}
+\contentsline {subsubsection}{Heterogeneous Resources}{24}
+\contentsline {subsection}{\numberline {4.2.2}Case IV: SPs with Specialized Demands}{24}
+\contentsline {subsubsection}{Homogeneous Resources}{25}
+\contentsline {subsubsection}{Heterogeneous Resources}{25}
+\contentsline {chapter}{\numberline {5}Conclusions}{26}
