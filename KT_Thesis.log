@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  22 JUN 2018 12:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  22 JUN 2018 18:36
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -631,15 +631,15 @@ Package pdftex.def Info: Figures/ClassicNetworkValueChain.png  used on input li
 ne 219. on input line 219.
 Package pdftex.def Info: Requested size: 469.75499pt x 85.30264pt on input line
  219.
- [5 <./Figures/ClassicNetworkValueChain.png>]
-<Figures/NwoBValueChain.png, id=48, 1044.15094pt x 499.8675pt>
+ [5]
+<Figures/NwoBValueChain.png, id=47, 1044.15094pt x 499.8675pt>
 File: Figures/NwoBValueChain.png Graphic file (type png)
 <use Figures/NwoBValueChain.png>
 Package pdftex.def Info: Figures/NwoBValueChain.png  used on input line 230. on
  input line 230.
 Package pdftex.def Info: Requested size: 469.75499pt x 224.8849pt on input line
  230.
- [6 <./Figures/NwoBValueChain.png>]
+ [6 <./Figures/ClassicNetworkValueChain.png> <./Figures/NwoBValueChain.png>]
 <Figures/VWNArchitecture.png, id=52, 539.76656pt x 233.37187pt>
 File: Figures/VWNArchitecture.png Graphic file (type png)
 <use Figures/VWNArchitecture.png>
@@ -681,11 +681,7 @@ LaTeX Warning: Marginpar on page 8 moved.
 
 LaTeX Warning: Marginpar on page 8 moved.
 
-[8]
-
-LaTeX Warning: Marginpar on page 9 moved.
-
-[9]
+[8] [9]
 Chapter 2.
 [10
 
@@ -736,11 +732,11 @@ Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¶ in font cmr12!
  [25]) [26] (KT_Thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 18024 strings out of 493312
- 367083 string characters out of 3138900
- 425957 words of memory out of 3000000
- 21241 multiletter control sequences out of 15000+200000
- 13597 words of font info for 52 fonts, out of 3000000 for 9000
+ 18013 strings out of 493312
+ 366773 string characters out of 3138900
+ 420168 words of memory out of 3000000
+ 21230 multiletter control sequences out of 15000+200000
+ 14651 words of font info for 57 fonts, out of 3000000 for 9000
  1142 hyphenation exceptions out of 8191
  54i,19n,77p,1736b,702s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\teagu\AppData\Local\MiKTeX\2.9\fonts\pk
@@ -756,15 +752,16 @@ s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX
 /type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-r8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss8.pfb><C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Progra
-m Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/M
-iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on KT_Thesis.pdf (32 pages, 873087 bytes).
+r7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:
+/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publi
+c/amsfonts/symbols/msbm10.pfb>
+Output written on KT_Thesis.pdf (32 pages, 884000 bytes).
 PDF statistics:
- 194 PDF objects out of 1000 (max. 8388607)
+ 198 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  28 words of extra memory for PDF output out of 10000 (max. 10000000)
 
