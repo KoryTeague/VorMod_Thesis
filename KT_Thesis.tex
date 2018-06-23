@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: June 21, 2018
+% REVISED: June 23, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -19,7 +19,7 @@
 \setlength{\parskip}{0.1in}
 
 % Uncomment for double-spaced document.
-%\renewcommand{\baselinestretch}{2}
+\renewcommand{\baselinestretch}{2}
 %\usepackage{setspace}
 %\onehalfspacing
 %\doublespacing
@@ -217,7 +217,7 @@ This concept of virtualization partitions the classical wireless networking valu
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{ClassicNetworkValueChain}
-	\caption[\small Typical MNO value chain]{\small Typical MNO value chain~\cite{6737248}}
+	\caption[Typical MNO value chain]{\small Typical MNO value chain~\cite{6737248}}
 	\label{fig:ClassicNetworkValueChain}
 \end{figure}
 
@@ -228,37 +228,60 @@ By focusing on the strengths provided by virtualization, more value can be gener
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{NwoBValueChain}
-	\caption[\small Proposed network value chain under the NwoB paradigm]{\small Proposed network value chain under the NwoB paradigm~\cite{6737248}}
+	\caption[Proposed network value chain under the NwoB paradigm]{\small Proposed network value chain under the NwoB paradigm~\cite{6737248}}
 	\label{fig:NwoBValueChain}
 \end{figure}
 
 The benefits of this paradigm as proposed by Doyle et al.~\cite{6737248} are four-fold.  First, it provides specialization and independence for each stage, allowing service providers to focus on generating value from services provided.  Second, networks can be specialized for a service, reducing OPEX through extensive resource sharing.  Thirdly, as resources are virtualized and pooled together, any resource (e.g., typical RAN, WiFi, mmWave, raw spectrum) could be added with the pool and utilized for a network as its properties fit the network's needs.  Fourthly, it lowers the barrier for entry and establishes services for new entities to fulfill.
 
 The discussion above establishes the needs and benefits of resource sharing and virtualization techniques in next-generation wireless networks.  This leads to further %
-\improvement{Improve on the transition from this our work}
+\improvement{Improve on the transition from this to our work in virtualization}
 
 \subsection{Virtualization Architecture in this Work} \label{subsec:virtualization_architecture}
 
-This thesis uses a virtualization architecture based on the NwoB paradigm presented by Doyle et al.~\cite{6737248}.  Fig. \ref{fig:VWNArchitecture}\unsure{Double check cite}~\cite{MJ_MECOMM_17} illustrates the three primary roles in this architecture: (1) the Resource Providers (RPs), (2) the Virtual Network Builder (VNB), and (3) the Service Providers (SPs).
+This thesis uses a virtualization architecture~\cite{MJ_MECOMM_17} based on the NwoB paradigm presented by Doyle et al.~\cite{6737248}.  Fig. \ref{fig:VWNArchitecture}\unsure{Double check cite}~\cite{MJ_MECOMM_17} illustrates the three primary roles in this architecture: (1) the Resource Providers (RPs), (2) the Virtual Network Builder (VNB), and (3) the Service Providers (SPs).
 
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{VWNArchitecture}
-	\caption[\small VWN architecture as used in this work]{\small VWN architecture as used in this work~\cite{MJ_MECOMM_17} \color{red}{\textless -- Double Check Citation!}}
+	\caption[VWN architecture as used in this work]{\small VWN architecture as used in this work~\cite{MJ_MECOMM_17} \color{red}{\textless -- Double Check Citation!}}
 	\label{fig:VWNArchitecture}
 \end{figure}
 
-RPs deploy and maintain the physical resources that are to be virtualized and offered for use within the virtualization framework.  These resources can be in the form of any network-capable resource.  For example, the resources could be BSs as provided by a traditional MNO, a company-or individual-owned WLAN, femtocell access points, available licensed or unlicensed spectrum, or cloud computing.  The RPs are any entity that offers a virtualizable resource, such as a traditional MNO, company, or individual.  The RP maintains the resources, but also determines how the resource would be sliced and shared.  The underlying infrastructure of this virtualization framework is highly heterogeneous.
+RPs deploy and maintain the physical resources that are to be virtualized and offered for use within the virtualization framework, and are the various entities that occupy the right-most column of segments (i.e., resources) in the NwoB value chain (Fig. \ref{fig:NwoBValueChain}~\cite{6737248}).  These resources can be in the form of any network-capable resource.  For example, the resources could be BSs as provided by a traditional MNO, a company-or individual-owned WLAN, femtocell access points, available licensed or unlicensed spectrum, or cloud computing.  They are any entity that offers a virtualizable resource, such as a traditional MNO, company, or individual.  Further, they maintain the resources, but also determine how the resource would be sliced and shared.  This large variety causes the underlying infrastructure of this virtualization framework to be highly heterogeneous.
 
-The VNB acts as resource aggregator, VWN constructor, and as intermediary between SPs and RPs.  The VNB aggregates the resources maintained by individual RPs to establish the pool of available virtual resources.  The VNB also coordinates with SPs to understand the demands of their services, and constructs VWNs tuned specifically to these demands.  By understanding the needs of the services provided by the SPs, the VNB will evaluate which virtual and virtualizable resources available from the RPs are needed to construct the optimal\footnote{In this context, ``optimal'' is loosely defined to mean a network that provides the maximum demand satisfaction for the service provided by the SP at the minimum cost (OPEX) to be paid to the RP.  These two requirements - maximum demand satisfaction and minimum cost - are frequently contradictory and need to be balanced by the VNB.} network for the SPs' needs, coordinate with the necessary RPs to obtain access to these resources for a given wholesale (OPEX) cost, and construct the network for the SPs to operate.
+The VNB acts as resource aggregator, VWN constructor, and as intermediary between SPs and RPs.  Therefore, the VNB acts as a combination virtual network operator and resource aggregator in the NwoB value chain (Fig. \ref{fig:NwoBValueChain}~\cite{6737248}).  The VNB aggregates the resources maintained by individual RPs to establish the pool of available virtual resources.  The VNB also coordinates with SPs to understand the demands of their services, and constructs VWNs tuned specifically to these demands.  By understanding the needs of the services provided by the SPs, the VNB will evaluate which virtual and virtualizable resources available from the RPs are needed to construct the optimal\footnote{In this network context, ``optimal'' is loosely defined to mean a network that provides the maximum demand satisfaction for the service provided by the SP at the minimum cost (OPEX) to be paid to the RP.  These two requirements - maximum demand satisfaction and minimum cost - are frequently contradictory and need to be balanced by the VNB.} network for the SPs' needs, coordinate with the necessary RPs to obtain access to these resources for a given wholesale (OPEX) cost, and construct the network for the SPs to operate.  Multiple VNBs can coexist, each with their potentially overlapping set of RPs from which to aggregate resources.
 
 The SP operates very similarly to the service providers in the NwoB approach.  Primarily, an SP determines a service that they wish to provide, understands and enumerates the demands that are to be appropriately satisfied for that service, and provides the service over the VWN to their end users.  SPs can provide a wide range of services over the network.  The service could be a traditional MNO or be providing MNO-like services, such as voice calling and texting.  Services could cover specific applications, such as IoT, teleconferencing, augmented or virtual reality, or emergency services.  Other examples include traditional over-the-top services, such as Netflix-like or real-time (live) video streaming, social media (Facebook, Twitter, etc.), messaging (Skype, Groupme, etc.), or news/content feeds.  Further, an SP could also bundle several services, either through a single VWN built for the bundle, or by bundling services provided by several SPs.
+
+Between these three entity roles, various interactions become possible.  The most common interactions are illustrated in Fig. \ref{fig:VWNArchitectureInteractions}~\cite{MJ_MECOMM_17}.  The interactions between the various entity roles are: (\emph{A}) among SPs; (\emph{B}) between the SPs and the VNBs; (\emph{C}) among VNBs; (\emph{D}) between the VNBs and the RPs; and (\emph{E}) among RPs.  It should be apparent that across each of these interactions is the imposition of costs as exchange for the transfer of services, networks, and resources.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{VWNArchitectureInteractions}
+	\caption[Interactions between roles in the VWN architecture]{\small Interactions between roles in the VWN architecture~\cite{MJ_MECOMM_17} \color{red}{\textless -- Double Check Citation!}}
+	\label{fig:VWNArchitectureInteractions}
+\end{figure}
+
+Interaction (\emph{A}) describes associations among various SPs.  This would typically occur in situations where a SP desires to bundle the services of several SPs, or when a SP wishes to utilize a specialized network operation from another SP.  Generally, this interaction would be performed manually over timescales of weeks or months.
+
+Interaction (\emph{B}) describes associations directly between SPs and VNBs.  This would be one of the most common interactions within this framework.  This interaction is bidirectional.  In  the first direction, SPs would provide the VNB they are coordinating with the specific demands and needs for the service they are providing.  In the opposite direction, the VNB utilizes these conveyed needs and demands to construct a VWN and provide it for use to the service provider.  Ideally, this interaction is highly or entirely automated, with the interactions varying from minutes or hours to weeks or months based on the level of automation and the specifics of the interaction.  It will require optimization techniques and/or machine learning to achieve satisfactory results in this interaction.
+
+Interaction (\emph{C}) describes associations among various VNBs.  Generally, such interactions may occur when a VNB does not have access to the appropriate virtual resources to satisfy interaction (\emph{B}) interactions.  Obvious examples include not having the necessary resources to provide adequate coverage over geographical areas or capacity in high-density environments.  These interactions would generally be performed manually over timescales of weeks or months.
+
+Interaction (\emph{D}) describes associations between VNBs and RPs.  Similar to interaction (\emph{B}), this would be the other of the most common interactions within this framework.  It is also very important, as it establishes the mapping between the virtual and physical resources and builds the substrate that the framework is built upon.  VNBs interact with the RPs by making requests for new resources and releasing unneeded resources.  RPs interact with the VNBs by issuing updates, such as any changes to the resources in the VNBs' available pool of resources.  Updates such as these are potentially highly disruptive to the VNBs as the updates can impact a large number of VWNs managed by the VNBs.  With further similarity to interaction (\emph{B}), this interaction is highly dependent on automation; based on the level of automation, this interaction may occur over timescales of minutes or hours to weeks or months.
+
+Interaction (\emph{E}) describes associations among various RPs.  In this interaction, various RPs establish connections with each other to facilitate proper mapping of physical resources to virtual through the use of quality of service (QoS) parameters that define the abstracted resources.  For example, a small-scale RP containing only an individual-owned femtocell could connect with a larger RP via this interaction so that the resource within the small-scale RP is visible for association with a VNB over interaction (\emph{D}) as handled by the larger RP.  These interactions could take seconds to weeks depending on the complexities of the RPs, their resources, and the amount of human involvement.
+
+Other work~\cite{MJ_MECOMM_17} has been completed using this architecture.%
+\improvement{Describe the work and findings of this paper.  Get more papers.}
 
 \textit{Info from Kleber's paper here}%
 \info{MJ-MECOMM-17 (hyphens = underscore) - Virtualization and Programmability in Mobile Wireless Networks: Architecture and Resource Management (2017)}
 
-\textit{What other group papers do I want to consider here?}%
-\unsure{Read.}
+\textit{What other group papers do I want to consider here?  Marcela's papers and disseration might be worth referring to.}
+
+My focus in this thesis are optimization approaches largely in the context of interaction (\emph{B}).  This problem involves establishing how SPs convey the demands needed by the VNB to construct an optimal VWN for the service provide by the SP.  Further, the construction of the optimal VWN is sought within a short amount of time so that interaction (\emph{B}) can be completed over shorter timescales (e.g., minutes or hours) instead of longer (e.g., days, weeks, months).  With an optimal VWN in mind, construction of the VWN is inherently an optimization problem, and the seeking of expedient solutions lays within the study of optimization.
 
 \section{Review of Optimization Methods} \label{sec:optreview}
 
