@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  23 JUN 2018 21:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  23 JUN 2018 21:59
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -729,10 +729,10 @@ Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¶ in font cmr12!
  [51]) [52] (KT_Thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 17974 strings out of 493312
- 366056 string characters out of 3138900
- 403515 words of memory out of 3000000
- 21192 multiletter control sequences out of 15000+200000
+ 17983 strings out of 493312
+ 366270 string characters out of 3138900
+ 407308 words of memory out of 3000000
+ 21201 multiletter control sequences out of 15000+200000
  14292 words of font info for 56 fonts, out of 3000000 for 9000
  1143 hyphenation exceptions out of 8191
  54i,19n,77p,1736b,702s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -755,7 +755,7 @@ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiK
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/f
 onts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
 e1/public/amsfonts/symbols/msbm10.pfb>
-Output written on KT_Thesis.pdf (58 pages, 929698 bytes).
+Output written on KT_Thesis.pdf (58 pages, 930945 bytes).
 PDF statistics:
  279 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
