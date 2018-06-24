@@ -98,7 +98,7 @@ M.~Gomez, M.~B. Weiss, G.~McHenry, and L.~Doyle, ``Matching markets for
 
 \bibitem{pittir33130}
 \BIBentryALTinterwordspacing
-M.~Gomez, ``Secondary spectrum markets: from ``naked'' spectrum to virtualized
+M.~Gomez, ``Secondary spectrum markets: from "naked" spectrum to virtualized
   commodities,'' Ph.D. dissertation, September 2017. [Online]. Available:
   \url{http://d-scholarship.pitt.edu/33130/}
 \BIBentrySTDinterwordspacing
@@ -135,11 +135,6 @@ R.~Atawia, H.~Abou-zeid, H.~S. Hassanein, and A.~Noureldin, ``Joint
 \bibitem{stochprogramming}
 P.~Kall and S.~W. Wallace, \emph{Stochastic Programming}.\hskip 1em plus 0.5em
   minus 0.4em\relax John Wiley and Sons, 1994.
-
-\bibitem{Korte:2007:CombOptimization}
-B.~Korte and J.~Vygen, \emph{Combinatorial Optimization: Theory and
-  Algorithms}, 3rd~ed.\hskip 1em plus 0.5em minus 0.4em\relax Springer
-  Publishing Company, Incorporated, 2000.
 
 \bibitem{7257198}
 T.~Cui, R.~Bai, A.~J. Parkes, F.~He, R.~Qu, and J.~Li, ``A hybrid genetic

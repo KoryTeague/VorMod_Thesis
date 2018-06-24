@@ -259,3 +259,64 @@ title = {Mobile Network Sharing Report 2010-2015 - Developments, Analysis \& For
 institution = {Visiongain},
 year = {2010},
 }
+
+@INPROCEEDINGS{7257198, 
+author={T. Cui and R. Bai and A. J. Parkes and F. He and R. Qu and J. Li}, 
+booktitle={2015 IEEE Congress on Evolutionary Computation (CEC)}, 
+title={A hybrid genetic algorithm for a two-stage stochastic portfolio optimization with uncertain asset prices}, 
+year={2015}, 
+volume={}, 
+number={}, 
+pages={2518-2525}, 
+keywords={genetic algorithms;investment;linear programming;uncertain systems;GA;LP;genetic algorithm solver;hybrid genetic algorithm;linear programming solver;market uncertainties;mean-variance model;two-stage stochastic portfolio optimization model;uncertain asset prices;weight allocation;Computational modeling;Genetic algorithms;Mathematical model;Optimization;Portfolios;Stochastic processes;Uncertainty;Genetic Algorithm;Hybrid Algorithm;Portfolio Optimization;Stochastic Programming}, 
+doi={10.1109/CEC.2015.7257198}, 
+ISSN={1089-778X}, 
+month={May},
+}
+
+@inproceedings{pittir33631,
+       booktitle = {Telecommunications Policy Research Conference},
+           month = {September},
+           title = {Matching Markets for Spectrum Sharing},
+          author = {Marcela Gomez and Martin B.H. Weiss and Giulia McHenry and Linda Doyle},
+            year = {2017},
+             url = {http://d-scholarship.pitt.edu/33631/},
+        abstract = {Next generation networks are designed to improve connectivity and capacity, adding to the current range of available services and expanding their reachability. For these systems to work, they need to be compatible with legacy technologies in addition to making use of (limited) available spectrum resources. This is one of the reasons why spectrum sharing has been at the forefront of the list of enablers for such systems. From federal commercial sharing to finding opportunities in millimeter-wave spectrum, we have witnessed the formulation of multiple approaches to making spectrum sharing happen.
+
+Existing work on spectrum sharing is wide ranging and includes technical as well as market-based approaches. The study of spectrum markets is of particular interest, as it merges a market approach with the technical limitations inherent to electromagnetic spectrum. In this manner, spectrum markets settings have called for different definitions of spectrum-related resources as a means to increase market thickness and thus improve the opportunities for market success. In a similar vein, we find proposals of network models which aim at adapting technical definitions of spectrum resources, such as those that are the product of virtualization. In this work, we adopt a market perspective for spectrum sharing within the context of more comprehensive network definitions such as those envisioned for next generation networks. To this end, we explore matching market concepts and middleman theory in order to shed light on factors that may impact the performance and, ultimately, the success of spectrum markets.},
+}
+
+@phdthesis{pittir33130,
+           month = {September},
+           title = {Secondary spectrum markets: from ``naked'' spectrum to virtualized commodities},
+          author = {Marcela Gomez},
+            year = {2017},
+        keywords = {spectrum markets
+spectrum sharing
+dynamic spectrum access
+resource virtualization},
+             url = {http://d-scholarship.pitt.edu/33130/},
+        abstract = {The creation of secondary spectrum markets emerged as a means to enable flexible spectrum- use mechanisms and abandon a rigid spectrum allocation and assignment approach, which resulted in severe inefficiencies in the use of this resource. At the core of the deployment of spectrum markets lie the definition of electromagnetic spectrum as a tradable commodity, the reallocation of spectrum rights, the creation of incentives for resource owners to lease or transfer their spectrum holdings and the appropriate regulatory framework to support and enforce market transactions. It follows that the viability of spectrum markets depends on technical, economic and regulatory frameworks to render this approach a meaningful alternative for spectrum allocation and assignment. 
+In this research work, we explore the conditions associated with spectrum markets viability. For this purpose, we utilize Agent-based Modeling in order to study markets under different commodity definitions as well as network configurations. These configurations are gathered in three research stages, which start with the analysis of markets as stand-alone institutions where electromagnetic frequencies, without any associated infrastructure (i.e., ?naked? spectrum), are traded. This allows us to explore the degree in which the limitations in spectrum fungibility impact the trading process and outcome. 
+In the second stage, we focus on refining the tradable commodity in such a way that allows to circumvent the physical limitations of spectrum. To this end, we rely on technologies such as LTE-Advanced and virtualization in order to define a fungible, virtualized spectrum commodity and explore the benefits that this provides for market deployment.
+The final stage aims at extending the range of applicability of virtualized commodities and providing opportunities that could address current spectrum service and connectivity requirements. Hence, we explore markets as part of more complex network arrangements, where we rely on middleman theory, matching markets and simple auctions in order to enable resource trading. This requires the analysis of multiple factors that impact market design from the definition of tradable commodities to the characterization of the role and objectives of market participants. These factors stem from relevant technical, economics and regulatory frameworks, which we explore to determine whether our spectrum markets proposal can be considered as a viable and applicable solution.},
+}
+
+@book{Comb_Optimization,
+	author = {Korte, Bernhard and Vygen, Jens},
+	title = {Combinatorial Optimization: Theory and Algorithms},
+	publisher = {Springer Publishing Company, Incorporated},
+	year = {200
+	edition = {3rd},
+	isbn = {3540718435, 9783540718437},
+	
+
+
+@book{Korte:2007:COT:1564997,
+ author = {Korte, Bernhard and Vygen, Jens},
+ title = {Combinatorial Optimization: Theory and Algorithms},
+ year = {2007},
+ isbn = {3540718435, 9783540718437},
+ edition = {4th},
+ publisher = {Springer Publishing Company, Incorporated},
+} 
