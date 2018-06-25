@@ -302,21 +302,11 @@ In the second stage, we focus on refining the tradable commodity in such a way t
 The final stage aims at extending the range of applicability of virtualized commodities and providing opportunities that could address current spectrum service and connectivity requirements. Hence, we explore markets as part of more complex network arrangements, where we rely on middleman theory, matching markets and simple auctions in order to enable resource trading. This requires the analysis of multiple factors that impact market design from the definition of tradable commodities to the characterization of the role and objectives of market participants. These factors stem from relevant technical, economics and regulatory frameworks, which we explore to determine whether our spectrum markets proposal can be considered as a viable and applicable solution.},
 }
 
-@book{Comb_Optimization,
+@book{Korte:2007:CombOptimization,
 	author = {Korte, Bernhard and Vygen, Jens},
 	title = {Combinatorial Optimization: Theory and Algorithms},
-	publisher = {Springer Publishing Company, Incorporated},
-	year = {200
+	year = {2000},
+	isbn = {3540256849, 9783540256847},
 	edition = {3rd},
-	isbn = {3540718435, 9783540718437},
-	
-
-
-@book{Korte:2007:COT:1564997,
- author = {Korte, Bernhard and Vygen, Jens},
- title = {Combinatorial Optimization: Theory and Algorithms},
- year = {2007},
- isbn = {3540718435, 9783540718437},
- edition = {4th},
- publisher = {Springer Publishing Company, Incorporated},
+	publisher = {Springer Publishing Company, Incorporated},
 } 
