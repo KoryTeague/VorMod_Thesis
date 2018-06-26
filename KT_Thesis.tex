@@ -287,7 +287,7 @@ The focus of this thesis is on optimization approaches largely in the context of
 \section{Review of Optimization Methods} \label{sec:optreview}
 
 %\unsure{In this thesis, the problem ... is approached by...}%
-\unsure{Restructure to get rid of first-person ``I''?}%
+%\unsure{Restructure to get rid of first-person ``I''?}%
 In this thesis, I approach the problem of the creation of optimal networks by the VNB that satisfy the specific demands of SPs using a pool of resources provided by a set of RPs.  This is naturally a form of optimization problem, in which some objective function is either minimized or maximized.  At it's most basic, optimization techniques (e.g., linear programming, integer programming) will find the set of input parameters that minimize or maximize a single decision variable - the value of the objective function - in context of a set of constraints.  More complex optimization problems can solve for multiple decision variables by establishing weights based on their relative importance within the objective function.
 
 \subsection{Stochastic Programming}	\label{subsec:optreview_stoch}
@@ -314,7 +314,7 @@ Ant colony optimization is inspired by the behavior of ants.  A colony of ants m
 
 In particle swarm optimization, a number of candidate solutions, called particles, are created that move semi-chaotically.  In each iteration, every particle will move according to its velocity.  Each particle has it's best known position, and it's velocity updates in a way guided by their own best known position and the swarm's best known position.  This allows a large portion of the search space to be investigated, investigate candidate solutions to explore for regions containing local maxima until it settles to exploit and find the best found local maxima.
 
-\unsure{Restructure to get rid of first-person ``I''?}%
+%\unsure{Restructure to get rid of first-person ``I''?}%
 In this thesis, I utilize a genetic algorithm as an approach for optimization.  A genetic algorithm is a form of evolutionary algorithm, a set of algorithms which are inspired by biological evolution and natural selection.  Each iteration is called a \emph{generation} and is composed of a number of candidate solutions called \emph{individuals}.  Each individual is defined by a \emph{chromosome} which details the specific candidate solution.  During each generation, every individual is evaluated on its \emph{fitness}, a function dependent on the individual's chromosome; the higher the individual's fitness, the more optimal the individual.  Individuals called \emph{parents} are then randomly selected to pass their chromosome onto the next generation in a process called \emph{selection}; in selection, more fit individuals are more likely to be selected.  With a certain probability, groups of parents will undergo \emph{crossover} and exchange the data contained within their chromosomes to form new \emph{children} that are a mixture of the parents; if mixing does not occur, the parents are cloned into the next generation as children.  Then, individual bits within the children's chromosomes have a chance to flip, or \emph{mutate}.  The resulting children from crossover and mutation form the entire next generation.
 
 Since chromosomes from fitter individuals are more likely to pass on to subsequent generations, generations gradually become fitter.  Through crossover, fit chromosomes may combine to form fitter children that proliferate; less fit children are often also formed, but are generally not selected for later generations.  Mutation introduces diversity into the generations, which expand the exploration of the search space.  More details, including that of implementation and variants, will be expanded upon in Section \ref{sec:ga}.
@@ -334,9 +334,10 @@ This thesis is organized as follows.  Chapter \ref{ch:intro} establishes the mot
 \pagebreak
 \chapter{Virtual Network Builder Model} \label{ch:vnbmodel}
 
-\improvement{Go through chapter notes, and break them down to where and what.}
+This chapter establishes the mathematical foundation for the work completed in this thesis.  First, a geographic model is presented, defining an area of interest, the pool of resources maintained by the RPs for use by the VNB, a characterization for service demand communicating the needs for the SPs' VWNs, and the SPs' end users to be satisfied.  Second, a two-stage stochastic program utilizing this model is proposed to solve the posed problem of resource selection and adaptive slicing for use in VWN construction within the VNB.
 
-\textit{Replace with an introduction paragraph describing the work of this chapter.  This chapter discusses the model upon which the approaches that are run within the VNB are defined.  It discusses the assumptions that the VNB runs within and lays out the optimization problem that the VNB is tasked with solving.}
+\improvement{Go through chapter notes, and break them down to where and what.}%
+\textit{This chapter discusses the model upon which the approaches that are run within the VNB are defined.  It discusses the assumptions that the VNB runs within and lays out the optimization problem that the VNB is tasked with solving.}
 
 \textit{Begin breaking down the model used as the basis for the work.  Start with a lead in, then start defining the model in the first subsection.  Expound on some of the definitions and descriptions that I moved past in the conference paper (perhaps describing the SSLT model more fully).  Make sure that the definitions and work are generalized for writing about a constructed VWN (or constructed VWNs, depending on the terminology I intend to use) for multiple RPs and SPs.}
 
