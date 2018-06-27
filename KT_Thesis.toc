@@ -1,3 +1,13 @@
-\contentsline {chapter}{\numberline {1}Virtual Network Builder Model}{1}
-\contentsline {section}{\numberline {1.1}Network Area Definitions}{1}
-\contentsline {section}{\numberline {1.2}Stochastic Optimization}{3}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {1.1}Trends in Wireless Networking}{2}
+\contentsline {section}{\numberline {1.2}Virtualization, Virtualized Wireless Networks, and the Networks without Borders Paradigm}{4}
+\contentsline {subsection}{\numberline {1.2.1}Virtualization and the Network Value Chain}{5}
+\contentsline {subsection}{\numberline {1.2.2}Virtualization Architecture in this Work}{7}
+\contentsline {section}{\numberline {1.3}Review of Optimization Methods}{10}
+\contentsline {subsection}{\numberline {1.3.1}Stochastic Programming}{11}
+\contentsline {subsection}{\numberline {1.3.2}Metaheuristic Approaches}{12}
+\contentsline {section}{\numberline {1.4}Thesis Objective}{14}
+\contentsline {section}{\numberline {1.5}Thesis Outline}{14}
+\contentsline {chapter}{\numberline {2}Virtual Network Builder Model}{15}
+\contentsline {section}{\numberline {2.1}Network Area Definitions}{15}
+\contentsline {section}{\numberline {2.2}Stochastic Optimization}{17}
