@@ -272,12 +272,12 @@ Interaction (\emph{D}) describes associations between VNBs and RPs.  Similar to 
 
 Interaction (\emph{E}) describes associations among various RPs.  In this interaction, various RPs establish connections with each other to facilitate proper mapping of physical resources to virtual through the use of quality of service (QoS) parameters that define the abstracted resources.  For example, a small-scale RP containing only an individual-owned femtocell could connect with a larger RP via this interaction so that the resource within the small-scale RP is visible for association with a VNB over interaction (\emph{D}) as handled by the larger RP.  These interactions could take seconds to weeks depending on the complexities of the RPs, their resources, and the amount of human involvement.
 
-Other work has been completed using this architecture.  Mohammad et al.~\cite{MJ_CCNC_16} constructed several resource allocation models, including one-stage programs, two-stage programs, and a one-stage stochastic program, to investigate the efficacy of this virtualization architecture upon a preexisting set of resources.  The implementation focused on interaction (\emph{B}) from the perspective of the VNB, and showed that virtualization decreased the cost and idle capacity of the networks and increased demand satisfaction of the networks.
+Other work has been completed using this architecture.  Abdel-Rahman et al.~\cite{MJ_CCNC_16} constructed several resource allocation models, including one-stage programs, two-stage programs, and a one-stage stochastic program, to investigate the efficacy of this virtualization architecture upon a preexisting set of resources.  The implementation focused on interaction (\emph{B}) from the perspective of the VNB, and showed that virtualization decreased the cost and idle capacity of the networks and increased demand satisfaction of the networks.
 
-Cardoso et al.~\cite{MJ_MECOMM_17} expanded on this work by introducing a two-stage stochastic program to optimize interaction (\emph{B}).  The two-stage stochastic resource allocation similarly reduces cost and idle capacity of the VWN compared to the network without sharing.  However, no direct comparisons are made with the non-stochastic programs tested by Mohammad et al.~\cite{MJ_CCNC_16}.
+Cardoso et al.~\cite{MJ_MECOMM_17} expanded on this work by introducing a two-stage stochastic program to optimize interaction (\emph{B}).  The two-stage stochastic resource allocation similarly reduces cost and idle capacity of the VWN compared to the network without sharing.  However, no direct comparisons are made with the non-stochastic programs tested by Abdel-Rahman et al.~\cite{MJ_CCNC_16}.
 
-Marcela et al.~\cite{pittir33631} utilized this architecture from an economics perspective.  Using a matching markets framework, they investigated the interaction of association between SPs and VNBs, such as the methods for how SPs indicate their needs and how VNBs indicate their VWN capabilities, and the fees that SPs will pay to partner for a VNB.  Marcela expanded on this work in her Ph.D. dissertation~\cite{pittir33130}.%
-\unsure{Still reading/parsing these papers.  Double check.}
+Gomez et al.~\cite{pittir33631} utilized this architecture from an economics perspective.  Using a matching markets framework, they investigated the interaction of association between SPs and VNBs, such as the methods for how SPs indicate their needs and how VNBs indicate their VWN capabilities, and the fees that SPs will pay to partner for a VNB.  Gomez expanded on this work in her Ph.D. dissertation~\cite{pittir33130}.%
+\unsure{Still reading/parsing these papers.\\Double check.}
 
 The focus of this thesis is on optimization approaches largely in the context of interaction (\emph{B}).  This problem involves establishing how SPs convey the demands needed by the VNB to construct an optimal VWN for the service provided by the SP.  Further, the construction of the optimal VWN is sought within a short amount of time so that interaction (\emph{B}) can be completed over shorter timescales (e.g., minutes or hours) instead of longer (e.g., days, weeks, months).  With an optimal VWN in mind, construction of the VWN is inherently an optimization problem, and the seeking of expedient solutions lays within the study of optimization.
 
@@ -351,7 +351,7 @@ Consider a geographic area of width $X$ meters and length $Y$ meters that contai
 %Note: Considering $\alpha$-stable distributions, remember that demand on a per user basis typically follows a power law.  Considering the central limit theorem, that would imply that a resulting area distribution would follow an $\alpha$-stable distribution; typically this would simply to a gaussian of some form.
 \textit{An SP seeking a VWN from the VNB is assumed to know the distribution of traffic demand within the region the VWN would cover.  It has been shown that a log-normal distribution or a mixture of log-normal distributions can approximate traffic demand in real-world cellular networks~\cite{686105, 5936263}.  It has also been shown that traffic distribution is spatially correlated~\cite{5936263, eigenplaces}.  \unsure{Change ``I''?}I model the spatial traffic demand of a single SP using a similar, continuous form of the SSLT (Scalable, Spatially-correlated, and Log-normally distributed Traffic) model as proposed by Lee et al.~\cite{6554749}.}
 
-An SP is seeking a VWN to host its services within the geographical area, and associates with the VNB to create the VWN.  Through this association, the SP must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  For this, it is assumed that the SP knows or has estimated knowledge of the geographic distribution of the service's traffic demand density in terms of \unsure{double check}${bits}/{{sec}/m^2}$.  This could be in the form of a continuous function or as discrete pixels, and could be generalized as a heatmap indicating locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  Further, the SP would also provide the desired or needed percent demand satisfaction rate for the service.  Some services have high priority, such as those related to emergency services, and must have nearly if not perfect 100\% demand satisfaction.  Others, such as the aforementioned generic voice lines or video streaming, can withstand some demand to be unsatisfied as a trade off for decreased network leasing or operational costs.
+An SP is seeking a VWN to host its services within the geographical area, and associates with the VNB to create the VWN.  Through this association, the SP must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  For this, it is assumed that the SP knows or has estimated knowledge of the geographic distribution of the service's traffic demand density in terms of $\frac{\textup{bits}}{\textup{m}^2}$.  This could be in the form of a continuous function or as discrete pixels, and could be generalized as a heatmap indicating locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  Further, the SP would also provide the desired or needed percent demand satisfaction rate for the service.  Some services have high priority, such as those related to emergency services, and must have nearly if not perfect 100\% demand satisfaction.  Others, such as the aforementioned generic voice lines or video streaming, can withstand some demand to be unsatisfied as a trade off for decreased network leasing or operational costs.
 
 \change{Move onto talking about a specific distribution model for modeling mobile data\\Do the sources specify what type of data the SSLT or log-normal distributions model?}%
 It has been shown that a log-normal distribution can approximate traffic demand in real-world cellular networks~\cite{686105, 5936263}.
@@ -425,7 +425,7 @@ Constraints (\ref{eq:P1S1C1}), (\ref{eq:P1S2C1}), and (\ref{eq:P1S2C3}) implemen
 Constraint (\ref{eq:P1S2C2}) ensures a demand point $m \in \mathcal{M}$ is not allocated more resources than it demands.
 \fi
 
-\iffalse
+\iftrue
 \pagebreak
 \chapter{Approximation Approaches} \label{ch:approaches}
 
@@ -535,7 +535,7 @@ The genetic algorithm iterates for a number of generations $G$.  If the genetic 
 The genetic algorithm only determines an approximate solution to the BS selection forming the VWN, informing the VNB of which BSs to obtain from the RPs.  With this selection, $z_s$, the SP's demand points can be dynamically allocated resource slices as described by Problem 3 in Section \ref{subsec:dep_slicing}.
 \fi
 
-\iffalse
+\iftrue
 \pagebreak
 \chapter{Testing and Simulations} \label{ch:testsim}
 
@@ -588,7 +588,7 @@ The genetic algorithm only determines an approximate solution to the BS selectio
 \textit{also with heterogeneous resources.}
 \fi
 
-\iffalse
+\iftrue
 \pagebreak
 \chapter{Conclusions} \label{ch:conc}
 
