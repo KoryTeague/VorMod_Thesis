@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  28 JUN 2018 16:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  29 JUN 2018 16:49
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -696,22 +696,22 @@ LaTeX Warning: Marginpar on page 16 moved.
 LaTeX Warning: Marginpar on page 16 moved.
 
 
-Overfull \hbox (14.23827pt too wide) in paragraph at lines 359--359
+Overfull \hbox (14.23827pt too wide) in paragraph at lines 361--361
 []\OT1/cmr/m/n/6 autocorrelation 
  []
 
 
-Overfull \hbox (14.23827pt too wide) in paragraph at lines 359--359
+Overfull \hbox (14.23827pt too wide) in paragraph at lines 361--361
 []\OT1/cmr/m/n/6 autocorrelation 
  []
 
 
-Overfull \hbox (14.23827pt too wide) in paragraph at lines 359--359
+Overfull \hbox (14.23827pt too wide) in paragraph at lines 361--361
 []\OT1/cmr/m/n/6 autocorrelation 
  []
 
 
-Overfull \hbox (14.23827pt too wide) in paragraph at lines 359--359
+Overfull \hbox (14.23827pt too wide) in paragraph at lines 361--361
 []\OT1/cmr/m/n/6 autocorrelation 
  []
 
@@ -729,7 +729,7 @@ LaTeX Warning: Marginpar on page 17 moved.
 LaTeX Warning: Marginpar on page 17 moved.
 
 [17]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 412.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 414.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\bbm\ubbm.fd"
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [18] [19]
@@ -776,10 +776,10 @@ Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¶ in font cmr12!
 ) [32] (KT_Thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 18096 strings out of 493312
- 368874 string characters out of 3138900
- 455794 words of memory out of 3000000
- 21311 multiletter control sequences out of 15000+200000
+ 18098 strings out of 493312
+ 368929 string characters out of 3138900
+ 455861 words of memory out of 3000000
+ 21313 multiletter control sequences out of 15000+200000
  14638 words of font info for 57 fonts, out of 3000000 for 9000
  1145 hyphenation exceptions out of 8191
  54i,19n,77p,1722b,816s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -804,7 +804,7 @@ type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmti12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/sym
 bols/msbm10.pfb>
-Output written on KT_Thesis.pdf (38 pages, 943239 bytes).
+Output written on KT_Thesis.pdf (38 pages, 943362 bytes).
 PDF statistics:
  224 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
