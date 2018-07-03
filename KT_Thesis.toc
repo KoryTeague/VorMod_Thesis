@@ -10,7 +10,7 @@
 \contentsline {section}{\numberline {1.5}Thesis Outline}{24}
 \contentsline {chapter}{\numberline {2}Virtual Network Builder Model}{26}
 \contentsline {section}{\numberline {2.1}Network Area Definitions}{26}
-\contentsline {subsection}{\numberline {2.1.1}Example Demand Distribution Model}{30}
+\contentsline {subsection}{\numberline {2.1.1}Example Demand Distribution Model}{31}
 \contentsline {section}{\numberline {2.2}Stochastic Optimization}{32}
 \contentsline {chapter}{\numberline {3}Approximation Approaches}{35}
 \contentsline {section}{\numberline {3.1}Deterministic Equivalent Program}{36}
