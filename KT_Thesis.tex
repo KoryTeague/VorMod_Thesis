@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: July 1, 2018
+% REVISED: July 4, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -340,10 +340,11 @@ This chapter establishes the mathematical foundation for the work completed in t
 
 \section{Network Area Definitions} \label{sec:networkdefs}
 
-\improvement{Go through section notes, and break them down to where and what.}%
-\textit{Consider POV and voice; at least change ``we''s to ``I''s, though that might further change if ``I'' is too personal or unprofessional.\\Ensure equations are spaced well for full page and devoid of unnecessary horizontal or vertical spacing that may have been left behind from the trimming and formatting from the conference paper; this will require a bit of polish later during a formatting pass after most writing is accomplished.\\Improve on overall wording to add consideration for the presence of RPs and SPs in the architecture; BSs come from the RPs to be aggregated into a pool for use by the VNB, and SPs have a service or services to satisfy, and must present that service to the VNB in some coherent manner for the VNB to build an optimal VWN considering other SPs' needs and the available resources.\\BS or Resource?}
-%\textit{Change ``we''s to ``I''s or alternate voice.  Expand SSLT description: a mention of $\rho^S$, the specific autocorrelation which is dependent on $\omega_{\max}$, the differences between my implementation and Lee's, and any other pertinent information (review ``Lee, Zhou, and Niu'' \cite{6554749}).  Expound directly on the assumption I make that demand has a perfect connection within range and no connection out of range (i.e., $u_{ms} = 1$ if DP m is less than or equal to $b_s$ distance from BS s and $u_{ms} = 0$ otherwise).  Expound on nonstationary PPP procedure; provide more information laying out the process, and include the possibility of generating a set number of demand points if desired - this does alter the PPP slightly, in that the PPP no longer has a specific overall density of points, but it does maintain the structure of the overall density function, scaled to a desired degree.  Ensure equations are spaced well for full page, and devoid of unnecessary horizontal and vertical spacing (from when the conference paper was trimmed).  A figure demonstrating continuous SSLT model and a possible scenario of demand points would be appropriate here.  Improve on the overall wording/phrasing regarding the capability for multiple RPs and SPs to be present; that is BSs come from the overall pool of RP resources which the VNB is selecting to build its VWNs of interest, then slices those selected resources into forming the specific, individual VWNs for each SP.  When referring to ``Problem''s (e.g., Problem 1 from section \ref{sec:stochopt}), refer to the equations that make up that problem; see first reference of Problem 1 in Chapter \ref{ch:approaches} for reference.}
-
+\improvement{See Notes}%
+%Note: Consider POV and voice; at least change ``we''s to ``I''s, though that might further change if ``I'' is too personal or unprofessional.
+%Note: Ensure equations are spaced well for full page and devoid of unnecessary horizontal or vertical spacing that may have been left behind from the trimming and formatting from the conference paper; this will require a bit of polish later during a formatting pass after most writing is accomplished.
+%Note: Improve on overall wording to add consideration for the presence of RPs and SPs in the architecture; BSs come from the RPs to be aggregated into a pool for use by the VNB, and SPs have a service or services to satisfy, and must present that service to the VNB in some coherent manner for the VNB to build an optimal VWN considering other SPs' needs and the available resources.
+%Note: BS or Resource?
 Consider a geographic area of width $X$ meters and length $Y$ meters that contains a VNB and a set $\mathcal{S} \defeq \left\{1,\, 2,\, \ldots,\, S\right\}$ of virtualized resources the VNB has aggregated for use in the construction of VWNs.  The pool of resources, $\mathcal{S}$, is mapped to physical resources owned and maintained by RPs and are made available for use through contracts between the RPs and the VNB.  The contract-negotiated cost for the VNB to lease resource $s \in \mathcal{S}$ is denoted by $c_s$.  \unsure{Does this belong here?}The costs for the resources used within a constructed VWN are passed to the SPs as part of the overall cost of the network.  The rate capacity of resource $s \in \mathcal{S}$ is denoted by $r_s$ and its coverage radius is denoted by $b_s$.
 
 %\improvement{Mention weighted-sum LN and $\alpha$-stable distributions as approximations\\See Note}%
@@ -351,41 +352,60 @@ Consider a geographic area of width $X$ meters and length $Y$ meters that contai
 %Note: Considering $\alpha$-stable distributions, remember that demand on a per user basis typically follows a power law.  Considering the central limit theorem, that would imply that a resulting area distribution would follow an $\alpha$-stable distribution; typically this would simply to a gaussian of some form.
 %\textit{An SP seeking a VWN from the VNB is assumed to know the distribution of traffic demand within the region the VWN would cover.  It has been shown that a log-normal distribution or a mixture of log-normal distributions can approximate traffic demand in real-world cellular networks~\cite{686105, 5936263}.  It has also been shown that traffic distribution is spatially correlated~\cite{5936263, eigenplaces}.  \unsure{Change ``I''?}I model the spatial traffic demand of a single SP using a similar, continuous form of the SSLT (Scalable, Spatially-correlated, and Log-normally distributed Traffic) model as proposed by Lee et al.~\cite{6554749}.}
 
-Let $\mathcal{N} \defeq \left\{1,\, 2,\, \ldots,\, N\right\}$ be the set of SPs seeking a VWN to host their services with coverage within the geographical area.  An SP $n \in \mathcal{N}$ associates with the VNB to create their desired VWN.  Through this association, SP $n$ must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  SP $n$ must know and communicate the estimated geographic distribution of the service's traffic demand density in terms of $\frac{\text{bits}}{\text{km}^2}$ to the VNB.  This could be in the form of a continuous function or as discrete pixels, and could be generalized as a heatmap indicating locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  \unsure{The current model doesn't need this, but adjusting $\alpha$ (sDEP) or the map (GA) effectively controls for this.\\Can the model be updated formally for this?}Further, the SP would also provide the desired or needed percent demand satisfaction rate for the service.  Some services have high priority, such as those related to emergency services, and must have nearly if not perfect 100\% demand satisfaction.  Others, such as the aforementioned generic voice lines or video streaming, can withstand some demand to remain unsatisfied as a trade off for decreased network leasing or operational costs.
+Let $\mathcal{N} \defeq \left\{1,\, 2,\, \ldots,\, N\right\}$ be the set of SPs seeking a VWN to host their services with coverage within the geographical area.  An SP $n \in \mathcal{N}$ associates with the VNB to create their desired VWN.  Through this association, SP $n$ must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  SP $n$ must know and communicate to the VNB the estimated geographic distribution of the service's traffic demand density as a function, $\rho\left(x,\, y\right),\, x \in [0,\, X],\, y \in [0,\, Y],\,$ in terms of $\frac{\text{bits}}{\text{km}^2}$.  This could be in the form of a continuous function or as discrete pixels, and could be generalized as a heatmap indicating locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  \unsure{The current model doesn't need this, but adjusting $\alpha$ (sDEP) or the map (GA) effectively controls for this.\\Can the model be updated formally for this?}Further, the SP would also provide the desired or needed percent demand satisfaction rate for the service.  Some services have high priority, such as those related to emergency services, and must have nearly if not perfect 100\% demand satisfaction.  Others, such as the aforementioned generic voice lines or video streaming, can withstand some demand to remain unsatisfied as a trade off for decreased network leasing or operational costs.
 
 Let $\mathcal{M}_n \defeq \left\{1,\, 2,\, \ldots,\, M_n\right\}$ be the set of demand points SP $n \in \mathcal{N}$ is attempting to satisfy with its service.  Each demand point $m \in \mathcal{M}_n$ is seeking to connect to the VWN operated by SP $n \in \mathcal{N}$ with total point traffic demand denoted by $d_m$.  Let $u_{ms} \in [0,\, 1]$ represent the normalized capacity (with respect to $r_s$) of resource $s \in \mathcal{S}$ at point $m \in \mathcal{M}_n, n \in \mathcal{N},$ (i.e., the normalized maximum rate that a user can receive at point $m$ from resource $s$).  Specifically,
-\begin{equation}
+\begin{equation} \label{eq:ums}
 u_{ms} \defeq
 	\begin{cases}
 		0,& \text{if demand point $m$ is located more than $b_s$ meters away from resource $s$,}\\
 		1,& \text{if demand point $m$ is located within a small distance of resource $s$}\\
 		(0,\, 1),& \text{otherwise.}
 	\end{cases}
-\end{equation} \label{eq:ums}
+\end{equation}
 
 \info{It wouldn't be that hard to alter $u_{ms}$ to utilize a pathloss model of some sort.  It might complicate the GA, as the cells would need to be cap point capacity according to it, but it should be fairly simple with a known model.}%
 It is apparent that $u_{ms}$ will vary according to the path-loss characteristics of the environment and other various factors.  In some instances, it can be beneficial to simplify this definition such that
-\begin{equation}
+\begin{equation} \label{eq:ums_simp}
 u_{ms} \defeq
 	\begin{cases}
 		1,& \text{if demand point $m$ is located within $b_s$ meters of resouce $s$,}\\
 		0,& \text{otherwise.}
 	\end{cases}
-\end{equation} \label{eq:ums_simp}
-\noindent This simplification allows the available pool of resources, or any subset thereof, to be easily visualized as a Voronoi tessellation \change{Citation Needed of a Voronoi tesellation}[?].  In a Voronoi tessellation, a two-dimensional plane is tessellated into a set of convex polygons, each of which is defined by a single point contained within.  All points comprising the area enclosed by a polygon is closer to that polygon's defining point than any other polygons'.  Using the simplified definition for $u_{ms}$, the Voronoi tessellation of a set of resource locations functions as a coverage map for those resources, assuming that all polygons are within the respective ranges for their associated resources; each polygon represents a region where $u_{ms} = 1$.
+\end{equation}%
 
-\improvement{Talk about nsPPP}%
+This simplification allows the available pool of resources, or any subset thereof, to be easily visualized as a Voronoi tessellation \change{Citation Needed of a Voronoi tesellation}[?].  In a Voronoi tessellation, a two-dimensional plane is tessellated into a set of convex polygons, each of which is defined by a single point contained within.  All points comprising the area enclosed by a polygon is closer to that polygon's defining point than any other polygons'.  Using the simplified definition for $u_{ms}$, the Voronoi tessellation of a set of resource locations functions as a coverage map for those resources, assuming that all polygons are within the respective ranges for their associated resources; each polygon represents a region where $u_{ms} = 1$.  Assuming this binary condition is a simplification that aids in the implementation of the approach used in Section \ref{sec:ga}, and is generally assumed in the rest of this thesis.
+
 Each demand point has a location stochastically determined by the distribution of traffic demand density that SP $n \in \mathcal{N}$ communicates to the VNB.  Throughout this thesis, stochastic variables will be differentiated from deterministic variables with a tilde ($\sim$) placed above the symbol (e.g., $\tilde{u}_{ms}$).
+
+At times, such as for demonstration and visualization or computation, wholly deterministic variables are needed in place of stochastic variables.  In general, this is accomplished for the specific instance by finding a realization of the distribution associated with the stochastic variable.  For demand points with stochastic locations, they are generated according to a two-dimensional non-stationary Poisson point process (PPP) using the traffic demand density function or distribution, $\rho\left(x_i,\, y_i\right)$, as the PPP's spatial intensity measure.  In this process, I use an acceptance-rejection method \change{cite\\See note}[?].  A stationary PPP is generated according to the maximum value within the region of the traffic demand density function.  That is, a number of points generated within the region is selected from a Poisson random variable with mean $\rho_{\max}*X*Y$.  Each point is then independently and uniformly distributed (i.e., each point has a location $\left(x,\, y\right)$ with $x \sim \mathcal{U}\left(0,\, X\right)$ and $y \sim \mathcal{U}\left(0,\, Y\right)$) over the region.  Then, each point undergoes an acceptance-rejection procedure to inhomogenize the PPP.  Each point is kept with a probability of the ratio of the value of the demand density function at that point's location to the maximum value of the demand density function.  That is, for each point in the PPP a uniformly-distributed random number, $P$, is generated over $\left[0, 1\right]$ and the point is either \emph{accepted} and kept or \emph{rejected} and discarded according to
+\begin{equation} \label{eq:nsPPPaccrej}
+\begin{cases}
+	\text{if } P \leq \frac{\rho \left(x_i,\, y_i\right)}{\rho_{\max}},& \text{the point at $\left(x_i,\, y_i\right)$ is kept}\\
+	\text{otherwise},& \text{the point at $\left(x_i,\, y_i\right)$ is discarded}
+\end{cases}
+\end{equation}
+%Note: Use the leeds document?  Is that a good citation?
+where $x_i$ and $y_i$ are the x- and y-coordinates of the $i^{\text{th}}$ point of the stationary PPP.  So that the distribution of demand realized by the non-stationary PPP corresponds to the traffic demand density function, the overall demand 
+\begin{equation} \label{eq:demandintegral}
+D = \int_0^X \int_0^Y \rho\left(x,\, y\right) dy dx
+\end{equation}%
+of the demand density distribution is evenly distributed such that
+\begin{equation} \label{eq:pointdemand}
+d_m = \frac{D}{M_n}, \forall m \in \mathcal{M}_n,\, n \in \mathcal{N}
+\end{equation}
+
+Generally, PPPs and non-stationary PPPs generate a number of points correlating to the intensity value and function, respectively.  A specific number, $M_n$, of points can also be generated as necessary to populate a realization for $\mathcal{M}_n,\, n \in \mathcal{N}$.  Instead of generating a random number of points according to a Poisson random variable, points are generated one at a time and individually either kept or discarded as defined in Eq. \ref{eq:nsPPPaccrej}.  Once $M_n$ points have been generated and kept, a non-stationary PPP of $\mathcal{M}_n$ has been generated.
+
+This is allowed because, by definition, each point in a PPP is independent and identically distributed; each point is generated independently and identically according to a uniform distribution.  Generating more points is only indicative of a higher intensity PPP.  Specifically, the number of points generated in the initial, stationary PPP is linearly dependent on a Poisson random variable with mean $\rho_{\max} * X * Y$; doubling the number of generated points correlates with a doubling of $\rho_{\max}$.  Scaling $\rho$ according to any desired number of points does not change the overall structural characteristics of the underlying distribution described.  The only change is that with more demand points generated, each point provides less demand according to Eq. \ref{eq:pointdemand}.
 
 From the perspective of the VNB, each SP is only distinguishable by its overall demand characteristics.  These demand characteristics are defined by its demand density distribution which defines $\tilde{u}_{ms}$.  The VNB must construct a VWN for each SP, but for optimal VWNs to be created, the VNB must consider the demands of all SPs simultaneously and in context of each other.  For the VNB, all SP demand points are indistinguishable.  Therefore, the VNB considers  single set of demand points $\mathcal{M} \defeq \bigcup_{i=1}^{N} \mathcal{M}_i$ with demands $d_m,\, m \in \mathcal{M}$ and normalized capacities $\tilde{u}_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}$.
 
-\info{See note}%
-%Note: Expound directly on the assumption I make that demand has a perfect connection within range of the BS and no connection out of range.  Maybe break out the multiline equation definition (e.g., $u_{ms} = 1$ if \emph{x}, $u_{ms} = 0$ otherwise).  Expound on the nonstationary PPP procedure.  Provide more information, and break out from in-line math.  Mention being able to either generate a random (poisson, right?) number of points based on the weighting function (and its maximum value) or generating a specific set of points by just generating more and more random points as desired and points get tossed out.  Mention that this *should* maintain a distribution that matches the input weighting function even though it adds additional points.  Good point to add a figure of the possible points generated by the SSLT model?
-\textit{Let $\mathcal{M} \defeq \{1,\, 2,\, \ldots,\, M\}$ be the set of the SP's demand points seeking to connect to the VWN; the value of total traffic demand at each point is denoted by $d_m$.  Further, let $u_{ms} \in [0,\, 1],\, m \in \mathcal{M},\, s \in \mathcal{S}$, represent the normalized capacity (with respect to $r_s$) of BS $s$ at point $m$, i.e., the normalized maximum rate that a user can receive at point $m$ from BS $s$.  $u_{ms} = 0$ when $m$ is outside the coverage area of $s$ and $u_{ms} = 1$ when $m$ is within a small distance of $s$.  The specific position of the points in $\mathcal{M}$, and therefore the values of $u_{ms}$, is determined via a non-stationary 2D Poisson point process (PPP) with $M$ points using the demand field, $\rho$, as the spatial intensity function.  To generate this non-stationary PPP, \unsure{Change ``I''?}I use an acceptance-rejection method.  Each point of a stationary PPP with an intensity of $\rho_{\max} = \max_i\rho\left(x_i,\, y_i\right)$ is retained with probability $\frac{\rho\,\left(x_i,\, y_i\right)}{\rho_{\max}}$, where $x_i$ and $y_i$ are the x- and y-coordinates of the $i^{th}$ point of the stationary PPP.}
-
-\unsure{Change ``I''?}I assume that a BS $s \in \mathcal{S}$ can be allocated between multiple demand points, and $\delta_{ms} \in [0,\, r_s],\, m \in \mathcal{M},\, s \in \mathcal{S}$, represents the rate of BS $s$ that is allocated to point $m$.
+I assume that a resource $s \in \mathcal{S}$ can be allocated between multiple demand points, and $\delta_{ms} \in [0,\, r_s],\, m \in \mathcal{M},\, s \in \mathcal{S}$, represents the rate of resource $s$ that is allocated to point $m$.
 
 \subsection{Example Demand Distribution Model} \label{subsec:networkdefs_sslt}
+
+\change{Review chapter thus far and pick up from here!}
 
 \change{Move onto talking about a specific distribution model for modeling mobile data\\Do the sources specify what type of data the SSLT or log-normal distributions model?}%
 It has been shown that a log-normal distribution can approximate traffic demand in real-world cellular networks~\cite{686105, 5936263}.  
@@ -620,6 +640,14 @@ The genetic algorithm only determines an approximate solution to the BS selectio
 
 \change{Old work\\Update and Remove!}%
 \textit{Consider conclusions of my work.  I don't think this chapter would be long, but condense my findings into some coherent thoughts, and redirect to what they are.  Also expound on some of the further work that my research could be expanded to (e.g., further use cases investigating my approaches, use of (meta)heuristics other than a genetic algorithm to approximate the optimization problem, improve the basic capacity function used in my optimization model).}
+
+\section{Considerations for Future Work} \label{sec:futurework}
+
+\info{Filled as ideas come to mind during writing}
+
+-- Other traffic demand models (log-normal mixtures, $\alpha$-stable)\\%
+-- Rate normalization that varies with distance (i.e., non-binary $u_{ms}$)\\%
+--
 \fi
 
 \bibliography{KT_Thesis}

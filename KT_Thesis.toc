@@ -11,22 +11,23 @@
 \contentsline {chapter}{\numberline {2}Virtual Network Builder Model}{26}
 \contentsline {section}{\numberline {2.1}Network Area Definitions}{26}
 \contentsline {subsection}{\numberline {2.1.1}Example Demand Distribution Model}{31}
-\contentsline {section}{\numberline {2.2}Stochastic Optimization}{32}
-\contentsline {chapter}{\numberline {3}Approximation Approaches}{35}
-\contentsline {section}{\numberline {3.1}Deterministic Equivalent Program}{36}
-\contentsline {subsection}{\numberline {3.1.1}Sampling Approaches}{38}
-\contentsline {subsubsection}{Sample Average Approximation}{38}
-\contentsline {subsection}{\numberline {3.1.2}Adaptive Slicing}{39}
-\contentsline {section}{\numberline {3.2}Genetic Algorithm}{40}
-\contentsline {chapter}{\numberline {4}Testing and Simulations}{45}
-\contentsline {section}{\numberline {4.1}VWN Construction for a Single SP}{45}
-\contentsline {subsection}{\numberline {4.1.1}Case I: Homogeneous Urban Cellular Network}{46}
-\contentsline {subsection}{\numberline {4.1.2}Case II: Impact of Heterogeneous Resources}{46}
-\contentsline {section}{\numberline {4.2}VWN Construction for Multiple SPs}{46}
-\contentsline {subsection}{\numberline {4.2.1}Case III: Two Similar Urban Cellular Networks}{46}
-\contentsline {subsubsection}{Homogeneous Resources}{47}
-\contentsline {subsubsection}{Heterogeneous Resources}{47}
-\contentsline {subsection}{\numberline {4.2.2}Case IV: SPs with Specialized Demands}{47}
+\contentsline {section}{\numberline {2.2}Stochastic Optimization}{33}
+\contentsline {chapter}{\numberline {3}Approximation Approaches}{36}
+\contentsline {section}{\numberline {3.1}Deterministic Equivalent Program}{37}
+\contentsline {subsection}{\numberline {3.1.1}Sampling Approaches}{39}
+\contentsline {subsubsection}{Sample Average Approximation}{39}
+\contentsline {subsection}{\numberline {3.1.2}Adaptive Slicing}{40}
+\contentsline {section}{\numberline {3.2}Genetic Algorithm}{41}
+\contentsline {chapter}{\numberline {4}Testing and Simulations}{46}
+\contentsline {section}{\numberline {4.1}VWN Construction for a Single SP}{46}
+\contentsline {subsection}{\numberline {4.1.1}Case I: Homogeneous Urban Cellular Network}{47}
+\contentsline {subsection}{\numberline {4.1.2}Case II: Impact of Heterogeneous Resources}{47}
+\contentsline {section}{\numberline {4.2}VWN Construction for Multiple SPs}{47}
+\contentsline {subsection}{\numberline {4.2.1}Case III: Two Similar Urban Cellular Networks}{47}
 \contentsline {subsubsection}{Homogeneous Resources}{48}
 \contentsline {subsubsection}{Heterogeneous Resources}{48}
-\contentsline {chapter}{\numberline {5}Conclusions}{49}
+\contentsline {subsection}{\numberline {4.2.2}Case IV: SPs with Specialized Demands}{48}
+\contentsline {subsubsection}{Homogeneous Resources}{49}
+\contentsline {subsubsection}{Heterogeneous Resources}{49}
+\contentsline {chapter}{\numberline {5}Conclusions}{50}
+\contentsline {section}{\numberline {5.1}Considerations for Future Work}{50}
