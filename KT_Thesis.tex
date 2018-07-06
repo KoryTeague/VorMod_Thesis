@@ -377,7 +377,7 @@ u_{mns} \defeq
 		1,& \text{otherwise (i.e., if demand point $m$ of SP $n$ is located less than}\\
 		& \text{\tab or equal to $b_s$ meters from resouce $s$).}\\
 	\end{cases}
-\end{equation}%
+\end{equation}
 
 This simplification allows the available pool of resources, or any subset thereof, to be easily visualized as a Voronoi tessellation \change{Citation Needed of a Voronoi tesellation}[?].  In a Voronoi tessellation, a two-dimensional plane is tessellated into a set of convex polygons, each of which is defined by a single point contained within.  All points comprising the area enclosed by a polygon is closer to that polygon's defining point than any other polygons'.  Using the simplified definition for $u_{mns}$, the Voronoi tessellation of a set of resource locations functions as a coverage map for those resources, assuming that all polygons are within the respective ranges for their associated resources; each polygon represents a region where $u_{mns} = 1$.  Assuming this binary condition is a simplification that aids in the implementation of the approach used in Section \ref{sec:ga}, and is generally assumed in the rest of this thesis.
 
