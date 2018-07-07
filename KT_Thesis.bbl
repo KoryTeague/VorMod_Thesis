@@ -22,21 +22,22 @@
 \BIBdecl
 
 \bibitem{ciscoVNI2017}
+\BIBentryALTinterwordspacing
 Cisco, ``Cisco visual networking index: Forecast and methodology, 2016-2021,''
-  [Online]. Available:
-  \url{https://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/complete-white-paper-c11-481360.pdf},
-  June 2017, white paper at Cisco.com.
+  June 2017, white paper at Cisco.com. [Online]. Available:
+  \url{https://www.cisco.com/c/en/us/solutions/collateral/service-provider/visual-networking-index-vni/complete-white-paper-c11-481360.pdf}
+\BIBentrySTDinterwordspacing
 
 \bibitem{1421931}
 C.~Beckman and G.~Smith, ``Shared networks: making wireless communication
   affordable,'' \emph{IEEE Wireless Communications Magazine}, vol.~12, no.~2,
-  pp. 78--85, April 2005.
+  pp. 78--85, Apr 2005.
 
 \bibitem{MJ_CCNC_16}
 M.~J. Abdel-Rahman, K.~Cardoso, A.~B. MacKenzie, and L.~A. DaSilva,
   ``Dimensioning virtualized wireless access networks from a common pool of
-  resources,'' in \emph{Proceedings of the IEEE CCNC Conference}, January 2016,
-  pp. 1049--1054.
+  resources,'' in \emph{Proceedings of the IEEE CCNC Conference}, Jan 2016, pp.
+  1049--1054.
 
 \bibitem{6824752}
 J.~G. Andrews, S.~Buzzi, W.~Choi, S.~V. Hanly, A.~Lozano, A.~C.~K. Soong, and
@@ -46,22 +47,22 @@ J.~G. Andrews, S.~Buzzi, W.~Choi, S.~V. Hanly, A.~Lozano, A.~C.~K. Soong, and
 \bibitem{4623708}
 V.~Chandrasekhar, J.~G. Andrews, and A.~Gatherer, ``Femtocell networks: a
   survey,'' \emph{IEEE Communications Magazine}, vol.~46, no.~9, pp. 59--67,
-  September 2008.
+  Sept 2008.
 
 \bibitem{6171996}
 H.~S. Dhillon, R.~K. Ganti, F.~Baccelli, and J.~G. Andrews, ``Modeling and
   analysis of k-tier downlink heterogeneous cellular networks,'' \emph{IEEE
   Journal on Selected Areas in Communications}, vol.~30, no.~3, pp. 550--560,
-  April 2012.
+  Apr 2012.
 
 \bibitem{5595728}
 T.~L. Marzetta, ``Noncooperative cellular wireless with unlimited numbers of
   base station antennas,'' \emph{IEEE Transactions on Wireless Communications},
-  vol.~9, no.~11, pp. 3590--3600, November 2010.
+  vol.~9, no.~11, pp. 3590--3600, Nov 2010.
 
 \bibitem{3GPP_TS_23.251}
 {3GPP TS 23.251}, ``Network sharing; architecture and functional description,''
-  v. 14.1.0, September 2017.
+  v. 14.1.0, Sept 2017.
 
 \bibitem{6553675}
 X.~Costa-Perez, J.~Swetina, T.~Guo, R.~Mahindra, and S.~Rangarajan, ``Radio
@@ -75,12 +76,12 @@ X.~Costa-Perez, J.~Swetina, T.~Guo, R.~Mahindra, and S.~Rangarajan, ``Radio
 \bibitem{6571315}
 J.~S. Panchal, R.~D. Yates, and M.~M. Buddhikot, ``Mobile network resource
   sharing options: Performance comparisons,'' \emph{IEEE Transactions on
-  Wireless Communications}, vol.~12, no.~9, pp. 4470--4482, September 2013.
+  Wireless Communications}, vol.~12, no.~9, pp. 4470--4482, Sept 2013.
 
 \bibitem{6737248}
 L.~Doyle, J.~Kibiłda, T.~K. Forde, and L.~DaSilva, ``Spectrum without bounds,
   networks without borders,'' \emph{Proceedings of the IEEE}, vol. 102, no.~3,
-  pp. 351--365, March 2014.
+  pp. 351--365, Mar 2014.
 
 \bibitem{MJ_MECOMM_17}
 K.~V. Cardoso, M.~J. Abdel-Rahman, A.~B. MacKenzie, and L.~A. DaSilva,
@@ -92,14 +93,13 @@ K.~V. Cardoso, M.~J. Abdel-Rahman, A.~B. MacKenzie, and L.~A. DaSilva,
 \BIBentryALTinterwordspacing
 M.~Gomez, M.~B. Weiss, G.~McHenry, and L.~Doyle, ``Matching markets for
   spectrum sharing,'' in \emph{Telecommunications Policy Research Conference},
-  September 2017. [Online]. Available:
-  \url{http://d-scholarship.pitt.edu/33631/}
+  Sept 2017. [Online]. Available: \url{http://d-scholarship.pitt.edu/33631/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{pittir33130}
 \BIBentryALTinterwordspacing
 M.~Gomez, ``Secondary spectrum markets: from ``naked'' spectrum to virtualized
-  commodities,'' Ph.D. dissertation, September 2017. [Online]. Available:
+  commodities,'' Ph.D. dissertation, Sept 2017. [Online]. Available:
   \url{http://d-scholarship.pitt.edu/33130/}
 \BIBentrySTDinterwordspacing
 
@@ -113,18 +113,18 @@ M.~J. Abdel-Rahman and M.~Krunz, ``Stochastic guard-band-aware channel
 M.~J. Abdel-Rahman, M.~AbdelRaheem, A.~B. MacKenzie, K.~Cardoso, and M.~Krunz,
   ``On the orchestration of robust virtual {LTE-U} networks from hybrid
   half/full-duplex {Wi-Fi APs},'' in \emph{Proceedings of the IEEE WCNC
-  Conference}, April 2016.
+  Conference}, Apr 2016.
 
 \bibitem{MJ_DySPAN_15}
 M.~J. Abdel-Rahman, M.~AbdelRaheem, and A.~B. MacKenzie, ``Stochastic resource
   allocation in opportunistic {LTE-A} networks with heterogeneous
   self-interference cancellation capabilities,'' in \emph{Proceedings of the
-  IEEE DySPAN Conference}, September/October 2015, pp. 200--208.
+  IEEE DySPAN Conference}, Sept/Oct 2015, pp. 200--208.
 
 \bibitem{CC_OFDMA}
 N.~Y. Soltani, S.~J. Kim, and G.~B. Giannakis, ``Chance-constrained
   optimization of {OFDMA} cognitive radio uplinks,'' \emph{IEEE Transactions on
-  Wireless Communications}, vol.~12, no.~3, pp. 1098--1107, March 2013.
+  Wireless Communications}, vol.~12, no.~3, pp. 1098--1107, Mar 2013.
 
 \bibitem{CC_video}
 R.~Atawia, H.~Abou-zeid, H.~S. Hassanein, and A.~Noureldin, ``Joint
@@ -147,10 +147,18 @@ T.~Cui, R.~Bai, A.~J. Parkes, F.~He, R.~Qu, and J.~Li, ``A hybrid genetic
   asset prices,'' in \emph{2015 IEEE Congress on Evolutionary Computation
   (CEC)}, May 2015, pp. 2518--2525.
 
+\bibitem{leeds:nsPPPgeneration}
+\BIBentryALTinterwordspacing
+{Department of Mining and Mineral Engineering}, ``Poisson: A program for
+  spatial point generation using poisson processes,'' Sept 2002. [Online].
+  Available:
+  \url{http://www.leeds.ac.uk/StochasticRockFractures/Download/ReportsSeminars/Report1\_POISSON\_Prog.pdf}
+\BIBentrySTDinterwordspacing
+
 \bibitem{686105}
 U.~Gotzner and R.~Rathgeber, ``Spatial traffic distribution in cellular
   networks,'' in \emph{Proceedings of the IEEE Vehicular Technology Conference
-  (VTC)}, May 1998, pp. 1994--1998, vol. 3.
+  (VTC)}, vol.~3, May 1998, pp. 1994--1998.
 
 \bibitem{5936263}
 M.~Michalopoulou, J.~Riihijärvi, and P.~Mähönen, ``Towards characterizing
@@ -158,11 +166,34 @@ M.~Michalopoulou, J.~Riihijärvi, and P.~Mähönen, ``Towards characterizing
   \emph{Proceedings of the IEEE International Symposium on Dynamic Spectrum
   Access Networks (DySPAN)}, May 2011, pp. 652--655.
 
+\bibitem{6757900}
+D.~Lee, S.~Zhou, X.~Zhong, Z.~Niu, X.~Zhou, and H.~Zhang, ``Spatial modeling of
+  the traffic density in cellular networks,'' \emph{IEEE Wireless
+  Communications}, vol.~21, no.~1, pp. 80--88, Feb 2014.
+
+\bibitem{7202841}
+Y.~Zhou, R.~Li, Z.~Zhao, X.~Zhou, and H.~Zhang, ``On the $\alpha$-stable
+  distribution of base stations in cellular networks,'' \emph{IEEE
+  Communications Letters}, vol.~19, no.~10, pp. 1750--1753, Oct 2015.
+
+\bibitem{PhysRevE.72.026116}
+\BIBentryALTinterwordspacing
+Y.~Xia, C.~K. Tse, W.~M. Tam, F.~C.~M. Lau, and M.~Small, ``Scale-free
+  user-network approach to telephone network traffic analysis,'' \emph{Phys.
+  Rev. E}, vol.~72, p. 026116, Aug 2005. [Online]. Available:
+  \url{https://link.aps.org/doi/10.1103/PhysRevE.72.026116}
+\BIBentrySTDinterwordspacing
+
+\bibitem{eigenplaces}
+J.~Reades, F.~Calabrese, and C.~Ratti, ``Eigenplaces: analysing cities using
+  the space - time structure of the mobile phone network,'' \emph{Environment
+  and Planning B: Planning and Design}, vol.~36, pp. 824--836, 2009.
+
 \bibitem{6554749}
 D.~Lee, S.~Zhou, and Z.~Niu, ``Spatial modeling of scalable
   spatially-correlated log-normal distributed traffic inhomogeneity and
   energy-efficient network planning,'' in \emph{Proceedings of the IEEE
-  Wireless Communications and Networking Conference (WCNC)}, April 2013, pp.
+  Wireless Communications and Networking Conference (WCNC)}, Apr 2013, pp.
   1285--1290.
 
 \end{thebibliography}

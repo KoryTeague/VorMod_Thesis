@@ -35,18 +35,20 @@
 \usepackage{subcaption}
 \usepackage{amsfonts}
 \usepackage{bbm}
-\usepackage{cleveref}
 \usepackage{xargs}
-\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\usepackage{hyperref}
+\usepackage{cleveref}
 
-\newcommand\defeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily def}}}{=}}}
-\newcommand{\crefrangeconjunction}{--}
-\newcommand\tab[1][1cm]{\hspace*{#1}}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 \newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
 \newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
 \newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
 \newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
-\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+%\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+
+\newcommand\defeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily def}}}{=}}}
+\newcommand{\crefrangeconjunction}{--}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
 
 \hyphenation{vir-tu-al-iz-a-tion vir-tu-al-ized au-to-cor-re-la-tion com-mu-ni-cat-ing}
 
@@ -348,11 +350,6 @@ This chapter establishes the mathematical foundation for the work completed in t
 %Note: BS or Resource?
 Consider a geographic area of width $X$ meters and length $Y$ meters that contains a VNB and a set $\mathcal{S} \defeq \left\{1,\, 2,\, \ldots,\, S\right\}$ of virtualized resources the VNB has aggregated for use in the construction of VWNs.  The pool of resources, $\mathcal{S}$, is mapped to physical resources owned and maintained by RPs and are made available for use through contracts between the RPs and the VNB.  The contract-negotiated cost for the VNB to lease resource $s \in \mathcal{S}$ is denoted by $c_s$.  The costs for the resources used within a constructed VWN are passed to the SPs as part of the overall cost of the network.  The rate capacity of resource $s \in \mathcal{S}$ is denoted by $r_s$ and its coverage radius is denoted by $b_s$.
 
-%\improvement{Mention weighted-sum LN and $\alpha$-stable distributions as approximations\\See Note}%
-% Best in example 2.1.1
-%Note: Considering $\alpha$-stable distributions, remember that demand on a per user basis typically follows a power law.  Considering the central limit theorem, that would imply that a resulting area distribution would follow an $\alpha$-stable distribution; typically this would simply to a gaussian of some form.
-%\textit{An SP seeking a VWN from the VNB is assumed to know the distribution of traffic demand within the region the VWN would cover.  It has been shown that a log-normal distribution or a mixture of log-normal distributions can approximate traffic demand in real-world cellular networks~\cite{686105, 5936263}.  It has also been shown that traffic distribution is spatially correlated~\cite{5936263, eigenplaces}.  \unsure{Change ``I''?}I model the spatial traffic demand of a single SP using a similar, continuous form of the SSLT (Scalable, Spatially-correlated, and Log-normally distributed Traffic) model as proposed by Lee et al.~\cite{6554749}.}
-
 Let $\mathcal{N} \defeq \left\{1,\, 2,\, \ldots,\, N\right\}$ be the set of SPs seeking a VWN to host their services with coverage within the geographical area.  An SP $n \in \mathcal{N}$ associates with the VNB to create their desired VWN.  Through this association, SP $n$ must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  SP $n$ must know and communicate to the VNB the estimated geographic distribution of the service's traffic demand density as a function, $\rho\left(x,\, y\right),\, x \in [0,\, X],\, y \in [0,\, Y],\,$ in terms of $\frac{\text{bits}}{\text{km}^2}$.  This could be in the form of a continuous function (see Section \ref{subsec:networkdefs_sslt} and Fig. \change{Fix reference}\ref{fig:???}) or as discrete pixels (e.g., a bitmap), and could be generalized as a heatmap indicating locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  \unsure{The current model doesn't need this, but adjusting $\alpha$ (sDEP) or the map (GA) effectively controls for this.\\Can the model be updated formally for this?}Further, the SP would also provide the desired or needed percent demand satisfaction rate for the service.  Some services have high priority, such as those related to emergency services, and must have nearly if not perfect 100\% demand satisfaction.  Others, such as the aforementioned generic voice lines or video streaming, can withstand some demand to remain unsatisfied as a trade off for decreased network leasing or operational costs.
 
 Let $\mathcal{M}_n \defeq \left\{1,\, 2,\, \ldots,\, M_n\right\}$ be the set of demand points SP $n \in \mathcal{N}$ is attempting to satisfy with its service.  Each demand point $m \in \mathcal{M}_n$ is seeking to connect to the VWN operated by SP $n \in \mathcal{N}$ with total point traffic demand denoted by $d_{mn}$.  Let $u_{mns} \in [0,\, 1]$ represent the normalized capacity (with respect to $r_s$) of resource $s \in \mathcal{S}$ at point $m \in \mathcal{M}_n, n \in \mathcal{N},$ associated with SP $n \in \mathcal{N}$ (i.e., the normalized maximum rate that a user can receive at point $m$ from resource $s$).  Specifically,
@@ -385,7 +382,7 @@ Each demand point has a location stochastically determined by the distribution o
 
 At times, such as for demonstration and visualization or computation, wholly deterministic variables are needed in place of stochastic variables.  In general, this is accomplished for the specific instance by finding a realization of the distribution associated with the stochastic variable.  For demand points with stochastic locations, they are generated according to a two-dimensional non-stationary Poisson point process (PPP) using the traffic demand density function or distribution, $\rho\left(x,\, y\right)$, as the PPP's spatial intensity measure.
 
-To generate a non-stationary PPP, I use an acceptance-rejection method \change{cite\\Leeds document?}[?].  A stationary PPP is generated according to the maximum value within the region of the traffic demand density function.  That is, a number of points generated within the region is selected from a Poisson random variable with mean $\rho_{\max}*X*Y$, where $\rho_{\max}$ is the maximum value of $\rho$ over the region.  Each point is then independently and uniformly distributed (i.e., each point has a location $\left(x,\, y\right)$ with $x \sim \mathcal{U}\left(0,\, X\right)$ and $y \sim \mathcal{U}\left(0,\, Y\right)$) over the region.  Then, each point undergoes an acceptance-rejection procedure to inhomogenize the stationary PPP.  Each point is kept with a probability of the ratio of the value of the demand density function at that point's location to the maximum value of the demand density function.  That is, for each point in the PPP a uniformly-distributed random number, $P$, is generated over $\left[0, 1\right]$ and the point is either \emph{accepted} and kept or \emph{rejected} and discarded according to
+To generate a non-stationary PPP, I use an acceptance-rejection method~\cite{leeds:nsPPPgeneration}.  A stationary PPP is generated according to the maximum value within the region of the traffic demand density function.  That is, a number of points generated within the region is selected from a Poisson random variable with mean $\rho_{\max}*X*Y$, where $\rho_{\max}$ is the maximum value of $\rho$ over the region.  Each point is then independently and uniformly distributed (i.e., each point has a location $\left(x,\, y\right)$ with $x \sim \mathcal{U}\left(0,\, X\right)$ and $y \sim \mathcal{U}\left(0,\, Y\right)$) over the region.  Then, each point undergoes an acceptance-rejection procedure to inhomogenize the stationary PPP.  Each point is kept with a probability of the ratio of the value of the demand density function at that point's location to the maximum value of the demand density function.  That is, for each point in the PPP a uniformly-distributed random number, $P$, is generated over $\left[0, 1\right]$ and the point is either \emph{accepted} and kept or \emph{rejected} and discarded according to
 \begin{equation} \label{eq:nsPPPaccrej}
 \begin{cases}
 	\text{the $i^{\text{th}}$ point is kept},& \text{if } P \leq \frac{\rho \left(x_i,\, y_i\right)}{\rho_{\max}},\\
@@ -409,10 +406,17 @@ From the perspective of the VNB, each SP is only distinguishable by its overall 
 
 I assume that a resource $s \in \mathcal{S}$ can be allocated between multiple demand points, and $\delta_{ms} \in [0,\, r_s],\, m \in \mathcal{M},\, s \in \mathcal{S}$, represents the rate of resource $s$ that is allocated to point $m$.
 
-\subsection{Example Demand Distribution Model} \label{subsec:networkdefs_sslt}
+\subsection{Example Demand Distribution Model; The SSLT Model} \label{subsec:networkdefs_sslt}
 
-\change{Move onto talking about a specific distribution model for modeling mobile data\\Do the sources specify what type of data the SSLT or log-normal distributions model?}%
-It has been shown that a log-normal distribution can approximate traffic demand in real-world cellular networks~\cite{686105, 5936263}.  
+%\change{Move onto talking about a specific distribution model for modeling mobile data\\Do the sources specify what type of data the SSLT or log-normal distributions model?}%
+Gotzner et al.~\cite{686105} have shown that a log-normal distribution\footnote{In general network traffic, and the resource deployments that they are meant to model, tend to exhibit characteristics of heavy-tailed spatial distributions.  It has been shown that traffic distributions in cellular networks can be more accurately approximated as a mixture of log-normal distributions~\cite{5936263, 6757900}; Lee et al.~\cite{6757900} describe that nonmixtures capture the distribution for a single moment while mixtures capture the distribution as it changes with time and place.  Similarly, Zhou et al.~\cite{7202841} have shown that distributions of deployed BSs can be accurately approximated as an $\alpha$-stable distribution, a general case of the Gaussian distribution.  The latter case might be explained through the central limit theorem, as the sum of power-law distributed (Paretian tailed) random variables, such as those describing traffic in telephone networks~\cite{PhysRevE.72.026116}, will tend towards an $\alpha$-stable distribution.  I use neither in this thesis as as $\alpha$-stable distributions do not generally have a closed-form probability density function (PDF), rendering use non-trivial, and log-normal mixtures require tuning multiple parameters, adding additional complexity.} can approximate traffic demand in real-world cellular networks.  It has also been shwon 
+
+%\cite{686105, 5936263}.  
+
+%\improvement{Mention weighted-sum LN and $\alpha$-stable distributions as approximations\\See Note}%
+% Best in example 2.1.1
+%Note: Considering $\alpha$-stable distributions, remember that demand on a per user basis typically follows a power law.  Considering the central limit theorem, that would imply that a resulting area distribution would follow an $\alpha$-stable distribution; typically this would simply to a gaussian of some form.
+%\textit{An SP seeking a VWN from the VNB is assumed to know the distribution of traffic demand within the region the VWN would cover.  It has been shown that a log-normal distribution or a mixture of log-normal distributions can approximate traffic demand in real-world cellular networks~\cite{686105, 5936263}.  It has also been shown that traffic distribution is spatially correlated~\cite{5936263, eigenplaces}.  \unsure{Change ``I''?}I model the spatial traffic demand of a single SP using a similar, continuous form of the SSLT (Scalable, Spatially-correlated, and Log-normally distributed Traffic) model as proposed by Lee et al.~\cite{6554749}.}
 
 \improvement{Consider expanding on these definitions\\autocorrelation functions\\maybe add an image of the resulting $\rho^G$}%
 To generate this spatial distribution over the area of consideration, an initial Gaussian field, $\rho^G = \rho^G\left(x,\, y\right),\, x \in \left[0,\, X\right],\, y \in \left[0,\, Y\right]$, is generated by
