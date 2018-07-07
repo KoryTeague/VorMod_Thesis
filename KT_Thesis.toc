@@ -11,7 +11,7 @@
 \contentsline {chapter}{\numberline {2}Virtual Network Builder Model}{26}{chapter.2}
 \contentsline {section}{\numberline {2.1}Network Area Definitions}{26}{section.2.1}
 \contentsline {subsection}{\numberline {2.1.1}Example Demand Distribution Model; The SSLT Model}{32}{subsection.2.1.1}
-\contentsline {section}{\numberline {2.2}Stochastic Optimization}{33}{section.2.2}
+\contentsline {section}{\numberline {2.2}Stochastic Optimization}{34}{section.2.2}
 \contentsline {chapter}{\numberline {3}Approximation Approaches}{37}{chapter.3}
 \contentsline {section}{\numberline {3.1}Deterministic Equivalent Program}{38}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Sampling Approaches}{40}{subsection.3.1.1}
