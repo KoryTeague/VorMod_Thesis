@@ -424,10 +424,13 @@ To generate this spatial SSLT model distribution over the area of consideration,
 \begin{equation}
 \rho^G\left(x,\, y\right)=\frac{1}{L} \; \sum_{l=1}^L \cos\left(i_lx+\phi_l\right) \; \cos\left(j_ly+\psi_l\right)
 \end{equation} \label{eq:rhoG}
-\tab[0.1cm] where $\mathcal{L} \defeq \left\{1,\, 2,\, \ldots,\, L\right\}$ is a set of the products of two cosines with stochastic angular frequencies $i_l,\, j_l\, \sim \mathcal{U}\left(0,\, \omega_{\max}\right)$\footnote{$\mathcal{U}\left(a,\, b\right)$ refers to a random variable uniformly distributed over the domain $\left[a,\, b\right]$, with minimum value $a$ and maximum value $b$.}$,\, l \in \mathcal{L}$ and phases $\phi_l,\, \psi_l\, \sim \mathcal{U}\left(0,\, 2\pi\right),\, l \in \mathcal{L}$.  As $L$ increases, $\rho^G$ approaches a Gaussian random field according to the central limit theorem.  According to Lee et al.~\cite{6554749}, $\rho^G$ is spatially correlated with autocorrelation dependent on the maximum angular frequency $\omega_{\max}$
+\tab[0.1cm] where $\mathcal{L} \defeq \left\{1,\, 2,\, \ldots,\, L\right\}$ is a set of the products of two cosines with stochastic angular frequencies $i_l,\, j_l\, \sim \mathcal{U}\left(0,\, \omega_{\max}\right)$\footnote{$\mathcal{U}\left(a,\, b\right)$ refers to a random variable uniformly distributed over the domain $\left[a,\, b\right]$, with minimum value $a$ and maximum value $b$.}$,\, l \in \mathcal{L}$ and phases $\phi_l,\, \psi_l\, \sim \mathcal{U}\left(0,\, 2\pi\right),\, l \in \mathcal{L}$.  As $L$ increases, $\rho^G$ approaches a Gaussian random field according to the central limit theorem.
+
+According to Lee et al.~\cite{6554749}, $\rho^G$ is spatially correlated with autocorrelation function
 \begin{equation} \label{eq:sslt_autocorrelation}
 R\left(dx,\, dy\right) = E\left[\rho^G\left(x,\, y\right)\rho^G\left(x+dx,\, y+dy\right)\right]=\frac{1}{4L}\text{sinc}\left(\omega_{\max}dx\right)\text{sinc}\left(\omega_{\max}dy\right).
 \end{equation}
+\tab[0.1cm] The autocorrelation function is notably dependent on the maximum angular frequency defining $\rho^G$, $\omega_{\max}$.  As $\omega_{\max}$ increases, the demand of adjacent regions become less correlated.  $\omega_{\max}$ is effectively a measure of the inhomogeneity of $\rho^G$.
 
 \improvement{Consider an image showing the standardized and log-normal fields, and accompanying pdfs and histograms\\maybe separate $\rho^S$ and $\rho$}%
 The approximate Gaussian distribution $\rho^G$ is then normalized to a standard normal distribution.  The final log-normal distribution, $\rho = \rho\left(x,\, y\right), x \in [0,\, X], y \in [0,\, Y]$, is determined by assigning location and scale parameters
