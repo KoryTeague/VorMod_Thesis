@@ -18,12 +18,6 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.1in}
 
-% Uncomment for double-spaced document.
-\renewcommand{\baselinestretch}{2}
-%\usepackage{setspace}
-%\onehalfspacing
-%\doublespacing
-
 \usepackage{cite}
 
 \usepackage[pdftex]{graphicx}
@@ -36,9 +30,16 @@
 \usepackage{amsfonts}
 \usepackage{bbm}
 \usepackage{xargs}
+%\usepackage{float}
 \usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage{setspace}
+
+% Uncomment for double-spaced document.
+\renewcommand{\baselinestretch}{2}
+%\usepackage{setspace}
+%\onehalfspacing
+%\doublespacing
 
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 \newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
@@ -49,6 +50,7 @@
 
 \newcommand\defeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily def}}}{=}}}
 \newcommand{\crefrangeconjunction}{--}
+\newcommand{\creflastconjunction}{, and~}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 
 \hyphenation{vir-tu-al-iz-a-tion vir-tu-al-ized au-to-cor-re-la-tion com-mu-ni-cat-ing}
@@ -295,13 +297,13 @@ In this thesis, I approach the problem of the creation of optimal networks by th
 
 Standard linear and integer programming requires complete, certain knowledge of all parameters that affect the functions or model being optimized (i.e., the model's parameters and functions must be deterministic).  Communications, especially wireless communications, can be highly non-deterministic as the communication channel introduces a large amount of uncertainty.  Stochastic programming provides a powerful mathematical tool to handle optimization under such uncertainties.
 
-Stochastic programming has been recently exploited to optimize resource allocation in various types of wireless communications operating under uncertainties.  Abdel-Rahman et al.~\cite{MJ_CCNC_16} exploit stochastic optimization within the framework of the virtualization architecture presented in Section \ref{subsec:virtualization_architecture} to minimize the cost of resource allocation by introducing probabalistic QoS guarantees.  Cardoso et al.~\cite{MJ_MECOMM_17} expand on that work by introducing a second stage to balance maximizing demand satisfaction while minimizing cost.  Abdel-Rahman and Krunz~\cite{MJ_TW_13} utilize stochstic programming for resource allocation in DSA networks considering satisfaction of link demand as a stochastic constraint.  Abdel-Rahman et al.\cite{MJ_WCNC_16} propose a stochastic optimization formulation to optimally orchestrate LTE-U networks that utilize Wi-Fi access points considering stochastic QoS guarantees.  Abdel-Rahman et al.~\cite{MJ_DySPAN_15} utilize stochastic optimization for resource allocation in opportunistic LTE-A networks considering the probability of rate demand satisfaction for end users.  Soltani et al.~\cite{CC_OFDMA} utilize stochastic optimization as a tool for resource allocation tasks for OFDMA-based cognitive radios considering interference from primary user systems.  Atawia et al.~\cite{CC_video} utilize predictive resource allocation techniques, which include the use of stochastic optimization, for improving energy-efficient video streaming for mobile end-users, such as those riding buses and trains.
+Stochastic programming has been recently exploited to optimize resource allocation in various types of wireless communications operating under uncertainties.  Abdel-Rahman et al.~\cite{MJ_CCNC_16} exploit stochastic optimization within the framework of the virtualization architecture presented in \Cref{subsec:virtualization_architecture} to minimize the cost of resource allocation by introducing probabalistic QoS guarantees.  Cardoso et al.~\cite{MJ_MECOMM_17} expand on that work by introducing a second stage to balance maximizing demand satisfaction while minimizing cost.  Abdel-Rahman and Krunz~\cite{MJ_TW_13} utilize stochstic programming for resource allocation in DSA networks considering satisfaction of link demand as a stochastic constraint.  Abdel-Rahman et al.\cite{MJ_WCNC_16} propose a stochastic optimization formulation to optimally orchestrate LTE-U networks that utilize Wi-Fi access points considering stochastic QoS guarantees.  Abdel-Rahman et al.~\cite{MJ_DySPAN_15} utilize stochastic optimization for resource allocation in opportunistic LTE-A networks considering the probability of rate demand satisfaction for end users.  Soltani et al.~\cite{CC_OFDMA} utilize stochastic optimization as a tool for resource allocation tasks for OFDMA-based cognitive radios considering interference from primary user systems.  Atawia et al.~\cite{CC_video} utilize predictive resource allocation techniques, which include the use of stochastic optimization, for improving energy-efficient video streaming for mobile end-users, such as those riding buses and trains.
 
 Introducing stochastic parameters and constraints allows the optimization model to consider probabilities within the optimization.  In the case of resource allocation in networks, it may be possible to allocate enough resources to satisfy all end-user demand.  Such an optimization may require too many resources to be economical considering the law of diminishing returns, with the solution being cost prohibitive.  It is much cheaper to solve such that 95\% or 99\% of demand is satisfied, leaving the remainder as unfortunate momentary edge cases.
 
 However, standard linear programming techniques cannot solve models with stochastic parameters.  Stochastic programming therefore requires converting the stochastic program into its deterministic equivalent program (DEP) which replaces all stochastic variables with deterministic variables~\cite{stochprogramming}.  The process of forming a DEP from a stochastic program involves converting each stochastic variable into a set of all possible scenarios and scenario probabilities.  These scenarios and scenario probabilities are present within the model as a new dimension and weight for the now-deterministic variable.  To fully encapsulate the stochastic variable, the deterministic equivalent variable may be composed of an uncountably\unsure{Is it, or is it just countable?\\Maybe the textbook~\cite{stochprogramming} talks of this.\\Read and double check.}~infinite set.
 
-Resource allocation problems are typically some form of integer programming -- in which all decision variables (unknowns) are integers -- or mixed integer programming -- in which some decision variables (unknowns) are integers.  Both integer and mixed integer programs are considered generally NP-hard\footnote{Finding the minimum resource allocation that provides coverage over a geographic area falls within a category of problems referred to as \emph{minimum set cover problems}.  It is apparent that the problem considered in this thesis -- specifically the stochastic program proposed in Section \ref{sec:stochopt} -- is some form of minimum set cover problem; specifically, it might be referred to as a capacitated set cover problem.  Minimum set cover problems are provably NP-hard and typically rely on approximation solutions to solve in a feasible amount of time~\cite{Korte:2007:CombOptimization}.} and thereby intractable.  As the programs increase in scope, they become enormously more computationally complex to solve; accounting for the scenarios of the previously stochastic variables further increases this complexity.  Finding the optimal solution may require more time than is feasible; in the worst case, these problems run in exponential time complexity.
+Resource allocation problems are typically some form of integer programming -- in which all decision variables (unknowns) are integers -- or mixed integer programming -- in which some decision variables (unknowns) are integers.  Both integer and mixed integer programs are considered generally NP-hard\footnote{Finding the minimum resource allocation that provides coverage over a geographic area falls within a category of problems referred to as \emph{minimum set cover problems}.  It is apparent that the problem considered in this thesis -- specifically the stochastic program proposed in \Cref{sec:stochopt} -- is some form of minimum set cover problem; specifically, it might be referred to as a capacitated set cover problem.  Minimum set cover problems are provably NP-hard and typically rely on approximation solutions to solve in a feasible amount of time~\cite{Korte:2007:CombOptimization}.} and thereby intractable.  As the programs increase in scope, they become enormously more computationally complex to solve; accounting for the scenarios of the previously stochastic variables further increases this complexity.  Finding the optimal solution may require more time than is feasible; in the worst case, these problems run in exponential time complexity.
 
 \subsection{Metaheuristic Approaches} \label{subsec:optreview_meta}
 
@@ -318,17 +320,17 @@ In particle swarm optimization, a number of candidate solutions, called particle
 %\unsure{Restructure to get rid of first-person ``I''?}%
 In this thesis, I utilize a genetic algorithm as an approach for optimization.  A genetic algorithm is a form of evolutionary algorithm, a set of algorithms which are inspired by biological evolution and natural selection.  Each iteration is called a \emph{generation} and is composed of a number of candidate solutions called \emph{individuals}.  Each individual is defined by a \emph{chromosome} which details the specific candidate solution.  During each generation, every individual is evaluated on its \emph{fitness}, a function dependent on the individual's chromosome; the higher the individual's fitness, the more optimal the individual.  Individuals called \emph{parents} are then randomly selected to pass their chromosome onto the next generation in a process called \emph{selection}; in selection, more fit individuals are more likely to be selected.  With a certain probability, groups of parents will undergo \emph{crossover} and exchange the data contained within their chromosomes to form new \emph{children} that are a mixture of the parents; if mixing does not occur, the parents are cloned into the next generation as children.  Then, individual bits within the children's chromosomes have a chance to flip, or \emph{mutate}.  The resulting children from crossover and mutation form the entire next generation.
 
-Since chromosomes from fitter individuals are more likely to pass on to subsequent generations, generations gradually become fitter.  Through crossover, fit chromosomes may combine to form fitter children that proliferate; less fit children are often also formed, but are generally not selected for later generations.  Mutation introduces diversity into the generations, which expand the exploration of the search space.  More details, including that of implementation and variants, will be expanded upon in Section \ref{sec:ga}.
+Since chromosomes from fitter individuals are more likely to pass on to subsequent generations, generations gradually become fitter.  Through crossover, fit chromosomes may combine to form fitter children that proliferate; less fit children are often also formed, but are generally not selected for later generations.  Mutation introduces diversity into the generations, which expand the exploration of the search space.  More details, including that of implementation and variants, will be expanded upon in \Cref{sec:ga}.
 
 Genetic algorithms have been used previously as approaches for simplifying constraints of large, complex stochastic optimization problems.  Cui et al.~\cite{7257198} used a genetic algorithm where each chromosome defined a subproblem of the larger optimization problem, and the fitness was evaluated by solving the subproblem with linear programming optimization methods.  Hybrid approaches, such as the one used by Cui et al.~\cite{7257198}, and other effective metaheuristic algorithms (e.g., ant colony optimization, particle swarm optimization, neural networks and machine learning) are worth investigating in the context of the posed VWN architecture, but beyond the scope of this thesis.
 
 \section{Thesis Objective} \label{sec:objective}
 
-The objective of this thesis is to develop two approaches of joint resource allocation to construct a set of a VWNs and adaptively slice the selected resources to the individual VWNs.  A model will be presented as the context for these approaches, expanding upon the VWN architecture proposed in Section \ref{subsec:virtualization_architecture}.  The validity of this model will be restricted to the scope of cellular networks using generic base stations as its resources with perfect connections to demand points within range.  The two proposed approaches will be performed within the VNB, and evaluated in four cases that differ in the resources provided by the RPs and service demands to be satisfied by the SPs.  Accordingly, the efficacy of these approaches will be measured primarily by the optimality of the solutions, such as cost and network service demand satisfaction, and the run time, providing the VNB with a sufficient solution in a reasonable amount of time.
+The objective of this thesis is to develop two approaches of joint resource allocation to construct a set of a VWNs and adaptively slice the selected resources to the individual VWNs.  A model will be presented as the context for these approaches, expanding upon the VWN architecture proposed in \Cref{subsec:virtualization_architecture}.  The validity of this model will be restricted to the scope of cellular networks using generic base stations as its resources with perfect connections to demand points within range.  The two proposed approaches will be performed within the VNB, and evaluated in four cases that differ in the resources provided by the RPs and service demands to be satisfied by the SPs.  Accordingly, the efficacy of these approaches will be measured primarily by the optimality of the solutions, such as cost and network service demand satisfaction, and the run time, providing the VNB with a sufficient solution in a reasonable amount of time.
 
 \section{Thesis Outline} \label{sec:outline}
 
-This thesis is organized as follows.  Chapter \ref{ch:intro} establishes the motivation for investigating resource selection for virtual network construction.  Chapter \ref{ch:intro} also presents the associated background information and literature review regarding virtualization, wireless networks, and optimization.  Chapter \ref{ch:vnbmodel} defines the model used for the resource allocation methods explored in this thesis.  Further, Chapter \ref{ch:vnbmodel} also details the two-stage stochastic optimization problem which optimally performs resource selection and slicing as a basis of approaches presented within this work. Chapter \ref{ch:approaches} establishes the two approaches investigated to provide solutions to the optimization problem posed in Chapter \ref{ch:vnbmodel}: a sampled Deterministic Equivalent Program which solves the problem as a whole and a genetic algorithm that simplifies the problem by providing an estimated optimal resource selection.  Chapter \ref{ch:testsim} tests these two approaches by presenting four data sets that mimic real world cellular networks and evaluates the results.  Chapter \ref{ch:conc} contains the conclusions and proposed future work in this area.
+This thesis is organized as follows.  \Cref{ch:intro} establishes the motivation for investigating resource selection for virtual network construction.  \Cref{ch:intro} also presents the associated background information and literature review regarding virtualization, wireless networks, and optimization.  \Cref{ch:vnbmodel} defines the model used for the resource allocation methods explored in this thesis.  Further, \Cref{ch:vnbmodel} also details the two-stage stochastic optimization problem which optimally performs resource selection and slicing as a basis of approaches presented within this work.  \Cref{ch:approaches} establishes the two approaches investigated to provide solutions to the optimization problem posed in \Cref{ch:vnbmodel}: a sampled Deterministic Equivalent Program which solves the problem as a whole and a genetic algorithm that simplifies the problem by providing an estimated optimal resource selection.  \Cref{ch:testsim} tests these two approaches by presenting four data sets that mimic real world cellular networks and evaluates the results.  \Cref{ch:conc} contains the conclusions and proposed future work in this area.
 \fi
 
 \iftrue
@@ -342,7 +344,7 @@ This chapter establishes the mathematical foundation for the work completed in t
 
 Consider a geographic area of width $X$ meters and length $Y$ meters that contains a VNB and a set $\mathcal{S} \defeq \left\{1,\, 2,\, \ldots,\, S\right\}$ of virtualized resources the VNB has aggregated for use in the construction of VWNs.  The pool of resources, $\mathcal{S}$, is mapped to physical resources owned and maintained by RPs and are made available for use through contracts between the RPs and the VNB.  The contract-negotiated cost for the VNB to lease resource $s \in \mathcal{S}$ is denoted by $c_s$.  The costs for the resources used within a constructed VWN are passed to the SPs as part of the overall cost of the network.  The rate capacity of resource $s \in \mathcal{S}$ is denoted by $r_s$ and its coverage radius is denoted by $b_s$.
 
-Let $\mathcal{N} \defeq \left\{1,\, 2,\, \ldots,\, N\right\}$ be the set of SPs seeking a VWN to host their services with coverage within the geographical area.  An SP $n \in \mathcal{N}$ associates with the VNB to create their desired VWN.  Through this association, SP $n$ must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  SP $n$ must know and communicate to the VNB the estimated geographic distribution of the service's traffic demand density as a function, $\rho\left(x,\, y\right),\, x \in [0,\, X],\, y \in [0,\, Y],\,$ in terms of \info{This is the unit used by SSLT paper}\unsure{Appropriate unit?}$\frac{\text{bits}}{\text{km}^2}$.  This could be in the form of a continuous function (see Section \ref{subsec:networkdefs_sslt}) or as discrete pixels (e.g., a bitmap), and could be generalized as a heatmap indicating locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  \unsure{The current model doesn't need this, but adjusting $\alpha$ (sDEP) or the map (GA) effectively controls for this.\\Can the model be updated formally for this?}Further, the SP would also provide the desired or needed percent demand satisfaction rate for the service.  Some services have high priority, such as those related to emergency services, and must have nearly if not perfect 100\% demand satisfaction.  Others, such as the aforementioned generic voice lines or video streaming, can withstand some demand to remain unsatisfied as a trade off for decreased network leasing or operational costs.
+Let $\mathcal{N} \defeq \left\{1,\, 2,\, \ldots,\, N\right\}$ be the set of SPs seeking a VWN to host their services with coverage within the geographical area.  An SP $n \in \mathcal{N}$ associates with the VNB to create their desired VWN.  Through this association, SP $n$ must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  SP $n$ must know and communicate to the VNB the estimated geographic distribution of the service's traffic demand density as a function, $\rho\left(x,\, y\right),\, x \in [0,\, X],\, y \in [0,\, Y],\,$ in terms of \info{This is the unit used by SSLT paper}\unsure{Appropriate unit?}$\frac{\text{bits}}{\text{km}^2}$.  This could be in the form of a continuous function (see \Cref{subsec:networkdefs_sslt}) or as discrete pixels (e.g., a bitmap), and could be generalized as a heatmap indicating locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  \unsure{The current model doesn't need this, but adjusting $\alpha$ (sDEP) or the map (GA) effectively controls for this.\\Can the model be updated formally for this?}Further, the SP would also provide the desired or needed percent demand satisfaction rate for the service.  Some services have high priority, such as those related to emergency services, and must have nearly if not perfect 100\% demand satisfaction.  Others, such as the aforementioned generic voice lines or video streaming, can withstand some demand to remain unsatisfied as a trade off for decreased network leasing or operational costs.
 
 Let $\mathcal{M}_n \defeq \left\{1,\, 2,\, \ldots,\, M_n\right\}$ be the set of demand points SP $n \in \mathcal{N}$ is attempting to satisfy with its service.  Each demand point $m \in \mathcal{M}_n$ is seeking to connect to the VWN operated by SP $n \in \mathcal{N}$ with total point traffic demand denoted by $d_{mn}$.  Let $u_{mns} \in [0,\, 1]$ represent the normalized capacity (with respect to $r_s$) of resource $s \in \mathcal{S}$ at point $m \in \mathcal{M}_n, n \in \mathcal{N},$ associated with SP $n \in \mathcal{N}$ (i.e., the normalized maximum rate that a user can receive at point $m$ from resource $s$).  Specifically,
 
@@ -352,10 +354,10 @@ Let $\mathcal{M}_n \defeq \left\{1,\, 2,\, \ldots,\, M_n\right\}$ be the set of 
 u_{mns} \defeq
 	\begin{cases}
 		0,& \text{if demand point $m$ of SP $n$ is located more than $b_s$ meters from}\\
-		& \text{\tab from resource $s$,}\\
+		& \text{\tab from resource $s$;}\\
 		\\
 		1,& \text{if demand point $m$ of SP $n$ is located within a small distance of}\\
-		& \text{\tab resource $s$}\\
+		& \text{\tab resource $s$;}\\
 		\\
 		(0,\, 1),& \text{otherwise.}
 	\end{cases}
@@ -379,11 +381,11 @@ It is apparent that $u_{mns}$ will vary according to the path-loss characteristi
 
 \iftrue % true if doublespacing, false if singlespacing
 \begin{singlespacing}
-\begin{equation} \label{eq:ums_simp}
+\begin{equation} \label{eq:umns_simp}
 u_{mns} \defeq
 	\begin{cases}
 		0,& \text{if demand point $m$ of SP $n$ is located more than $b_s$ meters from}\\
-		& \text{\tab resouce $s$,}\\
+		& \text{\tab resouce $s$;}\\
 		\\
 		1,& \text{otherwise (i.e., if demand point $m$ of SP $n$ is located less than}\\
 		& \text{\tab or equal to $b_s$ meters from resouce $s$).}\\
@@ -391,18 +393,18 @@ u_{mns} \defeq
 \end{equation}
 \end{singlespacing}
 \else
-\begin{equation} \label{eq:ums_simp}
+\begin{equation} \label{eq:umns_simp}
 u_{mns} \defeq
 	\begin{cases}
 		0,& \text{if demand point $m$ of SP $n$ is located more than $b_s$ meters from}\\
-		& \text{\tab resouce $s$,}\\
+		& \text{\tab resouce $s$;}\\
 		1,& \text{otherwise (i.e., if demand point $m$ of SP $n$ is located less than}\\
 		& \text{\tab or equal to $b_s$ meters from resouce $s$).}\\
 	\end{cases}
 \end{equation}
 \fi
 
-This simplification allows the available pool of resources, or any subset thereof, to be easily visualized as a Voronoi tessellation \change{Citation Needed of a Voronoi tesellation}[?].  In a Voronoi tessellation, a two-dimensional plane is tessellated into a set of convex polygons, each of which is defined by a single point contained within.  All points comprising the area enclosed by a polygon is closer to that polygon's defining point than any other polygons'.  Using the simplified definition for $u_{mns}$, the Voronoi tessellation of a set of resource locations functions as a coverage map for those resources, assuming that all polygons are within the respective ranges for their associated resources; each polygon represents a region where $u_{mns} = 1$.  Assuming this binary condition is a simplification that aids in the implementation of the approach used in Section \ref{sec:ga}, and is generally assumed in the rest of this thesis.
+This simplification allows the available pool of resources, or any subset thereof, to be easily visualized as a Voronoi tessellation \change{Citation Needed of a Voronoi tesellation}[?].  In a Voronoi tessellation, a two-dimensional plane is tessellated into a set of convex polygons, each of which is defined by a single point contained within.  All points comprising the area enclosed by a polygon is closer to that polygon's defining point than any other polygons'.  Using the simplified definition for $u_{mns}$, the Voronoi tessellation of a set of resource locations functions as a coverage map for those resources, assuming that all polygons are within the respective ranges for their associated resources; each polygon represents a region where $u_{mns} = 1$.  Assuming this binary condition is a simplification that aids in the implementation of the approach used in \Cref{sec:ga}, and is generally assumed in the rest of this thesis.
 
 Each demand point has a location stochastically determined by the distribution of traffic demand density that SP $n \in \mathcal{N}$ communicates to the VNB.  Throughout this thesis, stochastic variables will be differentiated from deterministic variables with a tilde ($\sim$) placed above the symbol (e.g., $\tilde{u}_{mns}$).
 
@@ -414,7 +416,7 @@ To generate a non-stationary PPP, I use an acceptance-rejection method~\cite{lee
 \begin{singlespacing}
 \begin{equation} \label{eq:nsPPPaccrej}
 \begin{cases}
-	\text{the $i^{\text{th}}$ point is kept},& \text{if } P \leq \frac{\rho \left(x_i,\, y_i\right)}{\rho_{\max}},\\
+	\text{the $i^{\text{th}}$ point is kept},& \text{if } P \leq \frac{\rho \left(x_i,\, y_i\right)}{\rho_{\max}};\\
 	\\
 	\text{the $i^{\text{th}}$ point is discarded},& \text{otherwise,}
 \end{cases}
@@ -423,7 +425,7 @@ To generate a non-stationary PPP, I use an acceptance-rejection method~\cite{lee
 \else
 \begin{equation} \label{eq:nsPPPaccrej}
 \begin{cases}
-	\text{the $i^{\text{th}}$ point is kept},& \text{if } P \leq \frac{\rho \left(x_i,\, y_i\right)}{\rho_{\max}},\\
+	\text{the $i^{\text{th}}$ point is kept},& \text{if } P \leq \frac{\rho \left(x_i,\, y_i\right)}{\rho_{\max}};\\
 	\text{the $i^{\text{th}}$ point is discarded},& \text{otherwise,}
 \end{cases}
 \end{equation}
@@ -451,7 +453,7 @@ I assume that a resource $s \in \mathcal{S}$ can be allocated between multiple d
 
 \subsection{Example Demand Distribution Model; The SSLT Model} \label{subsec:networkdefs_sslt}
 
-In this section, I establish an example model demonstrating what a SP must communicate to the VNB to properly facilitate VWN construction.  For testing the approaches presented in Chapter \ref{ch:approaches} for VWN construction, this example is the fundamental model used for simulating SP demand in cellular network-based services.
+In this section, I establish an example model demonstrating what a SP must communicate to the VNB to properly facilitate VWN construction.  For testing the approaches presented in \Cref{ch:approaches} for VWN construction, this example is the fundamental model used for simulating SP demand in cellular network-based services.
 
 Gotzner et al.~\cite{686105} have shown that a log-normal distribution\unsure{footnote might be overly long\\everything after ``The latter case\ldots'' could probably be trimmed}\footnote{In general, network traffic and the resource deployments that they are meant to model tend to exhibit characteristics of heavy-tailed spatial distributions.  It has been shown that traffic distributions in cellular networks can be more accurately approximated as a mixture of log-normal distributions~\cite{5936263, 6757900}; Lee et al.~\cite{6757900} describe that nonmixtures capture the distribution for a single moment while mixtures capture the distribution as it changes with time and place.  Similarly, Zhou et al.~\cite{7202841} have shown that distributions of deployed BSs can be accurately approximated as an $\alpha$-stable distribution, a general case of the Gaussian distribution.  The latter case might be explained through the central limit theorem, as the sum of power-law distributed (Paretian tailed) random variables, such as those describing traffic in telephone networks~\cite{PhysRevE.72.026116}, will tend towards an $\alpha$-stable distribution.  I use neither in this thesis as $\alpha$-stable distributions do not generally have a closed-form probability density function (PDF), rendering use non-trivial, and log-normal mixtures require tuning multiple parameters, adding additional complexity.} can approximate traffic demand in real-world cellular networks.  It has also been shown that traffic distribution is spatially correlated~\cite{5936263, eigenplaces}.  Lee et al.~\cite{6554749} presented the Scalable, Spatially-correlated, and Log-normally distributed Traffic (SSLT) model to emulate the characteristics of real world cellular data networks.  This model is flexible and can be adjusted to simulate numerous cellular networks, and can characterize the demand of a supposed SP in a way that mimics real-world data.  I use a variant of the SSLT demand model presented by Lee et al., altered to be a continuous function serving as a continuous or pixelated demand density map.
 
@@ -459,7 +461,7 @@ To generate this spatial SSLT model distribution over the area of consideration,
 \begin{equation} \label{eq:rhoG}
 \rho^G\left(x,\, y\right) = \frac{1}{L} \; \sum_{l=1}^L \cos\left(i_lx+\phi_l\right) \; \cos\left(j_ly+\psi_l\right)
 \end{equation}
-where $\mathcal{L} \defeq \left\{1,\, 2,\, \ldots,\, L\right\}$ is a set of the products of two cosines with stochastic angular frequencies $i_l,\, j_l\, \sim \mathcal{U}\left(0,\, \omega_{\max}\right)$\footnote{$\mathcal{U}\left(a,\, b\right)$ refers to a random variable uniformly distributed over the domain $\left[a,\, b\right]$, with $a < b$.} $,\, l \in \mathcal{L}$ and phases $\phi_l,\, \psi_l\, \sim \mathcal{U}\left(0,\, 2\pi\right),\, l \in \mathcal{L}$.  As $L$ increases, $\rho^G$ approaches a Gaussian random field according to the central limit theorem.
+where $\mathcal{L} \defeq \left\{1,\, 2,\, \ldots,\, L\right\}$ is a set of the products of two cosines with stochastic angular frequencies $i_l,\, j_l\, \sim \mathcal{U}\left(0,\, \omega_{\max}\right)$\footnote{$\mathcal{U}\left(a,\, b\right)$ refers to a random variable uniformly distributed over the domain $\left[a,\, b\right]$, where $a < b$.} $,\, l \in \mathcal{L}$ and phases $\phi_l,\, \psi_l\, \sim \mathcal{U}\left(0,\, 2\pi\right),\, l \in \mathcal{L}$.  As $L$ increases, $\rho^G$ approaches a Gaussian random field according to the central limit theorem.
 
 According to Lee et al.~\cite{6554749}, $\rho^G$ is spatially correlated with autocorrelation function
 \begin{equation} \label{eq:sslt_autocorrelation}
@@ -467,7 +469,7 @@ R\left(dx,\, dy\right) = E\left[\rho^G\left(x,\, y\right) \; \rho^G\left(x+dx,\,
 \end{equation}
 The autocorrelation function is notably dependent on the maximum angular frequency defining $\rho^G$, $\omega_{\max}$.  As $\omega_{\max}$ increases, the demand of adjacent regions become less correlated.  $\omega_{\max}$ is effectively a measure of the inhomogeneity of $\rho^G$.  This effect of $\omega_{\max}$ on the inhomogeneity of $\rho^G$ is shown in Fig. \ref{fig:rhoG}; Fig. \ref{fig:rhoG_4pi-300} fluctuates more rapidly than Fig. \ref{fig:rhoG_2pi-300}, which is generated from a smaller $\omega_{\max}$.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
 \begin{subfigure}{.45\textwidth}
 	\centering
@@ -492,7 +494,7 @@ The approximate Gaussian distribution $\rho^G$ is then normalized to a standard 
 \end{equation}
 where $\text{Var}\left(\rho^G\right)$ is the variance of $\rho^G$.  Fig. \ref{fig:rhoS_pdf} compares the PDF of the two $\rho^S$ fields generated from the $\rho^G$ fields displayed in Fig. \ref{fig:rhoG} to verify that $\rho^S$ closely approximates a standard normal distribution.  There is some deviation from the standard normal as expected, but it does \info{What does it mean to ``closely approximate?''\\Is there a way I can mathematically specify this?}closely approximate the desired distributions.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
 \begin{subfigure}{.45\textwidth}
 	\centering
@@ -518,7 +520,7 @@ The final log-normal distribution, $\rho = \rho\left(x,\, y\right), x \in [0,\, 
 
 Fig. \ref{fig:rho} shows the resulting SSLT demand density distribution, $\rho$, generated from the $\rho^G$ fields displayed in Fig. \ref{fig:rhoG} with default location and scale parameters (i.e., $\mu = 0,\, \sigma = 1$).  Similarly, Fig. \ref{fig:rho_pdf} compares the PDF of the generated SSLT fields to the log-normal distribution being approximated.  By controlling the maximum angular frequency ($\omega_{\max}$) and log-normal location and scale parameters, the SSLT model can be used to characterize the demand of a theoretical SP service.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
 \begin{subfigure}{.45\textwidth}
 	\centering
@@ -537,7 +539,7 @@ Fig. \ref{fig:rho} shows the resulting SSLT demand density distribution, $\rho$,
 \label{fig:rho}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
 \begin{subfigure}{.45\textwidth}
 	\centering
@@ -560,7 +562,7 @@ Lee et al.~\cite{6554749} implement their proposed SSLT demand model as a discre
 
 I deviate from their implementation by leaving the SSLT distribution as a continuous function representing the overall demand of the region, and only pixelate it for visualization purposes.  To generate discrete demand points, I generate a non-stationary PPP using $\rho$ as the spatial intensity function as described by the acceptance-rejection method (\cref{eq:nsPPPaccrej,eq:demandintegral,eq:pointdemand}) described previously.  This allows the specific number of demand points to be controlled and accommodates for the assumption that the SSLT demand model is an overall distribution of demand points rather than each cell operating as independent PPP.  Fig. \ref{fig:rho_nsPPP} shows a realization of demand points distributed as a non-stationary PPP.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
 \begin{subfigure}{.45\textwidth}
 	\centering
@@ -579,65 +581,93 @@ I deviate from their implementation by leaving the SSLT distribution as a contin
 \label{fig:rho_nsPPP}
 \end{figure}
 
-This SSLT model is used in Chapter \ref{ch:testsim} to generate SP service demand and end-user demand points while testing the approaches described in Chapter \ref{ch:approaches}.
+This SSLT model is used in \Cref{ch:testsim} to generate SP service demand and end-user demand points while testing the approaches described in \Cref{ch:approaches}.
 
 \section{Stochastic Optimization} \label{sec:stochopt}
 
-%\textit{Replace ``we''s to ``I''s or find alternate wording/tense/voice.  Ensure equations are spaced appropriately for full page column and that there are no unnecessary vertical or horizontal spacing.  Expounding on the various components of the stochastic optimization problem might be worthwhile.  Might be worthwhile to also mention that the stochastic nature of this specific formulation is limited to handling stochastic demand point locations.  As with \ref{sec:networkdefs}, modify wording and phrasing accordingly to accommodate the possibility for multiple RPs and SPs in the model.  When referring to ``Problem''s (e.g., Problem 1 from section \ref{sec:stochopt}), refer to the equations that make up that problem; see first reference of  Problem 1 in Chapter \ref{ch:approaches} for reference.}
+%\textit{Replace ``we''s to ``I''s or find alternate wording/tense/voice.  Ensure equations are spaced appropriately for full page column and that there are no unnecessary vertical or horizontal spacing.  Expounding on the various components of the stochastic optimization problem might be worthwhile.  Might be worthwhile to also mention that the stochastic nature of this specific formulation is limited to handling stochastic demand point locations.  As with \ref{sec:networkdefs}, modify wording and phrasing accordingly to accommodate the possibility for multiple RPs and SPs in the model.  When referring to ``Problem''s (e.g., Problem 1 from section \ref{sec:stochopt}), refer to the equations that make up that problem; see first reference of  Problem 1 in \Cref{ch:approaches} for reference.}
 
-I formulate the presented problem of resource selection for VWN construction as a two-stage stochastic optimization program.  I introduce $z_s,\, s \in \mathcal{S}$ as a binary decision variable defined as
+As presented in \Cref{sec:networkdefs}, the VNB present within the established geographic area must construct a set of VWNs to satisfy the needs of the services the various SPs seek to provide.  Each service provider provides a characterization of its demand, such as the SSLT models presented in \Cref{subsec:networkdefs_sslt}.  With this information, the VNB must select the subset of virtual resources available in $\mathcal{S}$ that minimizes the cost to the VNB, and associate slices of these resources to VWNs that optimally satisfy the SPs' demand.
+
+I formulate the presented problem of resource selection as Problem 1 (\cref{eq:P1S1,eq:P1S1C1,eq:P1S2,eq:P1S2C1,eq:P1S2C2,eq:P1S2C3}), a two-stage stochastic optimization program.  Let $z_s,\, s \in \mathcal{S}$, be a binary decision variable defined as
 
 \iftrue % true if doublespacing, false is singlespacing
 \begin{singlespacing}
-\begin{equation}
+\begin{equation} \label{eq:z_s}
 z_s \defeq
 	\begin{cases}
-		1,& \text{if BS $s$ is selected for the created VWN,}\\
+		1,& \text{if BS $s$ is selected for the created VWN;}\\
 		\\
 		0,& \text{otherwise.}
 	\end{cases}
 \end{equation}
 \end{singlespacing}
 \else
-\begin{equation}
+\begin{equation} \label{eq:z_s}
 z_s \defeq
 	\begin{cases}
-		1,& \text{if BS $s$ is selected for the created VWN,}\\
-		0,& \text{otherwise.}
+		1,& \text{if BS $s$ is selected for the created VWN;}\\
+		0,& \text{otherwise,}
 	\end{cases}
 \end{equation}
 \fi
 
-To balance the interest of maximizing demand satisfaction against minimizing cost, we introduce the positive real number $\alpha$ as a weighting coefficient between the two stages.
+which establishes resource selection.  $\delta_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}$, which is defined in \Cref{sec:networkdefs} to represent the rate of resource $s$ that is allocated to point $m$, is a second decision variable which establishes the slice of resource $s$ that has been allocated to the VWN service that is associated with demand point $m$.
 
-\vspace{3mm}
-\begin{tcolorbox}[title = Problem 1 (Two-Stage Stochastic Optimization Problem)]
+\improvement{Specifically, what does $\alpha$ impact?\\Relative weights of the first term vs second term.\\SP demand satisfaction on page 27}%
+To balance the interest of maximizing demand satisfaction against minimizing cost, I introduce the positive real number $\alpha$ as a weighting coefficient between the two stages (\cref{eq:P1S1}).  The SP indicates the desired amount of demand satisfaction necessary for the service provided; $\alpha$ realizes this degree of demand satisfaction of the VWN relative to its cost.
+
+\begin{tcolorbox}[floatplacement = !ht, float, title = Problem 1 (Two-Stage Stochastic Optimization Problem)]
 \begin{align}
 & \underset{\left\{z_s,\, s \in \mathcal{S}\right\}}{\text{minimize}} \left\{ \sum_{s \in \mathcal{S}} c_s \; z_s + \alpha \mathbb{E}\left[ h\left( z,\, u \right) \right] \right\} \label{eq:P1S1}\\
 & \text{subject to:}  \nonumber \\
-& \hspace{0.4in} z_s \in \{0, 1\}, \forall s \in \mathcal{S} \label{eq:P1S1C1}
+& \hspace{0.4in} z_s \in \{0, 1\},\, \forall s \in \mathcal{S} \label{eq:P1S1C1}
 \end{align}
 where $h(z, u)$ is the optimal value of the second-stage problem, which is given by:
 \begin{align}
-& \underset{\left\{\substack{\delta_{ms}, m \in \mathcal{M}, s \in \mathcal{S}}\right\}}{\mathrm{minimize}} \left\{ - \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms} \; \tilde{u}_{ms} \right\} \label{eq:P1S2}\\
+& \underset{\left\{\substack{\delta_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}}\right\}}{\mathrm{minimize}} \left\{ - \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms} \; \tilde{u}_{ms} \right\} \label{eq:P1S2}\\
 & \text{subject to:}  \nonumber \\
-& \hspace{0.4in} z_s = \mathbbm{1}_{\left\{\sum_{m \in \mathcal{M}} \delta_{ms} > 0\right\}}, \forall s \in \mathcal{S} \label{eq:P1S2C1}\\
-& \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms} \; \tilde{u}_{ms} \leq d_m, \forall m \in \mathcal{M} \label{eq:P1S2C2}\\
-& \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms} \leq r_s, \forall s \in \mathcal{S}. \label{eq:P1S2C3}
+& \hspace{0.4in} z_s = \left[\sum_{m \in \mathcal{M}} \delta_{ms} > 0\right],\, \forall s \in \mathcal{S} \label{eq:P1S2C1}\\
+& \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms} \; \tilde{u}_{ms} \leq d_m,\, \forall m \in \mathcal{M} \label{eq:P1S2C2}\\
+& \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms} \leq r_s,\, \forall s \in \mathcal{S}. \label{eq:P1S2C3}
 \end{align}
 \end{tcolorbox}
 
-The first stage objective function (\ref{eq:P1S1}) minimizes the total cost of the selected network with respect to that network's ability to satisfy the demand contained within the region.  The second stage objective function (\ref{eq:P1S2}) maximizes demand satisfaction by maximizing the total demand allocated to the resources comprising the network, as specified by $\delta_{ms}$ as the decision variable of the second stage.
+%Old definition of eq:P1S2C1, using blackboard-bold 1 instead of iverson bracket notation
+%& \hspace{0.4in} z_s = \mathbbm{1}_{\left\{\sum_{m \in \mathcal{M}} \delta_{ms} > 0\right\}}, \forall s \in \mathcal{S} \label{eq:P1S2C1}\\
 
-Constraints (\ref{eq:P1S1C1}), (\ref{eq:P1S2C1}), and (\ref{eq:P1S2C3}) implement the defined ranges and values of the decision variables $z_s$ and $\delta_{ms}$, with (\ref{eq:P1S2C1}) ensuring that demand is allocated only to selected resources.  For constraint (\ref{eq:P1S2C1}), $\mathbbm{1}_{\{*\}}$ is defined by
-\[ \mathbbm{1}_{\{*\}} \defeq
+The first stage objective function (\cref{eq:P1S1}) minimizes the total cost of the selected network with respect to that network's ability to satisfy the demand contained within the region.  The second stage objective function (\cref{eq:P1S2}) maximizes demand satisfaction by maximizing the total demand allocated to the resources comprising the network.
+
+\Cref{eq:P1S1C1,eq:P1S2C1,eq:P1S2C3} are constraints that implement the defined ranges and values of the decision variables $z_s$ and $\delta_{ms}$, with \cref{eq:P1S2C1} ensuring that demand is allocated only to selected resources.  For \cref{eq:P1S2C1}, \unsure{I used to refer to this as $\mathbbm{1}_{\{*\}}$\\Is that better?}$\left[*\right]$ is the Iverson bracket, which is defined by
+
+%$\mathbbm{1}_{\{*\}}$ is defined by
+
+\iftrue % true if doublespacing, false if singlespacing
+\begin{singlespacing}
+%new definition; iverson bracket
+\begin{equation} \label{eq:iverson}
+\left[*\right] \defeq
 	\begin{cases}
-		1,& \text{if condition $\{*\}$ is true,}\\
+		1,& \text{if condition $*$ is true;}\\
+		\\
 		0,& \text{otherwise}.
 	\end{cases}
-\]
+\end{equation}
+\end{singlespacing}
+\else
+%old definition; blackboard bold 1
+\begin{equation} \label{eq:iverson}
+\mathbbm{1}_{\{*\}} \defeq
+	\begin{cases}
+		1,& \text{if condition $\{*\}$ is true;}\\
+		0,& \text{otherwise}.
+	\end{cases}
+\end{equation}
+\fi
 
-Constraint (\ref{eq:P1S2C2}) ensures a demand point $m \in \mathcal{M}$ is not allocated more resources than it demands.
+\Cref{eq:P1S2C2} ensures a demand point $m \in \mathcal{M}$ is not allocated more resources than it demands.
+
+\improvement{Two or three sentences to transition to Chapter 3 (and beyond).}
 \fi
 
 \iftrue
@@ -648,7 +678,7 @@ Constraint (\ref{eq:P1S2C2}) ensures a demand point $m \in \mathcal{M}$ is not a
 
 \textit{Replace with introduction paragraph to this chapter.  This chapter lays out the two major approaches I am using in this thesis: the sampled DEP and genetic algorithm, and the foundation those approaches are built on.  These approaches are built on the stochastic optimization problem as laid out in \ref{sec:stochopt}, and meant to provide a solution (i.e., the DEP) or an estimate (i.e., the sampled DEP and genetic algorithm) as the original problem is not directly solvable.}
 
-\textit{In this chapter, I work on defining the approximation approaches used in my work.  Lead in to discussing the need to approximate the stochastic optimization problem from section \ref{sec:stochopt} to adequately solve my work, then introduce the two approaches I used to approximate the optimization problem: the DEP/its sampling/generalized post-selection slicing and the genetic algorithm as a selection method.}
+\textit{In this chapter, I work on defining the approximation approaches used in my work.  Lead in to discussing the need to approximate the stochastic optimization problem from\Cref{sec:stochopt} to adequately solve my work, then introduce the two approaches I used to approximate the optimization problem: the DEP/its sampling/generalized post-selection slicing and the genetic algorithm as a selection method.}
 
 \section{Deterministic Equivalent Program} \label{sec:dep}
 
