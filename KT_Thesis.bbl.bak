@@ -98,7 +98,7 @@ M.~Gomez, M.~B. Weiss, G.~McHenry, and L.~Doyle, ``Matching markets for
 
 \bibitem{pittir33130}
 \BIBentryALTinterwordspacing
-M.~Gomez, ``Secondary spectrum markets: from "naked" spectrum to virtualized
+M.~Gomez, ``Secondary spectrum markets: from ``naked'' spectrum to virtualized
   commodities,'' Ph.D. dissertation, September 2017. [Online]. Available:
   \url{http://d-scholarship.pitt.edu/33130/}
 \BIBentrySTDinterwordspacing
@@ -136,23 +136,24 @@ R.~Atawia, H.~Abou-zeid, H.~S. Hassanein, and A.~Noureldin, ``Joint
 P.~Kall and S.~W. Wallace, \emph{Stochastic Programming}.\hskip 1em plus 0.5em
   minus 0.4em\relax John Wiley and Sons, 1994.
 
+\bibitem{Korte:2007:CombOptimization}
+B.~Korte and J.~Vygen, \emph{Combinatorial Optimization: Theory and
+  Algorithms}, 3rd~ed.\hskip 1em plus 0.5em minus 0.4em\relax Springer
+  Publishing Company, Incorporated, 2000.
+
 \bibitem{7257198}
 T.~Cui, R.~Bai, A.~J. Parkes, F.~He, R.~Qu, and J.~Li, ``A hybrid genetic
   algorithm for a two-stage stochastic portfolio optimization with uncertain
   asset prices,'' in \emph{2015 IEEE Congress on Evolutionary Computation
   (CEC)}, May 2015, pp. 2518--2525.
 
-\bibitem{6554749}
-D.~Lee, S.~Zhou, and Z.~Niu, ``Spatial modeling of scalable
-  spatially-correlated log-normal distributed traffic inhomogeneity and
-  energy-efficient network planning,'' in \emph{Proceedings of the IEEE
-  Wireless Communications and Networking Conference (WCNC)}, April 2013, pp.
-  1285--1290.
-
-\bibitem{686105}
-U.~Gotzner and R.~Rathgeber, ``Spatial traffic distribution in cellular
-  networks,'' in \emph{Proceedings of the IEEE Vehicular Technology Conference
-  (VTC)}, May 1998, pp. 1994--1998, vol. 3.
+\bibitem{leeds:nsPPPgeneration}
+\BIBentryALTinterwordspacing
+{Department of Mining and Mineral Engineering}, ``Poisson: A program for
+  spatial point generation using poisson processes,'' September 2002. [Online].
+  Available:
+  \url{http://www.leeds.ac.uk/StochasticRockFractures/Download/ReportsSeminars/Report1_POISSON_Prog.pdf}
+\BIBentrySTDinterwordspacing
 
 \bibitem{5936263}
 M.~Michalopoulou, J.~Riihijärvi, and P.~Mähönen, ``Towards characterizing
@@ -160,9 +161,21 @@ M.~Michalopoulou, J.~Riihijärvi, and P.~Mähönen, ``Towards characterizing
   \emph{Proceedings of the IEEE International Symposium on Dynamic Spectrum
   Access Networks (DySPAN)}, May 2011, pp. 652--655.
 
-\bibitem{eigenplaces}
-J.~Reades, F.~Calabrese, and C.~Ratti, ``Eigenplaces: analysing cities using
-  the space - time structure of the mobile phone network,'' \emph{Environment
-  and Planning B: Planning and Design}, vol.~36, pp. 824--836, 2009.
+\bibitem{6757900}
+D.~Lee, S.~Zhou, X.~Zhong, Z.~Niu, X.~Zhou, and H.~Zhang, ``Spatial modeling of
+  the traffic density in cellular networks,'' \emph{IEEE Wireless
+  Communications}, vol.~21, no.~1, pp. 80--88, February 2014.
+
+\bibitem{686105}
+U.~Gotzner and R.~Rathgeber, ``Spatial traffic distribution in cellular
+  networks,'' in \emph{Proceedings of the IEEE Vehicular Technology Conference
+  (VTC)}, May 1998, pp. 1994--1998, vol. 3.
+
+\bibitem{6554749}
+D.~Lee, S.~Zhou, and Z.~Niu, ``Spatial modeling of scalable
+  spatially-correlated log-normal distributed traffic inhomogeneity and
+  energy-efficient network planning,'' in \emph{Proceedings of the IEEE
+  Wireless Communications and Networking Conference (WCNC)}, April 2013, pp.
+  1285--1290.
 
 \end{thebibliography}
