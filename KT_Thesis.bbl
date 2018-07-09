@@ -136,6 +136,14 @@ R.~Atawia, H.~Abou-zeid, H.~S. Hassanein, and A.~Noureldin, ``Joint
 P.~Kall and S.~W. Wallace, \emph{Stochastic Programming}.\hskip 1em plus 0.5em
   minus 0.4em\relax John Wiley and Sons, 1994.
 
+\bibitem{Karp1972}
+\BIBentryALTinterwordspacing
+R.~M. Karp, ``Reducibility among combinatorial problems,'' in \emph{Complexity
+  of Computer Computations}, R.~E. Miller, J.~W. Thatcher, and J.~D. Bohlinger,
+  Eds., 1972, pp. 85--103. [Online]. Available:
+  \url{https://doi.org/10.1007/978-1-4684-2001-2_9}
+\BIBentrySTDinterwordspacing
+
 \bibitem{Korte:2007:CombOptimization}
 B.~Korte and J.~Vygen, \emph{Combinatorial Optimization: Theory and
   Algorithms}, 3rd~ed.\hskip 1em plus 0.5em minus 0.4em\relax Springer
@@ -146,6 +154,13 @@ T.~Cui, R.~Bai, A.~J. Parkes, F.~He, R.~Qu, and J.~Li, ``A hybrid genetic
   algorithm for a two-stage stochastic portfolio optimization with uncertain
   asset prices,'' in \emph{2015 IEEE Congress on Evolutionary Computation
   (CEC)}, May 2015, pp. 2518--2525.
+
+\bibitem{Aurenhammer:1991:VDS:116873.116880}
+\BIBentryALTinterwordspacing
+F.~Aurenhammer, ``Voronoi diagrams --- a survey of a fundamental geometric data
+  structure,'' \emph{ACM Computing Surveys}, vol.~23, no.~3, pp. 345--405, Sep.
+  1991. [Online]. Available: \url{http://doi.acm.org/10.1145/116873.116880}
+\BIBentrySTDinterwordspacing
 
 \bibitem{leeds:nsPPPgeneration}
 \BIBentryALTinterwordspacing

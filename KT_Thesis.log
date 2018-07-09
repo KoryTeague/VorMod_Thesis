@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  8 JUL 2018 00:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  8 JUL 2018 19:42
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -634,20 +634,20 @@ LaTeX Info: Redefining \addtolength on input line 81.
 ) (KT_Thesis.aux)
 \openout1 = `KT_Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 58.
-LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 59.
+LaTeX Font Info:    ... okay on input line 59.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -679,7 +679,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box48
-Package hyperref Info: Link coloring OFF on input line 58.
+Package hyperref Info: Link coloring OFF on input line 59.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -689,9 +689,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count148
 )
-LaTeX Info: Redefining \ref on input line 58.
-LaTeX Info: Redefining \pageref on input line 58.
-LaTeX Info: Redefining \nameref on input line 58.
+LaTeX Info: Redefining \ref on input line 59.
+LaTeX Info: Redefining \pageref on input line 59.
+LaTeX Info: Redefining \nameref on input line 59.
 
 (KT_Thesis.out) (KT_Thesis.out)
 \@outlinefile=\write6
@@ -735,241 +735,212 @@ Chapter 1.
 
 ] [2] [3] [4]
 Package hyperref Info: bookmark level for unknown todo defaults to 0 on input l
-ine 202.
+ine 198.
  [5] [6] [7] [8]
-<Figures/ClassicNetworkValueChain.png, id=274, 1202.24156pt x 218.31563pt>
+<Figures/ClassicNetworkValueChain.png, id=273, 1202.24156pt x 218.31563pt>
 File: Figures/ClassicNetworkValueChain.png Graphic file (type png)
 <use Figures/ClassicNetworkValueChain.png>
 Package pdftex.def Info: Figures/ClassicNetworkValueChain.png  used on input li
-ne 227. on input line 227.
+ne 223. on input line 223.
 Package pdftex.def Info: Requested size: 469.75499pt x 85.30264pt on input line
- 227.
- [9] [10 <./Figures/ClassicNetworkValueChain.png>]
-<Figures/NwoBValueChain.png, id=293, 1044.15094pt x 499.8675pt>
+ 223.
+ [9 <./Figures/ClassicNetworkValueChain.png>]
+<Figures/NwoBValueChain.png, id=287, 1044.15094pt x 499.8675pt>
 File: Figures/NwoBValueChain.png Graphic file (type png)
 <use Figures/NwoBValueChain.png>
-Package pdftex.def Info: Figures/NwoBValueChain.png  used on input line 238. on
- input line 238.
+Package pdftex.def Info: Figures/NwoBValueChain.png  used on input line 234. on
+ input line 234.
 Package pdftex.def Info: Requested size: 469.75499pt x 224.8849pt on input line
- 238.
- [11 <./Figures/NwoBValueChain.png>]
-<Figures/VWNArchitecture.png, id=307, 539.76656pt x 233.37187pt>
+ 234.
+
+[10 <./Figures/NwoBValueChain.png>]
+<Figures/VWNArchitecture.png, id=301, 539.76656pt x 233.37187pt>
 File: Figures/VWNArchitecture.png Graphic file (type png)
 <use Figures/VWNArchitecture.png>
-Package pdftex.def Info: Figures/VWNArchitecture.png  used on input line 251. o
-n input line 251.
+Package pdftex.def Info: Figures/VWNArchitecture.png  used on input line 247. o
+n input line 247.
 Package pdftex.def Info: Requested size: 469.75499pt x 203.10666pt on input lin
-e 251.
- [12 <./Figures/VWNArchitecture.png>]
-[13]
-<Figures/VWNArchitectureInteractions.png, id=332, 465.23813pt x 137.01187pt>
+e 247.
+ [11 <./Figures/VWNArchitecture.png>]
+[12]
+<Figures/VWNArchitectureInteractions.png, id=326, 465.23813pt x 137.01187pt>
 File: Figures/VWNArchitectureInteractions.png Graphic file (type png)
 <use Figures/VWNArchitectureInteractions.png>
 Package pdftex.def Info: Figures/VWNArchitectureInteractions.png  used on input
- line 266. on input line 266.
+ line 262. on input line 262.
 Package pdftex.def Info: Requested size: 469.75499pt x 138.34744pt on input lin
-e 266.
- [14 <./Figures/VWNArchitectureInteractions.png>] [15] [16]
-Overfull \hbox (2.13843pt too wide) in paragraph at lines 286--286
-\OT1/cmr/m/n/6 ing/parsing 
- []
-
-
-Overfull \hbox (2.13843pt too wide) in paragraph at lines 286--286
-\OT1/cmr/m/n/6 ing/parsing 
- []
-
-
-Overfull \hbox (2.13843pt too wide) in paragraph at lines 286--286
-\OT1/cmr/m/n/6 ing/parsing 
- []
-
-
-Overfull \hbox (2.13843pt too wide) in paragraph at lines 286--286
-\OT1/cmr/m/n/6 ing/parsing 
- []
-
-[17] [18] [19] [20] [21] [22] [23] [24] [25]
+e 262.
+ [13 <./Figures/VWNArchitectureInteractions.png>] [14] [15] [16] [17]
+[18] [19] [20] [21] [22] [23]
 Chapter 2.
-[26
+[24
 
-]
-Overfull \hbox (4.19955pt too wide) in paragraph at lines 347--347
-[][][][]\OT1/cmr/m/n/6 Appropriate 
- []
-
-
-Overfull \hbox (4.19955pt too wide) in paragraph at lines 347--347
-[][][][]\OT1/cmr/m/n/6 Appropriate 
- []
-
-
-Overfull \hbox (4.19955pt too wide) in paragraph at lines 347--347
-[][][][]\OT1/cmr/m/n/6 Appropriate 
- []
-
-
-Overfull \hbox (4.19955pt too wide) in paragraph at lines 347--347
-[][][][]\OT1/cmr/m/n/6 Appropriate 
- []
-
-
-LaTeX Warning: Marginpar on page 27 moved.
-
-[27] [28] [29] [30] [31] [32]
-<Figures/rhoG_O2pi-300_L50_X1000_Y1000.png, id=509, 421.575pt x 316.0608pt>
+] [25] [26] [27] [28] [29] [30] [31]
+<Figures/rhoG_O2pi-300_L50_X1000_Y1000.png, id=501, 421.575pt x 316.0608pt>
 File: Figures/rhoG_O2pi-300_L50_X1000_Y1000.png Graphic file (type png)
 <use Figures/rhoG_O2pi-300_L50_X1000_Y1000.png>
 Package pdftex.def Info: Figures/rhoG_O2pi-300_L50_X1000_Y1000.png  used on inp
-ut line 476. on input line 476.
+ut line 472. on input line 472.
 Package pdftex.def Info: Requested size: 211.3883pt x 158.48334pt on input line
- 476.
-<Figures/rhoG_O4pi-300_L50_X1000_Y1000.png, id=510, 421.575pt x 316.0608pt>
+ 472.
+<Figures/rhoG_O4pi-300_L50_X1000_Y1000.png, id=502, 421.575pt x 316.0608pt>
 File: Figures/rhoG_O4pi-300_L50_X1000_Y1000.png Graphic file (type png)
 <use Figures/rhoG_O4pi-300_L50_X1000_Y1000.png>
 Package pdftex.def Info: Figures/rhoG_O4pi-300_L50_X1000_Y1000.png  used on inp
-ut line 483. on input line 483.
+ut line 479. on input line 479.
 Package pdftex.def Info: Requested size: 211.3883pt x 158.48334pt on input line
- 483.
- [33]
-<Figures/rhoS_pdf_O2pi-300_L50_X1000_Y1000.png, id=521, 421.575pt x 316.0608pt>
+ 479.
+ [32 <./Figures/rhoG_O2pi-300_L50_X1000_Y1000.png (PNG copy)> <./Figures/rhoG_O
+4pi-300_L50_X1000_Y1000.png (PNG copy)>]
+
+LaTeX Warning: Marginpar on page 33 moved.
+
+<Figures/rhoS_pdf_O2pi-300_L50_X1000_Y1000.png, id=513, 421.575pt x 316.0608pt>
 
 File: Figures/rhoS_pdf_O2pi-300_L50_X1000_Y1000.png Graphic file (type png)
 <use Figures/rhoS_pdf_O2pi-300_L50_X1000_Y1000.png>
 Package pdftex.def Info: Figures/rhoS_pdf_O2pi-300_L50_X1000_Y1000.png  used on
- input line 501. on input line 501.
+ input line 497. on input line 497.
 Package pdftex.def Info: Requested size: 211.3883pt x 158.48334pt on input line
- 501.
-<Figures/rhoS_pdf_O4pi-300_L50_X1000_Y1000.png, id=522, 421.575pt x 316.0608pt>
+ 497.
+<Figures/rhoS_pdf_O4pi-300_L50_X1000_Y1000.png, id=514, 421.575pt x 316.0608pt>
 
 File: Figures/rhoS_pdf_O4pi-300_L50_X1000_Y1000.png Graphic file (type png)
 <use Figures/rhoS_pdf_O4pi-300_L50_X1000_Y1000.png>
 Package pdftex.def Info: Figures/rhoS_pdf_O4pi-300_L50_X1000_Y1000.png  used on
- input line 508. on input line 508.
+ input line 504. on input line 504.
 Package pdftex.def Info: Requested size: 211.3883pt x 158.48334pt on input line
- 508.
- [34 <./Figures/rhoG_O2pi-300_L50_X1000_Y1000.png (PNG copy)> <./Figures/rhoG_O
-4pi-300_L50_X1000_Y1000.png (PNG copy)>]
-<Figures/rho_O2pi-300_L50_X1000_Y1000.png, id=535, 421.575pt x 316.0608pt>
+ 504.
+<Figures/rho_O2pi-300_L50_X1000_Y1000.png, id=520, 421.575pt x 316.0608pt>
 File: Figures/rho_O2pi-300_L50_X1000_Y1000.png Graphic file (type png)
 <use Figures/rho_O2pi-300_L50_X1000_Y1000.png>
 Package pdftex.def Info: Figures/rho_O2pi-300_L50_X1000_Y1000.png  used on inpu
-t line 527. on input line 527.
+t line 523. on input line 523.
 Package pdftex.def Info: Requested size: 211.3883pt x 158.48334pt on input line
- 527.
-<Figures/rho_O4pi-300_L50_X1000_Y1000.png, id=536, 421.575pt x 316.0608pt>
+ 523.
+<Figures/rho_O4pi-300_L50_X1000_Y1000.png, id=521, 421.575pt x 316.0608pt>
 File: Figures/rho_O4pi-300_L50_X1000_Y1000.png Graphic file (type png)
 <use Figures/rho_O4pi-300_L50_X1000_Y1000.png>
 Package pdftex.def Info: Figures/rho_O4pi-300_L50_X1000_Y1000.png  used on inpu
-t line 534. on input line 534.
+t line 530. on input line 530.
 Package pdftex.def Info: Requested size: 211.3883pt x 158.48334pt on input line
- 534.
-<Figures/rho_pdf_O2pi-300_L50_X1000_Y1000.png, id=539, 421.575pt x 316.0608pt>
+ 530.
+<Figures/rho_pdf_O2pi-300_L50_X1000_Y1000.png, id=524, 421.575pt x 316.0608pt>
 File: Figures/rho_pdf_O2pi-300_L50_X1000_Y1000.png Graphic file (type png)
 <use Figures/rho_pdf_O2pi-300_L50_X1000_Y1000.png>
 Package pdftex.def Info: Figures/rho_pdf_O2pi-300_L50_X1000_Y1000.png  used on 
-input line 546. on input line 546.
+input line 542. on input line 542.
 Package pdftex.def Info: Requested size: 211.3883pt x 158.48334pt on input line
- 546.
-<Figures/rho_pdf_O4pi-300_L50_X1000_Y1000.png, id=540, 421.575pt x 316.0608pt>
+ 542.
+<Figures/rho_pdf_O4pi-300_L50_X1000_Y1000.png, id=525, 421.575pt x 316.0608pt>
 File: Figures/rho_pdf_O4pi-300_L50_X1000_Y1000.png Graphic file (type png)
 <use Figures/rho_pdf_O4pi-300_L50_X1000_Y1000.png>
 Package pdftex.def Info: Figures/rho_pdf_O4pi-300_L50_X1000_Y1000.png  used on 
-input line 553. on input line 553.
+input line 549. on input line 549.
 Package pdftex.def Info: Requested size: 211.3883pt x 158.48334pt on input line
- 553.
-
-[35 <./Figures/rhoS_pdf_O2pi-300_L50_X1000_Y1000.png (PNG copy)> <./Figures/rho
-S_pdf_O4pi-300_L50_X1000_Y1000.png (PNG copy)>] [36 <./Figures/rho_O2pi-300_L50
+ 549.
+[33 <./Figures/rhoS_pdf_O2pi-300_L50_X1000_Y1000.png (PNG copy)> <./Figures/rho
+S_pdf_O4pi-300_L50_X1000_Y1000.png (PNG copy)>] [34 <./Figures/rho_O2pi-300_L50
 _X1000_Y1000.png (PNG copy)> <./Figures/rho_O4pi-300_L50_X1000_Y1000.png (PNG c
 opy)> <./Figures/rho_pdf_O2pi-300_L50_X1000_Y1000.png (PNG copy)> <./Figures/rh
 o_pdf_O4pi-300_L50_X1000_Y1000.png (PNG copy)>]
-<Figures/rho_nsPPP-400_O2pi-300_L50_X1000_Y1000.png, id=557, 421.575pt x 316.06
+<Figures/rho_nsPPP-400_O2pi-300_L50_X1000_Y1000.png, id=542, 421.575pt x 316.06
 08pt>
 File: Figures/rho_nsPPP-400_O2pi-300_L50_X1000_Y1000.png Graphic file (type png
 )
 <use Figures/rho_nsPPP-400_O2pi-300_L50_X1000_Y1000.png>
 Package pdftex.def Info: Figures/rho_nsPPP-400_O2pi-300_L50_X1000_Y1000.png  us
-ed on input line 569. on input line 569.
+ed on input line 565. on input line 565.
 Package pdftex.def Info: Requested size: 211.3883pt x 158.48334pt on input line
- 569.
-<Figures/rho_nsPPP-400_O4pi-300_L50_X1000_Y1000.png, id=558, 421.575pt x 316.06
+ 565.
+<Figures/rho_nsPPP-400_O4pi-300_L50_X1000_Y1000.png, id=543, 421.575pt x 316.06
 08pt>
 File: Figures/rho_nsPPP-400_O4pi-300_L50_X1000_Y1000.png Graphic file (type png
 )
 <use Figures/rho_nsPPP-400_O4pi-300_L50_X1000_Y1000.png>
 Package pdftex.def Info: Figures/rho_nsPPP-400_O4pi-300_L50_X1000_Y1000.png  us
-ed on input line 576. on input line 576.
+ed on input line 572. on input line 572.
 Package pdftex.def Info: Requested size: 211.3883pt x 158.48334pt on input line
- 576.
- [37 <./Figures/rho_nsPPP-400_O2pi-300_L50_X1000_Y1000.png (PNG copy)> <./Figur
+ 572.
+ [35 <./Figures/rho_nsPPP-400_O2pi-300_L50_X1000_Y1000.png (PNG copy)> <./Figur
 es/rho_nsPPP-400_O4pi-300_L50_X1000_Y1000.png (PNG copy)>]
-Overfull \hbox (3.0162pt too wide) in paragraph at lines 617--617
-[][][][]\OT1/cmr/m/n/6 Specifically, 
+Overfull \hbox (0.59404pt too wide) in paragraph at lines 613--613
+[]\OT1/cmr/m/n/6 Effectively, 
  []
 
 
-Overfull \hbox (3.0162pt too wide) in paragraph at lines 617--617
-[][][][]\OT1/cmr/m/n/6 Specifically, 
+Overfull \hbox (0.59404pt too wide) in paragraph at lines 613--613
+[]\OT1/cmr/m/n/6 Effectively, 
  []
 
 
-Overfull \hbox (3.0162pt too wide) in paragraph at lines 617--617
-[][][][]\OT1/cmr/m/n/6 Specifically, 
+Overfull \hbox (0.59404pt too wide) in paragraph at lines 613--613
+[]\OT1/cmr/m/n/6 Effectively, 
  []
 
 
-Overfull \hbox (3.0162pt too wide) in paragraph at lines 617--617
-[][][][]\OT1/cmr/m/n/6 Specifically, 
+Overfull \hbox (0.59404pt too wide) in paragraph at lines 613--613
+[]\OT1/cmr/m/n/6 Effectively, 
  []
 
-[38]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 641.
+[36] [37]
+LaTeX Font Info:    Try loading font information for U+bbm on input line 636.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\bbm\ubbm.fd"
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [39] [40]
+) [38]
 Chapter 3.
-[41
+[39
 
-] [42] [43] [44] [45] [46] [47] [48] [49] [50]
+]
+Overfull \hbox (3.59566pt too wide) in paragraph at lines 683--684
+[]\OT1/cmr/m/n/12 In or-der to solve the two-stage stochas-tic op-ti-miza-tion 
+for-mu-la-tion (Prob-lem 1, eqs. ([]2.11[])--
+ []
+
+[40] [41] [42] [43] [44] [45] [46] [47] [48]
 Chapter 4.
-[51
+[49
 
-] [52] [53] [54]
+] [50] [51] [52]
 Chapter 5.
-(KT_Thesis.bbl [55
+(KT_Thesis.bbl [53
 
-] [56] [57
+] [54] [55
 
 ]
 Missing character: There is no Å in font cmr12!
 Missing character: There is no ‚ in font cmr12!
- [58] [59]
+ [56] [57] [58]
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¤ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¤ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¶ in font cmr12!
- [60]) [61]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 855.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 855.
+ [59]) [60]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 849.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 849.
  (KT_Thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 855.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 855.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 849.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 849.
 Package rerunfilecheck Info: File `KT_Thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 231E38F641247F19E7DB8207FD495251;2202.
- ) 
+(rerunfilecheck)             Checksum: DDCE422E1C5A34714044D7F2D6A083DC;2196.
+ )
+(\end occurred when \iftrue on line 331 was incomplete) 
 Here is how much of TeX's memory you used:
- 21866 strings out of 493312
- 427558 string characters out of 3138900
- 525015 words of memory out of 3000000
- 24852 multiletter control sequences out of 15000+200000
+ 21833 strings out of 493312
+ 426860 string characters out of 3138900
+ 512440 words of memory out of 3000000
+ 24821 multiletter control sequences out of 15000+200000
  15886 words of font info for 62 fonts, out of 3000000 for 9000
  1145 hyphenation exceptions out of 8191
- 54i,19n,77p,2163b,724s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exi
-st, replaced by a fixed one
+ 54i,19n,77p,2094b,726s stack positions out of 5000i,500n,10000p,200000b,50000s
+pdfTeX warning (dest): n
+ame{Hfootnote.6} has been referenced but does not exist, replaced by a fixed on
+e
+
+pdfTeX warning (dest): name{Hfootnote.5} has been referenced but does not exist
+, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.4} has been referenced but does not exist
 , replaced by a fixed one
@@ -1001,12 +972,13 @@ gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files
 9/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-ti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on KT_Thesis.pdf (68 pages, 2399566 bytes).
+nts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+sy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on KT_Thesis.pdf (67 pages, 2404215 bytes).
 PDF statistics:
- 873 PDF objects out of 1000 (max. 8388607)
- 197 named destinations out of 1000 (max. 500000)
+ 871 PDF objects out of 1000 (max. 8388607)
+ 195 named destinations out of 1000 (max. 500000)
  307 words of extra memory for PDF output out of 10000 (max. 10000000)
 
