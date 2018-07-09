@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  8 JUL 2018 19:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  8 JUL 2018 20:12
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -925,12 +925,16 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 849.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 849.
 Package rerunfilecheck Info: File `KT_Thesis.out' has not changed.
 (rerunfilecheck)             Checksum: DDCE422E1C5A34714044D7F2D6A083DC;2196.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  )
 (\end occurred when \iftrue on line 331 was incomplete) 
 Here is how much of TeX's memory you used:
  21833 strings out of 493312
  426860 string characters out of 3138900
- 512440 words of memory out of 3000000
+ 512441 words of memory out of 3000000
  24821 multiletter control sequences out of 15000+200000
  15886 words of font info for 62 fonts, out of 3000000 for 9000
  1145 hyphenation exceptions out of 8191
@@ -976,7 +980,7 @@ nts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 sy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Prog
 ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on KT_Thesis.pdf (67 pages, 2404215 bytes).
+Output written on KT_Thesis.pdf (67 pages, 2404278 bytes).
 PDF statistics:
  871 PDF objects out of 1000 (max. 8388607)
  195 named destinations out of 1000 (max. 500000)
