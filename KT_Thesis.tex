@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: July 8, 2018
+% REVISED: July 10, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -298,7 +298,7 @@ Introducing stochastic parameters and constraints allows the optimization model 
 
 However, standard linear programming techniques cannot solve models with stochastic parameters.  Stochastic programming therefore requires converting the stochastic program into its deterministic equivalent program (DEP) which replaces all stochastic variables with deterministic variables~\cite{stochprogramming}.  The process of forming a DEP from a stochastic program involves converting each stochastic variable into a set of all possible scenarios and scenario probabilities.  These scenarios and scenario probabilities are present within the model as a new dimension and weight for the now-deterministic variable.  To fully encapsulate the stochastic variable, the deterministic equivalent variable may be composed of an infinite set.
 
-Resource allocation problems are typically some form of integer programming (IP)--in which all decision variables (unknowns) are integers--or mixed integer programming (MIP)--in which some decision variables (unknowns) are integers.  Both integer and mixed integer programs are generally\footnote{Some subclasses of integer and mixed integer programs are efficiently solvable, but these are the exception.  Several classic NP-Complete (a subset of NP-Hard) problems~\cite{Karp1972} are IP and MIP.} considered NP-hard\footnote{Finding the minimum resource allocation that provides coverage over a geographic area falls within a category of problems referred to as \emph{minimum set cover problems}.  It is apparent that the problem considered in this thesis--specifically the stochastic program proposed in \Cref{sec:stochopt}--is some form of minimum set cover problem; specifically, it might be referred to as a capacitated set cover problem.  Minimum set cover problems are provably NP-hard and typically rely on approximation solutions to solve in a feasible amount of time~\cite{Korte:2007:CombOptimization}.} and thereby computationally intractable and impractical.  As the programs increase in scope, they become more computationally complex to solve; accounting for the scenarios of the previously stochastic variables further increases this complexity.  Finding the optimal solution may require more time than is feasible; in the worst case, these problems run in exponential time complexity.
+Resource allocation problems are typically some form of integer programming (IP)--in which all decision variables (unknowns) are integers--or mixed integer programming (MIP)--in which some decision variables (unknowns) are integers.  Both integer and mixed integer programs are generally\footnote{Some subclasses of integer and mixed integer programs are efficiently solvable, but these are the exception.  Several classic NP-Complete (a subset of NP-Hard) problems~\cite{Karp1972} are IP and MIP.} considered NP-hard\footnote{Finding the minimum resource allocation that provides coverage over a geographic area falls within a category of problems referred to as \emph{minimum set cover problems}.  It is apparent that the problem considered in this thesis--specifically the stochastic program proposed in \Cref{sec:stochopt}--is some form of minimum set cover problem; specifically, it might be referred to as a capacitated set cover problem.  Minimum set cover problems are provably NP-hard and typically rely on approximation solutions to solve in a feasible amount of time~\cite{Korte:2007:CombOptimization}.}.  As the programs increase in scope, they become more computationally complex to solve; accounting for the scenarios of the previously stochastic variables further increases this complexity.  Finding the optimal solution may require more time than is feasible; in the worst case, these problems run in exponential time complexity.
 
 \subsection{Metaheuristic Approaches} \label{subsec:optreview_meta}
 
@@ -317,7 +317,7 @@ In this thesis, I utilize a genetic algorithm as an approach for optimization.  
 
 Since chromosomes from fitter individuals are more likely to pass on to subsequent generations, generations gradually become fitter.  Through crossover, fit chromosomes may combine to form fitter children that proliferate; less fit children are often also formed, but are generally not selected for later generations.  Mutation introduces diversity into the generations, which expand the exploration of the search space.  More details, including that of implementation and variants, will be expanded upon in \Cref{sec:ga}.
 
-Genetic algorithms have been used previously as approaches for simplifying the search spaces of large, complex stochastic optimization problems.  For example, Cui et al.~\cite{7257198} used a genetic algorithm where each chromosome defined a subproblem of larger resource allocation optimization problem, and the fitness was evaluated by solving the subproblems with linear programming optimization methods.  One approach investigated in this thesis coordinates a genetic algorithm with an optimization program wherein the genetic algorithm solves for and fixes a decision variable to simplify the larger optimization program.  Hybrid approaches (e.g., Cui et al.) and other effective metaheuristic algorithms (e.g., ant colony optimization, particle swarm optimization, neural networks and machine learning) are worth investigating in the context of the posed VWN architecture, but beyond the scope of this thesis.
+Genetic algorithms have been used previously as approaches for simplifying the search spaces of large, complex stochastic optimization problems.  For example, Cui et al.~\cite{7257198} used a genetic algorithm where each chromosome defined a subproblem of larger resource allocation optimization problem, and the fitness was evaluated by solving the subproblems with linear programming optimization methods.  One approach investigated in this thesis coordinates a genetic algorithm with an optimization program wherein the genetic algorithm solves for and fixes a decision variable to simplify the larger optimization program.  Hybrid approaches (e.g., Cui et al.) and other effective metaheuristic algorithms (e.g., ant colony optimization, particle swarm optimization, neural networks, and machine learning) are worth investigating in the context of the posed VWN architecture, but beyond the scope of this thesis.
 
 \section{Thesis Objective} \label{sec:objective}
 
@@ -668,13 +668,19 @@ Problem 1 (\cref{eq:P1S1,eq:P1S1C1,eq:P1S2,eq:P1S2C1,eq:P1S2C2,eq:P1S2C3}) repre
 \pagebreak
 \chapter{Approximation Approaches} \label{ch:approaches}
 
-\improvement{Go through chapter notes, and break them down to where and what.}
+\change{Write lede}
 
-\textit{Replace with introduction paragraph to this chapter.  This chapter lays out the two major approaches I am using in this thesis: the sampled DEP and genetic algorithm, and the foundation those approaches are built on.  These approaches are built on the stochastic optimization problem as laid out in \ref{sec:stochopt}, and meant to provide a solution (i.e., the DEP) or an estimate (i.e., the sampled DEP and genetic algorithm) as the original problem is not directly solvable.}
+\info{Overall chapter notes}%
+\textit{Consider ``we'' vs ``I'' and other uses of first-person voice.\\When referring to specific ``Problems'', refer to the equations using \textbackslash cref\{\}, which will compress the reference.\\``Problem 1'' (\Cref{sec:stochopt}) is \cref{eq:P1S1,eq:P1S1C1,eq:P1S2,eq:P1S2C1,eq:P1S2C2,eq:P1S2C3}.\\``Problem 2'' (\Cref{sec:dep}) is \cref{eq:P2,eq:P2C1,eq:P2C2,eq:P2C3}.\\``Problem 3'' (\Cref{subsec:dep_slicing}) is \cref{eq:P3,eq:P3C1,eq:P3C2}.\\``Iverson bracket'' ($[*]=\{0,\, 1\}$, \Cref{sec:stochopt}) is \cref{eq:iverson}.}
 
-\textit{In this chapter, I work on defining the approximation approaches used in my work.  Lead in to discussing the need to approximate the stochastic optimization problem from\Cref{sec:stochopt} to adequately solve my work, then introduce the two approaches I used to approximate the optimization problem: the DEP/its sampling/generalized post-selection slicing and the genetic algorithm as a selection method.}
+\textit{This chapter lays out the two major approaches I am using in this thesis: the sampled DEP and genetic algorithm, and the foundation those approaches are built on.  These approaches are built on the stochastic optimization problem as laid out in \Cref{sec:stochopt}, and meant to provide a solution (i.e., the DEP) or an estimate (i.e., the sampled DEP and genetic algorithm) as the original problem is not directly solvable.}
+
+\textit{In this chapter, I work on defining the approximation approaches used in my work.  Lead in to discussing the need to approximate the stochastic optimization problem from \Cref{sec:stochopt} to adequately solve my work, then introduce the two approaches I used to approximate the optimization problem: the DEP/its sampling/generalized post-selection slicing and the genetic algorithm as a selection method.}
 
 \section{Deterministic Equivalent Program} \label{sec:dep}
+
+\info{\Cref{sec:dep} notes}%
+\textit{TBD}
 
 \textit{Replace all ``we''s with ``I''s or with alternate phrasing/tense/voice.  When referring to ``Problem''s (e.g., Problem 1 from section \ref{sec:stochopt}), refer to the equations that make up that problem; see first reference of Problem 1 in Chapter \ref{ch:approaches} for reference.}
 

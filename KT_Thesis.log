@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  8 JUL 2018 20:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  10 JUL 2018 12:54
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -889,10 +889,17 @@ LaTeX Font Info:    Try loading font information for U+bbm on input line 636.
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 ) [38]
 Chapter 3.
-[39
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 674.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 674.
+ [39
 
 ]
-Overfull \hbox (3.59566pt too wide) in paragraph at lines 683--684
+Overfull \hbox (3.59566pt too wide) in paragraph at lines 689--690
 []\OT1/cmr/m/n/12 In or-der to solve the two-stage stochas-tic op-ti-miza-tion 
 for-mu-la-tion (Prob-lem 1, eqs. ([]2.11[])--
  []
@@ -918,24 +925,20 @@ Missing character: There is no ¤ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¶ in font cmr12!
  [59]) [60]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 849.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 849.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 855.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 855.
  (KT_Thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 849.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 849.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 855.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 855.
 Package rerunfilecheck Info: File `KT_Thesis.out' has not changed.
 (rerunfilecheck)             Checksum: DDCE422E1C5A34714044D7F2D6A083DC;2196.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
  )
 (\end occurred when \iftrue on line 331 was incomplete) 
 Here is how much of TeX's memory you used:
- 21833 strings out of 493312
- 426860 string characters out of 3138900
- 512441 words of memory out of 3000000
- 24821 multiletter control sequences out of 15000+200000
+ 21870 strings out of 493312
+ 427579 string characters out of 3138900
+ 518583 words of memory out of 3000000
+ 24853 multiletter control sequences out of 15000+200000
  15886 words of font info for 62 fonts, out of 3000000 for 9000
  1145 hyphenation exceptions out of 8191
  54i,19n,77p,2094b,726s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -980,9 +983,9 @@ nts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
 sy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Prog
 ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on KT_Thesis.pdf (67 pages, 2404278 bytes).
+Output written on KT_Thesis.pdf (67 pages, 2408376 bytes).
 PDF statistics:
- 871 PDF objects out of 1000 (max. 8388607)
- 195 named destinations out of 1000 (max. 500000)
+ 888 PDF objects out of 1000 (max. 8388607)
+ 197 named destinations out of 1000 (max. 500000)
  307 words of extra memory for PDF output out of 10000 (max. 10000000)
 
