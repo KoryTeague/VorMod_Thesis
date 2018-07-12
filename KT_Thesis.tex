@@ -739,12 +739,10 @@ Problem 1 (\cref{eq:P1S1,eq:P1S1C1,eq:P1S2,eq:P1S2C1,eq:P1S2C2,eq:P1S2C3}) repre
 \pagebreak
 \chapter{Approximation Approaches} \label{ch:approaches}
 
-\change{Write lede}%
-\textit{placeholder}
-In \Cref{ch:vnbmodel}, 	
+\Cref{ch:vnbmodel} established a mathematical model for analyzing the relationship between SPs and a VNB and proposed a two-stage stochastic optimization program for constructing VWNs in the context of that relationship.  In this chapter, I analyze this program, Problem 1 (\cref{eq:P1S1,eq:P1S1C1,eq:P1S2,eq:P1S2C1,eq:P1S2C2,eq:P1S2C3}), and modify it to convert it into a deterministic form: the deterministic equivalent program (DEP).  I present an approach to solve Problem 1 via sampling of its deterministic equivalent program into a solvable form that provides the VNB's optimal resource selection for constructing its managed VWNs.  From this, I derive a method for adaptive slicing which allocates resource slices from the pool of selected resources to individual VWNs.  I then present a heuristic approach via genetic algorithm (GA) to handle resource allocation with lower computational expense.
 
 \info{Overall chapter notes}%
-\textit{Convert ``we'' into kory wahere.``I'' and consider other forms of POV and voice; avoid passive voice.\\When referring to specific ``Problems'', refer to the equations using \textbackslash cref\{\}, which will compress the reference.\\``Problem 1'' (\Cref{sec:stochopt}) is \cref{eq:P1S1,eq:P1S1C1,eq:P1S2,eq:P1S2C1,eq:P1S2C2,eq:P1S2C3}.\\``Problem 2'' (\Cref{sec:dep}) is \cref{eq:P2,eq:P2C1,eq:P2C2,eq:P2C3}.\\``Problem 3'' (\Cref{subsec:dep_slicing}) is \cref{eq:P3,eq:P3C1,eq:P3C2}.\\``Iverson bracket'' ($[*]=\{0,\, 1\}$, \Cref{sec:stochopt}) is \cref{eq:iverson}.}
+\textit{Convert ``we'' into ``I'' and consider other forms of POV and voice; avoid passive voice.\\When referring to specific ``Problems'', refer to the equations using \textbackslash cref\{\}, which will compress the reference.\\``Problem 1'' (\Cref{sec:stochopt}) is \cref{eq:P1S1,eq:P1S1C1,eq:P1S2,eq:P1S2C1,eq:P1S2C2,eq:P1S2C3}.\\``Problem 2'' (\Cref{sec:dep}) is \cref{eq:P2,eq:P2C1,eq:P2C2,eq:P2C3}.\\``Problem 3'' (\Cref{subsec:dep_slicing}) is \cref{eq:P3,eq:P3C1,eq:P3C2}.\\``Iverson bracket'' ($[*]=\{0,\, 1\}$, \Cref{sec:stochopt}) is \cref{eq:iverson}.}
 
 \textit{This chapter lays out the two major approaches I am using in this thesis: the sampled DEP and genetic algorithm, and the foundation those approaches are built on.  These approaches are built on the stochastic optimization problem as laid out in \Cref{sec:stochopt}, and meant to provide a solution (i.e., the DEP) or an estimate (i.e., the sampled DEP and genetic algorithm) as the original problem is not directly solvable.}
 
