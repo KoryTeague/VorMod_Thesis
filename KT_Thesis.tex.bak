@@ -759,7 +759,7 @@ Problem 1 (\cref{eq:P1S1,eq:P1S1C1,eq:P1S2,eq:P1S2C1,eq:P1S2C2,eq:P1S2C3}) repre
 
 In order to solve the two-stage stochastic optimization formulation (Problem 1, \cref{eq:P1S1,eq:P1S1C1,eq:P1S2,eq:P1S2C1,eq:P1S2C2,eq:P1S2C3}), we need to convert it to a deterministic equivalent program (DEP) that does not contain any stochastic variables (only deterministic variables)~\cite{stochprogramming}.
 
-Let $\Omega$ be defined as the sample space, i.e., the set of all scenarios.  Let $\hat{\Omega} \defeq \{1,\, 2,\, \ldots,\, O\}$ be a discrete set containing sampled scenarios.  The probability a given scenario $\omega \in \hat{\Omega}$ occurs is denoted by $p^{(\omega)},\, \omega \in \hat{\Omega}$, where $\sum_{\omega \in \hat{\Omega}} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.
+Let $\Omega$ be defined as the scenario space, i.e., the set of all scenarios.  Let $\hat{\Omega} \defeq \{1,\, 2,\, \ldots,\, O\}$ be a discrete set containing sampled scenarios.  The probability a given scenario $\omega \in \hat{\Omega}$ occurs is denoted by $p^{(\omega)},\, \omega \in \hat{\Omega}$, where $\sum_{\omega \in \hat{\Omega}} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.
 
 \vspace{3mm}
 \begin{tcolorbox}[title = Problem 2 (Deterministic Equivalent Program of Problem 1)]
