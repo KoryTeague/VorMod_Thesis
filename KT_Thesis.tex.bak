@@ -753,16 +753,15 @@ Problem 1 (\cref{eq:P1S1,eq:P1S1C1,eq:P1S2,eq:P1S2C1,eq:P1S2C2,eq:P1S2C3}) repre
 \info{\Cref{sec:dep} notes}%
 \textit{Replace all ``we''s with ``I''s.\\Consider voice/POV.\\Convert \textbackslash ref\{\} to \textbackslash cref\{\}.\\Separate $\Omega$ and $\hat{\Omega}$ by presenting $\Omega$ alone as its own first problem spanning the whole sample space?  The DEP is only ``equivalent'' while it samples the entire sample space.  Present a single problem spanning the whole scenario space first, then sample it into a sampled version?  I do have a subsection for sampling; that would be a perfect location to a sampled DEP problem declaration after discussing sampling $\Omega$.  If considering the whole scenario space, then $O$ doesn't matter any more; effectively it's infinite; need to make sure the definition isn't $\{1,\, 2,\, \dots,\, O\}$}
 
-\textit{Replace all ``we''s with ``I''s or with alternate phrasing/tense/voice.  When referring to ``Problem''s (e.g., Problem 1 from section \ref{sec:stochopt}), refer to the equations that make up that problem; see first reference of Problem 1 in Chapter \ref{ch:approaches} for reference.}
-
 \textit{Introduce the idea of a DEP as an approach for solving the original stochastic problem.  Present the solved problem here in the form of the true deterministic equivalent program - as in, it is actually an equivalent to the original stochastic problem - with all the necessary expansions and additional variables.  Focus on how this formulation no longer includes any stochastic variables and is purely deterministic.  Mention that the trade off is that the deterministic variables are part of a infinitely large set of potential scenarios.}
 
-In order to solve the two-stage stochastic optimization formulation (Problem 1, \cref{eq:P1S1,eq:P1S1C1,eq:P1S2,eq:P1S2C1,eq:P1S2C2,eq:P1S2C3}), we need to convert it to a deterministic equivalent program (DEP) that does not contain any stochastic variables (only deterministic variables)~\cite{stochprogramming}.
+In order to solve the two-stage stochastic optimization formulation (Problem 1, \cref{eq:P1S1,eq:P1S1C1,eq:P1S2,eq:P1S2C1,eq:P1S2C2,eq:P1S2C3}), I need to convert it to a deterministic equivalent program (DEP) that does not contain any stochastic variables (only deterministic variables)~\cite{stochprogramming}.  This is done by converting stochastic variables into sets which contain every scenario or realization in the scope of the stochastic variables.
 
-Let $\Omega$ be defined as the scenario space, i.e., the set of all scenarios.  Let $\hat{\Omega} \defeq \{1,\, 2,\, \ldots,\, O\}$ be a discrete set containing sampled scenarios.  The probability a given scenario $\omega \in \hat{\Omega}$ occurs is denoted by $p^{(\omega)},\, \omega \in \hat{\Omega}$, where $\sum_{\omega \in \hat{\Omega}} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.
+%Let $\Omega$ be defined as the scenario space (i.e., the set of all scenarios) of demand point locations defining $u_{ms}$ and $\delta_{ms}$.  Let $\hat{\Omega} \defeq \{1,\, 2,\, \ldots,\, O\}$ be a discrete set containing sampled scenarios.  The probability a given scenario $\omega \in \hat{\Omega}$ occurs is denoted by $p^{(\omega)},\, \omega \in \hat{\Omega}$, where $\sum_{\omega \in \hat{\Omega}} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.
 
-\vspace{3mm}
-\begin{tcolorbox}[title = Problem 2 (Deterministic Equivalent Program of Problem 1)]
+Let $\Omega$ be defined as the scenario space (i.e., the set of all scenarios) of demand point locations defining $u_{ms}$ and $\delta_{ms}$.  The probability of a given scenario $\omega \in \Omega$ occurs is denoted by $p^{(\omega)}$, where $\sum_{\omega \in \Omega} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.
+
+\begin{tcolorbox}[floatplacement = !ht, float, title = Problem 2 (Deterministic Equivalent Program of Problem 1)]
 \begin{align}
 & \underset{\left\{ \substack{
 	z_s,\, \delta_{ms}^{(\omega)},\\
