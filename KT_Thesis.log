@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  15 JUL 2018 19:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  16 JUL 2018 17:04
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -883,65 +883,66 @@ Overfull \hbox (0.59404pt too wide) in paragraph at lines 684--684
 []\OT1/cmr/m/n/6 Effectively, 
  []
 
-[36] [37]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 707.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\bbm\ubbm.fd"
-File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [38]
+[36] [37] [38] [39]
 Chapter 3.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 745.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 750.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 745.
- [39
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 750.
+ [40
 
 ]
-Overfull \hbox (3.59566pt too wide) in paragraph at lines 752--753
+Overfull \hbox (3.59566pt too wide) in paragraph at lines 757--758
 []\OT1/cmr/m/n/12 In or-der to solve the two-stage stochas-tic op-ti-miza-tion 
 for-mu-la-tion (Prob-lem 1, eqs. ([]2.11[])--
  []
 
-[40] [41] [42] [43] [44] [45] [46] [47] [48]
+[41] [42] [43] [44] [45] [46] [47]
+LaTeX Font Info:    Try loading font information for U+bbm on input line 848.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\bbm\ubbm.fd"
+File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
+) [48] [49] [50]
 Chapter 4.
-[49
+[51
 
-] [50] [51] [52]
+] [52] [53] [54]
 Chapter 5.
-(KT_Thesis.bbl [53
+(KT_Thesis.bbl [55
 
-] [54] [55
+] [56] [57
 
 ]
 Missing character: There is no Å in font cmr12!
 Missing character: There is no ‚ in font cmr12!
- [56] [57] [58]
+ [58] [59] [60]
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¤ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¤ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¶ in font cmr12!
- [59]) [60]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 919.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 919.
+ [61]) [62]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 938.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 938.
  (KT_Thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 919.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 919.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 938.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 938.
 Package rerunfilecheck Info: File `KT_Thesis.out' has not changed.
 (rerunfilecheck)             Checksum: DDCE422E1C5A34714044D7F2D6A083DC;2196.
  )
 (\end occurred when \iftrue on line 402 was incomplete) 
 Here is how much of TeX's memory you used:
- 21873 strings out of 493312
- 427509 string characters out of 3138900
- 515532 words of memory out of 3000000
- 24856 multiletter control sequences out of 15000+200000
- 15886 words of font info for 62 fonts, out of 3000000 for 9000
+ 21891 strings out of 493312
+ 427805 string characters out of 3138900
+ 515980 words of memory out of 3000000
+ 24866 multiletter control sequences out of 15000+200000
+ 15755 words of font info for 61 fonts, out of 3000000 for 9000
  1145 hyphenation exceptions out of 8191
- 54i,19n,77p,2094b,724s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 54i,19n,77p,2094b,712s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): n
 ame{Hfootnote.6} has been referenced but does not exist, replaced by a fixed on
 e
@@ -962,30 +963,28 @@ pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 , replaced by a fixed one
 
  <C:\Users\teagu\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\bbm\dpi600\bbm
-12.pk> <C:\Users\teagu\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\public\bbm\dpi6
-00\bbm6.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:
-/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program
- Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
-/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.
-9/fonts/type1/public/amsfonts/cm/cmss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmsy5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
-sy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on KT_Thesis.pdf (67 pages, 2408369 bytes).
+12.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9
+/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
+12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program 
+Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.
+pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on KT_Thesis.pdf (69 pages, 2404873 bytes).
 PDF statistics:
- 887 PDF objects out of 1000 (max. 8388607)
- 197 named destinations out of 1000 (max. 500000)
+ 900 PDF objects out of 1000 (max. 8388607)
+ 206 named destinations out of 1000 (max. 500000)
  307 words of extra memory for PDF output out of 10000 (max. 10000000)
 
