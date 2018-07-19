@@ -125,6 +125,8 @@
 
 \newcommand*\mean[1]{\widebar{#1}}
 
+\allowdisplaybreaks
+
 \hyphenation{vir-tu-al-iz-a-tion vir-tu-al-ized au-to-cor-re-la-tion com-mu-ni-cat-ing}
 
 \begin{document}
@@ -540,40 +542,40 @@ The autocorrelation function is notably dependent on the maximum angular frequen
 \centering
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rhoG_O2pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{2\pi}{300}$}
+	\includegraphics[width=1\linewidth]{rhoG_O2pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{2\pi}{30}$}
 	\label{fig:rhoG_2pi-300}
 \end{subfigure}
 \hspace{0.5cm}
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rhoG_O4pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{4\pi}{300}$}
+	\includegraphics[width=1\linewidth]{rhoG_O4pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{4\pi}{30}$}
 	\label{fig:rhoG_4pi-300}
 \end{subfigure}
-\caption[Example Gaussian random fields for SSLT demand model generation]{\small Two example Gaussian random fields (i.e., $\rho^G$) for generating the SSLT demand model, varying by $\omega_{\max}$.  $L = 50,\, X = 1000,\, Y = 1000$}
+\caption[Example Gaussian random fields for SSLT demand model generation]{\small Two example Gaussian random fields (i.e., $\rho^G$) for generating the SSLT demand model, varying by $\omega_{\max}$.  $L = 100000,\, X = 100,\, Y = 100$}
 \label{fig:rhoG}
 \end{figure}
 
-The approximate Gaussian distribution $\rho^G$ is then \unsure{Do I need to account for mean?\\Consider...}normalized to a standard normal distribution\footnote{A standard normal distribution is a Gaussian distribution with mean $\mu = 0$ and variance $\sigma = 1$.}, $\rho^S = \rho^S\left(x,\, y\right),\, x \in \left[0,\, X\right],\, y \in \left[0,\, Y\right]$,
+The approximate Gaussian distribution $\rho^G$ is then normalized to a standard normal distribution\footnote{A standard normal distribution is a Gaussian distribution with mean $\mu = 0$ and variance $\sigma = 1$.}, $\rho^S = \rho^S\left(x,\, y\right),\, x \in \left[0,\, X\right],\, y \in \left[0,\, Y\right]$,
 \begin{equation} \label{eq:rhoS}
 \rho^S\left(x,\, y\right) = \frac{\rho^G\left(x,\, y\right) - \mean{\rho^G}}{\sqrt{\text{Var}\left(\rho^G\right)}},
 \end{equation}
-where $\text{Var}\left(\rho^G\right)$ is the variance of $\rho^G$ and $\mean{\rho^G}$ is the mean of $\rho^G$.  Fig. \ref{fig:rhoS_pdf} compares the PDF of the two $\rho^S$ fields generated from the $\rho^G$ fields displayed in Fig. \ref{fig:rhoG} to verify that $\rho^S$ closely approximates a standard normal distribution.  There is some deviation from the standard normal as expected, but it does \unsure{What does it mean to ``closely approximate?''\\Is there a way I can mathematically specify this?\\Revisit}closely approximate the desired distributions.
+where $\text{Var}\left(\rho^G\right)$ is the variance of $\rho^G$ and $\mean{\rho^G}$ is the mean of $\rho^G$.  Fig. \improvement{Discuss the accuracy, $\chi^2$ test, and confidence intervals with respect to the Gaussian field.}\ref{fig:rhoS_pdf} compares the PDF of the two $\rho^S$ fields generated from the $\rho^G$ fields displayed in Fig. \ref{fig:rhoG} to verify that $\rho^S$ closely approximates a standard normal distribution.  There is some deviation from the standard normal as expected, but it does \unsure{What does it mean to ``closely approximate?''\\Is there a way I can mathematically specify this?\\Revisit}closely approximate the desired distributions.
 
 \begin{figure}[!ht]
 \centering
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rhoS_pdf_O2pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{2\pi}{300}$}
+	\includegraphics[width=1\linewidth]{rhoS_pdf_O2pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{2\pi}{30}$}
 	\label{fig:rhoS_pdf_2pi-300}
 \end{subfigure}
 \hspace{0.5cm}
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rhoS_pdf_O4pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{4\pi}{300}$}
+	\includegraphics[width=1\linewidth]{rhoS_pdf_O4pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{4\pi}{30}$}
 	\label{fig:rhoS_pdf_4pi-300}
 \end{subfigure}
 \caption[PDF comparisons of example standard normal fields to the standard normal distribution]{\small PDF comparison of the two $\rho^S$ fields generated from the $\rho^G$ fields displayed in Fig. \ref{fig:rhoG} to a standard normal distribution.}
@@ -591,15 +593,15 @@ Fig. \ref{fig:rho} shows the resulting SSLT demand density distribution, $\rho$,
 \centering
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rho_O2pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{2\pi}{300}$}
+	\includegraphics[width=1\linewidth]{rho_O2pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{2\pi}{30}$}
 	\label{fig:rho_2pi-300}
 \end{subfigure}
 \hspace{0.5cm}
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rho_O4pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{4\pi}{300}$}
+	\includegraphics[width=1\linewidth]{rho_O4pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{4\pi}{30}$}
 	\label{fig:rho_4pi-300}
 \end{subfigure}
 \caption[Generated example SSLT demand fields]{\small Two SSLT demand fields generated from the $\rho^G$ demand fields displayed in Fig. \ref{fig:rhoG}. $\mu = 0,\, \sigma = 1$}
@@ -610,15 +612,15 @@ Fig. \ref{fig:rho} shows the resulting SSLT demand density distribution, $\rho$,
 \centering
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rho_pdf_O2pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{2\pi}{300}$}
+	\includegraphics[width=1\linewidth]{rho_pdf_O2pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{2\pi}{30}$}
 	\label{fig:rho_pdf_2pi-300}
 \end{subfigure}
 \hspace{0.5cm}
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rho_pdf_O4pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{4\pi}{300}$}
+	\includegraphics[width=1\linewidth]{rho_pdf_O4pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{4\pi}{30}$}
 	\label{fig:rho_pdf_4pi-300}
 \end{subfigure}
 \caption[PDF comparisons of example SSLT demand fields to the log-normal distribution]{\small PDFs of the two generated SSLT demand fields displayed in Fig. \ref{fig:rho}.}
@@ -633,15 +635,15 @@ I deviate from their implementation by leaving the SSLT distribution as a contin
 \centering
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rho_nsPPP-400_O2pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{2\pi}{300}$}
+	\includegraphics[width=1\linewidth]{rho_nsPPP-400_O2pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{2\pi}{30}$}
 	\label{fig:rho_nsPPP_2pi-300}
 \end{subfigure}
 \hspace{0.5cm}
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rho_nsPPP-400_O4pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{4\pi}{300}$}
+	\includegraphics[width=1\linewidth]{rho_nsPPP-400_O4pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{4\pi}{30}$}
 	\label{fig:rho_nsPPP_4pi-300}
 \end{subfigure}
 \caption[Realizations of example SSLT demand point distributions]{\small Example demand point realizations distributed according to the described non-stationary PPP with 400 demand points.}
@@ -930,6 +932,42 @@ The genetic algorithm only determines an approximate solution to the BS selectio
 -- Other traffic demand models (log-normal mixtures, $\alpha$-stable)\\%
 -- Rate normalization that varies with distance (i.e., non-binary $u_{ms}$)\\%
 --
+\fi
+
+\iffalse
+\pagebreak
+\chapter{Derivations} \label{ch:derive}
+
+\begin{align}
+\text{Area} &= \int_X \int_Y \rho\left( x,\, y \right) dy \, dx \\
+&= \int_X \int_Y \exp\left( \sigma \; \rho^S \left( x,\, y \right) + \mu \right) dy \, dx \\
+&= \int_X \int_Y \exp\left( \frac{\sigma}{\sigma^G} \; \left( \rho^G\left( x,\, y \right) - \mu^G \right) + \mu \right) dy \, dx \\
+&= \int_X \int_Y \exp\left( \frac{\sigma}{\sigma^G} \; \rho^G\left( x,\, y \right) - \frac{\sigma}{\sigma^G} \; \mu^G + \mu \right) dy \, dx \\
+&= \int_X \int_Y \exp\left( \hat{\sigma} \; \rho^G\left( x,\, y \right) + \hat{\mu} \right) dy \, dx \\
+& \hspace{1in} \text{where $\hat{\sigma} = \frac{\sigma}{\sigma^G}$ and $\hat{\mu} = \mu - \frac{\sigma}{\sigma^G} \; \mu^G$} \nonumber \\
+&= \int_X \int_Y \exp\left( \hat{\sigma} \frac{1}{L} \sum_{l = 1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l y + \psi_l \right) + \hat{\mu} \right) dy \, dx \\
+& \hspace{1in} \text{where $i_l,\, j_l \sim \mathcal{U}\left( 0,\, 2\pi \right)$ and $\phi_l,\, \psi_l \sim \mathcal{U}\left( 0,\, \omega_{\max} \right)$} \nonumber \\
+&= e^{\hat{\mu}} \int_X \int_Y \exp\left( \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l y + \psi_l \right) \right) dy \, dx \\
+&= e^{\hat{\mu}} \int_X \int_{U=Y} \exp\left( u \right) \frac{-L}{\hat{\sigma} \sum_{l=1}^L j_l \; \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l y + \psi_l \right)} du \, dx \\
+& \hspace{1in} \text{where $u = \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l y + \psi_l \right)$} \nonumber \\
+& \hspace{1in} \text{and $du = \frac{-\hat{\sigma}}{L} \sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l y + \psi_l \right) dy$} \nonumber \\
+& \hspace{1in} \text{or $dy = \frac{-L}{\hat{\sigma} \sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l y + \psi_l \right)} du$} \nonumber \\
+&= \frac{-e^{\hat{\mu}} L}{\hat{\sigma}} \int_X \left. \exp\left( u \right) \right\rvert_{u = U \sim Y} \left. \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l y + \psi_l \right)} \right\rvert_{y = a_0 x + b_0}^{a_1 x + b_1} dx \\
+&= \frac{-e^{\hat{\mu}} L}{\hat{\sigma}} \int_X \exp\left( \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l y + \psi_l \right) \right) * \nonumber \\
+& \hspace{1.9in} \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l y + \psi_l \right)} \Biggr\rvert_{y = a_0 x + b_0}^{a_1 x + b_1} dx \\
+&= \frac{-e^{\hat{\mu}} L}{\hat{\sigma}} \int_X \Biggl[ \exp\left( \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l \left( a_1 x + b_1 \right) + \psi_l \right) \right) * \nonumber \\
+& \hspace{1.9in} \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l \left( a_1 x + b_1 \right) + \psi_l \right)} \Biggr] - \nonumber \\
+& \hspace{0.9in} \Biggl[ \exp\left( \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l \left( a_0 x + b_0 \right) + \psi_l \right) \right) * \nonumber \\
+& \hspace{1.9in} \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l \left( a_0 x + b_0 \right) + \psi_l \right)} \Biggr] \\
+&= \frac{-e^{\hat{\mu}} L}{\hat{\sigma}} \int_X \Biggl[ \exp\left( \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l a_1 x + j_l b_1 + \psi_l \right) \right) * \nonumber \\
+& \hspace{1.9in} \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l a_1 x + j_l b_1 + \psi_l \right)} \Biggr] - \nonumber \\
+& \hspace{0.9in} \Biggl[ \exp\left( \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l a_0 x + j_l b_0 + \psi_l \right) \right) * \nonumber \\
+& \hspace{1.9in} \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l a_0 x + j_l b_0 + \psi_l \right)} \Biggr] \\
+&= \frac{-e^{\hat{\mu}} L}{\hat{\sigma}} \int_X \Biggl[ \exp\left( \frac{\hat{\sigma}}{2L} \sum_{l=1}^L \cos\left( \left( i_l - j_l a_1 \right) x + \phi_l - j_l b_1 - \psi_l \right) \; \cos\left( j_l a_1 x + j_l b_1 + \psi_l \right) \right) * \nonumber \\
+& \hspace{1.9in} \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l a_1 x + j_l b_1 + \psi_l \right)} \Biggr] - \nonumber \\
+& \hspace{0.9in} \Biggl[ \exp\left( \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l a_0 x + j_l b_0 + \psi_l \right) \right) * \nonumber \\
+& \hspace{1.9in} \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l a_0 x + j_l b_0 + \psi_l \right)} \Biggr] \\
+\end{align}
 \fi
 
 \bibliography{KT_Thesis}
