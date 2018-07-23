@@ -155,13 +155,6 @@ T.~Cui, R.~Bai, A.~J. Parkes, F.~He, R.~Qu, and J.~Li, ``A hybrid genetic
   asset prices,'' in \emph{2015 IEEE Congress on Evolutionary Computation
   (CEC)}, May 2015, pp. 2518--2525.
 
-\bibitem{Aurenhammer:1991:VDS:116873.116880}
-\BIBentryALTinterwordspacing
-F.~Aurenhammer, ``Voronoi diagrams --- a survey of a fundamental geometric data
-  structure,'' \emph{ACM Computing Surveys}, vol.~23, no.~3, pp. 345--405, Sep.
-  1991. [Online]. Available: \url{http://doi.acm.org/10.1145/116873.116880}
-\BIBentrySTDinterwordspacing
-
 \bibitem{leeds:nsPPPgeneration}
 \BIBentryALTinterwordspacing
 {Department of Mining and Mineral Engineering}, ``Poisson: A program for
@@ -170,10 +163,22 @@ F.~Aurenhammer, ``Voronoi diagrams --- a survey of a fundamental geometric data
   \url{http://www.leeds.ac.uk/StochasticRockFractures/Download/ReportsSeminars/Report1\_POISSON\_Prog.pdf}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Aurenhammer:1991:VDS:116873.116880}
+\BIBentryALTinterwordspacing
+F.~Aurenhammer, ``Voronoi diagrams --- a survey of a fundamental geometric data
+  structure,'' \emph{ACM Computing Surveys}, vol.~23, no.~3, pp. 345--405, Sep.
+  1991. [Online]. Available: \url{http://doi.acm.org/10.1145/116873.116880}
+\BIBentrySTDinterwordspacing
+
 \bibitem{686105}
 U.~Gotzner and R.~Rathgeber, ``Spatial traffic distribution in cellular
   networks,'' in \emph{Proceedings of the IEEE Vehicular Technology Conference
   (VTC)}, vol.~3, May 1998, pp. 1994--1998.
+
+\bibitem{6757900}
+D.~Lee, S.~Zhou, X.~Zhong, Z.~Niu, X.~Zhou, and H.~Zhang, ``Spatial modeling of
+  the traffic density in cellular networks,'' \emph{IEEE Wireless
+  Communications}, vol.~21, no.~1, pp. 80--88, Feb 2014.
 
 \bibitem{5936263}
 M.~Michalopoulou, J.~Riihijärvi, and P.~Mähönen, ``Towards characterizing
@@ -181,23 +186,10 @@ M.~Michalopoulou, J.~Riihijärvi, and P.~Mähönen, ``Towards characterizing
   \emph{Proceedings of the IEEE International Symposium on Dynamic Spectrum
   Access Networks (DySPAN)}, May 2011, pp. 652--655.
 
-\bibitem{6757900}
-D.~Lee, S.~Zhou, X.~Zhong, Z.~Niu, X.~Zhou, and H.~Zhang, ``Spatial modeling of
-  the traffic density in cellular networks,'' \emph{IEEE Wireless
-  Communications}, vol.~21, no.~1, pp. 80--88, Feb 2014.
-
 \bibitem{7202841}
 Y.~Zhou, R.~Li, Z.~Zhao, X.~Zhou, and H.~Zhang, ``On the $\alpha$-stable
   distribution of base stations in cellular networks,'' \emph{IEEE
   Communications Letters}, vol.~19, no.~10, pp. 1750--1753, Oct 2015.
-
-\bibitem{PhysRevE.72.026116}
-\BIBentryALTinterwordspacing
-Y.~Xia, C.~K. Tse, W.~M. Tam, F.~C.~M. Lau, and M.~Small, ``Scale-free
-  user-network approach to telephone network traffic analysis,'' \emph{Phys.
-  Rev. E}, vol.~72, p. 026116, Aug 2005. [Online]. Available:
-  \url{https://link.aps.org/doi/10.1103/PhysRevE.72.026116}
-\BIBentrySTDinterwordspacing
 
 \bibitem{eigenplaces}
 J.~Reades, F.~Calabrese, and C.~Ratti, ``Eigenplaces: analysing cities using
@@ -210,5 +202,13 @@ D.~Lee, S.~Zhou, and Z.~Niu, ``Spatial modeling of scalable
   energy-efficient network planning,'' in \emph{Proceedings of the IEEE
   Wireless Communications and Networking Conference (WCNC)}, Apr 2013, pp.
   1285--1290.
+
+\bibitem{PhysRevE.72.026116}
+\BIBentryALTinterwordspacing
+Y.~Xia, C.~K. Tse, W.~M. Tam, F.~C.~M. Lau, and M.~Small, ``Scale-free
+  user-network approach to telephone network traffic analysis,'' \emph{Phys.
+  Rev. E}, vol.~72, p. 026116, Aug 2005. [Online]. Available:
+  \url{https://link.aps.org/doi/10.1103/PhysRevE.72.026116}
+\BIBentrySTDinterwordspacing
 
 \end{thebibliography}

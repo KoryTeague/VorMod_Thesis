@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: July 18, 2018
+% REVISED: July 23, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -125,7 +125,9 @@
 
 \newcommand*\mean[1]{\widebar{#1}}
 
-\hyphenation{vir-tu-al-iz-a-tion vir-tu-al-ized au-to-cor-re-la-tion com-mu-ni-cat-ing}
+\allowdisplaybreaks
+
+\hyphenation{vir-tu-al-iz-a-tion vir-tu-al-ized au-to-cor-re-la-tion com-mu-ni-cat-ing di-ver-si-fy-ing}
 
 \begin{document}
 
@@ -407,82 +409,22 @@ This chapter establishes the mathematical foundation for the work completed in t
 
 \section{Network Area Definitions} \label{sec:networkdefs}
 
-Consider a geographic area of width $X$ meters and length $Y$ meters that contains a VNB and a set $\mathcal{S} \defeq \left\{1,\, 2,\, \ldots,\, S\right\}$ of virtualized resources the VNB has aggregated for use in the construction of VWNs.  The pool of resources, $\mathcal{S}$, is mapped to physical resources owned and maintained by RPs and are made available for use through contracts between the RPs and the VNB.  The contract-negotiated cost for the VNB to lease resource $s \in \mathcal{S}$ is denoted by $c_s$.  The costs for the resources used within a constructed VWN are passed to the SPs as part of the overall cost of the network.  The rate capacity of resource $s \in \mathcal{S}$ is denoted by $r_s$ and its coverage radius is denoted by $b_s$.
+Consider a geographic area of width $X$ meters and length $Y$ meters that contains a VNB and a set $\mathcal{S} \defeq \left\{ 1,\, 2,\, \ldots,\, S \right\}$ of virtualized resources (i.e., BSs) the VNB has aggregated for use in the construction of VWNs.  The pool of BSs, $\mathcal{S}$, is mapped to physical BSs owned and maintained by RPs and are made available for use through contracts between the RPs and the VNB.  The contract-negotiated cost for the VNB to lease BS $s \in \mathcal{S}$ is denoted by $c_s$.  The costs for the BSs used within a constructed VWN are passed to the SPs as part of the overall cost of the network.  The rate capacity of BS $s \in \mathcal{S}$ is denoted by $r_s$ and its coverage radius is denoted by $b_s$.
 
-Let $\mathcal{N} \defeq \left\{1,\, 2,\, \ldots,\, N\right\}$ be the set of SPs seeking a VWN to host their services with coverage within the geographical area.  An SP $n \in \mathcal{N}$ associates with the VNB to create their desired VWN.  Through this association, SP $n$ must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  SP $n$ must know and communicate to the VNB the estimated geographic distribution of the service's traffic demand density as a function, $\rho\left(x,\, y\right),\, x \in [0,\, X],\, y \in [0,\, Y],\,$ in terms of $\frac{\text{bits}}{\text{km}^2}$\info{This is the unit used by SSLT paper}.  This could be in the form of a continuous function (see \Cref{subsec:networkdefs_sslt}) or as discrete pixels (e.g., a bitmap), and could be generalized as a heatmap indicating locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  \unsure{Adjusting $\alpha$ (sDEP) or the map (GA) effectively controls for this.}Further, the SP would also provide the desired or needed percent demand satisfaction rate for the service.  Some services have high priority, such as those related to emergency services, and must have nearly if not perfect 100\% demand satisfaction.  Others, such as the aforementioned generic voice lines or video streaming, can withstand some demand to remain unsatisfied as a trade off for decreased network leasing or operational costs.
+Let $\mathcal{N} \defeq \left\{ 1,\, 2,\, \ldots,\, N \right\}$ be the set of SPs seeking a VWN to host their services with coverage within the geographical area.  An SP $n \in \mathcal{N}$ associates with the VNB to create their desired VWN.  Through this association, SP $n$ must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  SP $n$ must know and communicate to the VNB the estimated geographic distribution of the service's traffic demand density (or demand \emph{intensity}) as a function, $\lambda_n\left( x,\, y \right),\, n \in \mathcal{N},\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right],\,$ in terms of $\frac{\text{bits}}{\text{km}^2}$.  The demand intensity function could be in the form of a continuous function or as discrete pixels (e.g., a bitmap), and indicates the locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  For an example of $\lambda_n$, see \Cref{subsec:networkdefs_sslt}.
+
+Further, the SP would also provide the desired or needed percent demand satisfaction rate for the service.  \improvement{Diversifying $\alpha$ to very according to the various SPs (i.e., $\alpha_n, n \in \mathcal{N}$, or $\alpha_m, m \in \mathcal{M}$) would be required for this.}Some services have high priority, such as those related to emergency services, and must have nearly if not perfect 100\% demand satisfaction.  Others, such as the aforementioned generic voice lines or video streaming, can withstand some demand to remain unsatisfied as a tradeoff for decreased network leasing or operational costs.
 %Note: Can the model be officially updated to implement the percent demand satisfaction stated by the SP to the VNB?  $\alpha$ controls for this in the 2-stage stoch model, but it doesn't differentiate between the various SPs (i.e., it's a single $\alpha$ for all SPs).
 
-Let $\mathcal{M}_n \defeq \left\{1,\, 2,\, \ldots,\, M_n\right\}$ be the set of demand points SP $n \in \mathcal{N}$ is attempting to satisfy with its service.  Each demand point $m \in \mathcal{M}_n$ is seeking to connect to the VWN operated by SP $n \in \mathcal{N}$ with total point traffic demand denoted by $d_{mn}$.  Let $u_{mns} \in [0,\, 1]$ represent the normalized capacity (with respect to $r_s$) of resource $s \in \mathcal{S}$ at point $m \in \mathcal{M}_n, n \in \mathcal{N},$ associated with SP $n \in \mathcal{N}$ (i.e., the normalized maximum rate that a user can receive at point $m$ from resource $s$).  Specifically,
+Let $\mathcal{M}_n \defeq \left\{1,\, 2,\, \ldots,\, M_n\right\}$ be the set of demand points SP $n \in \mathcal{N}$ is attempting to satisfy with its service.  Each demand point $m \in \mathcal{M}_n$ is seeking to connect to the VWN operated by SP $n \in \mathcal{N}$ and is located within the domain of the geographic area (i.e., $\left( \tilde{x}_{m_n},\, \tilde{y}_{m_n} \right),\, \tilde{x}_{m_n} \in \left[ 0,\, X \right],\, \tilde{y}_{m_n} \in \left[ 0,\, Y \right]$).  Demand point locations are stochastically determined by the distribution of traffic as described by the demand intensity function $\lambda_n$.  A realization of these demand points can be found as a two-dimensional non-stationary (or inhomogeneous) Poisson point process (PPP) using $\lambda_n$ as it's spatial intensity function.
 
-\iftrue % True if doublespacing; false if singlespacing
-\begin{singlespacing}
-\begin{equation} \label{eq:umns}
-u_{mns} \defeq
-	\begin{cases}
-		0,& \text{if demand point $m$ of SP $n$ is located more than $b_s$ meters from}\\
-		& \text{\tab from resource $s$;}\\
-		\\
-		1,& \text{if demand point $m$ of SP $n$ is located within a small distance of}\\
-		& \text{\tab resource $s$;}\\
-		\\
-		(0,\, 1),& \text{otherwise.}
-	\end{cases}
-\end{equation}
-\end{singlespacing}
-\else
-\begin{equation} \label{eq:umns}
-u_{mns} \defeq
-	\begin{cases}
-		0,& \text{if demand point $m$ of SP $n$ is located more than $b_s$ meters from}\\
-		& \text{\tab from resource $s$,}\\
-		1,& \text{if demand point $m$ of SP $n$ is located within a small distance of}\\
-		& \text{\tab resource $s$}\\
-		(0,\, 1),& \text{otherwise.}
-	\end{cases}
-\end{equation}
-\fi
-
-%\info{It wouldn't be that hard to alter $u_{mns}$ to utilize a pathloss model of some sort.  It might complicate the GA, as the cells would need to be cap point capacity according to it, but it should be fairly simple with a known model.}%
-It is apparent that $u_{mns}$ will vary according to the path-loss characteristics of the environment and other various factors.  In some instances, it can be beneficial to simplify this definition such that
-
-\iftrue % true if doublespacing, false if singlespacing
-\begin{singlespacing}
-\begin{equation} \label{eq:umns_simp}
-u_{mns} \defeq
-	\begin{cases}
-		0,& \text{if demand point $m$ of SP $n$ is located more than $b_s$ meters from}\\
-		& \text{\tab resource $s$;}\\
-		\\
-		1,& \text{otherwise (i.e., if demand point $m$ of SP $n$ is located less than}\\
-		& \text{\tab or equal to $b_s$ meters from resouce $s$).}\\
-	\end{cases}
-\end{equation}
-\end{singlespacing}
-\else
-\begin{equation} \label{eq:umns_simp}
-u_{mns} \defeq
-	\begin{cases}
-		0,& \text{if demand point $m$ of SP $n$ is located more than $b_s$ meters from}\\
-		& \text{\tab resource $s$;}\\
-		1,& \text{otherwise (i.e., if demand point $m$ of SP $n$ is located less than}\\
-		& \text{\tab or equal to $b_s$ meters from resouce $s$).}\\
-	\end{cases}
-\end{equation}
-\fi
-
-This simplification allows the available pool of resources, or any subset thereof, to be easily visualized as a Voronoi tessellation \cite{Aurenhammer:1991:VDS:116873.116880}.  In a Voronoi tessellation, a two-dimensional plane is tessellated into a set of convex polygons, each of which is defined by a single point contained within.  All points comprising the area enclosed by a polygon is closer to that polygon's defining point than any other polygons'.  Using the simplified definition for $u_{mns}$, the Voronoi tessellation of a set of resource locations functions as a coverage map for those resources, assuming that all polygons are within the respective ranges for their associated resources; each polygon represents a region where $u_{mns} = 1$.  Assuming this binary condition is a simplification that aids in the implementation of the approach used in \Cref{sec:ga}, and is generally assumed in the rest of this thesis.
-
-Each demand point has a location stochastically determined by the distribution of traffic demand density that SP $n \in \mathcal{N}$ communicates to the VNB.  Throughout this thesis, stochastic variables will be differentiated from deterministic variables with a tilde ($\sim$) placed above the symbol (e.g., $\tilde{u}_{mns}$).
-
-At times, such as for demonstration and visualization or computation, wholly deterministic variables are needed in place of stochastic variables.  In general, this is accomplished for the specific instance by finding a realization of the distribution associated with the stochastic variable.  For demand points with stochastic locations, they are generated according to a two-dimensional non-stationary Poisson point process (PPP) using the traffic demand density function or distribution, $\rho\left(x,\, y\right)$, as the PPP's spatial intensity measure.
-
-To generate a non-stationary PPP, I use an acceptance-rejection method~\cite{leeds:nsPPPgeneration}.  A stationary PPP is generated according to the maximum value within the region of the traffic demand density function.  That is, a number of points generated within the region is selected from a Poisson random variable with mean $\rho_{\max}*X*Y$, where $\rho_{\max}$ is the maximum value of $\rho$ over the region.  Each point is then independently and uniformly distributed (i.e., each point has a location $\left(x,\, y\right)$ with $x \sim \mathcal{U}\left(0,\, X\right)$\footnote{$\mathcal{U}\left(a,\, b\right)$ refers to a random variable uniformly distributed over the domain $\left[a,\, b\right]$, where $a < b$.} and $y \sim \mathcal{U}\left(0,\, Y\right)$) over the region.  Then, each point undergoes an acceptance-rejection procedure to inhomogenize the stationary PPP.  Each point is kept with a probability of the ratio of the value of the demand density function at that point's location to the maximum value of the demand density function.  That is, for each point in the PPP a uniform random variable, $P \sim \mathcal{U}\left(0,\, 1\right)$, is generated and the point is either \emph{accepted} and kept or \emph{rejected} and discarded according to
+For purposes of visualization or compuation, this non-stationary PPP is generatable using an accept-reject method~\cite{leeds:nsPPPgeneration}.  A stationary PPP is generated relative to the maximum value within the region of the traffic demand density function.  That is, a number of points generated within the region is selected from a Poisson random variable with parameter (or mean) $\lambda_{\max}*X*Y$, where $\lambda_{\max}$ is the maximum value of $\rho$ over the region.  Each point is then independently and uniformly distributed (i.e., each point has a location $\left( x,\, y \right)$ with $x \sim \mathcal{U}\left( 0,\, X \right)$\footnote{$\mathcal{U}\left( a,\, b \right)$ refers to a random variable uniformly distributed over the domain $\left[ a,\, b \right]$, where $a < b$.} and $y \sim \mathcal{U}\left( 0,\, Y \right)$) over the region.  Then, each point undergoes the accept-reject procedure to inhomogenize the stationary PPP.  Each point is kept with a probability of the ratio of the value of the intensity function at that point's location to the maximum value of the intensity function.  That is, for each point in the PPP a uniform random variable, $P \sim \mathcal{U}\left( 0,\, 1 \right)$, is generated and the point is either \emph{accepted} and kept or \emph{rejected} and discarded according to
 
 \iftrue % true if doublespacing, false if singlespacing
 \begin{singlespacing}
 \begin{equation} \label{eq:nsPPPaccrej}
 \begin{cases}
-	\text{the $i^{\text{th}}$ point is kept},& \text{if } P \leq \frac{\rho \left(x_i,\, y_i\right)}{\rho_{\max}};\\
+	\text{the $i^{\text{th}}$ point is kept},& \text{if } P \leq \frac{\lambda\left( x_i,\, y_i \right)}{\lambda_{\max}};\\
 	\\
 	\text{the $i^{\text{th}}$ point is discarded},& \text{otherwise,}
 \end{cases}
@@ -491,161 +433,242 @@ To generate a non-stationary PPP, I use an acceptance-rejection method~\cite{lee
 \else
 \begin{equation} \label{eq:nsPPPaccrej}
 \begin{cases}
-	\text{the $i^{\text{th}}$ point is kept},& \text{if } P \leq \frac{\rho \left(x_i,\, y_i\right)}{\rho_{\max}};\\
+	\text{the $i^{\text{th}}$ point is kept},& \text{if } P \leq \frac{\lambda\left( x_i,\, y_i \right)}{\lambda_{\max}};\\
 	\text{the $i^{\text{th}}$ point is discarded},& \text{otherwise,}
 \end{cases}
 \end{equation}
 \fi
 
-where $x_i$ and $y_i$ are the x- and y-coordinates of the $i^{\text{th}}$ point of the stationary PPP.  So that the distribution of demand realized by the non-stationary PPP corresponds to the traffic demand density function, the overall demand 
+\noindent where $x_i$ and $y_i$ are the x- and y-coordinates of the $i^{\text{th}}$ point of the stationary PPP.
+
+Generally, stationary PPPs and non-stationary PPPs generate a number of points correlating to the intensity value and function, respectively.  A specific number, $M_n$, of points can also be generated as necessary to populate a realization for $\mathcal{M}_n,\, n \in \mathcal{N}$.  Instead of generating a random number of points according to a Poisson random variable, points are generated one at a time and individually either kept or discarded as defined in \cref{eq:nsPPPaccrej}.  Once $M_n$ points have been generated and kept, a non-stationary PPP of $\mathcal{M}_n$ has been generated.
+
+This is allowed because, by definition, each point in a PPP is independent and identically distributed; each point is generated independently and identically distributed according to a uniform distribution.  Generating more points is only indicative of a higher intensity PPP.  Specifically, the number of points generated in the initial, stationary PPP is linearly dependent on a Poisson random variable with mean $\lambda_{\max} * X * Y$; doubling the expected number of generated points correlates with a doubling of $\lambda_{\max}$, which itself correlates with a scaled doubling of $\lambda\left( x,\, y \right)$.  Scaling $\lambda\left( x,\, y \right)$ according to any desired number of points does not change the overall structural characteristics of the underlying described distribution.
+
+Each demand point $m \in \mathcal{M}_n$ loads the VWN of SP $n \in \mathcal{N}$ with point traffic demand denoted by $d_{mn}$.  So that the total demand described by $\lambda_n$ is allocated by the points in $\mathcal{M}_n$, the overall demand 
 
 \begin{equation} \label{eq:demandintegral}
-D = \int_0^X \int_0^Y \rho\left(x,\, y\right) dy dx
+D_n = \int_0^X \int_0^Y \lambda_n\left( x,\, y \right) dy \, dx, n \in \mathcal{N}
 \end{equation}
 
-of the demand density distribution is evenly distributed such that
+\noindent of the demand density distribution is evenly distributed such that
 
 \begin{equation} \label{eq:pointdemand}
-d_{mn} = \frac{D}{M_n}, \forall m \in \mathcal{M}_n,\, n \in \mathcal{N}.
+d_{mn} = \frac{D}{M_n},\, m \in \mathcal{M}_n,\, n \in \mathcal{N}.
 \end{equation}
 
-Generally, PPPs and non-stationary PPPs generate a number of points correlating to the intensity value and function, respectively.  A specific number, $M_n$, of points can also be generated as necessary to populate a realization for $\mathcal{M}_n,\, n \in \mathcal{N}$.  Instead of generating a random number of points according to a Poisson random variable, points are generated one at a time and individually either kept or discarded as defined in \cref{eq:nsPPPaccrej}.  Once $M_n$ points have been generated and kept, a non-stationary PPP of $\mathcal{M}_n$ has been generated.
+Let $\tilde{u}_{mns} \in \left[ 0,\, 1 \right]$ represent the normalized capacity (with respect to $r_s$) of BS $s \in \mathcal{S}$ at point $m \in \mathcal{M}_n, n \in \mathcal{N},$ associated with SP $n \in \mathcal{N}$ (i.e., the normalized maximum rate that a user can receive at point $m$ from BS $s$).  Specifically,
 
-This is allowed because, by definition, each point in a PPP is independent and identically distributed; each point is generated independently and identically according to a uniform distribution.  Generating more points is only indicative of a higher intensity PPP.  Specifically, the number of points generated in the initial, stationary PPP is linearly dependent on a Poisson random variable with mean $\rho_{\max} * X * Y$; doubling the number of generated points correlates with a doubling of $\rho_{\max}$, which itself correlates with a scaled doubling of $\rho$.  Scaling $\rho$ according to any desired number of points does not change the overall structural characteristics of the underlying described distribution.  The only change is that with more demand points generated, each point provides less demand according to \cref{eq:pointdemand}.
+\iftrue % True if doublespacing; false if singlespacing
+\begin{singlespacing}
+\begin{equation} \label{eq:umns}
+\tilde{u}_{mns} \defeq
+	\begin{cases}
+		0,& \text{if demand point $m$ of SP $n$ is located more than $b_s$ meters from}\\
+		& \text{\tab from BS $s$;}\\
+		\\
+		1,& \text{if demand point $m$ of SP $n$ is located within a small distance of}\\
+		& \text{\tab BS $s$;}\\
+		\\
+		(0,\, 1),& \text{otherwise.}
+	\end{cases}
+\end{equation}
+\end{singlespacing}
+\else
+\begin{equation} \label{eq:umns}
+\tilde{u}_{mns} \defeq
+	\begin{cases}
+		0,& \text{if demand point $m$ of SP $n$ is located more than $b_s$ meters from}\\
+		& \text{\tab from BS $s$,}\\
+		1,& \text{if demand point $m$ of SP $n$ is located within a small distance of}\\
+		& \text{\tab BS $s$}\\
+		(0,\, 1),& \text{otherwise.}
+	\end{cases}
+\end{equation}
+\fi
 
-From the perspective of the VNB, each SP is only distinguishable by its overall demand characteristics.  These demand characteristics are defined by its demand density distribution which defines $\tilde{u}_{ms}$.  The VNB must construct a VWN for each SP, but for optimal VWNs to be created, the VNB must consider the demands of all SPs simultaneously and in context of each other.  For the VNB, all SP demand points are indistinguishable.  Therefore, the VNB considers a single set of demand points $\mathcal{M} \defeq \bigcup_{i=1}^{N} \mathcal{M}_i$ with demands $d_m,\, m \in \mathcal{M}$, and stochastic normalized capacities $\tilde{u}_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}$.
+%\info{It wouldn't be that hard to alter $u_{mns}$ to utilize a pathloss model of some sort.  It might complicate the GA, as the cells would need to be cap point capacity according to it, but it should be fairly simple with a known model.}%
+It is apparent that $\tilde{u}_{mns}$ will vary according to the path-loss characteristics of the environment, the locations of the demand points, and other various factors.  In some instances, it can be beneficial to simplify this definition such that
 
-I assume that a resource $s \in \mathcal{S}$ can be allocated between multiple demand points, and $\delta_{ms} \in [0,\, r_s],\, m \in \mathcal{M},\, s \in \mathcal{S}$, represents the rate of resource $s$ that is allocated to point $m$.
+\iftrue % true if doublespacing, false if singlespacing
+\begin{singlespacing}
+\begin{equation} \label{eq:umns_simp}
+\tilde{u}_{mns} \defeq
+	\begin{cases}
+		0,& \text{if demand point $m$ of SP $n$ is located more than $b_s$ meters from}\\
+		& \text{\tab BS $s$;}\\
+		\\
+		1,& \text{otherwise (i.e., if demand point $m$ of SP $n$ is located less than}\\
+		& \text{\tab or equal to $b_s$ meters from BS $s$).}\\
+	\end{cases}
+\end{equation}
+\end{singlespacing}
+\else
+\begin{equation} \label{eq:umns_simp}
+\tilde{u}_{mns} \defeq
+	\begin{cases}
+		0,& \text{if demand point $m$ of SP $n$ is located more than $b_s$ meters from}\\
+		& \text{\tab BS $s$;}\\
+		1,& \text{otherwise (i.e., if demand point $m$ of SP $n$ is located less than}\\
+		& \text{\tab or equal to $b_s$ meters from BS $s$).}\\
+	\end{cases}
+\end{equation}
+\fi
+
+This simplification allows the available pool of BSs, or any subset thereof, to be easily visualized as a Voronoi tessellation \cite{Aurenhammer:1991:VDS:116873.116880}.  In a Voronoi tessellation, a two-dimensional plane is tessellated into a set of convex polygons, each of which is defined by a single point contained within.  All points comprising the area enclosed by a polygon is closer to that polygon's defining point than any other polygons'.  Using the simplified definition for $\tilde{u}_{mns}$, the Voronoi tessellation of a set of BS locations functions as a coverage map for those BSs, assuming that all polygons are within the respective ranges for their associated BSs; each polygon represents a region where $\tilde{u}_{mns} = 1$.  Assuming this binary condition is a simplification that aids in the implementation of the approach used in \Cref{sec:ga}, and is generally assumed in the rest of this thesis.
+
+From the perspective of the VNB, each SP is only distinguishable by its overall demand characteristics.  These demand characteristics are defined by its demand density distribution which defines $\tilde{u}_{mns}$.  The VNB must construct a VWN for each SP, but for optimal VWNs to be created, the VNB must consider the demands of all SPs simultaneously and in context of each other.  For the VNB, all SP demand points are indistinguishable.  Therefore, the VNB considers a single set of demand points
+
+\begin{equation}
+\mathcal{M} \defeq \bigcup_{i=1}^N \mathcal{M}_i = \left\{ 1,\, 2,\, \ldots,\, M \right\},
+\end{equation}
+
+\noindent where $M = \sum_{i=1}^N M_i$, with demands $d_m,\, m \in \mathcal{M}$, and stochastic normalized capacities $\tilde{u}_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}$.
+
+I assume that a resource $s \in \mathcal{S}$ can be allocated between multiple demand points, and $\tilde{\delta}_{ms} \in [0,\, r_s],\, m \in \mathcal{M},\, s \in \mathcal{S}$, represents the rate of resource $s$ that is allocated to point $m$.  $\tilde{\delta}_{ms}$ is said to be the \emph{slice} of BS $s \in \mathcal{S}$ that is allocated to demand point $m \in \mathcal{M}$.  The VWN constructed for SP $n \in \mathcal{N}$ is comprised of all of the slices allocated to the SP's demand points.  That is, the VWN constructed for SP $n \in \mathcal{N}$ is 
+
+\begin{equation}
+\bigcup_{i=1}^{M} \tilde{\delta}_{is},\, s \in \mathcal{S},
+\end{equation}
+
+\noindent where $\tilde{\delta}_{ms} = 0,\, \forall m \not\in \mathcal{M}_n \subseteq \mathcal{M}$ and $\tilde{\delta}_{ms} > 0,\, \forall m \in \mathcal{M}_n \subseteq \mathcal{M}$.
+
+Throughout this thesis, stochastic variables will be differentiated from deterministic variables with a tilde ($\sim$) placed above the symbol (e.g., $\tilde{u}_{ms},\, \tilde{\delta}_{ms}$).
 
 \subsection{Example Demand Distribution; The SSLT Model} \label{subsec:networkdefs_sslt}
 
-In this section, I establish an example model demonstrating what a SP must communicate to the VNB to properly facilitate VWN construction.  For testing the approaches presented in \Cref{ch:approaches} for VWN construction, this example is the fundamental model used for simulating SP demand in cellular network-based services.
+One major assumption made in \Cref{sec:networkdefs} is that SPs must communicate the demand characteristics (i.e., $\lambda_n$) of their service to the VNB to properly facilitate VWN construction.  In this subsection, I establish an example model demonstrating the demand characteristics to be communicated by generating an example hypothetical demand intensity function.  For testing the approaches for VWN construction presented in \Cref{ch:approaches}, this example is the fundamental model used for simulating SP demand in cellular network-based services.
 
-Gotzner et al.~\cite{686105} have shown that a log-normal distribution\unsure{Over long footnote?\\See note.}\footnote{In general, network traffic and the resource deployments that they are meant to model tend to exhibit characteristics of heavy-tailed spatial distributions.  It has been shown that traffic distributions in cellular networks can be more accurately approximated as a mixture of log-normal distributions~\cite{5936263, 6757900}; Lee et al.~\cite{6757900} describe that nonmixtures capture the distribution for a single moment while mixtures capture the distribution as it changes with time and place.  Similarly, Zhou et al.~\cite{7202841} have shown that distributions of deployed BSs can be accurately approximated as an $\alpha$-stable distribution, a general case of the Gaussian distribution.  The latter case might be explained through the central limit theorem, as the sum of power-law distributed (Paretian tailed) random variables, such as those describing traffic in telephone networks~\cite{PhysRevE.72.026116}, will tend towards an $\alpha$-stable distribution.  I use neither in this thesis as $\alpha$-stable distributions do not generally have a closed-form probability density function (PDF), rendering use non-trivial, and log-normal mixtures require tuning multiple parameters, adding additional complexity.} can approximate traffic demand in real-world cellular networks.  It has also been shown that traffic distribution is spatially correlated~\cite{5936263, eigenplaces}.  Lee et al.~\cite{6554749} presented the Scalable, Spatially-correlated, and Log-normally distributed Traffic (SSLT) model to emulate the characteristics of real world cellular data networks.  This model is flexible and can be adjusted to simulate numerous cellular networks, and can characterize the demand of a supposed SP in a way that mimics real-world data.  I use a variant of the SSLT demand model presented by Lee et al., altered to be a continuous function serving as a continuous or pixelated demand density map.
-%Note: Everything after ``The latter case\ldots'' could probably be trimmed
+Gotzner et al.~\cite{686105} have shown that a log-normal distribution\footnote{It has also been shown that traffic distributions in cellular networks can be more accurately approximated by a Weibull distribution~\cite{6757900}, by mixtures of log-normal distributions~\cite{5936263, 6757900}, or by an $\alpha$-stable distribution~\cite{7202841}.} can approximate traffic demand in real-world cellular networks.  It has also been shown that traffic distributions are spatially correlated~\cite{5936263, eigenplaces}.  Lee et al.~\cite{6554749, 6757900} presented the Scalable, Spatially-correlated, and Log-normally distributed Traffic (SSLT) model to emulate the characteristics of real world cellular data networks.  This model is flexible and can be adjusted to simulate numerous cellular networks, and can characterize the demand of a supposed SP in a way that mimics real-world data.  I use a variant of the SSLT demand model presented by Lee et al., which I altered to be a continuous function serving as a continuous or pixelated demand density map.
+%Old footnote (moved to conclusion): In general, network traffic and the resource deployments that they are meant to model tend to exhibit characteristics of heavy-tailed spatial distributions.  It has been shown that traffic distributions in cellular networks can be more accurately approximated as a mixture of log-normal distributions~\cite{5936263, 6757900}; Lee et al.~\cite{6757900} describe that nonmixtures capture the distribution for a single moment while mixtures capture the distribution as it changes with time and place.  Similarly, Zhou et al.~\cite{7202841} have shown that distributions of deployed BSs can be accurately approximated as a $\alpha$-stable distribution.  The latter case might be explained through the central limit theorem, as the sum of power-law distributed (Paretian tailed) random variables, such as those describing traffic in telephone networks~\cite{PhysRevE.72.026116}, will tend towards an $\alpha$-stable distribution.  I use neither in this thesis as $\alpha$-stable distributions do not generally have a closed-form probability density function (PDF), rendering use non-trivial, and log-normal mixtures require tuning multiple parameters, adding additional complexity.
 
-To generate this spatial SSLT model distribution over the area of consideration, an initial Gaussian field, $\rho^G = \rho^G\left(x,\, y\right),\, x \in \left[0,\, X\right],\, y \in \left[0,\, Y\right]$, is generated by
-\begin{equation} \label{eq:rhoG}
-\rho^G\left(x,\, y\right) = \frac{1}{L} \; \sum_{l=1}^L \cos\left(i_lx+\phi_l\right) \; \cos\left(j_ly+\psi_l\right)
+To generate this spatial SSLT model distribution over the area of consideration, an initial Gaussian field, $\lambda^G = \lambda^G\left( x,\, y \right),\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right]$, is generated by
+\begin{equation} \label{eq:lambdaG}
+\lambda^G\left( x,\, y \right) = \frac{1}{L} \; \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l y + \psi_l \right)
 \end{equation}
-where $\mathcal{L} \defeq \left\{1,\, 2,\, \ldots,\, L\right\}$ is a set of the products of two cosines with stochastic angular frequencies $i_l,\, j_l\, \sim \mathcal{U}\left(0,\, \omega_{\max}\right),\, l \in \mathcal{L}$ and phases $\phi_l,\, \psi_l\, \sim \mathcal{U}\left(0,\, 2\pi\right),\, l \in \mathcal{L}$.  As $L$ increases, $\rho^G$ approaches a Gaussian random field according to the central limit theorem.
+where $\mathcal{L} \defeq \left\{ 1,\, 2,\, \ldots,\, L \right\}$ is a set of the products of two cosines with stochastic angular frequencies $i_l,\, j_l\, \sim \mathcal{U}\left( 0,\, \omega_{\max} \right),\, l \in \mathcal{L}$ and phases $\phi_l,\, \psi_l\, \sim \mathcal{U}\left( 0,\, 2 \pi \right),\, l \in \mathcal{L}$.  As $L$ increases, it is expected that $\lambda_G$ approaches a Gaussian random field according to the central limit theorem.
 
-According to Lee et al.~\cite{6554749}, $\rho^G$ is spatially correlated with autocorrelation function
+According to Lee et al.~\cite{6554749}, $\lambda^G$ is spatially correlated with autocorrelation function
 \begin{equation} \label{eq:sslt_autocorrelation}
-R\left(dx,\, dy\right) = E\left[\rho^G\left(x,\, y\right) \; \rho^G\left(x+dx,\, y+dy\right)\right]=\frac{1}{4L} \; \text{sinc}\left(\omega_{\max}dx\right) \; \text{sinc}\left(\omega_{\max}dy\right).
+R\left( dx,\, dy \right) = E\left[ \lambda^G\left( x,\, y \right) \; \lambda^G\left( x + dx,\, y + dy \right) \right] = \frac{1}{4L} \; \text{sinc}\left( \omega_{\max} dx \right) \; \text{sinc}\left( \omega_{\max} dy \right).
 \end{equation}
-The autocorrelation function is notably dependent on the maximum angular frequency defining $\rho^G$, $\omega_{\max}$.  As $\omega_{\max}$ increases, the demand of adjacent regions become less correlated.  $\omega_{\max}$ is effectively a measure of the inhomogeneity of $\rho^G$.  This effect of $\omega_{\max}$ on the inhomogeneity of $\rho^G$ is shown in Fig. \ref{fig:rhoG}; Fig. \ref{fig:rhoG_4pi-300} fluctuates more rapidly than Fig. \ref{fig:rhoG_2pi-300}, which is generated from a smaller $\omega_{\max}$.
+The autocorrelation function is notably dependent on the maximum angular frequency defining $\rho^G$, $\omega_{\max}$.  As $\omega_{\max}$ increases, the demand of adjacent regions become less correlated.  $\omega_{\max}$ is effectively a measure of the inhomogeneity of $\rho^G$.  This effect of $\omega_{\max}$ on the inhomogeneity of $\lambda^G$ is shown in Fig. \ref{fig:lambdaG}; Fig. \ref{fig:lambdaG_4pi-300} fluctuates more rapidly than Fig. \ref{fig:lambdaG_2pi-300}, which is generated from a smaller $\omega_{\max}$.
 
 \begin{figure}[!ht]
 \centering
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rhoG_O2pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{2\pi}{300}$}
-	\label{fig:rhoG_2pi-300}
+	\includegraphics[width=1\linewidth]{lambdaG_O2pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{2 \pi}{30}$}
+	\label{fig:lambdaG_2pi-300}
 \end{subfigure}
 \hspace{0.5cm}
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rhoG_O4pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{4\pi}{300}$}
-	\label{fig:rhoG_4pi-300}
+	\includegraphics[width=1\linewidth]{lambdaG_O4pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{4 \pi}{30}$}
+	\label{fig:lambdaG_4pi-300}
 \end{subfigure}
-\caption[Example Gaussian random fields for SSLT demand model generation]{\small Two example Gaussian random fields (i.e., $\rho^G$) for generating the SSLT demand model, varying by $\omega_{\max}$.  $L = 50,\, X = 1000,\, Y = 1000$}
-\label{fig:rhoG}
+\caption[Example Gaussian random fields for SSLT demand model generation]{\small Two example Gaussian random fields (i.e., $\lambda^G$) for generating the SSLT demand model, varying by $\omega_{\max}$.  $L = 100000,\, X = 100,\, Y = 100$}
+\label{fig:lambdaG}
 \end{figure}
 
-The approximate Gaussian distribution $\rho^G$ is then \unsure{Do I need to account for mean?\\Consider...}normalized to a standard normal distribution\footnote{A standard normal distribution is a Gaussian distribution with mean $\mu = 0$ and variance $\sigma = 1$.}, $\rho^S = \rho^S\left(x,\, y\right),\, x \in \left[0,\, X\right],\, y \in \left[0,\, Y\right]$,
-\begin{equation} \label{eq:rhoS}
-\rho^S\left(x,\, y\right) = \frac{\rho^G\left(x,\, y\right) - \mean{\rho^G}}{\sqrt{\text{Var}\left(\rho^G\right)}},
-\end{equation}
-where $\text{Var}\left(\rho^G\right)$ is the variance of $\rho^G$ and $\mean{\rho^G}$ is the mean of $\rho^G$.  Fig. \ref{fig:rhoS_pdf} compares the PDF of the two $\rho^S$ fields generated from the $\rho^G$ fields displayed in Fig. \ref{fig:rhoG} to verify that $\rho^S$ closely approximates a standard normal distribution.  There is some deviation from the standard normal as expected, but it does \unsure{What does it mean to ``closely approximate?''\\Is there a way I can mathematically specify this?\\Revisit}closely approximate the desired distributions.
+The approximate Gaussian distribution $\lambda^G$ is then normalized to a standard normal distribution\footnote{A standard normal distribution is a Gaussian distribution with mean $\mu = 0$ and variance $\sigma = 1$.}, $\lambda^S = \lambda^S\left( x,\, y \right),\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right]$,
 
-\begin{figure}[!ht]
-\centering
-\begin{subfigure}{.45\textwidth}
-	\centering
-	\includegraphics[width=1\linewidth]{rhoS_pdf_O2pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{2\pi}{300}$}
-	\label{fig:rhoS_pdf_2pi-300}
-\end{subfigure}
-\hspace{0.5cm}
-\begin{subfigure}{.45\textwidth}
-	\centering
-	\includegraphics[width=1\linewidth]{rhoS_pdf_O4pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{4\pi}{300}$}
-	\label{fig:rhoS_pdf_4pi-300}
-\end{subfigure}
-\caption[PDF comparisons of example standard normal fields to the standard normal distribution]{\small PDF comparison of the two $\rho^S$ fields generated from the $\rho^G$ fields displayed in Fig. \ref{fig:rhoG} to a standard normal distribution.}
-\label{fig:rhoS_pdf}
-\end{figure}
-
-The final log-normal distribution, $\rho = \rho\left(x,\, y\right), x \in [0,\, X], y \in [0,\, Y]$, is determined by assigning location ($\mu$) and scale ($\sigma$) parameters to $\rho^S$ according to
-\begin{equation}\label{eq:rhoLN}
-\rho\left(x,\, y\right) = \exp\left(\sigma \; \rho^S\left(x,\, y\right)+\mu\right).
+\begin{equation} \label{eq:lambdaS}
+\lambda^S\left( x,\, y \right) = \frac{\lambda^G\left( x,\, y \right) - \mean{\lambda^G}}{\sqrt{\text{Var}\left( \lambda^G \right)}},
 \end{equation}
 
-Fig. \ref{fig:rho} shows the resulting SSLT demand density distribution, $\rho$, generated from the $\rho^G$ fields displayed in Fig. \ref{fig:rhoG} with default location and scale parameters (i.e., $\mu = 0,\, \sigma = 1$).  Similarly, Fig. \ref{fig:rho_pdf} compares the PDF of the generated SSLT fields to the log-normal distribution being approximated.  By controlling the maximum angular frequency ($\omega_{\max}$) and the log-normal location and scale parameters, the SSLT model can be used to characterize the demand of a theoretical SP service.
+\noindent where $\text{Var}\left( \lambda^G \right) = \mathbb{E}\left[ \left( \lambda^G \right)^2 \right] - \mathbb{E}\left[ \lambda^G \right]^2$ is the variance of $\lambda^G$ and $\mean{\lambda^G} = \mathbb{E}\left[ \lambda^G \right]$ is the mean of $\lambda^G$.  While this could be mathematically derived, in practice $\text{Var}\left( \lambda^G \right)$ and $\mean{\lambda^G}$ are empirically found from a set of uniformly distributed sampled points (i.e., a simple random sample of $\lambda^G$). \iffalse Fig. \improvement{Discuss the accuracy, $\chi^2$ test, and confidence intervals with respect to the Gaussian field.}\ref{fig:lambdaS_pdf} compares the PDF of the two $\lambda^S$ fields generated from the $\lambda^G$ fields displayed in Fig. \ref{fig:lambdaG} to verify that $\lambda^S$ closely approximates a standard normal distribution.  There is some deviation from the standard normal as expected, but it does \unsure{What does it mean to ``closely approximate?''\\Is there a way I can mathematically specify this?\\Revisit}closely approximate the desired distributions.
 
 \begin{figure}[!ht]
 \centering
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rho_O2pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{2\pi}{300}$}
-	\label{fig:rho_2pi-300}
+	\includegraphics[width=1\linewidth]{lambdaS_pdf_O2pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{2 \pi}{30}$}
+	\label{fig:lambdaS_pdf_2pi-300}
 \end{subfigure}
 \hspace{0.5cm}
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rho_O4pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{4\pi}{300}$}
-	\label{fig:rho_4pi-300}
+	\includegraphics[width=1\linewidth]{lambdaS_pdf_O4pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{4 \pi}{30}$}
+	\label{fig:lambdaS_pdf_4pi-300}
 \end{subfigure}
-\caption[Generated example SSLT demand fields]{\small Two SSLT demand fields generated from the $\rho^G$ demand fields displayed in Fig. \ref{fig:rhoG}. $\mu = 0,\, \sigma = 1$}
-\label{fig:rho}
+\caption[PDF comparisons of example standard normal fields to the standard normal distribution]{\small PDF comparison of the two $\lambda^S$ fields generated from the $\lambda^G$ fields displayed in Fig. \ref{fig:lambdaG} to a standard normal distribution.}
+\label{fig:lambdaS_pdf}
 \end{figure}
+\fi
+
+The final log-normal distribution, $\lambda = \lambda\left( x,\, y \right), x \in \left[ 0,\, X \right], y \in \left[ 0,\, Y \right]$, is determined by assigning location ($\mu$) and scale ($\sigma$) parameters to $\lambda^S$ according to
+\begin{equation}\label{eq:lambdaLN}
+\lambda\left( x,\, y \right) = \exp\left( \sigma \; \lambda^S\left( x,\, y \right) + \mu \right).
+\end{equation}
+
+Fig. \ref{fig:lambda} shows the resulting SSLT demand density distribution, $\lambda$, generated from the $\lambda^G$ fields displayed in Fig. \ref{fig:lambdaG} with default location and scale parameters (i.e., $\mu = 0,\, \sigma = 1$). \iffalse Similarly, Fig. \ref{fig:lambda_pdf} compares the PDF of the generated SSLT fields to the log-normal distribution being approximated. \fi By controlling the maximum angular frequency ($\omega_{\max}$) and the log-normal location and scale parameters, the SSLT model can be used to simulate the demand characterization of a hypothetical SP service.
 
 \begin{figure}[!ht]
 \centering
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rho_pdf_O2pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{2\pi}{300}$}
-	\label{fig:rho_pdf_2pi-300}
+	\includegraphics[width=1\linewidth]{lambda_O2pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{2 \pi}{30}$}
+	\label{fig:lambda_2pi-300}
 \end{subfigure}
 \hspace{0.5cm}
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rho_pdf_O4pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{4\pi}{300}$}
-	\label{fig:rho_pdf_4pi-300}
+	\includegraphics[width=1\linewidth]{lambda_O4pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{4 \pi}{30}$}
+	\label{fig:lambda_4pi-300}
 \end{subfigure}
-\caption[PDF comparisons of example SSLT demand fields to the log-normal distribution]{\small PDFs of the two generated SSLT demand fields displayed in Fig. \ref{fig:rho}.}
-\label{fig:rho_pdf}
+\caption[Generated example SSLT demand fields]{\small Two SSLT demand fields generated from the $\lambda^G$ demand fields displayed in Fig. \ref{fig:lambdaG}. $\mu = 0,\, \sigma = 1$}
+\label{fig:lambda}
 \end{figure}
+
+\iffalse
+\begin{figure}[!ht]
+\centering
+\begin{subfigure}{.45\textwidth}
+	\centering
+	\includegraphics[width=1\linewidth]{lambda_pdf_O2pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{2 \pi}{30}$}
+	\label{fig:lambda_pdf_2pi-300}
+\end{subfigure}
+\hspace{0.5cm}
+\begin{subfigure}{.45\textwidth}
+	\centering
+	\includegraphics[width=1\linewidth]{lambda_pdf_O4pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{4 \pi}{30}$}
+	\label{fig:lambda_pdf_4pi-300}
+\end{subfigure}
+\caption[PDF comparisons of example SSLT demand fields to the log-normal distribution]{\small PDFs of the two generated SSLT demand fields displayed in Fig. \ref{fig:lambda}.}
+\label{fig:lambda_pdf}
+\end{figure}
+\fi
 
 Lee et al.~\cite{6554749} implement their proposed SSLT demand model as a discrete pixelated set of rectangular cells, the value of which indicates the overall demand located within that cell's region.  Each demand point located within the SSLT area has an identical amount of demand associated with it.  The value of each cell represents the number of homogeneous demand points located within that cell, and these demand points are uniformly distributed within that cell.
 
-I deviate from their implementation by leaving the SSLT distribution as a continuous function representing the overall demand of the region, and only pixelate it for visualization purposes.  To generate discrete demand points, I generate a non-stationary PPP using $\rho$ as the spatial intensity function as described by the acceptance-rejection method (\cref{eq:nsPPPaccrej,eq:demandintegral,eq:pointdemand}) described previously.  This allows the specific number of demand points to be controlled and accommodates for the assumption that the SSLT demand model is an overall distribution of demand points rather than each cell operating as independent PPP.  Fig. \ref{fig:rho_nsPPP} shows a realization of demand points distributed as a non-stationary PPP.
+I deviate from their implementation by leaving the SSLT distribution as a continuous function representing the overall demand of the region, and only pixelate it for visualization purposes.  To generate discrete demand points, I generate a non-stationary PPP using $\lambda$ as the spatial intensity function as described by the acceptance-rejection method (\cref{eq:nsPPPaccrej,eq:demandintegral,eq:pointdemand}) described previously.  This allows the specific number of demand points to be controlled and accommodates for the assumption that the SSLT demand model is an overall distribution of demand points rather than each cell operating as independent PPP.  Fig. \ref{fig:lambda_nsPPP} shows a realization of demand points distributed as a non-stationary PPP.
 
 \begin{figure}[!ht]
 \centering
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rho_nsPPP-400_O2pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{2\pi}{300}$}
-	\label{fig:rho_nsPPP_2pi-300}
+	\includegraphics[width=1\linewidth]{lambda_nsPPP-400_O2pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{2 \pi}{30}$}
+	\label{fig:lambda_nsPPP_2pi-300}
 \end{subfigure}
 \hspace{0.5cm}
 \begin{subfigure}{.45\textwidth}
 	\centering
-	\includegraphics[width=1\linewidth]{rho_nsPPP-400_O4pi-300_L50_X1000_Y1000}
-	\caption{\small $\omega_{\max}=\frac{4\pi}{300}$}
-	\label{fig:rho_nsPPP_4pi-300}
+	\includegraphics[width=1\linewidth]{lambda_nsPPP-400_O4pi-300_L100000_X100_Y100}
+	\caption{\small $\omega_{\max}=\frac{4 \pi}{30}$}
+	\label{fig:lambda_nsPPP_4pi-300}
 \end{subfigure}
 \caption[Realizations of example SSLT demand point distributions]{\small Example demand point realizations distributed according to the described non-stationary PPP with 400 demand points.}
-\label{fig:rho_nsPPP}
+\label{fig:lambda_nsPPP}
 \end{figure}
 
 This SSLT model is used in \Cref{ch:testsim} to generate SP service demand and end-user demand points while testing the approaches described in \Cref{ch:approaches}.
@@ -927,9 +950,63 @@ The genetic algorithm only determines an approximate solution to the BS selectio
 
 \info{Filled as ideas come to mind during writing}
 
--- Other traffic demand models (log-normal mixtures, $\alpha$-stable)\\%
--- Rate normalization that varies with distance (i.e., non-binary $u_{ms}$)\\%
---
+\noindent -- Other traffic demand models (log-normal mixtures, $\alpha$-stable)\info{See note.\\Integrate.}\footnote{In general, network traffic and the resource deployments that they are meant to model tend to exhibit characteristics of heavy-tailed spatial distributions.  It has been shown that traffic distributions in cellular networks can be more accurately approximated as a mixture of log-normal distributions~\cite{5936263, 6757900}; Lee et al.~\cite{6757900} describe that nonmixtures capture the distribution for a single moment while mixtures capture the distribution as it changes with time and place.  Similarly, Zhou et al.~\cite{7202841} have shown that distributions of deployed BSs can be accurately approximated as a $\alpha$-stable distribution.  The latter case might be explained through the central limit theorem, as the sum of power-law distributed (Paretian tailed) random variables, such as those describing traffic in telephone networks~\cite{PhysRevE.72.026116}, will tend towards an $\alpha$-stable distribution.  I use neither in this thesis as $\alpha$-stable distributions do not generally have a closed-form probability density function (PDF), rendering use non-trivial, and log-normal mixtures require tuning multiple parameters, adding additional complexity.}\\%
+% Moved the footnote from \Cref{ch:networkdefs}, where it created an overly long footnote while providing no real new information.  These sorts of details could be properly integrated here into the conclusion.  Move out of footnote and place in mainbody text.
+-- Rate normalization that varies with distance (i.e., non-binary $\tilde{u}_{ms}$)\\%
+-- Other heuristic approaches (e.g., particle swarm optimization, simulated annealing, deep learning approaches)\\%
+-- \info{$\beta$ already works this way for the GA implementation, as it applies a constant to $\lambda\left( x,\, y \right)$.} Altering $\alpha$ to vary according to the demand points of the various SPs, allowing for each SP to independently control the desired demand satisfaction of their network.\\%
+-- Handling varying values of $b_s$ within the GA\\%
+-- Improve the GA implementation such that it uses some form of integration of $\lambda\left( x,\, y \right)$
+\fi
+
+\iffalse
+\pagebreak
+\chapter{Derivations} \label{ch:derive}
+
+\begin{align}
+\text{Area} &= \int_X \int_Y \rho\left( x,\, y \right) dy \, dx \\
+&= \int_X \int_Y \exp\left( \sigma \; \rho^S \left( x,\, y \right) + \mu \right) dy \, dx \\
+&= \int_X \int_Y \exp\left( \frac{\sigma}{\sigma^G} \; \left( \rho^G\left( x,\, y \right) - \mu^G \right) + \mu \right) dy \, dx \\
+&= \int_X \int_Y \exp\left( \frac{\sigma}{\sigma^G} \; \rho^G\left( x,\, y \right) - \frac{\sigma}{\sigma^G} \; \mu^G + \mu \right) dy \, dx \\
+&= \int_X \int_Y \exp\left( \hat{\sigma} \; \rho^G\left( x,\, y \right) + \hat{\mu} \right) dy \, dx \\
+& \hspace{1in} \text{where $\hat{\sigma} = \frac{\sigma}{\sigma^G}$ and $\hat{\mu} = \mu - \frac{\sigma}{\sigma^G} \; \mu^G$} \nonumber \\
+&= \int_X \int_Y \exp\left( \hat{\sigma} \frac{1}{L} \sum_{l = 1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l y + \psi_l \right) + \hat{\mu} \right) dy \, dx \\
+& \hspace{1in} \text{where $i_l,\, j_l \sim \mathcal{U}\left( 0,\, 2\pi \right)$ and $\phi_l,\, \psi_l \sim \mathcal{U}\left( 0,\, \omega_{\max} \right)$} \nonumber \\
+&= e^{\hat{\mu}} \int_X \int_Y \exp\left( \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l y + \psi_l \right) \right) dy \, dx \\
+&= e^{\hat{\mu}} \int_X \int_{U=Y} \exp\left( u \right) \frac{-L}{\hat{\sigma} \sum_{l=1}^L j_l \; \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l y + \psi_l \right)} du \, dx \\
+& \hspace{1in} \text{where $u = \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l y + \psi_l \right)$} \nonumber \\
+& \hspace{1in} \text{and $du = \frac{-\hat{\sigma}}{L} \sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l y + \psi_l \right) dy$} \nonumber \\
+& \hspace{1in} \text{or $dy = \frac{-L}{\hat{\sigma} \sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l y + \psi_l \right)} du$} \nonumber \\
+&= \frac{-e^{\hat{\mu}} L}{\hat{\sigma}} \int_X \left. \exp\left( u \right) \right\rvert_{u = U \sim Y} \left. \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l y + \psi_l \right)} \right\rvert_{y = a_0 x + b_0}^{a_1 x + b_1} dx \\
+&= \frac{-e^{\hat{\mu}} L}{\hat{\sigma}} \int_X \exp\left( \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l y + \psi_l \right) \right) * \nonumber \\
+& \hspace{1.9in} \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l y + \psi_l \right)} \Biggr\rvert_{y = a_0 x + b_0}^{a_1 x + b_1} dx \\
+&= \frac{-e^{\hat{\mu}} L}{\hat{\sigma}} \int_X \Biggl[ \exp\left( \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l \left( a_1 x + b_1 \right) + \psi_l \right) \right) * \nonumber \\
+& \hspace{1.9in} \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l \left( a_1 x + b_1 \right) + \psi_l \right)} \Biggr] - \nonumber \\
+& \hspace{0.9in} \Biggl[ \exp\left( \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l \left( a_0 x + b_0 \right) + \psi_l \right) \right) * \nonumber \\
+& \hspace{1.9in} \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l \left( a_0 x + b_0 \right) + \psi_l \right)} \Biggr] \\
+&= \frac{-e^{\hat{\mu}} L}{\hat{\sigma}} \int_X \Biggl[ \exp\left( \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l a_1 x + j_l b_1 + \psi_l \right) \right) * \nonumber \\
+& \hspace{1.9in} \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l a_1 x + j_l b_1 + \psi_l \right)} \Biggr] - \nonumber \\
+& \hspace{0.9in} \Biggl[ \exp\left( \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l a_0 x + j_l b_0 + \psi_l \right) \right) * \nonumber \\
+& \hspace{1.9in} \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l a_0 x + j_l b_0 + \psi_l \right)} \Biggr] \\
+&\text{The next step is unfinished} \nonumber \\
+&= \frac{-e^{\hat{\mu}} L}{\hat{\sigma}} \int_X \Biggl[ \exp\left( \frac{\hat{\sigma}}{2L} \sum_{l=1}^L \cos\left( \left( i_l - j_l a_1 \right) x + \phi_l - j_l b_1 - \psi_l \right) \; \cos\left( j_l a_1 x + j_l b_1 + \psi_l \right) \right) * \nonumber \\
+& \hspace{1.9in} \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l a_1 x + j_l b_1 + \psi_l \right)} \Biggr] - \nonumber \\
+& \hspace{0.9in} \Biggl[ \exp\left( \frac{\hat{\sigma}}{L} \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l a_0 x + j_l b_0 + \psi_l \right) \right) * \nonumber \\
+& \hspace{1.9in} \frac{1}{\sum_{l=1}^L j_l \cos\left( i_l x + \phi_l \right) \; \sin\left( j_l a_0 x + j_l b_0 + \psi_l \right)} \Biggr] \\
+\end{align}
+I believe this integral to be unsolvable with primitive functions.  There may be a solution using the CDF of a Gaussian random variable, or the error function (erf), complementary error function (erfc), or Q function.
+
+Now I will try to prove that altering the magnitude of $\lambda$ linearly changes the probability of the number of points in a given area in a PPP.
+
+\begin{align}
+P\left\{ N\left( B \right) = n \right\} &= \frac{\left( \lambda | B | \right)^n}{n!} \, e^{-\lambda | B |} \\
+& \text{Doubling $\lambda$ should double the number of points in $| B |$} \nonumber \\
+P\left\{ N\left( B \right) = 2n \right\} &= \frac{\left( 2 \lambda | B | \right)^{2n}}{\left( 2n \right)!} \, e^{-2 \lambda | B |} \\
+&= \frac{\left( 2 \lambda | B | \right)^n \left( 2 \lambda | B | \right)^n}{\left( n \right)! \frac{\left( 2n \right)!}{\left( n \right)!}} e^{-\lambda | B |} e^{-\lambda | B |} \\
+&\text{The next step is unfinished} \nonumber \\
+&= \frac{2^n 2^n n!}{\left( 2n \right)!}
+\end{align}
+
 \fi
 
 \bibliography{KT_Thesis}
