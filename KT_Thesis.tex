@@ -723,7 +723,7 @@ where $h(z, u)$ is the optimal value of the second-stage problem, which is given
 & \hspace{0.4in} z_s = \left[ \sum_{m \in \mathcal{M}} \delta_{ms} > 0 \right],\, \forall s \in \mathcal{S} \label{eq:SOPS2C1}\\
 & \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms} \; \tilde{u}_{ms} \leq d_m,\, \forall m \in \mathcal{M} \label{eq:SOPS2C2}\\
 & \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms} \leq r_s,\, \forall s \in \mathcal{S} \label{eq:SOPS2C3}\\
-& \hspace{0.4in} \delta_{ms} \in \left[ 0,\, d_m \right],\, \forall m \in \mathcal{M},\, \forall s \in \mathcal{S}. \label{eq:SOPS2C4}
+& \hspace{0.4in} \delta_{ms} \in \left[ 0,\, d_m \right],\, \forall m \in \mathcal{M},\, \forall s \in \mathcal{S} \label{eq:SOPS2C4}
 \end{align}
 \end{tcolorbox}
 
@@ -767,38 +767,42 @@ The stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOP
 \pagebreak
 \chapter{Approximation Approaches} \label{ch:approaches}
 
-\Cref{ch:vnbmodel} established a mathematical model for analyzing the relationship between SPs and a VNB and proposed a two-stage stochastic optimization program for constructing VWNs in the context of that relationship.  In this chapter, I analyze this program, Problem 1 (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3}), and modify it to convert it into a deterministic form: the deterministic equivalent program (DEP).  I present an approach to solve Problem 1 via sampling of its deterministic equivalent program into a solvable form that provides the VNB's optimal resource selection for constructing its managed VWNs.  From this, I derive a method for adaptive slicing which allocates resource slices from the pool of selected resources to individual VWNs.  I then present a heuristic approach via genetic algorithm (GA) to handle resource allocation with lower computational expense.
+\Cref{ch:vnbmodel} established a mathematical model for analyzing the relationship between SPs and a VNB and proposed a two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) for constructing VWNs in the context of that relationship.  In this chapter, I present two approaches that arrive at a solution for this program.  First, I modify the stochastic program to convert it into a deterministic form, the deterministic equivalent program (DEP), and sample it such that it is solvable using typical MIP optimization tools.  From this, I further derive a model to adaptively slice BSs into new VWNs when resources are already selected.  I then present a heuristic approach via genetic algorithm (GA) to handle resource selection with lower computational complexity.
 
 \info{Overall chapter notes}%
-\textit{Convert ``we'' into ``I'' and consider other forms of POV and voice; avoid passive voice.\\When referring to specific ``Problems'', refer to the equations using \textbackslash cref\{\}, which will compress the reference.\\``SOP'' (\Cref{sec:stochopt}) is \cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3}.\\``DEP'' (\Cref{sec:dep}) is \cref{eq:DEPO,eq:DEPC1,eq:DEPC2,eq:DEPC3}.\\``sDEP'' (\Cref{subsec:dep_sampling}) is \cref{eq:sDEPO,eq:sDEPC1,eq:sDEPC2,eq:sDEPC3}.\\``ASM'' (\Cref{subsec:dep_slicing}) is \cref{eq:ASMO,eq:ASMC1,eq:ASMC2}.\\``Iverson bracket'' ($[*]=\{0,\, 1\}$, \Cref{sec:stochopt}) is \cref{eq:iverson}.}
+\textit{Convert ``we'' into ``I'' and consider other forms of POV and voice; avoid passive voice.\\When referring to specific ``Problems'', refer to the equations using \textbackslash cref\{\}, which will compress the reference.\\``SOP'' (\Cref{sec:stochopt}) is \cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}.\\``DEP'' (\Cref{sec:dep}) is \cref{eq:DEPO,eq:DEPC1,eq:DEPC2,eq:DEPC3,eq:DEPC4}.\\``sDEP'' (\Cref{subsec:dep_sampling}) is \cref{eq:sDEPO,eq:sDEPC1,eq:sDEPC2,eq:sDEPC3}.\\``ASM'' (\Cref{subsec:dep_slicing}) is \cref{eq:ASMO,eq:ASMC1,eq:ASMC2}.\\``Iverson bracket'' ($[*]=\{0,\, 1\}$, \Cref{sec:stochopt}) is \cref{eq:iverson}.}
 
 \section{Deterministic Equivalent Program} \label{sec:dep}
 
 \info{\Cref{sec:dep} notes}%
 \textit{Replace all ``we''s with ``I''s.\\Consider voice/POV.\\Convert \textbackslash ref\{\} to \textbackslash cref\{\}.\\Separate $\Omega$ and $\hat{\Omega}$ by presenting $\Omega$ alone as its own first problem spanning the whole sample space?  The DEP is only ``equivalent'' while it samples the entire sample space.  Present a single problem spanning the whole scenario space first, then sample it into a sampled version?  I do have a subsection for sampling; that would be a perfect location to a sampled DEP problem declaration after discussing sampling $\Omega$.  If considering the whole scenario space, then $O$ doesn't matter any more; effectively it's infinite; need to make sure the definition isn't $\{1,\, 2,\, \dots,\, O\}$}
 
-In order to solve the two-stage stochastic optimization formulation (Problem 1, \cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3}), I need to convert it to a deterministic equivalent program (DEP) that does not contain any stochastic variables (only deterministic variables)~\cite{stochprogramming}.  This is done by converting stochastic variables into sets which contain every scenario or realization in the scope of the stochastic variables.
+In order to directly solve the two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}), I need to convert it to a deterministic equivalent program (DEP) that does not contain any stochastic variables (only deterministic variables)~\cite{stochprogramming}.  This is done by converting stochastic variables into sets which contain every scenario or realization in the scope of the stochastic variables.
 
 %Let $\Omega$ be defined as the scenario space (i.e., the set of all scenarios) of demand point locations defining $u_{ms}$ and $\delta_{ms}$.  Let $\hat{\Omega} \defeq \{1,\, 2,\, \ldots,\, O\}$ be a discrete set containing sampled scenarios.  The probability a given scenario $\omega \in \hat{\Omega}$ occurs is denoted by $p^{(\omega)},\, \omega \in \hat{\Omega}$, where $\sum_{\omega \in \hat{\Omega}} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.
 
-Let $\Omega$ be defined as the scenario space (i.e., the set of all scenarios) of demand point locations defining $u_{ms}$ and $\delta_{ms}$.  The probability of a given scenario $\omega \in \Omega$ occurs is denoted by $p^{(\omega)}$, where $\sum_{\omega \in \Omega} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.  By making this change, I arrive at Problem 2 (\cref{eq:DEPO,eq:DEPC1,eq:DEPC2,eq:DEPC3})
+Let $\Omega$ be defined as the scenario space (i.e., the set of all scenarios) of demand point locations defining $\tilde{u}_{ms}$.  The probability of a given scenario $\omega \in \Omega$ occurs is denoted by $p^{(\omega)}$, where $\sum_{\omega \in \Omega} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.  By making this change, I arrive at deterministic equivalent program (DEP) of the two-stage stochastic optimization program modeled in \Cref{sec:stochopt}.
 
-\begin{tcolorbox}[floatplacement = !ht, float, title = Problem 2 -- Deterministic Equivalent Program (DEP)]
+\begin{tcolorbox}[floatplacement = !ht, float, title = Deterministic Equivalent Program (DEP) of \Cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}]
 \begin{align}
 & \underset{\left\{ \substack{
 	z_s,\, \delta_{ms}^{(\omega)},\\
 	s \in \mathcal{S},\, m \in \mathcal{M},\\
 	\omega \in \Omega} \right\}} {\text{minimize}}
 \left\{ \sum_{s \in \mathcal{S}} c_s \; z_s - \alpha \sum_{\omega \in \Omega} p^{(\omega)} \left( \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms}^{(\omega)} \; u_{ms}^{(\omega)} \right) \right\} \label{eq:DEPO}\\
-& \text{subject to:}  \nonumber \\
+& \text{subject to:} \nonumber \\
 & \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms}^{(\omega)} \; u_{ms}^{(\omega)} \leq d_m,\, \forall m \in \mathcal{M},\, \forall \omega \in \Omega \label{eq:DEPC1}\\
 & \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms}^{(\omega)} \leq r_s \; z_s,\, \forall s \in \mathcal{S},\, \forall \omega \in \Omega \label{eq:DEPC2}\\
-& \hspace{0.4in} z_s \in \{0,\, 1\},\, \forall s \in \mathcal{S}. \label{eq:DEPC3}
+& \hspace{0.4in} z_s \in \{0,\, 1\},\, \forall s \in \mathcal{S} \label{eq:DEPC3}\\
+& \hspace{0.4in} \delta_{ms} \in \left[ 0,\, d_m \right],\, \forall m \in \mathcal{M},\, \forall	s \in \mathcal{S} \label{eq:DEPC4}
 \end{align}
 \end{tcolorbox}
 
-\change{Rewrite this paragraph for the citations in mind.}%
-The objective function (\cref{eq:DEPO}) combines both objective functions (\cref{eq:SOPS1O}) and (\cref{eq:SOPS2O}) of the initial formulation (Problem 1) into a deterministic form.  Constraints (\cref{eq:DEPC1}) and (\cref{eq:DEPC2})	ensure demand is not overallocated and is only allocated to selected resources and within capacity for all scenarios.
+The objective function (\cref{eq:DEPO}) combines both objective functions of the initial stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS2O}) into a single deterministic objective.  The goal modeled by \cref{eq:DEPO} is unchanged from that modeled by \cref{eq:SOPS1O,eq:SOPS2O}; the first half handles resource selection by finding the minimal cost network relative to the second half, which handles adaptive slicing of those selected BSs by allocating slices of the BSs to demand for maximum demand satisfaction.
+
+\Cref{eq:DEPC1} is a constraint ensures that demand is allocated to BSs that it is within range of and that it is not overallocated resources, adapting \cref{eq:SOPS2C2} for all demand scenarios.  \Cref{eq:DEPC2} is a constraint that ensures only selected BSs are allocated demand, and that BSs are allocated within capacity, adapting \cref{eq:SOPS2C3} for all demand scenarios.  \Cref{eq:DEPC3,eq:DEPC4} define bounds on the decision variables according to \cref{eq:SOPS1C1,eq:SOPS2C4}.
+
+\change{Continue editing work from here.}
 
 Problem 2 provides an equivalent deterministic form of Problem 1 for the (finite) sampled state space, $\hat{\Omega}$, containing $O$ scenarios.  With sufficiently large $O$, $\hat{\Omega}$ approaches a tight approximation of the original sample space.  Within each scenario $\omega \in \hat{\Omega}$, the SSLT demand field $\rho$ is sampled to provide a set of $M$ discrete demand points.  Each sampling of $\rho$ is generated by creating a non-stationary 2D PPP with $M$ points as described in Section \ref{subsec:networkdefs_sslt}.
 
