@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.1.18)  18 JUL 2018 17:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.1.18)  21 JUL 2018 19:40
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -807,13 +807,33 @@ line 335.
 Chapter 2.
 [24
 
-] [25] [26] [27] [28] [29] [30] [31]
+]
+Overfull \hbox (3.74399pt too wide) in paragraph at lines 414--414
+[][][][]\OT1/cmr/m/n/6 Diversifying 
+ []
+
+
+Overfull \hbox (3.74399pt too wide) in paragraph at lines 414--414
+[][][][]\OT1/cmr/m/n/6 Diversifying 
+ []
+
+
+Overfull \hbox (3.74399pt too wide) in paragraph at lines 414--414
+[][][][]\OT1/cmr/m/n/6 Diversifying 
+ []
+
+
+Overfull \hbox (3.74399pt too wide) in paragraph at lines 414--414
+[][][][]\OT1/cmr/m/n/6 Diversifying 
+ []
+
+[25] [26] [27] [28] [29] [30] [31]
 <Figures/rhoG_O2pi-300_L100000_X100_Y100.png, id=501, 421.575pt x 316.0608pt>
 File: Figures/rhoG_O2pi-300_L100000_X100_Y100.png Graphic file (type png)
 
 <use Figures/rhoG_O2pi-300_L100000_X100_Y100.png>
 Package pdftex.def Info: Figures/rhoG_O2pi-300_L100000_X100_Y100.png used on in
-put line 545.
+put line 557.
 (pdftex.def)             Requested size: 211.3883pt x 158.48334pt.
 
 <Figures/rhoG_O4pi-300_L100000_X100_Y100.png, id=502, 421.575pt x 316.0608pt>
@@ -821,7 +841,7 @@ File: Figures/rhoG_O4pi-300_L100000_X100_Y100.png Graphic file (type png)
 
 <use Figures/rhoG_O4pi-300_L100000_X100_Y100.png>
 Package pdftex.def Info: Figures/rhoG_O4pi-300_L100000_X100_Y100.png used on in
-put line 552.
+put line 564.
 (pdftex.def)             Requested size: 211.3883pt x 158.48334pt.
  [32 <./Figures/rhoG_O2pi-300_L100000_X100_Y100.png (PNG copy)> <./Figures/rhoG
 _O4pi-300_L100000_X100_Y100.png (PNG copy)>]
@@ -829,115 +849,116 @@ _O4pi-300_L100000_X100_Y100.png (PNG copy)>]
 LaTeX Warning: Marginpar on page 33 moved.
 
 
-<Figures/rhoS_pdf_O2pi-300_L100000_X100_Y100.png, id=514, 421.575pt x 316.0608p
+<Figures/rhoS_pdf_O2pi-300_L100000_X100_Y100.png, id=511, 421.575pt x 316.0608p
 t>
 File: Figures/rhoS_pdf_O2pi-300_L100000_X100_Y100.png Graphic file (type png)
  <use Figures/rhoS_pdf_O2pi-300_L100000_X100_Y100.png>
 Package pdftex.def Info: Figures/rhoS_pdf_O2pi-300_L100000_X100_Y100.png used o
-n input line 570.
+n input line 582.
 (pdftex.def)             Requested size: 211.3883pt x 158.48334pt.
 
-<Figures/rhoS_pdf_O4pi-300_L100000_X100_Y100.png, id=515, 421.575pt x 316.0608p
+<Figures/rhoS_pdf_O4pi-300_L100000_X100_Y100.png, id=512, 421.575pt x 316.0608p
 t>
 File: Figures/rhoS_pdf_O4pi-300_L100000_X100_Y100.png Graphic file (type png)
  <use Figures/rhoS_pdf_O4pi-300_L100000_X100_Y100.png>
 Package pdftex.def Info: Figures/rhoS_pdf_O4pi-300_L100000_X100_Y100.png used o
-n input line 577.
+n input line 589.
 (pdftex.def)             Requested size: 211.3883pt x 158.48334pt.
-
-<Figures/rho_O2pi-300_L100000_X100_Y100.png, id=521, 421.575pt x 316.0608pt>
+ [33 <./Figures/rhoS_pdf_O2pi-300_L100000_X100_Y100.png (PNG copy)> <./Figures/
+rhoS_pdf_O4pi-300_L100000_X100_Y100.png (PNG copy)>]
+<Figures/rho_O2pi-300_L100000_X100_Y100.png, id=528, 421.575pt x 316.0608pt>
 File: Figures/rho_O2pi-300_L100000_X100_Y100.png Graphic file (type png)
 
 <use Figures/rho_O2pi-300_L100000_X100_Y100.png>
 Package pdftex.def Info: Figures/rho_O2pi-300_L100000_X100_Y100.png used on inp
-ut line 596.
+ut line 608.
 (pdftex.def)             Requested size: 211.3883pt x 158.48334pt.
 
-<Figures/rho_O4pi-300_L100000_X100_Y100.png, id=522, 421.575pt x 316.0608pt>
+<Figures/rho_O4pi-300_L100000_X100_Y100.png, id=529, 421.575pt x 316.0608pt>
 File: Figures/rho_O4pi-300_L100000_X100_Y100.png Graphic file (type png)
 
 <use Figures/rho_O4pi-300_L100000_X100_Y100.png>
 Package pdftex.def Info: Figures/rho_O4pi-300_L100000_X100_Y100.png used on inp
-ut line 603.
+ut line 615.
 (pdftex.def)             Requested size: 211.3883pt x 158.48334pt.
 
-<Figures/rho_pdf_O2pi-300_L100000_X100_Y100.png, id=525, 421.575pt x 316.0608pt
+<Figures/rho_pdf_O2pi-300_L100000_X100_Y100.png, id=532, 421.575pt x 316.0608pt
 >
 File: Figures/rho_pdf_O2pi-300_L100000_X100_Y100.png Graphic file (type png)
  <use Figures/rho_pdf_O2pi-300_L100000_X100_Y100.png>
 Package pdftex.def Info: Figures/rho_pdf_O2pi-300_L100000_X100_Y100.png used on
- input line 615.
+ input line 627.
 (pdftex.def)             Requested size: 211.3883pt x 158.48334pt.
 
-<Figures/rho_pdf_O4pi-300_L100000_X100_Y100.png, id=526, 421.575pt x 316.0608pt
+<Figures/rho_pdf_O4pi-300_L100000_X100_Y100.png, id=533, 421.575pt x 316.0608pt
 >
 File: Figures/rho_pdf_O4pi-300_L100000_X100_Y100.png Graphic file (type png)
  <use Figures/rho_pdf_O4pi-300_L100000_X100_Y100.png>
 Package pdftex.def Info: Figures/rho_pdf_O4pi-300_L100000_X100_Y100.png used on
- input line 622.
+ input line 634.
 (pdftex.def)             Requested size: 211.3883pt x 158.48334pt.
- [33 <./Figures/rhoS_pdf_O2pi-300_L100000_X100_Y100.png (PNG copy)> <./Figures/
-rhoS_pdf_O4pi-300_L100000_X100_Y100.png (PNG copy)>] [34 <./Figures/rho_O2pi-30
-0_L100000_X100_Y100.png (PNG copy)> <./Figures/rho_O4pi-300_L100000_X100_Y100.p
-ng (PNG copy)> <./Figures/rho_pdf_O2pi-300_L100000_X100_Y100.png (PNG copy)> <.
-/Figures/rho_pdf_O4pi-300_L100000_X100_Y100.png (PNG copy)>]
-<Figures/rho_nsPPP-400_O2pi-300_L100000_X100_Y100.png, id=543, 421.575pt x 316.
+ [34 <./Figures/rho_O2pi-300_L100000_X100_Y100.png (PNG copy)> <./Figures/rho_O
+4pi-300_L100000_X100_Y100.png (PNG copy)> <./Figures/rho_pdf_O2pi-300_L100000_X
+100_Y100.png (PNG copy)> <./Figures/rho_pdf_O4pi-300_L100000_X100_Y100.png (PNG
+ copy)>]
+<Figures/rho_nsPPP-400_O2pi-300_L100000_X100_Y100.png, id=544, 421.575pt x 316.
 0608pt>
 File: Figures/rho_nsPPP-400_O2pi-300_L100000_X100_Y100.png Graphic file (type p
 ng)
  <use Figures/rho_nsPPP-400_O2pi-300_L100000_X100_Y100.png>
 Package pdftex.def Info: Figures/rho_nsPPP-400_O2pi-300_L100000_X100_Y100.png u
-sed on input line 638.
+sed on input line 650.
 (pdftex.def)             Requested size: 211.3883pt x 158.48334pt.
 
-<Figures/rho_nsPPP-400_O4pi-300_L100000_X100_Y100.png, id=544, 421.575pt x 316.
+<Figures/rho_nsPPP-400_O4pi-300_L100000_X100_Y100.png, id=545, 421.575pt x 316.
 0608pt>
 File: Figures/rho_nsPPP-400_O4pi-300_L100000_X100_Y100.png Graphic file (type p
 ng)
  <use Figures/rho_nsPPP-400_O4pi-300_L100000_X100_Y100.png>
 Package pdftex.def Info: Figures/rho_nsPPP-400_O4pi-300_L100000_X100_Y100.png u
-sed on input line 645.
+sed on input line 657.
 (pdftex.def)             Requested size: 211.3883pt x 158.48334pt.
- [35 <./Figures/rho_nsPPP-400_O2pi-300_L100000_X100_Y100.png (PNG copy)> <./Fig
-ures/rho_nsPPP-400_O4pi-300_L100000_X100_Y100.png (PNG copy)>]
-Overfull \hbox (0.59404pt too wide) in paragraph at lines 686--686
+ [35]
+[36 <./Figures/rho_nsPPP-400_O2pi-300_L100000_X100_Y100.png (PNG copy)> <./Figu
+res/rho_nsPPP-400_O4pi-300_L100000_X100_Y100.png (PNG copy)>]
+Overfull \hbox (0.59404pt too wide) in paragraph at lines 698--698
 []\OT1/cmr/m/n/6 Effectively, 
  []
 
 
-Overfull \hbox (0.59404pt too wide) in paragraph at lines 686--686
+Overfull \hbox (0.59404pt too wide) in paragraph at lines 698--698
 []\OT1/cmr/m/n/6 Effectively, 
  []
 
 
-Overfull \hbox (0.59404pt too wide) in paragraph at lines 686--686
+Overfull \hbox (0.59404pt too wide) in paragraph at lines 698--698
 []\OT1/cmr/m/n/6 Effectively, 
  []
 
 
-Overfull \hbox (0.59404pt too wide) in paragraph at lines 686--686
+Overfull \hbox (0.59404pt too wide) in paragraph at lines 698--698
 []\OT1/cmr/m/n/6 Effectively, 
  []
 
-[36] [37] [38] [39]
+[37] [38] [39]
 Chapter 3.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 752.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 764.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 752.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 764.
  [40
 
 ]
-Overfull \hbox (3.59566pt too wide) in paragraph at lines 759--760
+Overfull \hbox (3.59566pt too wide) in paragraph at lines 771--772
 []\OT1/cmr/m/n/12 In or-der to solve the two-stage stochas-tic op-ti-miza-tion 
-for-mu-la-tion (Prob-lem 1, eqs. ([]2.11[])--
+for-mu-la-tion (Prob-lem 1, eqs. ([]2.13[])--
  []
 
 [41] [42] [43] [44] [45] [46] [47]
-LaTeX Font Info:    Try loading font information for U+bbm on input line 850.
+LaTeX Font Info:    Try loading font information for U+bbm on input line 862.
 
 (C:\Users\teagu\AppData\Roaming\MiKTeX\2.9\tex\latex\bbm\ubbm.fd
 File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
@@ -948,9 +969,9 @@ Chapter 4.
 
 ] [52] [53] [54]
 Chapter 5.
-(KT_Thesis.bbl [55
+[55
 
-] [56] [57
+] (KT_Thesis.bbl [56] [57
 
 ]
 Missing character: There is no Å in font cmr12!
@@ -963,11 +984,12 @@ Missing character: There is no ¤ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¶ in font cmr12!
  [61]) [62]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 976.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 976.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1005.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1005.
  (KT_Thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 976.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 976.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1005.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1005.
+
 Package rerunfilecheck Info: File `KT_Thesis.out' has not changed.
 (rerunfilecheck)             Checksum: DDCE422E1C5A34714044D7F2D6A083DC;2196.
 
@@ -977,12 +999,12 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
  )
 (\end occurred when \iftrue on line 404 was incomplete) 
 Here is how much of TeX's memory you used:
- 21973 strings out of 493333
- 431527 string characters out of 3139194
- 519909 words of memory out of 3000000
- 24925 multiletter control sequences out of 15000+200000
- 15755 words of font info for 61 fonts, out of 3000000 for 9000
- 1145 hyphenation exceptions out of 8191
+ 21978 strings out of 493333
+ 431585 string characters out of 3139194
+ 526513 words of memory out of 3000000
+ 24926 multiletter control sequences out of 15000+200000
+ 15886 words of font info for 62 fonts, out of 3000000 for 9000
+ 1146 hyphenation exceptions out of 8191
  54i,19n,77p,2094b,712s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): n
 ame{Hfootnote.6} has been referenced but does not exist, replaced by a fixed on
@@ -1010,23 +1032,24 @@ ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
-12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program 
-Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on KT_Thesis.pdf (69 pages, 1739165 bytes).
+ype1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
+10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on KT_Thesis.pdf (69 pages, 1750678 bytes).
 PDF statistics:
- 904 PDF objects out of 1000 (max. 8388607)
- 206 named destinations out of 1000 (max. 500000)
+ 908 PDF objects out of 1000 (max. 8388607)
+ 208 named destinations out of 1000 (max. 500000)
  307 words of extra memory for PDF output out of 10000 (max. 10000000)
 
