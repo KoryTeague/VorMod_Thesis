@@ -770,12 +770,9 @@ The stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOP
 \Cref{ch:vnbmodel} established a mathematical model for analyzing the relationship between SPs and a VNB and proposed a two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) for constructing VWNs in the context of that relationship.  In this chapter, I present two approaches that arrive at a solution for this program.  First, I modify the stochastic program to convert it into a deterministic form, the deterministic equivalent program (DEP), and sample it such that it is solvable using typical MIP optimization tools.  From this, I further derive a model to adaptively slice BSs into new VWNs when resources are already selected.  I then present a heuristic approach via genetic algorithm (GA) to handle resource selection with lower computational complexity.
 
 \info{Overall chapter notes}%
-\textit{Convert ``we'' into ``I'' and consider other forms of POV and voice; avoid passive voice.\\When referring to specific ``Problems'', refer to the equations using \textbackslash cref\{\}, which will compress the reference.\\``SOP'' (\Cref{sec:stochopt}) is \cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}.\\``DEP'' (\Cref{sec:dep}) is \cref{eq:DEPO,eq:DEPC1,eq:DEPC2,eq:DEPC3,eq:DEPC4}.\\``sDEP'' (\Cref{subsec:dep_sampling}) is \cref{eq:sDEPO,eq:sDEPC1,eq:sDEPC2,eq:sDEPC3}.\\``ASM'' (\Cref{subsec:dep_slicing}) is \cref{eq:ASMO,eq:ASMC1,eq:ASMC2}.\\``Iverson bracket'' ($[*]=\{0,\, 1\}$, \Cref{sec:stochopt}) is \cref{eq:iverson}.}
+\textit{Convert ``we'' into ``I'' and consider other forms of POV and voice; avoid passive voice.\\When referring to specific ``Problems'', refer to the equations using \textbackslash cref\{\}, which will compress the reference.\\``SOP'' (\Cref{sec:stochopt}) is \cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}.\\``DEP'' (\Cref{sec:dep}) is \cref{eq:DEPO,eq:DEPC1,eq:DEPC2,eq:DEPC3,eq:DEPC4}.\\``sDEP'' (\Cref{subsec:dep_sampling}) is \cref{eq:sDEPO,eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}.\\``ASM'' (\Cref{subsec:dep_slicing}) is \cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}.\\``Iverson bracket'' ($[*]=\{0,\, 1\}$, \Cref{sec:stochopt}) is \cref{eq:iverson}.}
 
 \section{Deterministic Equivalent Program} \label{sec:dep}
-
-\info{\Cref{sec:dep} notes}%
-\textit{Replace all ``we''s with ``I''s.\\Consider voice/POV.\\Convert \textbackslash ref\{\} to \textbackslash cref\{\}.\\Separate $\Omega$ and $\hat{\Omega}$ by presenting $\Omega$ alone as its own first problem spanning the whole sample space?  The DEP is only ``equivalent'' while it samples the entire sample space.  Present a single problem spanning the whole scenario space first, then sample it into a sampled version?  I do have a subsection for sampling; that would be a perfect location to a sampled DEP problem declaration after discussing sampling $\Omega$.  If considering the whole scenario space, then $O$ doesn't matter any more; effectively it's infinite; need to make sure the definition isn't $\{1,\, 2,\, \dots,\, O\}$}
 
 In order to directly solve the two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}), I need to convert it to a deterministic equivalent program (DEP) that does not contain any stochastic variables (only deterministic variables)~\cite{stochprogramming}.  This is done by converting stochastic variables into sets which contain every scenario or realization in the scope of the stochastic variables.
 
@@ -786,41 +783,44 @@ Let $\Omega$ be defined as the scenario space (i.e., the set of all scenarios) o
 \begin{tcolorbox}[floatplacement = !ht, float, title = Deterministic Equivalent Program (DEP) of \Cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}]
 \begin{align}
 & \underset{\left\{ \substack{
-	z_s,\, \delta_{ms}^{(\omega)},\\
-	s \in \mathcal{S},\, m \in \mathcal{M},\\
+	z_s,\, \delta_{ms}^{\left( \omega \right)},\\
+	m \in \mathcal{M},\, s \in \mathcal{S},\\
 	\omega \in \Omega} \right\}} {\text{minimize}}
-\left\{ \sum_{s \in \mathcal{S}} c_s \; z_s - \alpha \sum_{\omega \in \Omega} p^{(\omega)} \left( \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms}^{(\omega)} \; u_{ms}^{(\omega)} \right) \right\} \label{eq:DEPO}\\
+\left\{ \sum_{s \in \mathcal{S}} c_s \; z_s - \alpha \sum_{\omega \in \Omega} p^{\left( \omega \right)} \left( \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms}^{\left( \omega \right)} \; u_{ms}^{\left( \omega \right)} \right) \right\} \label{eq:DEPO}\\
 & \text{subject to:} \nonumber \\
-& \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms}^{(\omega)} \; u_{ms}^{(\omega)} \leq d_m,\, \forall m \in \mathcal{M},\, \forall \omega \in \Omega \label{eq:DEPC1}\\
-& \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms}^{(\omega)} \leq r_s \; z_s,\, \forall s \in \mathcal{S},\, \forall \omega \in \Omega \label{eq:DEPC2}\\
-& \hspace{0.4in} z_s \in \{0,\, 1\},\, \forall s \in \mathcal{S} \label{eq:DEPC3}\\
-& \hspace{0.4in} \delta_{ms} \in \left[ 0,\, d_m \right],\, \forall m \in \mathcal{M},\, \forall	s \in \mathcal{S} \label{eq:DEPC4}
+& \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms}^{\left( \omega \right)} \; u_{ms}^{\left( \omega \right)} \leq d_m,\, \forall m \in \mathcal{M},\, \forall \omega \in \Omega \label{eq:DEPC1}\\
+& \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms}^{\left( \omega \right)} \leq r_s \; z_s,\, \forall s \in \mathcal{S},\, \forall \omega \in \Omega \label{eq:DEPC2}\\
+& \hspace{0.4in} z_s \in \left\{ 0,\, 1 \right\},\, \forall s \in \mathcal{S} \label{eq:DEPC3}\\
+& \hspace{0.4in} \delta_{ms}^{\left( \omega \right)} \in \left[ 0,\, d_m \right],\, \forall m \in \mathcal{M},\, \forall s \in \mathcal{S},\, \forall \omega \in \Omega \label{eq:DEPC4}
 \end{align}
 \end{tcolorbox}
 
 The objective function (\cref{eq:DEPO}) combines both objective functions of the initial stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS2O}) into a single deterministic objective.  The goal modeled by \cref{eq:DEPO} is unchanged from that modeled by \cref{eq:SOPS1O,eq:SOPS2O}; the first half handles resource selection by finding the minimal cost network relative to the second half, which handles adaptive slicing of those selected BSs by allocating slices of the BSs to demand for maximum demand satisfaction.
 
-\Cref{eq:DEPC1} is a constraint ensures that demand is allocated to BSs that it is within range of and that it is not overallocated resources, adapting \cref{eq:SOPS2C2} for all demand scenarios.  \Cref{eq:DEPC2} is a constraint that ensures only selected BSs are allocated demand, and that BSs are allocated within capacity, adapting \cref{eq:SOPS2C3} for all demand scenarios.  \Cref{eq:DEPC3,eq:DEPC4} define bounds on the decision variables according to \cref{eq:SOPS1C1,eq:SOPS2C4}.
+\Cref{eq:DEPC1} is a constraint ensures that demand is allocated to BSs that it is within range of and that it is not overallocated resources, adapting \cref{eq:SOPS2C2} for all demand scenarios.  \Cref{eq:DEPC2} is a constraint that ensures only selected BSs are allocated demand, and that BSs are allocated within capacity, combining and adapting \cref{eq:SOPS2C1,eq:SOPS2C3} for all demand scenarios.  \Cref{eq:DEPC3,eq:DEPC4} define bounds on the decision variables according to \cref{eq:SOPS1C1,eq:SOPS2C4}.
 
-\change{Continue editing work from here.}
-
-Problem 2 provides an equivalent deterministic form of Problem 1 for the (finite) sampled state space, $\hat{\Omega}$, containing $O$ scenarios.  With sufficiently large $O$, $\hat{\Omega}$ approaches a tight approximation of the original sample space.  Within each scenario $\omega \in \hat{\Omega}$, the SSLT demand field $\rho$ is sampled to provide a set of $M$ discrete demand points.  Each sampling of $\rho$ is generated by creating a non-stationary 2D PPP with $M$ points as described in Section \ref{subsec:networkdefs_sslt}.
+This reformulation is equivalent to the original stochastic optimization program, and the solution of the DEP is also a solution of the original.  However, the stochastic variable of the original problem, $\tilde{u}_{ms}$, is dependent on the locations of the demand points in $\mathcal{M}$.  As these demand point locations are stochastic and capable of assuming any of an uncountably infinite locations over the considered region, the set of deterministic scenarios, $\Omega$, has an infinite cardinality.  This renders the DEP as also not directly solvable.
 
 \subsection{Sampling Approaches} \label{subsec:dep_sampling}
 
 \textit{As the infinitely large set of scenarios renders the problem unable to be solved, it needs to be sampled into a finite set to be solved.  Present the structure and nomenclature used to imply a sampled set of scenarios, and describe the structure of how the scenarios are sampled into a truncated set.  Might be worth mentioning that there are other methods that might be better for sampling beyond the completely random sampling approach I am using.  Worth consideration?}
 
-\begin{tcolorbox}[floatplacement = !ht, float, title = Problem 3 -- Sampled Deterministic Equivalent Program (sDEP)]
+\change{Continue from here}
+
+Problem 2 provides an equivalent deterministic form of Problem 1 for the (finite) sampled state space, $\hat{\Omega}$, containing $O$ scenarios.  With sufficiently large $O$, $\hat{\Omega}$ approaches a tight approximation of the original sample space.  Within each scenario $\omega \in \hat{\Omega}$, the SSLT demand field $\rho$ is sampled to provide a set of $M$ discrete demand points.  Each sampling of $\rho$ is generated by creating a non-stationary 2D PPP with $M$ points as described in Section \ref{subsec:networkdefs_sslt}.
+
+\begin{tcolorbox}[floatplacement = !ht, float, title = Sampled Deterministic Equivalent Program (sDEP) of \Cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}]
 \begin{align}
 & \underset{\left\{ \substack{
-	z_s,\, \delta_{ms}^{(\omega)},\\
-	s \in \mathcal{S},\, m \in \mathcal{M},\\
+	z_s,\, \delta_{ms}^{\left( \omega \right)},\\
+	m \in \mathcal{M},\, s \in \mathcal{S},\\
 	\omega \in \hat{\Omega}} \right\}} {\text{minimize}}
-\left\{ \sum_{s \in \mathcal{S}} c_s \; z_s - \alpha \sum_{\omega \in \hat{\Omega}} p^{(\omega)} \left( \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms}^{(\omega)} \; u_{ms}^{(\omega)} \right) \right\} \label{eq:sDEPO}\\
+\left\{ \sum_{s \in \mathcal{S}} c_s \; z_s - \alpha \sum_{\omega \in \hat{\Omega}} p^{\left( \omega \right)} \left( \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms}^{\left( \omega \right)} \; u_{ms}^{\left( \omega \right)} \right) \right\} \label{eq:sDEPO}\\
 & \text{subject to:}  \nonumber \\
-& \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms}^{(\omega)} \; u_{ms}^{(\omega)} \leq d_m,\, \forall m \in \mathcal{M},\, \forall \omega \in \hat{\Omega} \label{eq:sDEPC1}\\
-& \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms}^{(\omega)} \leq r_s \; z_s,\, \forall s \in \mathcal{S},\, \forall \omega \in \hat{\Omega} \label{eq:sDEPC2}\\
-& \hspace{0.4in} z_s \in \{0,\, 1\},\, \forall s \in \mathcal{S}. \label{eq:sDEPC3}
+& \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms}^{\left( \omega \right)} \; u_{ms}^{\left( \omega \right)} \leq d_m,\, \forall m \in \mathcal{M},\, \forall \omega \in \hat{\Omega} \label{eq:sDEPC1}\\
+& \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms}^{\left( \omega \right)} \leq r_s \; z_s,\, \forall s \in \mathcal{S},\, \forall \omega \in \hat{\Omega} \label{eq:sDEPC2}\\
+& \hspace{0.4in} z_s \in \left\{ 0,\, 1 \right\},\, \forall s \in \mathcal{S}. \label{eq:sDEPC3}\\
+& \hspace{0.4in} \delta_{ms}^{\left( \omega \right)} \in \left[ 0,\, d_m \right],\, \forall m \in \mathcal{M},\, \forall s \in \mathcal{S},\, \omega \in \Omega \label{eq:sDEPC4}
 \end{align}
 \end{tcolorbox}
 
@@ -841,7 +841,8 @@ After the solution to the sampled DEP of Section \ref{subsec:dep_sampling} has b
 \left\{ \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms} \; u_{ms} \right\} \label{eq:ASMO}\\
 & \text{subject to:}  \nonumber \\
 & \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms} \; u_{ms} \leq d_m,\, \forall m \in \mathcal{M} \label{eq:ASMC1}\\
-& \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms} \leq r_s \; z_s,\, \forall s \in \mathcal{S}. \label{eq:ASMC2}
+& \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms} \leq r_s \; z_s,\, \forall s \in \mathcal{S}. \label{eq:ASMC2}\\
+& \hspace{0.4in} \delta_{ms} \in \left[ 0,\, d_m \right],\, \forall m \in \mathcal{M},\, \forall s \in \mathcal{S} \label{eq:ASMC3}
 \end{align}
 \end{tcolorbox}
 
