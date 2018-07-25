@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: July 23, 2018
+% REVISED: July 24, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -133,6 +133,8 @@
 
 \allowdisplaybreaks
 
+\usepackage{acronym}
+
 \hyphenation{vir-tu-al-iz-a-tion vir-tu-al-ized au-to-cor-re-la-tion com-mu-ni-cat-ing di-ver-si-fy-ing}
 
 \begin{document}
@@ -229,17 +231,7 @@ their writing with increasing frequency.
 
 This work received support in part from the National Science Foundation via work involved with the Wireless @ Virginia Tech research group.
 
-\iffalse
-That this work received support from the Southeastern Universities
-Research Association (SURA) ``Monticello Library Project'' is purely
-coincidental.
-\fi
-
 \pagebreak
-
-% Dedication and Acknowledgments are both optional
-% \chapter*{Dedication}
-% \chapter*{Acknowledgments}
 
 \tableofcontents
 \pagebreak
@@ -250,6 +242,15 @@ coincidental.
 \listoftables
 \pagebreak
 
+% Uncomment if I want to add acronyms as a separate document ``acronyms.tex''
+%\include{acronyms}
+\chapter*{List of Acronyms}
+\begin{acronym}
+	\acro{BS}{Base Station}
+	\acro{CapEx}{Capital Expenditures}
+	\acro{OpEx}{Operational Expenditures}
+\end{acronym}
+
 \pagenumbering{arabic}
 \pagestyle{myheadings}
 
@@ -258,7 +259,7 @@ coincidental.
 
 Mobile carriers have seen explosive growth in both the volume of users and the demands of those users within the networks they operate.  New and evolving data-driven applications, such as audio/video streaming, social networking, and the Internet of Things have also placed increasing demand upon the networks.  In 2016, the amount of IP data handled by mobile networks exceeded 86 Exabytes; it is projected to reach almost 200 Exabytes in 2018, and 580 Exabytes in 2021~\cite{ciscoVNI2017}.  Due to this exponential growth, incremental approaches to improve the network will fail to satisfy demand.  As this growth continues in the near future, new architectures like 5G and its associated technologies will be needed to keep pace with the demand.
 
-However, deployment of these technologies and networks can be a costly, prohibitive venture.  To meet these demands requires a similar increase in capital (CapEx) and operational expenditures (OpEx).  As volumes and costs rise and margins shrink, approaches to reduce these expenditures become increasingly necessary.  Resource infrastructure sharing has been a common practice for MNOs going back to 2G and 3G networks.  First, mobile network operators (MNOs) needed to offer coverage for their users in regions where they had no infrastructure, leading to the creation of roaming agreements, eliminating the need for deploying new infrastructure in that region and reducing CapEx.  Second, by sharing passive elements of the infrastructure, such as physical sites, tower masts, power, and air-conditioning, the CapEx of deploying new backhaul and radio access networks (RANs), such as cellular base stations (BSs), has decreased~\cite{1421931}.
+However, deployment of these technologies and networks can be a costly, prohibitive venture.  To meet these demands requires a similar increase in capital (CapEx) and operational expenditures (OpEx).  As volumes and costs rise and margins shrink, approaches to reduce these expenditures become increasingly necessary.  Resource infrastructure sharing has been a common practice for mobile network operators (MNOs) going back to 2G and 3G networks.  First, MNOs needed to offer coverage for their users in regions where they had no infrastructure, leading to the creation of roaming agreements, eliminating the need for deploying new infrastructure in that region and reducing CapEx.  Second, by sharing passive elements of the infrastructure, such as physical sites, tower masts, power, and air-conditioning, the CapEx of deploying new backhaul and radio access networks (RANs), such as cellular base stations (BSs), has decreased~\cite{1421931}.
 
 CapEx reductions from passive resource sharing drove an interest in resource sharing of the active elements of the network.  For example, MNOs might share RANs, core networks, BSs, antenna systems, or backhaul, which leads to reductions in both CapEx and OpEx.  The ability to share these active resources removed the necessity for network operators to own and maintain a physical network while providing actual MNO-like mobile services.  These mobile virtual network operators (MVNOs) function similarly to MNOs, but operate a virtualized wireless network (VWN) comprised of virtual resources instead of physical resources without the associated CapEx.  It has been shown that virtualization in this manner can increase overall demand satisfaction of a set of VWNs while decreasing overall cost (i.e., OpEx) by decreasing the idle capacity of the networks~\cite{MJ_CCNC_16}.
 
@@ -417,7 +418,7 @@ This chapter establishes the mathematical foundation for the work completed in t
 
 Consider a geographic area of width $X$ meters and length $Y$ meters that contains a VNB and a set $\mathcal{S} \defeq \left\{ 1,\, 2,\, \ldots,\, S \right\}$ of virtualized resources (i.e., BSs) the VNB has aggregated for use in the construction of VWNs.  The pool of BSs, $\mathcal{S}$, is mapped to physical BSs owned and maintained by RPs and are made available for use through contracts between the RPs and the VNB.  The contract-negotiated cost for the VNB to lease BS $s \in \mathcal{S}$ is denoted by $c_s$.  The costs for the BSs used within a constructed VWN are passed to the SPs as part of the overall cost of the network.  The rate capacity of BS $s \in \mathcal{S}$ is denoted by $r_s$ and its coverage radius is denoted by $b_s$.
 
-Let $\mathcal{N} \defeq \left\{ 1,\, 2,\, \ldots,\, N \right\}$ be the set of SPs seeking a VWN to host their services with coverage within the geographical area.  An SP $n \in \mathcal{N}$ associates with the VNB to create their desired VWN.  Through this association, SP $n$ must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  SP $n$ must know and communicate to the VNB the estimated geographic distribution of the service's traffic demand density (or demand \emph{intensity}) as a function, $\lambda_n\left( x,\, y \right),\, n \in \mathcal{N},\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right],\,$ in terms of $\frac{\text{bits}}{\text{km}^2}$.  The demand intensity function could be in the form of a continuous function or as discrete pixels (e.g., a bitmap), and indicates the locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  For an example of $\lambda_n$, see \Cref{subsec:networkdefs_sslt}.
+Let $\mathcal{N} \defeq \left\{ 1,\, 2,\, \ldots,\, N \right\}$ be the set of SPs seeking a VWN to host their services with coverage within the geographical area.  An SP $n \in \mathcal{N}$ associates with the VNB to create its desired VWN.  Through this association, SP $n$ must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  SP $n$ must know and communicate to the VNB the estimated geographic distribution of the service's traffic demand density (or demand \emph{intensity}) as a function, $\lambda_n\left( x,\, y \right),\, n \in \mathcal{N},\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right],\,$ in terms of $\frac{\text{bits}}{\text{km}^2}$.  The demand intensity function could be in the form of a continuous function or as discrete pixels (e.g., a bitmap), and indicates the locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  For an example of $\lambda_n$, see \Cref{subsec:networkdefs_sslt}.
 
 Further, the SP would also provide the desired or needed percent demand satisfaction rate for the service.  \improvement{Diversifying $\alpha$ to very according to the various SPs (i.e., $\alpha_n, n \in \mathcal{N}$, or $\alpha_m, m \in \mathcal{M}$) would be required for this.}Some services have high priority, such as those related to emergency services, and must have nearly if not perfect 100\% demand satisfaction.  Others, such as the aforementioned generic voice lines or video streaming, can withstand some demand to remain unsatisfied as a tradeoff for decreased network leasing or operational costs.
 %Note: Can the model be officially updated to implement the percent demand satisfaction stated by the SP to the VNB?  $\alpha$ controls for this in the 2-stage stoch model, but it doesn't differentiate between the various SPs (i.e., it's a single $\alpha$ for all SPs).
@@ -454,7 +455,7 @@ This is allowed because, by definition, each point in a PPP is independent and i
 Each demand point $m \in \mathcal{M}_n$ loads the VWN of SP $n \in \mathcal{N}$ with point traffic demand denoted by $d_{mn}$.  So that the total demand described by $\lambda_n$ is allocated by the points in $\mathcal{M}_n$, the overall demand 
 
 \begin{equation} \label{eq:demandintegral}
-D_n = \int_0^X \int_0^Y \lambda_n\left( x,\, y \right) dy \, dx, n \in \mathcal{N}
+D_n = \int_0^X \int_0^Y \lambda_n\left( x,\, y \right) dy \, dx, n \in \mathcal{N},
 \end{equation}
 
 \noindent of the demand density distribution is evenly distributed such that
@@ -521,7 +522,7 @@ It is apparent that $\tilde{u}_{mns}$ will vary according to the path-loss chara
 \end{equation}
 \fi
 
-This simplification allows the available pool of BSs, or any subset thereof, to be easily visualized as a Voronoi tessellation \cite{Aurenhammer:1991:VDS:116873.116880}.  In a Voronoi tessellation, a two-dimensional plane is tessellated into a set of convex polygons, each of which is defined by a single point contained within.  All points comprising the area enclosed by a polygon is closer to that polygon's defining point than any other polygons'.  Using the simplified definition for $\tilde{u}_{mns}$, the Voronoi tessellation of a set of BS locations functions as a coverage map for those BSs, assuming that all polygons are within the respective ranges for their associated BSs; each polygon represents a region where $\tilde{u}_{mns} = 1$.  Assuming this binary condition is a simplification that aids in the implementation of the approach used in \Cref{sec:ga}, and is generally assumed in the rest of this thesis.
+This simplification allows the available pool of BSs, or any subset thereof, to be easily visualized as a Voronoi tessellation \cite{Aurenhammer:1991:VDS:116873.116880}.  In a Voronoi tessellation, a two-dimensional plane is tessellated into a set of convex polygons, each of which is defined by a single point contained within.  All points comprising the area enclosed by a polygon is closer to that polygon's defining point than any other polygons'.  Using the simplified definition for $\tilde{u}_{mns}$, the Voronoi tessellation of a set of BS locations functions as a coverage map for those BSs, assuming that all polygons are within the respective ranges for their associated BSs; each polygon represents a region where $\tilde{u}_{mns} = 1$.  This binary condition is a simplification that aids in the implementation of the approach used in \Cref{sec:ga}, and is generally assumed in the rest of this thesis.
 
 From the perspective of the VNB, each SP is only distinguishable by its overall demand characteristics.  These demand characteristics are defined by its demand density distribution which defines $\tilde{u}_{mns}$.  The VNB must construct a VWN for each SP, but for optimal VWNs to be created, the VNB must consider the demands of all SPs simultaneously and in context of each other.  For the VNB, all SP demand points are indistinguishable.  Therefore, the VNB considers a single set of demand points
 
@@ -585,7 +586,7 @@ The approximate Gaussian distribution $\lambda^G$ is then normalized to a standa
 \lambda^S\left( x,\, y \right) = \frac{\lambda^G\left( x,\, y \right) - \mean{\lambda^G}}{\sqrt{\text{Var}\left( \lambda^G \right)}},
 \end{equation}
 
-\noindent where $\text{Var}\left( \lambda^G \right) = \mathbb{E}\left[ \left( \lambda^G \right)^2 \right] - \mathbb{E}\left[ \lambda^G \right]^2$ is the variance of $\lambda^G$ and $\mean{\lambda^G} = \mathbb{E}\left[ \lambda^G \right]$ is the mean of $\lambda^G$.  While this could be mathematically derived, in practice $\text{Var}\left( \lambda^G \right)$ and $\mean{\lambda^G}$ are empirically found from a set of uniformly distributed sampled points (i.e., a simple random sample of $\lambda^G$). \iffalse Fig. \improvement{Discuss the accuracy, $\chi^2$ test, and confidence intervals with respect to the Gaussian field.}\ref{fig:lambdaS_pdf} compares the PDF of the two $\lambda^S$ fields generated from the $\lambda^G$ fields displayed in Fig. \ref{fig:lambdaG} to verify that $\lambda^S$ closely approximates a standard normal distribution.  There is some deviation from the standard normal as expected, but it does \unsure{What does it mean to ``closely approximate?''\\Is there a way I can mathematically specify this?\\Revisit}closely approximate the desired distributions.
+\noindent where $\text{Var}\left( \lambda^G \right) = \mathbb{E}\left[ \left( \lambda^G \right)^2 \right] - \mathbb{E}\left[ \lambda^G \right]^2$ is the variance of $\lambda^G$ and $\mean{\lambda^G} = \mathbb{E}\left[ \lambda^G \right]$ is the mean of $\lambda^G$.  While this could be mathematically derived, in practice $\text{Var}\left( \lambda^G \right)$ and $\mean{\lambda^G}$ are the sample variance and mean which are empirically found from a set of uniformly distributed sampled points (i.e., a simple random sample of $\lambda^G$). \iffalse Fig. \improvement{Discuss the accuracy, $\chi^2$ test, and confidence intervals with respect to the Gaussian field.}\ref{fig:lambdaS_pdf} compares the PDF of the two $\lambda^S$ fields generated from the $\lambda^G$ fields displayed in Fig. \ref{fig:lambdaG} to verify that $\lambda^S$ closely approximates a standard normal distribution.  There is some deviation from the standard normal as expected, but it does \unsure{What does it mean to ``closely approximate?''\\Is there a way I can mathematically specify this?\\Revisit}closely approximate the desired distributions.
 
 \begin{figure}[!ht]
 \centering
@@ -734,7 +735,7 @@ The first stage objective function (\cref{eq:SOPS1O}) minimizes the total cost o
 
 \Cref{eq:SOPS1C1,eq:SOPS2C4} are constraints that implement the defined ranges of the decision variables $z_s$ and $\delta_{ms}$.  \Cref{eq:SOPS2C2} is a constraint that reinforces \cref{eq:SOPS2C4} and asserts that a demand point is not overallocated by slicing it more resources than it demands.  Similarly, \cref{eq:SOPS2C3} ensures that a given BS is not over allocated to demand points.
 
-\Cref{eq:SOPS2C1} both ensures that demand is only allocated from available, selected resources.  For this constraint, $\left[ * \right]$ is the Iverson bracket, which is defined by
+\Cref{eq:SOPS2C1} ensures that demand is only allocated from available, selected resources.  For this constraint, $\left[ * \right]$ is the Iverson bracket, which is defined by
 
 %$\mathbbm{1}_{\{*\}}$ is defined by
 
@@ -761,24 +762,24 @@ The first stage objective function (\cref{eq:SOPS1O}) minimizes the total cost o
 \end{equation}
 \fi
 
-The stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) models the optimization that the VNB must perform to construct VWNs for and balance the needs of the various SPs.  However, this program is not directly solvable, as MIP optimization tools cannot be used to solve stochastic optimization programs.  \Cref{ch:approaches} poses two approaches for solving this program.
+The stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) models the optimization that the VNB must perform to construct VWNs for and balance the needs of the various SPs.  However, this program is not directly solvable, as mixed integer programming (MIP) optimization tools cannot be used to solve stochastic optimization programs.  \Cref{ch:approaches} poses two approaches for solving this program.
 
 \iftrue
 \pagebreak
 \chapter{Approximation Approaches} \label{ch:approaches}
 
-\Cref{ch:vnbmodel} established a mathematical model for analyzing the relationship between SPs and a VNB and proposed a two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) for constructing VWNs in the context of that relationship.  In this chapter, I present two approaches that arrive at a solution for this program.  First, I modify the stochastic program to convert it into a deterministic form, the deterministic equivalent program (DEP), and sample it such that it is solvable using typical MIP optimization tools.  From this, I further derive a model to adaptively slice BSs into new VWNs when resources are already selected.  I then present a heuristic approach via genetic algorithm (GA) to handle resource selection with lower computational complexity.
+\Cref{ch:vnbmodel} established a mathematical model for analyzing the relationship between SPs and a VNB and proposed a two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) for constructing VWNs in the context of that relationship.  In this chapter, I present two approaches that arrive at a solution for this program.  First, I modify the stochastic program to convert it into a deterministic form, the deterministic equivalent program (DEP), and sample it such that it is solvable using typical mixed integer programming (MIP) optimization tools.  From this, I further derive a model to adaptively slice BSs into new VWNs when resources are already selected.  I then present a heuristic approach via genetic algorithm (GA) to handle resource selection with lower computational complexity.
 
 \info{Overall chapter notes}%
 \textit{Convert ``we'' into ``I'' and consider other forms of POV and voice; avoid passive voice.\\When referring to specific ``Problems'', refer to the equations using \textbackslash cref\{\}, which will compress the reference.\\``SOP'' (\Cref{sec:stochopt}) is \cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}.\\``DEP'' (\Cref{sec:dep}) is \cref{eq:DEPO,eq:DEPC1,eq:DEPC2,eq:DEPC3,eq:DEPC4}.\\``sDEP'' (\Cref{subsec:dep_sampling}) is \cref{eq:sDEPO,eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}.\\``ASM'' (\Cref{subsec:dep_slicing}) is \cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}.\\``Iverson bracket'' ($[*]=\{0,\, 1\}$, \Cref{sec:stochopt}) is \cref{eq:iverson}.}
 
 \section{Deterministic Equivalent Program} \label{sec:dep}
 
-In order to directly solve the two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}), I need to convert it to a deterministic equivalent program (DEP) that does not contain any stochastic variables (only deterministic variables)~\cite{stochprogramming}.  This is done by converting stochastic variables into sets which contain every scenario or realization in the scope of the stochastic variables.
+In order to directly solve the two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}), I need to convert it to a deterministic equivalent program (DEP).  The DEP is equivalent to the original stochastic optimization program, but does not contain any stochastic variables (only deterministic variables)~\cite{stochprogramming}.  This is done by converting stochastic variables into sets which contain every scenario or realization in the scope of the stochastic variables.
 
 %Let $\Omega$ be defined as the scenario space (i.e., the set of all scenarios) of demand point locations defining $u_{ms}$ and $\delta_{ms}$.  Let $\hat{\Omega} \defeq \{1,\, 2,\, \ldots,\, O\}$ be a discrete set containing sampled scenarios.  The probability a given scenario $\omega \in \hat{\Omega}$ occurs is denoted by $p^{(\omega)},\, \omega \in \hat{\Omega}$, where $\sum_{\omega \in \hat{\Omega}} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.
 
-Let $\Omega$ be defined as the scenario space (i.e., the set of all scenarios) of demand point locations defining $\tilde{u}_{ms}$.  The probability of a given scenario $\omega \in \Omega$ occurs is denoted by $p^{(\omega)}$, where $\sum_{\omega \in \Omega} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.  By making this change, I arrive at deterministic equivalent program (DEP) of the two-stage stochastic optimization program modeled in \Cref{sec:stochopt}.
+Let $\Omega$ be defined as the sample space (i.e., the set of all scenarios) of demand point locations defining $\tilde{u}_{ms}$.  The probability of a given scenario $\omega \in \Omega$ occurs is denoted by $p^{(\omega)}$, where $\sum_{\omega \in \Omega} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.  By making this change, I arrive at deterministic equivalent program (DEP) of the two-stage stochastic optimization program modeled in \Cref{sec:stochopt}.
 
 \begin{tcolorbox}[floatplacement = !ht, float, title = Deterministic Equivalent Program (DEP) of \Cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}]
 \begin{align}
@@ -799,15 +800,11 @@ The objective function (\cref{eq:DEPO}) combines both objective functions of the
 
 \Cref{eq:DEPC1} is a constraint ensures that demand is allocated to BSs that it is within range of and that it is not overallocated resources, adapting \cref{eq:SOPS2C2} for all demand scenarios.  \Cref{eq:DEPC2} is a constraint that ensures only selected BSs are allocated demand, and that BSs are allocated within capacity, combining and adapting \cref{eq:SOPS2C1,eq:SOPS2C3} for all demand scenarios.  \Cref{eq:DEPC3,eq:DEPC4} define bounds on the decision variables according to \cref{eq:SOPS1C1,eq:SOPS2C4}.
 
-This reformulation is equivalent to the original stochastic optimization program, and the solution of the DEP is also a solution of the original.  However, the stochastic variable of the original problem, $\tilde{u}_{ms}$, is dependent on the locations of the demand points in $\mathcal{M}$.  As these demand point locations are stochastic and capable of assuming any of an uncountably infinite locations over the considered region, the set of deterministic scenarios, $\Omega$, has an infinite cardinality.  This renders the DEP as also not directly solvable.
+As the DEP reformulation is equivalent to the original stochastic optimization program, he solution of the DEP is also a solution of the original.  However, the stochastic variable of the original problem, $\tilde{u}_{ms}$, is dependent on the locations of the demand points in $\mathcal{M}$.  As these demand point locations are stochastic and capable of assuming any of an uncountably infinite locations over the considered region, the set of deterministic scenarios, $\Omega$, has an infinite cardinality.  This renders the DEP as also not directly solvable.
 
-\subsection{Sampling Approaches} \label{subsec:dep_sampling}
+\subsection{Sampling the DEP; Sample Average Approximation} \label{subsec:dep_sampling}
 
-\textit{As the infinitely large set of scenarios renders the problem unable to be solved, it needs to be sampled into a finite set to be solved.  Present the structure and nomenclature used to imply a sampled set of scenarios, and describe the structure of how the scenarios are sampled into a truncated set.  Might be worth mentioning that there are other methods that might be better for sampling beyond the completely random sampling approach I am using.  Worth consideration?}
-
-\change{Continue from here}
-
-Problem 2 provides an equivalent deterministic form of Problem 1 for the (finite) sampled state space, $\hat{\Omega}$, containing $O$ scenarios.  With sufficiently large $O$, $\hat{\Omega}$ approaches a tight approximation of the original sample space.  Within each scenario $\omega \in \hat{\Omega}$, the SSLT demand field $\rho$ is sampled to provide a set of $M$ discrete demand points.  Each sampling of $\rho$ is generated by creating a non-stationary 2D PPP with $M$ points as described in Section \ref{subsec:networkdefs_sslt}.
+In order to find a solution to the DEP reformulation, the set of considered scenarios (i.e., the sample space) must be finite.  To find this set, I sample $\Omega$ by randomly generating $O$ scenarios.  Let $\hat{\Omega} \defeq \left\{ 1,\, 2,\, \ldots,\, O \right\} \subset \Omega$ be this finite, discrete set containing $O$ sampled scenarios of the sample space.  Each scenario in $\hat{\Omega}$ is generated as a single, independent realization of demand points according to the demand intensity field $\lambda$ (i.e., a non-stationary PPP with intensity function $\lambda$).  By making this change, I have the sampled deterministic equivalent program (sDEP) (\cref{eq:sDEPO,eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}), or sample average approximation (SAA), of the original stochastic optimization program.
 
 \begin{tcolorbox}[floatplacement = !ht, float, title = Sampled Deterministic Equivalent Program (sDEP) of \Cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}]
 \begin{align}
@@ -820,12 +817,18 @@ Problem 2 provides an equivalent deterministic form of Problem 1 for the (finite
 & \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms}^{\left( \omega \right)} \; u_{ms}^{\left( \omega \right)} \leq d_m,\, \forall m \in \mathcal{M},\, \forall \omega \in \hat{\Omega} \label{eq:sDEPC1}\\
 & \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms}^{\left( \omega \right)} \leq r_s \; z_s,\, \forall s \in \mathcal{S},\, \forall \omega \in \hat{\Omega} \label{eq:sDEPC2}\\
 & \hspace{0.4in} z_s \in \left\{ 0,\, 1 \right\},\, \forall s \in \mathcal{S}. \label{eq:sDEPC3}\\
-& \hspace{0.4in} \delta_{ms}^{\left( \omega \right)} \in \left[ 0,\, d_m \right],\, \forall m \in \mathcal{M},\, \forall s \in \mathcal{S},\, \omega \in \Omega \label{eq:sDEPC4}
+& \hspace{0.4in} \delta_{ms}^{\left( \omega \right)} \in \left[ 0,\, d_m \right],\, \forall m \in \mathcal{M},\, \forall s \in \mathcal{S},\, \omega \in \hat{\Omega} \label{eq:sDEPC4}
 \end{align}
 \end{tcolorbox}
 
-\subsubsection{Sample Average Approximation} \label{subsubsec:dep_sampling_saa}
+The differences between the DEP and sDEP formulations are seemingly cosmetic.  The objective (\cref{eq:sDEPO}) and constraints (\cref{eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}) are effectively unchanged from the equivalent objective (\cref{eq:DEPO} and constraints (\cref{eq:DEPC1,eq:DEPC2,eq:DEPC3,eq:DEPC4}) of the DEP.  The distinction lays in that finding a solution of the sDEP optimizes for the specific scenarios in $\hat{\Omega}$.  By sampling $\Omega$ to form $\hat{\Omega}$, the sDEP formulation introduces solution error as a tradeoff for manageability.  The more accurately $\hat{\Omega}$ estimates $\Omega$, the more accurate the optimal solution of the sDEP estimates the solution of the original stochastic program.
 
+\subsubsection{The Sample Average Approximation Estimator} \label{subsubsec:dep_sampling_estimator}
+
+\info{If I don't finish figuring out the SAA estimator, the following will be edited into the preceeding subsection.}%
+It is apparent that $\hat{\Omega}$ approaches the whole sample space as $O$ approaches infinity.  For a sufficiently large $O$, $\hat{\Omega}$ contains enough scenarios to represent an arbitrarily tight approximation of $\Omega$.  However, as $O$ increases, the manageability of $\hat{\Omega}$ and the sDEP decreases as the computational complexity of the solution increases exponentially.  While an arbitrary number of scenarios could be considered within $\hat{\Omega}$ to provide an overly-sufficient approximation, doing so would impose an unnecessary burden on the solution's computational complexity and increase computation time.  It is thereby valuable to understand and find the minimum value of $O$ that provides a sufficiently tight approximation of $\Omega$.  This can be done via an analysis of the SAA estimator
+
+\change{Figure out the SAA estimator.\\Continue from here and fill out this section.}%
 \textit{At what point is the sampling enough?  As the set of scenarios considered within the sampled DEP increases, it more closely compares to the original DEP and the stochastic optimization problem, but it also becomes increasingly difficult to solve as the number of scenarios considered increases.  So, it is beneficial to understand that a certain known number of scenarios provides a reasonably tight - what does reasonable mean? - solution to the original DEP to avoid being unnecessarily computationally expensive to solve.  Finding this minimum necessary number of scenarios can be done via a sample average approximation (SAA) analysis, which should not be too complicated to do.}
 
 \subsection{Adaptive Slicing} \label{subsec:dep_slicing}

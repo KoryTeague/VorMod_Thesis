@@ -14,7 +14,7 @@
 \BOOKMARK [1][-]{section.2.2}{Stochastic Optimization}{chapter.2}% 14
 \BOOKMARK [0][-]{chapter.3}{Approximation Approaches}{}% 15
 \BOOKMARK [1][-]{section.3.1}{Deterministic Equivalent Program}{chapter.3}% 16
-\BOOKMARK [2][-]{subsection.3.1.1}{Sampling Approaches}{section.3.1}% 17
+\BOOKMARK [2][-]{subsection.3.1.1}{Sampling the DEP; Sample Average Approximation}{section.3.1}% 17
 \BOOKMARK [2][-]{subsection.3.1.2}{Adaptive Slicing}{section.3.1}% 18
 \BOOKMARK [1][-]{section.3.2}{Genetic Algorithm}{chapter.3}% 19
 \BOOKMARK [0][-]{chapter.4}{Testing and Simulations}{}% 20
