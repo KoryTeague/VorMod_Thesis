@@ -17,7 +17,7 @@
 \contentsline {subsection}{\numberline {3.1.1}Sampling the DEP; Sample Average Approximation}{44}{subsection.3.1.1}
 \contentsline {subsubsection}{The Sample Average Approximation Estimator}{45}{section*.20}
 \contentsline {subsection}{\numberline {3.1.2}Adaptive Slicing}{46}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Genetic Algorithm}{48}{section.3.2}
+\contentsline {section}{\numberline {3.2}Genetic Algorithm}{47}{section.3.2}
 \contentsline {chapter}{\numberline {4}Testing and Simulations}{52}{chapter.4}
 \contentsline {section}{\numberline {4.1}VWN Construction for a Single SP}{52}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Case I: Homogeneous Urban Cellular Network}{53}{subsection.4.1.1}
