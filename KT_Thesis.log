@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.1.18)  25 JUL 2018 22:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9.6210 64-bit) (preloaded format=pdflatex 2017.1.18)  26 JUL 2018 01:59
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -939,30 +939,31 @@ File: Figures/Genetic_Algorithm_Basic.png Graphic file (type png)
 Package pdftex.def Info: Figures/Genetic_Algorithm_Basic.png used on input line
  882.
 (pdftex.def)             Requested size: 469.75499pt x 279.45157pt.
- [49] [50 <./Figures/Genetic_Algorithm_Basic.png>] [51] [52] [53] [54] [55]
+ [49] [50 <./Figures/Genetic_Algorithm_Basic.png>] [51] [52] [53] [54] [55] [56
+]
 Chapter 4.
-[56
+[57
 
-] [57] [58] [59]
+] [58] [59] [60]
 Chapter 5.
 
-LaTeX Warning: Marginpar on page 60 moved.
+LaTeX Warning: Marginpar on page 61 moved.
 
-[60
+[61
 
-] (KT_Thesis.bbl [61] [62
+] (KT_Thesis.bbl [62] [63
 
 ]
 Missing character: There is no Å in font cmr12!
 Missing character: There is no ‚ in font cmr12!
- [63] [64] [65]
+ [64] [65] [66]
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¤ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¤ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¶ in font cmr12!
- [66]) [67]
+ [67]) [68]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1095.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 1095.
  (KT_Thesis.aux)
@@ -974,9 +975,9 @@ Package rerunfilecheck Info: File `KT_Thesis.out' has not changed.
  )
 (\end occurred when \iftrue on line 412 was incomplete) 
 Here is how much of TeX's memory you used:
- 22624 strings out of 493333
- 440527 string characters out of 3139194
- 535376 words of memory out of 3000000
+ 22625 strings out of 493333
+ 440534 string characters out of 3139194
+ 534373 words of memory out of 3000000
  25550 multiletter control sequences out of 15000+200000
  15360 words of font info for 58 fonts, out of 3000000 for 9000
  1146 hyphenation exceptions out of 8191
@@ -1023,9 +1024,9 @@ pe1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 /Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on KT_Thesis.pdf (74 pages, 1584195 bytes).
+Output written on KT_Thesis.pdf (75 pages, 1585045 bytes).
 PDF statistics:
- 974 PDF objects out of 1000 (max. 8388607)
- 229 named destinations out of 1000 (max. 500000)
+ 978 PDF objects out of 1000 (max. 8388607)
+ 230 named destinations out of 1000 (max. 500000)
  316 words of extra memory for PDF output out of 10000 (max. 10000000)
 

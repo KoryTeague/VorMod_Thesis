@@ -26,16 +26,16 @@
 \contentsline {subsubsection}{Mutation}{54}{section*.29}
 \contentsline {subsubsection}{Uniqueness}{54}{section*.30}
 \contentsline {subsection}{\numberline {3.2.3}Stopping the GA}{55}{subsection.3.2.3}
-\contentsline {chapter}{\numberline {4}Testing and Simulations}{56}{chapter.4}
-\contentsline {section}{\numberline {4.1}VWN Construction for a Single SP}{56}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Case I: Homogeneous Urban Cellular Network}{57}{subsection.4.1.1}
-\contentsline {subsection}{\numberline {4.1.2}Case II: Impact of Heterogeneous Resources}{57}{subsection.4.1.2}
-\contentsline {section}{\numberline {4.2}VWN Construction for Multiple SPs}{57}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Case III: Two Similar Urban Cellular Networks}{57}{subsection.4.2.1}
-\contentsline {subsubsection}{Homogeneous Resources}{58}{section*.33}
-\contentsline {subsubsection}{Heterogeneous Resources}{58}{section*.34}
-\contentsline {subsection}{\numberline {4.2.2}Case IV: SPs with Specialized Demands}{58}{subsection.4.2.2}
-\contentsline {subsubsection}{Homogeneous Resources}{59}{section*.35}
-\contentsline {subsubsection}{Heterogeneous Resources}{59}{section*.36}
-\contentsline {chapter}{\numberline {5}Conclusions}{60}{chapter.5}
-\contentsline {section}{\numberline {5.1}Considerations for Future Work}{60}{section.5.1}
+\contentsline {chapter}{\numberline {4}Testing and Simulations}{57}{chapter.4}
+\contentsline {section}{\numberline {4.1}VWN Construction for a Single SP}{57}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Case I: Homogeneous Urban Cellular Network}{58}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Case II: Impact of Heterogeneous Resources}{58}{subsection.4.1.2}
+\contentsline {section}{\numberline {4.2}VWN Construction for Multiple SPs}{58}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Case III: Two Similar Urban Cellular Networks}{58}{subsection.4.2.1}
+\contentsline {subsubsection}{Homogeneous Resources}{59}{section*.33}
+\contentsline {subsubsection}{Heterogeneous Resources}{59}{section*.34}
+\contentsline {subsection}{\numberline {4.2.2}Case IV: SPs with Specialized Demands}{59}{subsection.4.2.2}
+\contentsline {subsubsection}{Homogeneous Resources}{60}{section*.35}
+\contentsline {subsubsection}{Heterogeneous Resources}{60}{section*.36}
+\contentsline {chapter}{\numberline {5}Conclusions}{61}{chapter.5}
+\contentsline {section}{\numberline {5.1}Considerations for Future Work}{61}{section.5.1}
