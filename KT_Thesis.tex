@@ -245,6 +245,7 @@ This work received support in part from the National Science Foundation via work
 % Uncomment if I want to add acronyms as a separate document ``acronyms.tex''
 %\include{acronyms}
 \chapter*{List of Acronyms}
+This list has to be manually compiled, and will be completed at another time.
 \begin{acronym}
 	\acro{BS}{Base Station}
 	\acro{CapEx}{Capital Expenditures}
@@ -741,9 +742,8 @@ The first stage objective function (\cref{eq:SOPS1O}) minimizes the total cost o
 
 \ifisdoublespacing
 \begin{singlespacing}
-%new definition; iverson bracket
 \begin{equation} \label{eq:iverson}
-\left[*\right] \defeq
+\left[ * \right] \defeq
 	\begin{cases}
 		1,& \text{if condition $*$ is true;}\\
 		\\
@@ -752,9 +752,19 @@ The first stage objective function (\cref{eq:SOPS1O}) minimizes the total cost o
 \end{equation}
 \end{singlespacing}
 \else
-%old definition; blackboard bold 1
 \begin{equation} \label{eq:iverson}
-\mathbbm{1}_{\{*\}} \defeq
+\left[ * \right] \defeq
+	\begin{cases}
+		1,& \text{if condition $*$ is true;}\\
+		0,& \text{otherwise}.
+	\end{cases}
+\end{equation}
+\fi
+
+% Old definition
+\iffalse
+\begin{equation} \label{eq:iverson}
+\mathbbm{1}_{\left\{ * \right\}} \defeq
 	\begin{cases}
 		1,& \text{if condition $\{*\}$ is true;}\\
 		0,& \text{otherwise}.
@@ -773,7 +783,7 @@ The stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOP
 %\info{Overall chapter notes}%
 %\textit{Convert ``we'' into ``I'' and consider other forms of POV and voice; avoid passive voice.\\When referring to specific ``Problems'', refer to the equations using \textbackslash cref\{\}, which will compress the reference.\\``SOP'' (\Cref{sec:stochopt}) is \cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}.\\``DEP'' (\Cref{sec:dep}) is \cref{eq:DEPO,eq:DEPC1,eq:DEPC2,eq:DEPC3,eq:DEPC4}.\\``sDEP'' (\Cref{subsec:dep_sampling}) is \cref{eq:sDEPO,eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}.\\``ASM'' (\Cref{subsec:dep_slicing}) is \cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}.\\``Iverson bracket'' ($[*]=\{0,\, 1\}$, \Cref{sec:stochopt}) is \cref{eq:iverson}.}
 
-\section{Deterministic Equivalent Program} \label{sec:dep}
+\section{Approach I: The Deterministic Equivalent Program} \label{sec:dep}
 
 In order to directly solve the two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}), I need to convert it to a deterministic equivalent program (DEP).  The DEP is equivalent to the original stochastic optimization program, but does not contain any stochastic variables (only deterministic variables)~\cite{stochprogramming}.  This is done by converting stochastic variables into sets which contain every scenario or realization in the scope of the stochastic variables.
 
@@ -859,56 +869,101 @@ This new formulation is far more tractable than the sDEP formulation, as there i
 
 Effectively, the adaptive slicing model is a self-contained form of the second stage of the original stochastic program.  With a given resource selection, this optimization program provides the slicing of the selected resources that optimizes the demand satisfaction in a specific realization of demand.  Explicitly, it provides a determination in the VNB for how those resources are allocated to construct the VWNs for the SPs.  Since this simplified model can provide the optimization for adaptive slicing and VWN specification, it allows for other approaches to the problem of just resource selection.
 
-\section{Genetic Algorithm} \label{sec:ga}
+\section{Approach II: The Genetic Algorithm} \label{sec:ga}
 
 %\textit{Now that the first approach - DEP and its sampling - has been tackled, and the necessary tool to evaluate it has been derived from it - the simplified adaptive slicing program - move on to the genetic algorithm approach for approximating the BS selection process.  Discuss the core algorithm of a genetic algorithm, then the various approaches that I used in its process (e.g., binary chromosomes, elitism, uniqueness, uniform crossover, bitwise mutation).}
 
 A major limitation of the approach in \Cref{sec:dep} is that the sDEP is increasingly unmanageable as $O$, $S$, or $M$ increases.  Most importantly, the accuracy of the sampled DEP is directly dependent on the size of $\hat{\Omega}$, $O$, directly causing a trade off between the accuracy of the sDEP and its computability in a reasonable amount of time.  While diminishing returns can be avoided by determining the necessary $O$ for $\hat{\Omega}$ to provide a desireably tight estimation, the manageability of the sDEP is still dependent on the size of $S$ and $M$.  In this section, we reformulate the problem of joint BS selection for the VWN as a genetic algorithm (GA), circumventing the need to discretize demand or to establish $\hat{\Omega}$, thereby simplifying the original problem into a more scalable form.  Further, by using the adaptive slicing model of \Cref{subsec:dep_slicing}, this GA approach can provide an approximate solution of the original stochastic program while only needing to solve for resource selection.
 
-A genetic algorithm is an iterative metaheuristic algorithm inspired by the concept of natural selection in which an approximate solution to a given optimization problem is arrived at via a series of progressive generations.  Each generation contains a number of candidate solutions, called individuals, each of which is defined by a chromosome.  During a given generation, a fitness heuristic is assessed for each individual based on its chromosome.  Then individuals are \emph{selected} at random to become parents, with more fit individuals being selected with higher probability.  Parents are then paired off, and each pair of parents may, with probability $p_\text{xov}$, undergo a process called \emph{crossover}, a process similar to genetic recombination, in which the parents' chromosomes are mixed to form two children individuals for the next generation.  If crossover does not occur, the parents are cloned to be their own children for the next generation.  The resulting children chromosomes then undergo \emph{mutation}, altering the chromosome slightly.  Once enough new children have been generated, this new set of individuals forms the next generation to repeat the process.  \Cref{fig:ga_block} is a block diagram that illustrates this general process as proposed for this approach.
+A genetic algorithm is an iterative metaheuristic algorithm inspired by the concept of natural selection in which an approximate solution to a given optimization problem is arrived at via a series of progressive generations.  Each generation contains a number of candidate solutions, called individuals, each of which is defined by a chromosome.  During a given generation, a fitness heuristic is assessed for each individual based on its chromosome.  Then individuals are \emph{selected} at random to become parents, with more fit individuals being selected with higher probability.  Parents are then paired off, and each pair of parents may, with probability $p_\text{xov}$, undergo a process called \emph{crossover}, a process similar to genetic recombination, in which the parents' chromosomes are mixed to form two children individuals for the next generation.  If crossover does not occur, the parents are cloned to be their own children for the next generation.  The resulting children chromosomes then undergo \emph{mutation}, altering the chromosome slightly.  Once enough new children have been generated, this new set of individuals forms the next generation to repeat the process.  \Cref{fig:ga_block} is a block diagram that illustrates this general process as proposed for this approach.  Each of these steps are described in further detail below.
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=1\linewidth]{Genetic_Algorithm_Basic}
-\caption[Genetic Algorithm Block Diagram]{\small Block diagram of the genetic algorithm approach.  Standard boolean genetic algorithm utilizing elitism and enforcing generational uniqueness.}
+\caption[Genetic Algorithm Block Diagram]{\small Block diagram of the GA approach.  This is for a typical genetic algorithm utilizing elitism and enforcing generational uniqueness.}
 \label{fig:ga_block}
 \end{figure}
 
-\change{Continue editing from here}
+\subsection{The GA Chromosome} \label{subsec:ga_chromosome}
 
-For the genetic algorithm, $\rho$ is not sampled for discrete demand points.  Instead, we assume that all demand over the region is allocated to the closest resource.  The subset of $\mathcal{S}$, $\mathcal{S}'$, that is selected for a given possible VWN forms a Voronoi tessellation from the point locations of the selected resources.  The total demand allocated to a selected resource $s \in \mathcal{S}' \subseteq \mathcal{S}$ is $\iint_{V_s} \rho\left(x,\, y\right) \,dx \,dy$, where $V_s$ is the region bounded by the cell of resource \textit{s} in the Voronoi tessellation.  If the total demand allocated to \textit{s} exceeds $r_s$, \textit{s} is considered to be \textit{overcapacity}.  If $V_s$ is not wholly contained within the coverage area of resource \textit{s}, \textit{s} is considered to be \textit{overcoverage}.
+Let $\mathcal{G} \defeq \left\{ 1,\, 2,\, \ldots,\, G \right\}$ be the set of generations used in the genetic algorithm and $\mathcal{I}_g \defeq \left\{ 1,\, 2,\, \ldots,\, I \right\},\, g \in \mathcal{G}$ be the set of individuals within generation $g$.  Each individual $i \in \mathcal{I}_g$ has a binary chromosome $z^{\left\{ ig \right\}}$ of length $S$.  $z_s^{\left\{ ig \right\}},\, s \in \mathcal{S}$, denoting each individual bit of the chromosome, is defined as
 
-Let $\mathcal{G} \defeq \left\{1,\, 2,\, \ldots,\, G\right\}$ be the set of generations used in the genetic algorithm and $\mathcal{I}_g \defeq \left\{1,\, 2,\, \ldots,\, I\right\}, g \in \mathcal{G}$ be the set of individuals within generation \textit{g}.  Each individual $i \in \mathcal{I}_{g \in \mathcal{G}}$ has a binary chromosome $z^{\{ig\}}$ of length \textit{S}.  $z_s^{\{ig\}}, s \in \mathcal{S}$, denoting each individual bit of the chromosome, is defined as follows:
-\[ z_s^{\{ig\}} =
+\ifisdoublespacing
+\begin{singlespacing}
+\begin{equation}
+z_s^{\{ig\}} \defeq
 	\begin{cases}
-		1,& \text{if BS $s$ is selected for the VWN for} \text{individual $i$ in generation $g$,}\\
-		0,& \text{otherwise}
+		1,& \text{if BS $s$ is selected by the VNB for individual $i$ in generation $g$;}\\
+		\\
+		0,& \text{otherwise.}
 	\end{cases}
-\]
+\end{equation}
+\end{singlespacing}
+\else
+\begin{equation}
+z_s^{\{ig\}} \defeq
+	\begin{cases}
+		1,& \text{if BS $s$ is selected by the VNB for individual $i$ in generation $g$;}\\
+		0,& \text{otherwise.}
+	\end{cases}
+\end{equation}
+\fi
 
-The fitness heuristic of each individual chromosome, $z^{\{ig\}}$, is assessed as the reciprocal of the chromosome's cost, which is defined as
+\subsubsection{Chromosome Fitness}
+
+To evaluate the fitness of each chromosome in the GA approach, I assume that all demand over the region is allocated to the closest resource.  Let $\mathcal{S}' \subseteq \mathcal{S}$ be the set of resources that have been selected by an arbitrary chromosome (i.e., $z_s^{\left\{ ig \right\}} = 1, \forall s \in \mathcal{S}'$ and $z_s^{\left\{ ig \right\}} = 0, \forall s \notin \mathcal{S}'$ for an arbitrary chromosome $\left\{ ig \right\}$).  By making this assumption, $\mathcal{S}'$ partitions the region of consideration into a Voronoi tessellation using the point locations of the selected resources.  The region bounded by the cell of BS $s$ in the Voronoi tessellation is denoted by $V_s$, and the region within the coverage radius of BS $s$, $b_s$, is denoted by $R_s$.  It is desired that $V_s$ be wholly contained within $R_s$ (i.e., $V_s \subseteq R_s$), but this is not guaranteed by the Voronoi tessellation assumption.  If $V_s$ is not wholly contained within $R_s$, BS $s$ is considered to be \emph{overcoverage}.  The total demand allocated to a selected resource $s \in \mathcal{S}' \subseteq \mathcal{S}$ is $\sum_{i = 1}^N \iint_{V_s} \lambda_i \left( x,\, y \right) \,dx \,dy$.  If the total demand allocated to BS $s$ exceeds $r_s$, BS $s$ is considered to be \emph{overcapacity}.
+
+The fitness heuristic of each individual chromosome, $z^{\{ig\}}$, is assessed as the reciprocal of the chromosome's cost
 
 \begin{equation} \label{eq:GAFit}
-\text{fitness}\left(z^{\{ig\}}\right) = \frac{1}{\text{cost}\left(z^{\{ig\}}\right)}
+\text{fitness}\left( z^{\left\{ ig \right\}} \right) = \frac{1}{\text{cost}\left( z^{\left\{ ig \right\}} \right)}
 \end{equation}
+
+The cost of a given chromosome is the sum of the direct (OpEx) costs of the individual selected BSs and their associated overcoverage ($c_{\text{cov}}$) and overcapacity ($c_{\text{cap}}$) costs
+
 \begin{multline} \label{eq:GACost}
-\text{cost}\left(z^{\{ig\}}\right) = \sum_{s \in \mathcal{S}} \Biggl( c_s \; z_s^{\{ig\}} + c_\text{cov} \; \mathbbm{1}_{\left\{ V_s \not\subseteq R_s \right\}} + \\ \left(c_\text{cap}^g - 1\right) \; \max\left( 0,\, \iint_{R_s} \rho\left(x,\, y\right)\, dx\, dy - r_s \right) \Biggr)
+\text{cost}\left(z^{\{ig\}}\right) = \sum_{s \in \mathcal{S}} \Biggl( c_s \; z_s^{\{ig\}} + c_\text{cov} \; \left[ V_s \not\subseteq R_s \right] + \\ \left(c_\text{cap}^g - 1\right) \; \max\left( 0,\, \sum_{i = 1}^N \left( \iint_{R_s} \lambda_i\left(x,\, y\right)\, dx\, dy \right) - r_s \right) \Biggr)
 \end{multline}
 
-\noindent where $R_s$ is the coverage area region of resource $s \in \mathcal{S}$.
+\noindent where $\left[ * \right]$ is the Iverson bracket (\cref{eq:iverson}).
 
-The cost function (\ref{eq:GACost}) indicates cost increases not only based on the cost of the resources selected, but also with imperfection costs $c_\text{cov}$ and $c_\text{cap}$, the costs of a selected resource being overcoverage or overcapacity, respectively.  The overcapacity cost grows with each successive generation.  For early generations, this allows for imperfect solutions to temporarily exist to seed later generations and improve diversity to increase the probability of finding a better final approximate solution.
+Resources being overcoverage is not desired; solutions that assume some demand is unallocatable by being out of range should be consider less-than-feasible or completely infeasible from the outset.  In contrast, the overcapacity cost starts at zero and grows exponentially with each successive generation.  For early generations, this allows for inefficient or infeasible solutions to temporarily exist to seed later generations and improve generational diversity.  This increases the probability that the final solution (a local maxima) is the global maximum or closer to the global maximum of the fitness function.
 
-Elitism is used, where the \textit{n} most fit individuals of a given generation are automatically selected without crossover or mutation to be the first children of the next generation.  Selection occurs via the roulette wheel selection method.  Every individual $i$ of a given generation $g$ has a probability of being selected given by
-\[
-\frac{\text{fitness}\left( z^{\{ig\}} \right)}{\sum_{i \in \mathcal{I}} \text{fitness}\left( z^{\{ig\}} \right)}
-\]
+\subsection{Forming the Next Generation} \label{subsec:ga_next}
 
-When crossover is performed on selected individuals, it is via the uniform crossover method with a mixing ratio of 0.5.  That is, if two selected parent individuals crossover, each equivalent bit in the parents will swap with a probability of 50\%.  Mutation occurs on a bit-by-bit level, with each bit mutating (i.e., flipping) with probability $\frac{1}{S}$.  The uniqueness property is then enforced on the resulting children to ensure diversity; if a child chromosome is identical to another child chromosome in the next generation, the child is discarded and a new child generated, ensuring that each individual of any given generation is unique within that generation.
+Once the fitness of all of the individuals of the current generation has been calculated has been performed, the generation begins to form.
 
-The genetic algorithm iterates for a number of generations $G$.  If the genetic algorithm settles on a single individual for a number of continuous generations, $G_\text{halt}$, it will halt and present that individual's chromosome as the final approximate solution for $z_s$.  Otherwise, the chromosome of the fittest individual of generation $G$ determines $z_s$.
+\subsubsection{Elitism and Selection}
 
-The genetic algorithm only determines an approximate solution to the BS selection forming the VWN, informing the VNB of which BSs to obtain from the RPs.  With this selection, $z_s$, the SP's demand points can be dynamically allocated resource slices as described by Problem 3 in Section \ref{subsec:dep_slicing}.
+Generating the next generation begins with selection.  First, I use elitism selection.  Under elitism selection, a defined number of the fittest individuals from each generation are selected as that generation's elitist members.  These elitist members, the $n$ fittest individuals of the generation, are cloned into the next generation without undergoing the genetic operators of crossover or mutation.
+
+After elitism, standard selection occurs using roulette-wheel selection.  In roulette-wheel selection, the fitnesses of each individual are normalized to the total fitness of the generation and organized into a list.  From this list, a new list of the cumulative fitnesses is generated such that the cumulative fitness of individual $i$ is $\sum_{j = 1}^i \text{fitness} \left( z^{\left\{ jg \right\}} \right)$; the cumulative fitness of individual $I$ (i.e., the last individual in the generation) is thereby 1.  A random number, $P \sim \mathcal{U} \left( 0,\, 1 \right)$, is then generated.  The selected individual (or parent) is the first individual in the list that has a cumulative fitness value larger than $P$.
+
+Under roulette-wheel selection, parents are each randomly selected with a probability given by
+
+\begin{equation}
+\text{P}\left( \text{individual $i$ of gen. $g$ is selected for gen. $g+1$} \right) = \frac{\text{fitness}\left( z^{\left\{ ig \right\}} \right)}{\sum_{i \in \mathcal{I}} \text{fitness}\left( z^{\left\{ ig \right\}} \right)}
+\end{equation}
+
+\subsubsection{Crossover}
+
+Once selection has occurred, the individuals selected via roulette-wheel selection are paired off.  With a probability of $p_{\text{xov}}$, the pair undergoes crossover to form their two children which go on to the next generation; otherwise, the parents are cloned as their own children.  During crossover, the chromosomes of each pair of parents are mixed.  Typical forms of crossover include single-point, k-point, and uniform crossover, though there are other more exotic forms that are application specific.
+
+I use uniform crossover as it has been suggested~\cite{Picek:2011:ECO:2184629.2184665} to be one of the best crossover operators in terms of general performance.  With uniform crossover, each bit in the chromosomes of the children are independently chosen from the parents' genomes with equal probability (i.e., 50\%).  Compared to single-point crossover, uniform crossover is also suggested to increase exploration of the search space as it severs the positional bias of the bits\unsure{Needs citation?}; bits with possible spatial significance to one another no longer undergo crossover in segments like they would in single or k-point crossover.
+
+\subsubsection{Mutation}
+
+Once each child has been generated, each bit within the child's genome has a independent chance, $p_{\text{mut}}$, to mutate.  When a bit mutates, the bit flips from 1 to 0, or from 0 to 1.  Typically, the chance of each bit to mutate is $p_{\text{mut}} = \frac{1}{l}$, where $l$ is the length of the chromosome, which provides an average of one bit mutation per child.  For $z^{\left\{ ig \right\}},\, p_{\text{mut}} = \frac{1}{S}$.
+
+\subsubsection{Uniqueness}
+
+In a traditional genetic algorithm, once mutation has been completed, the next generation of children has been completely generated.  However, it is possible for several children to be identical, reducing the overall genetic diversity of the generation and decreasing the algorithm's exploration of the search space.  To counter this possibility I enforce the uniqueness condition on each generation.  That is the generation must be comprised of unique individuals.  If there are any individuals that are identical to others in the generation, all but one of the identical individuals are discarded from the generation.  The vacancies are then filled by a new set of generated children
+
+\subsection{Stopping the GA} \label{subsec:ga_stop}
+
+The GA iterates for a number of generations $G$.  If the GA settles on a single individual as the fittest individual for a number of continuous generations, $G_{\text{ind}}$, it will halt and present that individual's chromosome as the final approximate solution for $z_s$.  Further, if the fitness of the fittest individual of a number of continuous generations, $G_{\text{fit}} \leq G_{\text{ind}}$, the GA also halts and presents that fittest individual's chromosome as the final approximate solution for $z_s$.  For both of these halting conditions, a minimum number of generations, $G_{\min}$ must be first pass.  Otherwise, the chromosome of the fittest individual of generation $G$ determines $z_s$.
+
+In each case, the chromosome of the fittest individual when the GA halts is an approximate solution for the VNB's resource selection, $z_s$.  As the GA only handles the resource selection, it only represents a solution of the first stage (\cref{eq:SOPS1O,eq:SOPS1C1}) of the original stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}).  That is, while joint resource selection has occurred, and that the process was informed by the demand to be satisfied (i.e., $\lambda_n$), the selected resources still need to be sliced to determine the allocations of those resources to specific VWNs.  This process of solving the second stage of the original optimization program can be adaptively handled to a hypothetical or real set of demand points using the adaptive slicing model (\cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}) of \Cref{subsec:dep_slicing}.
 \fi
 
 \iftrue
