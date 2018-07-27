@@ -366,7 +366,6 @@ The focus of this thesis is on optimization approaches largely in the context of
 
 \section{Review of Optimization Methods} \label{sec:optreview}
 
-%\unsure{In this thesis, the problem ... is approached by...}%
 In this thesis, I address the problem of the creation of optimal networks by a VNB that satisfy the specific demands of SPs using a pool of resources provided by a set of RPs.  This is naturally an optimization problem, in which some objective function is either minimized or maximized.  At it's most basic, optimization techniques (e.g., linear programming, integer programming) will find the set of input parameters that minimize or maximize a single decision variable -- the value of the objective function -- in context of a set of constraints.
 
 \subsection{Stochastic Programming}	\label{subsec:optreview_stoch}
@@ -393,7 +392,6 @@ Ant colony optimization is inspired by the behavior of ants.  A colony of ants m
 
 In particle swarm optimization, a number of candidate solutions, called particles, are created that move semi-chaotically.  In each iteration, every particle will move according to its velocity.  Each particle has it's best known position, and it's velocity updates in a way that is guided by their own best known position and the swarm's best known position.  This allows a large portion of the search space to be investigated, with candidate solutions exploring regions containing local maxima until it settles to exploit and find the best found local maxima.
 
-%\unsure{Restructure to get rid of first-person ``I''?}%
 In this thesis, I utilize a genetic algorithm as an approach for optimization.  A genetic algorithm is a form of evolutionary algorithm, a set of algorithms which are inspired by biological evolution and natural selection.  Each iteration is called a \emph{generation} and is composed of a number of candidate solutions called \emph{individuals}.  Each individual is defined by a \emph{chromosome} which details the specific candidate solution.  During each generation, every individual is evaluated on its \emph{fitness}, a function dependent on the individual's chromosome; the higher the individual's fitness, the more optimal the individual.  Individuals called \emph{parents} are then randomly selected to pass their chromosome onto the next generation in a process called \emph{selection}; in selection, more fit individuals are more likely to be selected.  With a certain probability, groups of parents will undergo \emph{crossover} and exchange the data contained within their chromosomes to form new \emph{children} that are a mixture of the parents; if mixing does not occur, the parents are cloned into the next generation as children.  Then, individual bits within the children's chromosomes have a chance to flip, or \emph{mutate}.  The resulting children from crossover and mutation form the entire next generation.
 
 Since chromosomes from fitter individuals are more likely to pass on to subsequent generations, generations gradually become fitter.  Through crossover, fit chromosomes may combine to form fitter children that proliferate; less fit children are often also formed, but are generally not selected for later generations.  Mutation introduces diversity into the generations, which expand the exploration of the search space.  More details, including that of implementation and variants, will be expanded upon in \Cref{sec:ga}.
@@ -422,7 +420,6 @@ Consider a geographic area of width $X$ meters and length $Y$ meters that contai
 Let $\mathcal{N} \defeq \left\{ 1,\, 2,\, \ldots,\, N \right\}$ be the set of SPs seeking a VWN to host their services with coverage within the geographical area.  An SP $n \in \mathcal{N}$ associates with the VNB to create its desired VWN.  Through this association, SP $n$ must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  SP $n$ must know and communicate to the VNB the estimated geographic distribution of the service's traffic demand density (or demand \emph{intensity}) as a function, $\lambda_n\left( x,\, y \right),\, n \in \mathcal{N},\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right],\,$ in terms of $\frac{\text{bits}}{\text{km}^2}$.  The demand intensity function could be in the form of a continuous function or as discrete pixels (e.g., a bitmap), and indicates the locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  For an example of $\lambda_n$, see \Cref{subsec:networkdefs_sslt}.
 
 Further, the SP would also provide the desired or needed percent demand satisfaction rate for the service.  \improvement{Diversifying $\alpha$ to very according to the various SPs (i.e., $\alpha_n, n \in \mathcal{N}$, or $\alpha_m, m \in \mathcal{M}$) would be required for this.}Some services have high priority, such as those related to emergency services, and must have nearly if not perfect 100\% demand satisfaction.  Others, such as the aforementioned generic voice lines or video streaming, can withstand some demand to remain unsatisfied as a tradeoff for decreased network leasing or operational costs.
-%Note: Can the model be officially updated to implement the percent demand satisfaction stated by the SP to the VNB?  $\alpha$ controls for this in the 2-stage stoch model, but it doesn't differentiate between the various SPs (i.e., it's a single $\alpha$ for all SPs).
 
 Let $\mathcal{M}_n \defeq \left\{1,\, 2,\, \ldots,\, M_n\right\}$ be the set of demand points SP $n \in \mathcal{N}$ is attempting to satisfy with its service.  Each demand point $m \in \mathcal{M}_n$ is seeking to connect to the VWN operated by SP $n \in \mathcal{N}$ and is located within the domain of the geographic area (i.e., $\left( \tilde{x}_{m_n},\, \tilde{y}_{m_n} \right),\, \tilde{x}_{m_n} \in \left[ 0,\, X \right],\, \tilde{y}_{m_n} \in \left[ 0,\, Y \right]$).  Demand point locations are stochastically determined by the distribution of traffic as described by the demand intensity function $\lambda_n$.  A realization of these demand points can be found as a two-dimensional non-stationary (or inhomogeneous) Poisson point process (PPP) using $\lambda_n$ as it's spatial intensity function.
 
@@ -495,7 +492,6 @@ Let $\tilde{u}_{mns} \in \left[ 0,\, 1 \right]$ represent the normalized capacit
 \end{equation}
 \fi
 
-%\info{It wouldn't be that hard to alter $u_{mns}$ to utilize a pathloss model of some sort.  It might complicate the GA, as the cells would need to be cap point capacity according to it, but it should be fairly simple with a known model.}%
 It is apparent that $\tilde{u}_{mns}$ will vary according to the path-loss characteristics of the environment, the locations of the demand points, and other various factors.  In some instances, it can be beneficial to simplify this definition such that
 
 \ifisdoublespacing
@@ -548,7 +544,6 @@ Throughout this thesis, stochastic variables will be differentiated from determi
 One major assumption made in \Cref{sec:networkdefs} is that SPs must communicate the demand characteristics (i.e., $\lambda_n$) of their service to the VNB to properly facilitate VWN construction.  In this subsection, I establish an example model demonstrating the demand characteristics to be communicated by generating an example hypothetical demand intensity function.  For testing the approaches for VWN construction presented in \Cref{ch:approaches}, this example is the fundamental model used for simulating SP demand in cellular network-based services.
 
 Gotzner et al.~\cite{686105} have shown that a log-normal distribution\footnote{It has also been shown that traffic distributions in cellular networks can be more accurately approximated by a Weibull distribution~\cite{6757900}, by mixtures of log-normal distributions~\cite{5936263, 6757900}, or by an $\alpha$-stable distribution~\cite{7202841}.} can approximate traffic demand in real-world cellular networks.  It has also been shown that traffic distributions are spatially correlated~\cite{5936263, eigenplaces}.  Lee et al.~\cite{6554749, 6757900} presented the Scalable, Spatially-correlated, and Log-normally distributed Traffic (SSLT) model to emulate the characteristics of real world cellular data networks.  This model is flexible and can be adjusted to simulate numerous cellular networks, and can characterize the demand of a supposed SP in a way that mimics real-world data.  I use a variant of the SSLT demand model presented by Lee et al., which I altered to be a continuous function serving as a continuous or pixelated demand density map.
-%Old footnote (moved to conclusion): In general, network traffic and the resource deployments that they are meant to model tend to exhibit characteristics of heavy-tailed spatial distributions.  It has been shown that traffic distributions in cellular networks can be more accurately approximated as a mixture of log-normal distributions~\cite{5936263, 6757900}; Lee et al.~\cite{6757900} describe that nonmixtures capture the distribution for a single moment while mixtures capture the distribution as it changes with time and place.  Similarly, Zhou et al.~\cite{7202841} have shown that distributions of deployed BSs can be accurately approximated as a $\alpha$-stable distribution.  The latter case might be explained through the central limit theorem, as the sum of power-law distributed (Paretian tailed) random variables, such as those describing traffic in telephone networks~\cite{PhysRevE.72.026116}, will tend towards an $\alpha$-stable distribution.  I use neither in this thesis as $\alpha$-stable distributions do not generally have a closed-form probability density function (PDF), rendering use non-trivial, and log-normal mixtures require tuning multiple parameters, adding additional complexity.
 
 To generate this spatial SSLT model distribution over the area of consideration, an initial Gaussian field, $\lambda^G = \lambda^G\left( x,\, y \right),\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right]$, is generated by
 \begin{equation} \label{eq:lambdaG}
@@ -587,34 +582,14 @@ The approximate Gaussian distribution $\lambda^G$ is then normalized to a standa
 \lambda^S\left( x,\, y \right) = \frac{\lambda^G\left( x,\, y \right) - \mean{\lambda^G}}{\sqrt{\text{Var}\left( \lambda^G \right)}},
 \end{equation}
 
-\noindent where $\text{Var}\left( \lambda^G \right) = \mathbb{E}\left[ \left( \lambda^G \right)^2 \right] - \mathbb{E}\left[ \lambda^G \right]^2$ is the variance of $\lambda^G$ and $\mean{\lambda^G} = \mathbb{E}\left[ \lambda^G \right]$ is the mean of $\lambda^G$.  While this could be mathematically derived, in practice $\text{Var}\left( \lambda^G \right)$ and $\mean{\lambda^G}$ are the sample variance and mean which are empirically found from a set of uniformly distributed sampled points (i.e., a simple random sample of $\lambda^G$). \iffalse Fig. \improvement{Discuss the accuracy, $\chi^2$ test, and confidence intervals with respect to the Gaussian field.}\ref{fig:lambdaS_pdf} compares the PDF of the two $\lambda^S$ fields generated from the $\lambda^G$ fields displayed in Fig. \ref{fig:lambdaG} to verify that $\lambda^S$ closely approximates a standard normal distribution.  There is some deviation from the standard normal as expected, but it does \unsure{What does it mean to ``closely approximate?''\\Is there a way I can mathematically specify this?\\Revisit}closely approximate the desired distributions.
-
-\begin{figure}[!ht]
-\centering
-\begin{subfigure}{.45\textwidth}
-	\centering
-	\includegraphics[width=1\linewidth]{lambdaS_pdf_O2pi-300_L100000_X100_Y100}
-	\caption{\small $\omega_{\max}=\frac{2 \pi}{30}$}
-	\label{fig:lambdaS_pdf_2pi-300}
-\end{subfigure}
-\hspace{0.5cm}
-\begin{subfigure}{.45\textwidth}
-	\centering
-	\includegraphics[width=1\linewidth]{lambdaS_pdf_O4pi-300_L100000_X100_Y100}
-	\caption{\small $\omega_{\max}=\frac{4 \pi}{30}$}
-	\label{fig:lambdaS_pdf_4pi-300}
-\end{subfigure}
-\caption[PDF comparisons of example standard normal fields to the standard normal distribution]{\small PDF comparison of the two $\lambda^S$ fields generated from the $\lambda^G$ fields displayed in Fig. \ref{fig:lambdaG} to a standard normal distribution.}
-\label{fig:lambdaS_pdf}
-\end{figure}
-\fi
+\noindent where $\text{Var}\left( \lambda^G \right) = \mathbb{E}\left[ \left( \lambda^G \right)^2 \right] - \mathbb{E}\left[ \lambda^G \right]^2$ is the variance of $\lambda^G$ and $\mean{\lambda^G} = \mathbb{E}\left[ \lambda^G \right]$ is the mean of $\lambda^G$.  While this could be mathematically derived, in practice $\text{Var}\left( \lambda^G \right)$ and $\mean{\lambda^G}$ are the sample variance and mean which are empirically found from a set of uniformly distributed sampled points (i.e., a simple random sample of $\lambda^G$).
 
 The final log-normal distribution, $\lambda = \lambda\left( x,\, y \right), x \in \left[ 0,\, X \right], y \in \left[ 0,\, Y \right]$, is determined by assigning location ($\mu$) and scale ($\sigma$) parameters to $\lambda^S$ according to
 \begin{equation}\label{eq:lambdaLN}
 \lambda\left( x,\, y \right) = \exp\left( \sigma \; \lambda^S\left( x,\, y \right) + \mu \right).
 \end{equation}
 
-Fig. \ref{fig:lambda} shows the resulting SSLT demand density distribution, $\lambda$, generated from the $\lambda^G$ fields displayed in Fig. \ref{fig:lambdaG} with default location and scale parameters (i.e., $\mu = 0,\, \sigma = 1$). \iffalse Similarly, Fig. \ref{fig:lambda_pdf} compares the PDF of the generated SSLT fields to the log-normal distribution being approximated. \fi By controlling the maximum angular frequency of the originating Gaussian random field, $\omega_{\max}$, and the log-normal location and scale parameters, the SSLT model can be used to simulate the demand characterization of a hypothetical SP service.
+Fig. \ref{fig:lambda} shows the resulting SSLT demand density distribution, $\lambda$, generated from the $\lambda^G$ fields displayed in Fig. \ref{fig:lambdaG} with default location and scale parameters (i.e., $\mu = 0,\, \sigma = 1$).  By controlling the maximum angular frequency of the originating Gaussian random field, $\omega_{\max}$, and the log-normal location and scale parameters, the SSLT model can be used to simulate the demand characterization of a hypothetical SP service.
 
 \begin{figure}[!ht]
 \centering
@@ -634,27 +609,6 @@ Fig. \ref{fig:lambda} shows the resulting SSLT demand density distribution, $\la
 \caption[Generated example SSLT demand fields]{\small Two SSLT demand fields generated from the $\lambda^G$ demand fields displayed in Fig. \ref{fig:lambdaG}. $\mu = 0,\, \sigma = 1$}
 \label{fig:lambda}
 \end{figure}
-
-\iffalse
-\begin{figure}[!ht]
-\centering
-\begin{subfigure}{.45\textwidth}
-	\centering
-	\includegraphics[width=1\linewidth]{lambda_pdf_O2pi-300_L100000_X100_Y100}
-	\caption{\small $\omega_{\max}=\frac{2 \pi}{30}$}
-	\label{fig:lambda_pdf_2pi-300}
-\end{subfigure}
-\hspace{0.5cm}
-\begin{subfigure}{.45\textwidth}
-	\centering
-	\includegraphics[width=1\linewidth]{lambda_pdf_O4pi-300_L100000_X100_Y100}
-	\caption{\small $\omega_{\max}=\frac{4 \pi}{30}$}
-	\label{fig:lambda_pdf_4pi-300}
-\end{subfigure}
-\caption[PDF comparisons of example SSLT demand fields to the log-normal distribution]{\small PDFs of the two generated SSLT demand fields displayed in Fig. \ref{fig:lambda}.}
-\label{fig:lambda_pdf}
-\end{figure}
-\fi
 
 Lee et al.~\cite{6554749, 6757900} implement their proposed SSLT demand model as a discrete pixelated set of rectangular cells, the value of which indicates the overall demand located within that cell's region.  Each demand point located within the SSLT area has an identical amount of demand associated with it.  The value of each cell represents the number of homogeneous demand points located within that cell, and these demand points are uniformly distributed within that cell.
 
@@ -729,16 +683,11 @@ where $h(z, u)$ is the optimal value of the second-stage problem, which is given
 \end{align}
 \end{tcolorbox}
 
-%Old definition of eq:P1S2C1, using blackboard-bold 1 instead of iverson bracket notation
-%& \hspace{0.4in} z_s = \mathbbm{1}_{\left\{\sum_{m \in \mathcal{M}} \delta_{ms} > 0\right\}}, \forall s \in \mathcal{S} \label{eq:P1S2C1}\\
-
 The first stage objective function (\cref{eq:SOPS1O}) minimizes the total cost of the selected network with respect to that formed network's expected ability to satisfy the demand contained within the region.  It characterizes this demand satisfaction as the expectation of $h\left( z,\, u \right)$, which is the optimal value of the second stage (\cref{eq:SOPS2O}) given a fixed $z_s$ from the first stage.  The optimal value of the second stage maximizes demand satisfaction by maximally slicing the BSs comprising the network selected by the first stage to the SPs' demands.  The first stage handles the interaction between the RPs and the VNB where the VNB selects resources to use, and the second stage handles the interaction between the VNB and the SPs where the VNB slices the selected resources to the SPs' VWNs (i.e., interactions \emph{D} and \emph{B} as described in \Cref{subsec:virtualization_architecture}, respectively).
 
 \Cref{eq:SOPS1C1,eq:SOPS2C4} are constraints that implement the defined ranges of the decision variables $z_s$ and $\delta_{ms}$.  \Cref{eq:SOPS2C2} is a constraint that reinforces \cref{eq:SOPS2C4} and asserts that a demand point is not overallocated by slicing it more resources than it demands.  Similarly, \cref{eq:SOPS2C3} ensures that a given BS is not over allocated to demand points.
 
 \Cref{eq:SOPS2C1} ensures that demand is only allocated from available, selected resources.  For this constraint, $\left[ * \right]$ is the Iverson bracket, which is defined by
-
-%$\mathbbm{1}_{\{*\}}$ is defined by
 
 \ifisdoublespacing
 \begin{singlespacing}
@@ -762,6 +711,7 @@ The first stage objective function (\cref{eq:SOPS1O}) minimizes the total cost o
 \fi
 
 % Old definition
+%$\mathbbm{1}_{\left\{ * \right\}}$ is defined by
 \iffalse
 \begin{equation} \label{eq:iverson}
 \mathbbm{1}_{\left\{ * \right\}} \defeq
@@ -780,14 +730,9 @@ The stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOP
 
 \Cref{ch:vnbmodel} established a mathematical model for analyzing the relationship between SPs and a VNB and proposed a two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) for constructing VWNs in the context of that relationship.  In this chapter, I present two approaches that arrive at a solution for this program.  First, I modify the stochastic program to convert it into a deterministic form, the deterministic equivalent program (DEP), and sample it such that it is solvable using typical mixed integer programming (MIP) optimization tools.  From this, I further derive a model to adaptively slice BSs into new VWNs when resources are already selected.  I then present a heuristic approach via genetic algorithm (GA) to handle resource selection with lower computational complexity.
 
-%\info{Overall chapter notes}%
-%\textit{Convert ``we'' into ``I'' and consider other forms of POV and voice; avoid passive voice.\\When referring to specific ``Problems'', refer to the equations using \textbackslash cref\{\}, which will compress the reference.\\``SOP'' (\Cref{sec:stochopt}) is \cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}.\\``DEP'' (\Cref{sec:dep}) is \cref{eq:DEPO,eq:DEPC1,eq:DEPC2,eq:DEPC3,eq:DEPC4}.\\``sDEP'' (\Cref{subsec:dep_sampling}) is \cref{eq:sDEPO,eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}.\\``ASM'' (\Cref{subsec:dep_slicing}) is \cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}.\\``Iverson bracket'' ($[*]=\{0,\, 1\}$, \Cref{sec:stochopt}) is \cref{eq:iverson}.}
-
 \section{Approach I: The Deterministic Equivalent Program} \label{sec:dep}
 
 In order to directly solve the two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}), I need to convert it to a deterministic equivalent program (DEP).  The DEP is equivalent to the original stochastic optimization program, but does not contain any stochastic variables (only deterministic variables)~\cite{stochprogramming}.  This is done by converting stochastic variables into sets which contain every scenario or realization in the scope of the stochastic variables.
-
-%Let $\Omega$ be defined as the scenario space (i.e., the set of all scenarios) of demand point locations defining $u_{ms}$ and $\delta_{ms}$.  Let $\hat{\Omega} \defeq \{1,\, 2,\, \ldots,\, O\}$ be a discrete set containing sampled scenarios.  The probability a given scenario $\omega \in \hat{\Omega}$ occurs is denoted by $p^{(\omega)},\, \omega \in \hat{\Omega}$, where $\sum_{\omega \in \hat{\Omega}} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.
 
 Let $\Omega$ be defined as the sample space (i.e., the set of all scenarios) of demand point locations defining $\tilde{u}_{ms}$.  The probability of a given scenario $\omega \in \Omega$ occurs is denoted by $p^{(\omega)}$, where $\sum_{\omega \in \Omega} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.  By making this change, I arrive at the deterministic equivalent program (DEP) of the two-stage stochastic optimization program modeled in \Cref{sec:stochopt}.
 
@@ -871,9 +816,7 @@ Effectively, the adaptive slicing model is a self-contained form of the second s
 
 \section{Approach II: The Genetic Algorithm} \label{sec:ga}
 
-%\textit{Now that the first approach - DEP and its sampling - has been tackled, and the necessary tool to evaluate it has been derived from it - the simplified adaptive slicing program - move on to the genetic algorithm approach for approximating the BS selection process.  Discuss the core algorithm of a genetic algorithm, then the various approaches that I used in its process (e.g., binary chromosomes, elitism, uniqueness, uniform crossover, bitwise mutation).}
-
-A major limitation of the approach in \Cref{sec:dep} is that the sDEP is increasingly unmanageable as $O$, $S$, or $M$ increases.  Most importantly, the accuracy of the sampled DEP is directly dependent on the size of $\hat{\Omega}$, $O$, directly causing a trade off between the accuracy of the sDEP and its computability in a reasonable amount of time.  While diminishing returns can be avoided by determining the minimum necessary $O$ for $\hat{\Omega}$ to provide a desireably tight estimation, the manageability of the sDEP is still dependent on the size of $S$ and $M$.  In this section, we reformulate the problem of joint BS selection for the VWN as a genetic algorithm (GA), circumventing the need to discretize demand or to establish $\hat{\Omega}$, thereby simplifying the original problem into a more scalable form.  Further, by using the adaptive slicing model of \Cref{subsec:dep_slicing}, this GA approach can provide an approximate solution of the original stochastic program while only needing to solve for resource selection.
+A major limitation of the approach in \Cref{sec:dep} is that the sDEP is increasingly unmanageable as $O$, $S$, or $M$ increases.  Most importantly, the accuracy of the sampled DEP is directly dependent on the size of $\hat{\Omega}$, $O$, directly causing a trade off between the accuracy of the sDEP and its computability in a reasonable amount of time.  While diminishing returns can be avoided by determining the minimum necessary $O$ for $\hat{\Omega}$ to provide a desireably tight estimation, the manageability of the sDEP is still dependent on the size of $S$ and $M$.  In this section, I reformulate the problem of joint BS selection for the VWN as a genetic algorithm (GA), circumventing the need to discretize demand or to establish $\hat{\Omega}$, thereby simplifying the original problem into a more scalable form.  Further, by using the adaptive slicing model of \Cref{subsec:dep_slicing}, this GA approach can provide an approximate solution of the original stochastic program while only needing to solve for resource selection.
 
 A genetic algorithm is an iterative metaheuristic algorithm inspired by the concept of natural selection in which an approximate solution to a given optimization problem is arrived at via a series of progressive generations.  Each generation contains a number of candidate solutions, called individuals, each of which is defined by a chromosome.  During a given generation, a fitness heuristic is assessed for each individual based on its chromosome.  Then individuals are \emph{selected} at random to become parents, with more fit individuals being selected with higher probability.  Parents are then paired off, and each pair of parents may, with probability $p_\text{xov}$, undergo a process called \emph{crossover}, a process similar to genetic recombination, in which the parents' chromosomes are mixed to form two children individuals for the next generation.  If crossover does not occur, the parents are cloned to be their own children for the next generation.  The resulting children chromosomes then undergo \emph{mutation}, altering the chromosome slightly.  Once enough new children have been generated, this new set of individuals forms the next generation to repeat the process.  \Cref{fig:ga_block} is a block diagram that illustrates this general process as proposed for this approach.  Each of these steps are described in further detail below.
 
