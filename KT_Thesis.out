@@ -13,16 +13,19 @@
 \BOOKMARK [2][-]{subsection.2.1.1}{Example Demand Distribution; The SSLT Model}{section.2.1}% 13
 \BOOKMARK [1][-]{section.2.2}{Stochastic Optimization}{chapter.2}% 14
 \BOOKMARK [0][-]{chapter.3}{Approximation Approaches}{}% 15
-\BOOKMARK [1][-]{section.3.1}{Deterministic Equivalent Program}{chapter.3}% 16
-\BOOKMARK [2][-]{subsection.3.1.1}{Sampling Approaches}{section.3.1}% 17
+\BOOKMARK [1][-]{section.3.1}{Approach I: The Deterministic Equivalent Program}{chapter.3}% 16
+\BOOKMARK [2][-]{subsection.3.1.1}{Sampling the DEP; Sample Average Approximation}{section.3.1}% 17
 \BOOKMARK [2][-]{subsection.3.1.2}{Adaptive Slicing}{section.3.1}% 18
-\BOOKMARK [1][-]{section.3.2}{Genetic Algorithm}{chapter.3}% 19
-\BOOKMARK [0][-]{chapter.4}{Testing and Simulations}{}% 20
-\BOOKMARK [1][-]{section.4.1}{VWN Construction for a Single SP}{chapter.4}% 21
-\BOOKMARK [2][-]{subsection.4.1.1}{Case I: Homogeneous Urban Cellular Network}{section.4.1}% 22
-\BOOKMARK [2][-]{subsection.4.1.2}{Case II: Impact of Heterogeneous Resources}{section.4.1}% 23
-\BOOKMARK [1][-]{section.4.2}{VWN Construction for Multiple SPs}{chapter.4}% 24
-\BOOKMARK [2][-]{subsection.4.2.1}{Case III: Two Similar Urban Cellular Networks}{section.4.2}% 25
-\BOOKMARK [2][-]{subsection.4.2.2}{Case IV: SPs with Specialized Demands}{section.4.2}% 26
-\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 27
-\BOOKMARK [1][-]{section.5.1}{Considerations for Future Work}{chapter.5}% 28
+\BOOKMARK [1][-]{section.3.2}{Approach II: The Genetic Algorithm}{chapter.3}% 19
+\BOOKMARK [2][-]{subsection.3.2.1}{The GA Chromosome}{section.3.2}% 20
+\BOOKMARK [2][-]{subsection.3.2.2}{Forming the Next Generation}{section.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.2.3}{Stopping the GA}{section.3.2}% 22
+\BOOKMARK [0][-]{chapter.4}{Testing and Simulations}{}% 23
+\BOOKMARK [1][-]{section.4.1}{VWN Construction for a Single SP}{chapter.4}% 24
+\BOOKMARK [2][-]{subsection.4.1.1}{Case I: Homogeneous Urban Cellular Network}{section.4.1}% 25
+\BOOKMARK [2][-]{subsection.4.1.2}{Case II: Impact of Heterogeneous Resources}{section.4.1}% 26
+\BOOKMARK [1][-]{section.4.2}{VWN Construction for Multiple SPs}{chapter.4}% 27
+\BOOKMARK [2][-]{subsection.4.2.1}{Case III: Two Similar Urban Cellular Networks}{section.4.2}% 28
+\BOOKMARK [2][-]{subsection.4.2.2}{Case IV: SPs with Specialized Demands}{section.4.2}% 29
+\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 30
+\BOOKMARK [1][-]{section.5.1}{Considerations for Future Work}{chapter.5}% 31
