@@ -214,6 +214,13 @@ S.~Picek, M.~Golub, and D.~Jakobovic, ``Evaluation of crossover operator
   \url{http://dx.doi.org/10.1007/978-3-642-24553-4_31}
 \BIBentrySTDinterwordspacing
 
+\bibitem{Cplex}
+\BIBentryALTinterwordspacing
+IBM, ``Optimization model development toolkit for mathematical and constraint
+  programming {(CPLEX)},'' 2012. [Online]. Available:
+  \url{http://www-03.ibm.com/software/products/en/ibmilogcpleoptistud}
+\BIBentrySTDinterwordspacing
+
 \bibitem{PhysRevE.72.026116}
 \BIBentryALTinterwordspacing
 Y.~Xia, C.~K. Tse, W.~M. Tam, F.~C.~M. Lau, and M.~Small, ``Scale-free
