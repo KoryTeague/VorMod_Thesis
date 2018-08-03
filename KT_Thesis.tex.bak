@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: July 25, 2018
+% REVISED: August 3, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -245,11 +245,46 @@ This work received support in part from the National Science Foundation via work
 % Uncomment if I want to add acronyms as a separate document ``acronyms.tex''
 %\include{acronyms}
 \chapter*{List of Acronyms}
-This list has to be manually compiled, and will be completed at another time.
 \begin{acronym}
+	\acro{3GPP}{Third-Generation Partnership Project}
+%	\acro{3G}{Third Generation}
+%	\acro{4G}{Fourth Generation}
+%	\acro{5G}{Fifth Generation}
+	\acro{5G-NR}{5G New Radio}
 	\acro{BS}{Base Station}
 	\acro{CapEx}{Capital Expenditures}
+	\acro{DEP}{Deterministic Equivalent Program}
+	\acro{DSA}{Dynamic Spectrum Access}
+	\acro{EB}{Exabytes}
+	\acro{GA}{Genetic Algorithm}
+	\acro{IoT}{Internet-of-Things}
+%	\acro{IP}{Integer Programming}
+%	\acro{IP}{Internet Protocol}
+%	\acro{LP}{Linear Programming}
+%	\acro{LTE}{Long Term Evolution}
+%	\acro{MILP}{Mixed Integer Linear Programming}
+%	\acro{MIP}{Mixed Integer Programming}
+	\acro{MIMO}{Multiple-Input Multiple-Output}
+	\acro{mmWave}{Millimeter Wave}
+	\acro{MNO}{Mobile Network Operator}
+	\acro{MVNO}{Mobile Virtual Network Operator}
+%	\acro{NP}{Nondeterministic Polynomial}
+	\acro{NVS}{Network Virtualization Substrate}
+	\acro{NwoB}{Networks without Borders}
+%	\acro{OFDMA}{Orthogonal Frequency Division Multiple Access}
 	\acro{OpEx}{Operational Expenditures}
+	\acro{PPP}{Poisson Point Process}
+	\acro{QoS}{Quality of Service}
+	\acro{RAN}{Radio Access Network}
+	\acro{RP}{Resource Provider}
+	\acro{SAA}{Sample Average Approximation}
+	\acro{sDEP}{Sampled Deterministic Equivalent Program}
+	\acro{SP}{Service Provider}
+	\acro{SSLT}{Scalable, Spatially-correlated, Log-normal distributed Traffic}
+	\acro{VNB}{Virtual Network Builder}	
+	\acro{VWN}{Virtualized Wireless Network}
+%	\acro{WLAN}{Wireless Local Area Network}
+	\acro{ZB}{Zetabytes}
 \end{acronym}
 
 \pagenumbering{arabic}
@@ -258,7 +293,7 @@ This list has to be manually compiled, and will be completed at another time.
 \iftrue
 \chapter{Introduction} \label{ch:intro}
 
-Mobile carriers have seen explosive growth in both the volume of users and the demands of those users within the networks they operate.  New and evolving data-driven applications, such as audio/video streaming, social networking, and the Internet of Things have also placed increasing demand upon the networks.  In 2016, the amount of IP data handled by mobile networks exceeded 86 Exabytes; it is projected to reach almost 200 Exabytes in 2018, and 580 Exabytes in 2021~\cite{ciscoVNI2017}.  Due to this exponential growth, incremental approaches to improve the network will fail to satisfy demand.  As this growth continues in the near future, new architectures like 5G and its associated technologies will be needed to keep pace with the demand.
+Mobile carriers have seen explosive growth in both the volume of users and the demands of those users within the networks they operate.  New and evolving data-driven applications, such as audio/video streaming, social networking, and the Internet-of-Things (IoT) have also placed increasing demand upon the networks.  In 2016, the amount of IP data handled by mobile networks exceeded 86 Exabytes (EB); it is projected to reach almost 200 EB in 2018, and 580 EB in 2021~\cite{ciscoVNI2017}.  Due to this exponential growth, incremental approaches to improve the network will fail to satisfy demand.  As this growth continues in the near future, new architectures like 5G and its associated technologies will be needed to keep pace with the demand.
 
 However, deployment of these technologies and networks can be a costly, prohibitive venture.  To meet these demands requires a similar increase in capital (CapEx) and operational expenditures (OpEx).  As volumes and costs rise and margins shrink, approaches to reduce these expenditures become increasingly necessary.  Resource infrastructure sharing has been a common practice for mobile network operators (MNOs) going back to 2G and 3G networks.  First, MNOs needed to offer coverage for their users in regions where they had no infrastructure, leading to the creation of roaming agreements, eliminating the need for deploying new infrastructure in that region and reducing CapEx.  Second, by sharing passive elements of the infrastructure, such as physical sites, tower masts, power, and air-conditioning, the CapEx of deploying new backhaul and radio access networks (RANs), such as cellular base stations (BSs), has decreased~\cite{1421931}.
 
@@ -270,7 +305,7 @@ This thesis addresses the topic of resource selection and adaptive slicing withi
 
 \section{Trends in Wireless Networking} \label{sec:netreview}
 
-IP traffic is increasing across all types of networks, and is trending to become more mobile focused.  According to the Cisco Visual Networking Index~\cite{ciscoVNI2017}, global IP traffic will increase nearly threefold over the 2016-2021 time period, reaching 3.3 Zetabytes (ZB) annually in 2021 from 1.2 ZB annually in 2016.  Traffic across the fixed internet backbone is projected to match this threefold pace, growing from 790 Exabytes (EB) to 2.2 ZB.  However, mobile data traffic is projected to have twice the growth of fixed internet over the same period, increasing almost sevenfold from 86 EB in 2016 to 580 EB in 2021.  Traffic from wireless and mobile devices combined will reach 63\% of total IP traffic by 2021, up from 49\% in 2016.  By 2021, smartphone IP traffic (33\% of global IP traffic) will alone outnumber PC IP traffic (25\%).  In both the consumer and business markets, this demand includes enormous growth in video applications, specifically that of video streaming.  By 2021, global IP video traffic will reach 82\% of all consumer internet traffic, up from 73\% in 2016.  By 2021, internet live video streaming will account for 13\% of this video traffic, growing 15-fold over the period.  Similarly, virtual and augmented reality uses will see the largest increase, growing at a 82\% CAGR, and expected to reach a 20-fold increase between 2016-2021.
+IP traffic is increasing across all types of networks, and is trending to become more mobile focused.  According to the Cisco Visual Networking Index~\cite{ciscoVNI2017}, global IP traffic will increase nearly threefold over the 2016-2021 time period, reaching 3.3 Zetabytes (ZB) annually in 2021 from 1.2 ZB annually in 2016.  Traffic across the fixed internet backbone is projected to match this threefold pace, growing from 790 EB to 2.2 ZB.  However, mobile data traffic is projected to have twice the growth of fixed internet over the same period, increasing almost sevenfold from 86 EB in 2016 to 580 EB in 2021.  Traffic from wireless and mobile devices combined will reach 63\% of total IP traffic by 2021, up from 49\% in 2016.  By 2021, smartphone IP traffic (33\% of global IP traffic) will alone outnumber PC IP traffic (25\%).  In both the consumer and business markets, this demand includes enormous growth in video applications, specifically that of video streaming.  By 2021, global IP video traffic will reach 82\% of all consumer internet traffic, up from 73\% in 2016.  By 2021, internet live video streaming will account for 13\% of this video traffic, growing 15-fold over the period.  Similarly, virtual and augmented reality uses will see the largest increase, growing at a 82\% compound annual growth rate, and expected to reach a 20-fold increase between 2016-2021.
 
 The technology underlying the mobile data network needs to continue to evolve with these changing trends and growth.  The primary focus of the 5G cellular standard has been to meet these targets in an effective and robust manner.  Of specific interest is that of aggregate data rate (e.g., area capacity, the available amount of data a network can facilitate over a unit area) and edge rate (e.g., 5\% rate, the minimum data rate that can be reasonably provided to all but 5\% of users) of the network.  For 5G, the general consensus is that aggregate data rate and edge rate must be 1000x and 100x that of 4G, respectively~\cite{6824752}.  To supply these rates, several strategies are being investigated, with three primary technologies being (1) the continuing of cellular densification and offloading, (2) increased bandwidth by expanding into new spectra like Wi-Fi and millimeter wave, and (3) increasing spectral efficiency through advances such as those in massive multiple-input multiple-output (MIMO).
 
@@ -308,7 +343,7 @@ This concept of virtualization partitions the classical wireless networking valu
 
 Specialization of networks and the entities involved in the network can improve the cost efficiency of the network.  According to Beckman and Smith~\cite{1421931}: ``Extensive vertical integration is a characteristic of an immature product.  As the product increases in complexity, it is no longer possible to [provide] an end-to-end solution.'' In both examples, the MVNO adds value to the traditional value chain by specializing in segments (e.g., marketing or service creation) that are different from the segments (e.g., network maintenance) still handled by the owner and operator of the network resources.
 
-By focusing on the strengths provided by virtualization, more value can be generated through specialization.  Doyle et al.~\cite{6737248} investigates the value chain with this segmentation in mind and introduces the Networks without Borders (NwoB) approach as a new service-oriented network with a proposed new value chain (Fig. \ref{fig:NwoBValueChain}~\cite{6737248}).  The network under the NwoB approach is entirely service-oriented, where the network responds to services and connectivity is tailored for the service.  Services have a wider meaning than the voice, text, and data of a typical MNO.  Services also include that of Netflix-like or real-time video streaming, Internet-of-Things (IoT) applications, or various types of over-the-top services.  Each service would be provided by a service provider that compensates the virtual network operator operating a virtual network constructed specifically for the purpose of that service; the virtual network is the service.  Unlike an MVNO which manages resources provided to it by agreement, the virtual network operator manages slices of virtual resources from a pool of all resources as provided through resource aggregating services.
+By focusing on the strengths provided by virtualization, more value can be generated through specialization.  Doyle et al.~\cite{6737248} investigates the value chain with this segmentation in mind and introduces the Networks without Borders (NwoB) approach as a new service-oriented network with a proposed new value chain (Fig. \ref{fig:NwoBValueChain}~\cite{6737248}).  The network under the NwoB approach is entirely service-oriented, where the network responds to services and connectivity is tailored for the service.  Services have a wider meaning than the voice, text, and data of a typical MNO.  Services also include that of Netflix-like or real-time video streaming, IoT applications, or various types of over-the-top services.  Each service would be provided by a service provider that compensates the virtual network operator operating a virtual network constructed specifically for the purpose of that service; the virtual network is the service.  Unlike an MVNO which manages resources provided to it by agreement, the virtual network operator manages slices of virtual resources from a pool of all resources as provided through resource aggregating services.
 
 \begin{figure}
 	\centering
@@ -378,7 +413,7 @@ Introducing stochastic parameters and constraints allows the optimization model 
 
 However, standard linear programming techniques cannot solve models with stochastic parameters.  Stochastic programming therefore requires converting the stochastic program into its deterministic equivalent program (DEP) which replaces all stochastic variables with deterministic variables~\cite{stochprogramming}.  The process of forming a DEP from a stochastic program involves converting each stochastic variable into a set of all possible scenarios and scenario probabilities.  These scenarios and scenario probabilities are present within the model as a new dimension and weight for the now-deterministic variable.  To fully encapsulate the stochastic variable, the deterministic equivalent variable may be composed of an infinite set.
 
-Resource allocation problems are typically some form of integer programming (IP)--in which all decision variables (unknowns) are integers--or mixed integer programming (MIP)--in which some decision variables (unknowns) are integers.  Both integer and mixed integer programs are generally\footnote{Some subclasses of integer and mixed integer programs are efficiently solvable, but these are the exception.  Several classic NP-Complete (a subset of NP-Hard) problems~\cite{Karp1972} are IP and MIP.} considered NP-hard\footnote{Finding the minimum resource allocation that provides coverage over a geographic area falls within a category of problems referred to as \emph{minimum set cover problems}.  It is apparent that the problem considered in this thesis--specifically the stochastic program proposed in \Cref{sec:stochopt}--is some form of minimum set cover problem; specifically, it might be referred to as a capacitated set cover problem.  Minimum set cover problems are provably NP-hard and typically rely on approximation solutions to solve in a feasible amount of time~\cite{Korte:2007:CombOptimization}.}.  As the programs increase in scope, they become more computationally complex to solve; accounting for the scenarios of the previously stochastic variables further increases this complexity.  Finding the optimal solution may require more time than is feasible; in the worst case, these problems run in exponential time complexity.
+Resource allocation problems are typically some form of integer programming--in which all decision variables (unknowns) are integers--or mixed integer programming--in which some decision variables (unknowns) are integers.  Both integer and mixed integer programs are generally\footnote{Some subclasses of integer and mixed integer programs are efficiently solvable, but these are the exception.  Several classic NP-Complete (a subset of NP-Hard) problems~\cite{Karp1972} are integer programs and mixed integer programs.} considered NP-hard\footnote{Finding the minimum resource allocation that provides coverage over a geographic area falls within a category of problems referred to as \emph{minimum set cover problems}.  It is apparent that the problem considered in this thesis--specifically the stochastic program proposed in \Cref{sec:stochopt}--is some form of minimum set cover problem; specifically, it might be referred to as a capacitated set cover problem.  Minimum set cover problems are provably NP-hard and typically rely on approximation solutions to solve in a feasible amount of time~\cite{Korte:2007:CombOptimization}.}.  As the programs increase in scope, they become more computationally complex to solve; accounting for the scenarios of the previously stochastic variables further increases this complexity.  Finding the optimal solution may require more time than is feasible; in the worst case, these problems run in exponential time complexity.
 
 \subsection{Metaheuristic Approaches} \label{subsec:optreview_meta}
 
@@ -404,26 +439,26 @@ The objective of this thesis is to develop two approaches to joint resource allo
 
 \section{Thesis Outline} \label{sec:outline}
 
-This thesis is organized as follows.  \Cref{ch:vnbmodel} defines the model used for the resource allocation methods explored in this thesis.  Further, \Cref{ch:vnbmodel} also details the two-stage stochastic optimization problem which optimally performs resource selection and slicing as a basis of approaches presented within this work.  \Cref{ch:approaches} establishes the two approaches investigated to provide solutions to the optimization problem posed in \Cref{ch:vnbmodel}: a sampled deterministic equivalent program which solves the problem as a whole and a genetic algorithm that simplifies the problem by providing an estimated optimal resource selection.  \Cref{ch:testsim} tests these two approaches by presenting four data sets that mimic real world cellular networks and evaluates the results.  \Cref{ch:conc} contains the conclusions and proposed future work in this area.
+This thesis is organized as follows.  \Cref{ch:vnbmodel} defines the model used for the resource allocation methods explored in this thesis.  Further, \Cref{ch:vnbmodel} also details the two-stage stochastic optimization problem which optimally performs resource selection and slicing as a basis of approaches presented within this work.  \Cref{ch:approaches} establishes the two approaches investigated to provide solutions to the optimization problem posed in \Cref{ch:vnbmodel}: a sampled deterministic equivalent program which solves the problem as a whole and a genetic algorithm that simplifies the problem by providing an estimated optimal resource selection.  \Cref{ch:casesim} tests these two approaches by presenting four data sets that mimic real world cellular networks and evaluates the results.  \Cref{ch:conc} contains the conclusions and proposed future work in this area.
 \fi
 
 \iftrue
 \pagebreak
 \chapter{Virtual Network Builder Model} \label{ch:vnbmodel}
 
-This chapter establishes the mathematical foundation for the work completed in this thesis.  First, a geographic model is presented, defining an area of interest, the pool of resources maintained by the RPs for use by the VNB, a characterization for service demand communicating the needs for the SPs' VWNs, and the SPs' end users to be satisfied.  Second, this is expounded on by the presentation of the SSLT model as an example characterization for service demand to be used for testing throughout this thesis.  Third, a two-stage stochastic program utilizing this model is proposed to solve the posed problem of resource selection and adaptive slicing for use in VWN construction within the VNB.
+This chapter establishes the mathematical foundation for this thesis.  First, a geographic model is presented defining an area of interest, the pool of resources maintained by the RPs for use by the VNB, and a characterization of the service demand of each SP.  Second, a specific demand model, based on the empirical analysis of collected cellular network traces, is presented.  This is the demand model that will be used throughout this thesis.  Third, a two-stage stochastic program is developed to model the problem of resource selection and adaptive slicing within the VNB.
 
 \section{Network Area Definitions} \label{sec:networkdefs}
 
-Consider a geographic area of width $X$ meters and length $Y$ meters that contains a VNB and a set $\mathcal{S} \defeq \left\{ 1,\, 2,\, \ldots,\, S \right\}$ of virtualized resources (i.e., BSs) the VNB has aggregated for use in the construction of VWNs.  The pool of BSs, $\mathcal{S}$, is mapped to physical BSs owned and maintained by RPs and are made available for use through contracts between the RPs and the VNB.  The contract-negotiated cost for the VNB to lease BS $s \in \mathcal{S}$ is denoted by $c_s$.  The costs for the BSs used within a constructed VWN are passed to the SPs as part of the overall cost of the network.  The rate capacity of BS $s \in \mathcal{S}$ is denoted by $r_s$ and its coverage radius is denoted by $b_s$.
+Consider a geographic region, $\mathcal{R}$, of width $X$ meters and length $Y$ meters that contains a VNB and a set $\mathcal{S} \defeq \left\{ 1,\, 2,\, \ldots,\, S \right\}$ of virtualized resources (i.e., BSs) the VNB has aggregated for use in the construction of VWNs.  The pool of BSs, $\mathcal{S}$, is mapped to physical BSs owned and maintained by RPs and made available for use through contracts between the RPs and the VNB.  The contract-negotiated cost for the VNB to lease BS $s \in \mathcal{S}$ is denoted by $c_s$.  The costs for the BSs used within a constructed VWN are passed to the SPs as part of the overall cost of the network.  The rate capacity of BS $s \in \mathcal{S}$ is denoted by $r_s$ and its coverage radius is denoted by $b_s$.
 
-Let $\mathcal{N} \defeq \left\{ 1,\, 2,\, \ldots,\, N \right\}$ be the set of SPs seeking a VWN to host their services with coverage within the geographical area.  An SP $n \in \mathcal{N}$ associates with the VNB to create its desired VWN.  Through this association, SP $n$ must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  SP $n$ must know and communicate to the VNB the estimated geographic distribution of the service's traffic demand density (or demand \emph{intensity}) as a function, $\lambda_n\left( x,\, y \right),\, n \in \mathcal{N},\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right],\,$ in terms of $\frac{\text{bits}}{\text{km}^2}$.  The demand intensity function could be in the form of a continuous function or as discrete pixels (e.g., a bitmap), and indicates the locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  For an example of $\lambda_n$, see \Cref{subsec:networkdefs_sslt}.
+Let $\mathcal{N} \defeq \left\{ 1,\, 2,\, \ldots,\, N \right\}$ be the set of SPs seeking a VWN with coverage within the region $\mathcal{R}$.  An SP $n \in \mathcal{N}$ associates with the VNB to create the desired VWN.  Through this association, SP $n$ must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  SP $n$ must know and communicate to the VNB the estimated geographic distribution of the service's traffic demand density (or demand \emph{intensity}) as a function, $\lambda_n\left( x,\, y \right),\, n \in \mathcal{N},\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right],\,$ in terms of $\frac{\text{bits}}{\text{km}^2}$.  The demand intensity function could be in the form of a continuous function or as discrete pixels (e.g., a bitmap), and indicates the locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  For an example of $\lambda_n$, see \Cref{subsec:networkdefs_sslt}.
 
 Further, the SP would also provide the desired or needed percent demand satisfaction rate for the service.  \improvement{Diversifying $\alpha$ to very according to the various SPs (i.e., $\alpha_n, n \in \mathcal{N}$, or $\alpha_m, m \in \mathcal{M}$) would be required for this.}Some services have high priority, such as those related to emergency services, and must have nearly if not perfect 100\% demand satisfaction.  Others, such as the aforementioned generic voice lines or video streaming, can withstand some demand to remain unsatisfied as a tradeoff for decreased network leasing or operational costs.
 
-Let $\mathcal{M}_n \defeq \left\{1,\, 2,\, \ldots,\, M_n\right\}$ be the set of demand points SP $n \in \mathcal{N}$ is attempting to satisfy with its service.  Each demand point $m \in \mathcal{M}_n$ is seeking to connect to the VWN operated by SP $n \in \mathcal{N}$ and is located within the domain of the geographic area (i.e., $\left( \tilde{x}_{m_n},\, \tilde{y}_{m_n} \right),\, \tilde{x}_{m_n} \in \left[ 0,\, X \right],\, \tilde{y}_{m_n} \in \left[ 0,\, Y \right]$).  Demand point locations are stochastically determined by the distribution of traffic as described by the demand intensity function $\lambda_n$.  A realization of these demand points can be found as a two-dimensional non-stationary (or inhomogeneous) Poisson point process (PPP) using $\lambda_n$ as it's spatial intensity function.
+Let $\mathcal{M}_n \defeq \left\{1,\, 2,\, \ldots,\, M_n\right\}$ be the set of demand points SP $n \in \mathcal{N}$ is attempting to satisfy with its service.  Each demand point $m \in \mathcal{M}_n$ is seeking to connect to the VWN operated by SP $n \in \mathcal{N}$ and is located within the domain of $\mathcal{R}$ (i.e., $\left( \tilde{x}_{m_n},\, \tilde{y}_{m_n} \right),\, \tilde{x}_{m_n} \in \left[ 0,\, X \right],\, \tilde{y}_{m_n} \in \left[ 0,\, Y \right]$).  Demand point locations are stochastically determined by the distribution of traffic as described by the demand intensity function $\lambda_n$.  A realization of these demand points can be found as a two-dimensional non-stationary (or inhomogeneous) Poisson point process (PPP) using $\lambda_n$ as it's spatial intensity function.
 
-For purposes of visualization or compuation, this non-stationary PPP is generatable using an accept-reject method~\cite{leeds:nsPPPgeneration}.  A stationary PPP is generated relative to the maximum value within the region of the traffic demand density function.  That is, a number of points generated within the region is selected from a Poisson random variable with parameter (or mean) $\lambda_{n,\max}*X*Y$, where $\lambda_{n,\max}$ is the maximum value of $\lambda_n$ over the region.  Each point is then independently and uniformly distributed (i.e., each point has a location $\left( x,\, y \right)$ with $x \sim \mathcal{U}\left( 0,\, X \right)$\footnote{$\mathcal{U}\left( a,\, b \right)$ refers to a random variable uniformly distributed over the domain $\left[ a,\, b \right]$, where $a < b$.} and $y \sim \mathcal{U}\left( 0,\, Y \right)$) over the region.  Then, each point undergoes the accept-reject procedure to inhomogenize the stationary PPP.  Each point is kept with a probability of the ratio of the value of the intensity function at that point's location to the maximum value of the intensity function.  That is, for each point in the PPP a uniform random variable, $P \sim \mathcal{U}\left( 0,\, 1 \right)$, is generated and the point is either \emph{accepted} and kept or \emph{rejected} and discarded according to
+For purposes of visualization or compuation, this non-stationary PPP is generatable using an accept-reject method~\cite{leeds:nsPPPgeneration}.  A stationary PPP is generated relative to the maximum value of the traffic demand density function within $\mathcal{R}$.  That is, a number of points generated within the region is selected from a Poisson random variable with parameter (or mean) $\lambda_{n,\max}*X*Y$, where $\lambda_{n,\max}$ is the maximum value of $\lambda_n$ within $\mathcal{R}$.  Each point is then independently and uniformly distributed (i.e., each point has a location $\left( x,\, y \right)$ with $x \sim \mathcal{U}\left( 0,\, X \right)$\footnote{$\mathcal{U}\left( a,\, b \right)$ refers to a random variable uniformly distributed over the domain $\left[ a,\, b \right]$, where $a < b$.} and $y \sim \mathcal{U}\left( 0,\, Y \right)$) over $\mathcal{R}$.  Then, each point undergoes the accept-reject procedure to inhomogenize the stationary PPP.  Each point is kept with a probability of the ratio of the value of the intensity function at that point's location to the maximum value of the intensity function.  That is, for each point in the PPP a uniform random variable, $P \sim \mathcal{U}\left( 0,\, 1 \right)$, is generated and the point is either \emph{accepted} and kept or \emph{rejected} and discarded according to
 
 \ifisdoublespacing
 \begin{singlespacing}
@@ -633,11 +668,11 @@ I deviate from their implementation by leaving the SSLT distribution as a contin
 \label{fig:lambda_nsPPP}
 \end{figure}
 
-This SSLT model is used in \Cref{ch:testsim} to generate SP service demand and end-user demand points while testing the approaches described in \Cref{ch:approaches}.
+This SSLT model is used in \Cref{ch:casesim} to generate SP service demand and end-user demand points while testing the approaches described in \Cref{ch:approaches}.
 
 \section{Stochastic Optimization} \label{sec:stochopt}
 
-As presented in \Cref{sec:networkdefs}, the VNB present within the established geographic area must construct a set of VWNs to satisfy the needs of the services the various SPs seek to provide.  Each service provider provides a characterization of its demand, such as the SSLT model presented in \Cref{subsec:networkdefs_sslt}.  With this information, the VNB must select the subset of virtual resources available in $\mathcal{S}$ that minimizes the cost to the VNB, and associate slices of these resources to VWNs that optimally satisfy the SPs' demand.
+As presented in \Cref{sec:networkdefs}, the VNB present within the $\mathcal{R}$ must construct a set of VWNs to satisfy the needs of the services the various SPs seek to provide.  Each service provider provides a characterization of its demand, such as the SSLT model presented in \Cref{subsec:networkdefs_sslt}.  With this information, the VNB must select the subset of virtual resources available in $\mathcal{S}$ that minimizes the cost to the VNB, and associate slices of these resources to VWNs that optimally satisfy the SPs' demand.
 
 I formulate the presented problem of resource selection as Problem 1 (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}), a two-stage stochastic optimization program.  Let $z_s,\, s \in \mathcal{S}$, be a binary decision variable defined as
 
@@ -683,7 +718,7 @@ where $h(z, u)$ is the optimal value of the second-stage problem, which is given
 \end{align}
 \end{tcolorbox}
 
-The first stage objective function (\cref{eq:SOPS1O}) minimizes the total cost of the selected network with respect to that formed network's expected ability to satisfy the demand contained within the region.  It characterizes this demand satisfaction as the expectation of $h\left( z,\, u \right)$, which is the optimal value of the second stage (\cref{eq:SOPS2O}) given a fixed $z_s$ from the first stage.  The optimal value of the second stage maximizes demand satisfaction by maximally slicing the BSs comprising the network selected by the first stage to the SPs' demands.  The first stage handles the interaction between the RPs and the VNB where the VNB selects resources to use, and the second stage handles the interaction between the VNB and the SPs where the VNB slices the selected resources to the SPs' VWNs (i.e., interactions \emph{D} and \emph{B} as described in \Cref{subsec:virtualization_architecture}, respectively).
+The first stage objective function (\cref{eq:SOPS1O}) minimizes the total cost of the selected network with respect to that formed network's expected ability to satisfy the demand contained within $\mathcal{R}$.  It characterizes this demand satisfaction as the expectation of $h\left( z,\, u \right)$, which is the optimal value of the second stage (\cref{eq:SOPS2O}) given a fixed $z_s$ from the first stage.  The optimal value of the second stage maximizes demand satisfaction by maximally slicing the BSs comprising the network selected by the first stage to the SPs' demands.  The first stage handles the interaction between the RPs and the VNB where the VNB selects resources to use, and the second stage handles the interaction between the VNB and the SPs where the VNB slices the selected resources to the SPs' VWNs (i.e., interactions \emph{D} and \emph{B} as described in \Cref{subsec:virtualization_architecture}, respectively).
 
 \Cref{eq:SOPS1C1,eq:SOPS2C4} are constraints that implement the defined ranges of the decision variables $z_s$ and $\delta_{ms}$.  \Cref{eq:SOPS2C2} is a constraint that reinforces \cref{eq:SOPS2C4} and asserts that a demand point is not overallocated by slicing it more resources than it demands.  Similarly, \cref{eq:SOPS2C3} ensures that a given BS is not over allocated to demand points.
 
@@ -722,19 +757,19 @@ The first stage objective function (\cref{eq:SOPS1O}) minimizes the total cost o
 \end{equation}
 \fi
 
-The stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) models the optimization that the VNB must perform to construct VWNs for and balance the needs of the various SPs.  However, this program is not directly solvable, as mixed integer programming (MIP) optimization tools cannot be used to solve stochastic optimization programs.  \Cref{ch:approaches} poses two approaches for solving this program.
+The stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) models the optimization that the VNB must perform to construct VWNs for and balance the needs of the various SPs.  However, this program is not directly solvable, as mixed integer programming optimization tools cannot be used to solve stochastic optimization programs.  \Cref{ch:approaches} poses two approaches for solving this program.
 
 \iftrue
 \pagebreak
 \chapter{Approximation Approaches} \label{ch:approaches}
 
-\Cref{ch:vnbmodel} established a mathematical model for analyzing the relationship between SPs and a VNB and proposed a two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) for constructing VWNs in the context of that relationship.  In this chapter, I present two approaches that arrive at a solution for this program.  First, I modify the stochastic program to convert it into a deterministic form, the deterministic equivalent program (DEP), and sample it such that it is solvable using typical mixed integer programming (MIP) optimization tools.  From this, I further derive a model to adaptively slice BSs into new VWNs when resources are already selected.  I then present a heuristic approach via genetic algorithm (GA) to handle resource selection with lower computational complexity.
+\Cref{ch:vnbmodel} established a mathematical model for analyzing the relationship between SPs and a VNB and proposed a two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) for constructing VWNs in the context of that relationship.  In this chapter, I present two approaches that arrive at a solution for this program.  First, I modify the stochastic program to convert it into a deterministic form, the deterministic equivalent program (DEP), and sample it such that it is solvable using typical mixed integer programming optimization tools.  From this, I further derive a model to adaptively slice BSs into new VWNs when resources are already selected.  I then present a heuristic approach via genetic algorithm (GA) to handle resource selection with lower computational complexity.
 
 \section{Approach I: The Deterministic Equivalent Program} \label{sec:dep}
 
-In order to directly solve the two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}), I need to convert it to a deterministic equivalent program (DEP).  The DEP is equivalent to the original stochastic optimization program, but does not contain any stochastic variables (only deterministic variables)~\cite{stochprogramming}.  This is done by converting stochastic variables into sets which contain every scenario or realization in the scope of the stochastic variables.
+In order to directly solve the two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}), it must be converted into a deterministic equivalent program (DEP).  The DEP is equivalent to the original stochastic optimization program, but does not contain any stochastic variables (only deterministic variables)~\cite{stochprogramming}.  This is accomplished by converting stochastic variables into sets which contain every scenario or realization in the scope of the stochastic variables.
 
-Let $\Omega$ be defined as the sample space (i.e., the set of all scenarios) of demand point locations defining $\tilde{u}_{ms}$.  The probability of a given scenario $\omega \in \Omega$ occurs is denoted by $p^{(\omega)}$, where $\sum_{\omega \in \Omega} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.  By making this change, I arrive at the deterministic equivalent program (DEP) of the two-stage stochastic optimization program modeled in \Cref{sec:stochopt}.
+Let $\Omega$ be defined as the sample space (i.e., the set of all scenarios) of demand point locations defining $\tilde{u}_{ms}$.  The probability a given scenario $\omega \in \Omega$ occurs is denoted by $p^{(\omega)}$, where $\sum_{\omega \in \Omega} p^{(\omega)} = 1$.  Variables that are dependent on the scenario are shown with a superscript ($\omega$) with the specific scenario it is dependent on indicated by $\omega$.  By making this change, the DEP (\cref{eq:DEPO,eq:DEPC1,eq:DEPC2,eq:DEPC3,eq:DEPC4}) of the two-stage stochastic optimization program modeled in \Cref{sec:stochopt} is established.
 
 \begin{tcolorbox}[floatplacement = !ht, float, title = Deterministic Equivalent Program (DEP) of \Cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}]
 \begin{align}
@@ -753,13 +788,13 @@ Let $\Omega$ be defined as the sample space (i.e., the set of all scenarios) of 
 
 The objective function (\cref{eq:DEPO}) combines both objective functions of the initial stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS2O}) into a single deterministic objective.  The goal modeled by \cref{eq:DEPO} is unchanged from that modeled by \cref{eq:SOPS1O,eq:SOPS2O}; the first half handles resource selection by finding the minimal cost network relative to the second half, which handles adaptive slicing of those selected BSs by allocating slices of the BSs to demand for maximum demand satisfaction.  These competing goals of minimizing VWN cost and maximizing VWN demand satisfaction are controlled by $\alpha$.
 
-\Cref{eq:DEPC1} is a constraint ensures that demand is allocated to BSs that it is within range of and that it is not overallocated resources, adapting \cref{eq:SOPS2C2} for all demand scenarios.  \Cref{eq:DEPC2} is a constraint that ensures only selected BSs are allocated demand, and that BSs are allocated within capacity, combining and adapting \cref{eq:SOPS2C1,eq:SOPS2C3} for all demand scenarios.  \Cref{eq:DEPC3,eq:DEPC4} define bounds on the decision variables according to \cref{eq:SOPS1C1,eq:SOPS2C4}.
+\Cref{eq:DEPC1} is a constraint that ensures that demand is allocated to BSs that it is within range of and that it is not overallocated resources, adapting \cref{eq:SOPS2C2} for all demand scenarios.  \Cref{eq:DEPC2} is a constraint that ensures only selected BSs are allocated demand, and that BSs are allocated within capacity, combining and adapting \cref{eq:SOPS2C1,eq:SOPS2C3} for all demand scenarios.  \Cref{eq:DEPC3,eq:DEPC4} define bounds on the decision variables according to \cref{eq:SOPS1C1,eq:SOPS2C4}.
 
-As the DEP reformulation is equivalent to the original stochastic optimization program, the solution of the DEP is also a solution of the original.  However, the stochastic variable of the original problem, $\tilde{u}_{ms}$, is dependent on the locations of the demand points in $\mathcal{M}$.  As these demand point locations are stochastic and capable of assuming any of an uncountably infinite locations over the considered region, the set of deterministic scenarios, $\Omega$, has an infinite cardinality.  This renders the DEP as also not directly solvable.
+As the DEP reformulation is equivalent to the original stochastic optimization program, the solution of the DEP is also a solution of the original.  However, the stochastic variable of the original problem, $\tilde{u}_{ms}$, is dependent on the locations of the demand points in $\mathcal{M}$.  As these demand point locations are stochastic and capable of assuming any of an uncountably infinite number of locations over $\mathcal{R}$, the set of deterministic scenarios, $\Omega$, has an infinite cardinality.  This renders the DEP as also not directly solvable.
 
 \subsection{Sampling the DEP; Sample Average Approximation} \label{subsec:dep_sampling}
 
-In order to find a solution to the DEP reformulation, the set of considered scenarios (i.e., the sample space) must be finite.  To find this set, I sample $\Omega$ by randomly generating $O$ scenarios.  Let $\hat{\Omega} \defeq \left\{ 1,\, 2,\, \ldots,\, O \right\} \subset \Omega$ be this finite, discrete set containing $O$ sampled scenarios of the sample space.  Each scenario in $\hat{\Omega}$ is generated as a single, independent realization of demand points according to the demand intensity field $\lambda_n$ (i.e., a non-stationary PPP with intensity function $\lambda_n$).  By making this change, I have the sampled deterministic equivalent program (sDEP) (\cref{eq:sDEPO,eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}), or sample average approximation (SAA), of the original stochastic optimization program.
+In order to find a solution to the DEP reformulation, the set of considered scenarios (i.e., the sample space) must be finite.  By generating $O$ random scenarios, $\Omega$ is sampled into a finite set.  Let $\hat{\Omega} \defeq \left\{ 1,\, 2,\, \ldots,\, O \right\} \subset \Omega$ be this finite, discrete set containing $O$ sampled scenarios of the sample space.  Each scenario in $\hat{\Omega}$ is generated as a single, independent realization of demand points according to the demand intensity field $\lambda_n$ (i.e., a non-stationary PPP with intensity function $\lambda_n$).  By making this change, the sampled deterministic equivalent program (sDEP) (\cref{eq:sDEPO,eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}), or sample average approximation (SAA), of the original stochastic optimization program is found.
 
 \begin{tcolorbox}[floatplacement = !ht, float, title = Sampled Deterministic Equivalent Program (sDEP) of \Cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}]
 \begin{align}
@@ -776,12 +811,12 @@ In order to find a solution to the DEP reformulation, the set of considered scen
 \end{align}
 \end{tcolorbox}
 
-The differences between the DEP and sDEP formulations are seemingly cosmetic.  The objective (\cref{eq:sDEPO}) and constraints (\cref{eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}) are effectively unchanged from the equivalent objective (\cref{eq:DEPO} and constraints (\cref{eq:DEPC1,eq:DEPC2,eq:DEPC3,eq:DEPC4}) of the DEP.  The distinction lays in that finding a solution of the sDEP optimizes for the specific scenarios in $\hat{\Omega}$.  By sampling $\Omega$ to form $\hat{\Omega}$, the sDEP formulation introduces solution error as a tradeoff for manageability.  The more accurately $\hat{\Omega}$ estimates $\Omega$, the more accurate the optimal solution of the sDEP estimates the solution of the original stochastic program.
+The differences between the DEP and sDEP formulations are seemingly cosmetic.  The objective (\cref{eq:sDEPO}) and constraints (\cref{eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}) are effectively unchanged from the equivalent objective (\cref{eq:DEPO} and constraints (\cref{eq:DEPC1,eq:DEPC2,eq:DEPC3,eq:DEPC4}) of the DEP.  The distinction lies in that finding a solution of the sDEP optimizes for the specific scenarios in $\hat{\Omega}$.  By sampling $\Omega$ to form $\hat{\Omega}$, the sDEP formulation introduces solution error as a tradeoff for manageability.  The more accurately $\hat{\Omega}$ estimates $\Omega$, the more accurate the optimal solution of the sDEP estimates the solution of the original stochastic program.
 
 \subsubsection{The Sample Average Approximation Estimator} \label{subsubsec:dep_sampling_estimator}
 
 \info{If I don't finish figuring out the SAA estimator, the following will be edited into the preceeding subsection.}%
-It is apparent that $\hat{\Omega}$ approaches the whole sample space as $O$ approaches infinity.  For a sufficiently large $O$, $\hat{\Omega}$ contains enough scenarios to represent an arbitrarily tight approximation of $\Omega$.  However, as $O$ increases, the computational complexity of the solution increases exponentially, causing the manageability of $\hat{\Omega}$ and the sDEP to decrease.  While an arbitrary number of scenarios could be considered within $\hat{\Omega}$ to provide an overly-sufficient approximation, doing so would impose an unnecessary burden on the solution's computational complexity and increase computation time.  It is thereby valuable to understand and find the minimum value of $O$ that provides a sufficiently tight approximation of $\Omega$.  This can be done via an analysis of the SAA estimator
+It is apparent that $\hat{\Omega}$ approaches the whole sample space as $O$ approaches infinity.  For a sufficiently large $O$, $\hat{\Omega}$ contains enough scenarios to represent an arbitrarily tight approximation of $\Omega$.  However, as $O$ increases, the computational complexity of the solution increases exponentially, causing the manageability of $\hat{\Omega}$ and the sDEP to decrease.  While an arbitrary number of scenarios could be considered within $\hat{\Omega}$ to provide an overly-sufficient approximation, doing so would impose an unnecessary burden on the solution's computational complexity and increase computation time.  It is therefore valuable to understand and find the minimum value of $O$ that provides a sufficiently tight approximation of $\Omega$.  This can be done via an analysis of the SAA estimator
 
 \change{Figure out the SAA estimator.\\Continue from here and fill out this section.}
 %\textit{At what point is the sampling enough?  As the set of scenarios considered within the sampled DEP increases, it more closely compares to the original DEP and the stochastic optimization problem, but it also becomes increasingly difficult to solve as the number of scenarios considered increases.  So, it is beneficial to understand that a certain known number of scenarios provides a reasonably tight - what does reasonable mean? - solution to the original DEP to avoid being unnecessarily computationally expensive to solve.  Finding this minimum necessary number of scenarios can be done via a sample average approximation (SAA) analysis, which should not be too complicated to do.}
@@ -790,7 +825,7 @@ It is apparent that $\hat{\Omega}$ approaches the whole sample space as $O$ appr
 
 %\textit{Now that we have a (close) approximation to the DEP and the original stochastic optimization problem, we have a method for deriving the minimum cost BS selection and adaptive slicing for the desired VWN.  However, this selection is overly time consuming to constantly run, and the BSs selected for the VWN(s) by the VNB are fairly constant, so all that is needed is to dynamically (read: adaptively) slice the selected BSs to the various SPs.  To do this, we simplify the sampled DEP such that it has only one scenario - ostensibly, the current scenario in time - and the BSs selected set to be a constant rather than a decision variable.  The resulting problem is a single stage linear program that is much simpler to solve.  This is used to adaptively slice resources to the demand.}
 
-After the solution to the sDEP model has been found, the VNB has determined the joint BS selection that supports the VWNs.  It further provides a proposed resource slicing of the BSs to the SPs' demand points, which determine the separate VWN constructions for those scenarios considered in $\hat{\Omega}$.  As a condition for the sDEP model, $\hat{\Omega}$ is not infinite in scope.  For an actual implementation of the sDEP within a VNB, any actual, observed scenario of demand points to build VWNs for is certain to not be within $\hat{\Omega}$, and the sDEP model would not provide a slicing of the selected resources to construct a VWN for the new scenario.
+After the solution to the sDEP model has been found, the VNB has determined the joint BS selection that supports the VWNs.  It further provides a proposed resource slicing of the BSs to the SPs' demand points, which determine the separate VWN constructions for those scenarios considered in $\hat{\Omega}$.  As a condition for the sDEP model, $\hat{\Omega}$ is not infinite in scope.  For an actual implementation of the sDEP within a VNB, any actual, observed scenario of demand points for which to build VWNs is certain to not be within $\hat{\Omega}$, and the sDEP model would not provide a slicing of the selected resources to construct a VWN for the new scenario.
 
 Due to the computational complexity of the sDEP model, it is infeasible to find a new resource selection as the realization of demand changes.  Further, assuming that the underlying demand characteristics do not change (i.e., that demand realizations still correlate to the demand intensity function, $\lambda_n$), it is unnecessary to determine a new joint resource selection as it is still optimally selected within a given confidence for the demands.  Instead, it is valuable to have a model which assigns an adaptive slicing of the selected resources so the VWNs can adapt according to specific realizations of demand without needing to determine a new joint resource selection.  This new adaptive slicing model (\cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}) is found by fixing the selected resources, $z_s$, as a known constant and only considering the single, specific demand realization $\omega \notin \hat{\Omega}$ to be sliced to and satisfied.
 
@@ -818,7 +853,7 @@ Effectively, the adaptive slicing model is a self-contained form of the second s
 
 A major limitation of the approach in \Cref{sec:dep} is that the sDEP is increasingly unmanageable as $O$, $S$, or $M$ increases.  Most importantly, the accuracy of the sampled DEP is directly dependent on the size of $\hat{\Omega}$, $O$, directly causing a trade off between the accuracy of the sDEP and its computability in a reasonable amount of time.  While diminishing returns can be avoided by determining the minimum necessary $O$ for $\hat{\Omega}$ to provide a desireably tight estimation, the manageability of the sDEP is still dependent on the size of $S$ and $M$.  In this section, I reformulate the problem of joint BS selection for the VWN as a genetic algorithm (GA), circumventing the need to discretize demand or to establish $\hat{\Omega}$, thereby simplifying the original problem into a more scalable form.  Further, by using the adaptive slicing model of \Cref{subsec:dep_slicing}, this GA approach can provide an approximate solution of the original stochastic program while only needing to solve for resource selection.
 
-A genetic algorithm is an iterative metaheuristic algorithm inspired by the concept of natural selection in which an approximate solution to a given optimization problem is arrived at via a series of progressive generations.  Each generation contains a number of candidate solutions, called individuals, each of which is defined by a chromosome.  During a given generation, a fitness heuristic is assessed for each individual based on its chromosome.  Then individuals are \emph{selected} at random to become parents, with more fit individuals being selected with higher probability.  Parents are then paired off, and each pair of parents may, with probability $p_\text{xov}$, undergo a process called \emph{crossover}, a process similar to genetic recombination, in which the parents' chromosomes are mixed to form two children individuals for the next generation.  If crossover does not occur, the parents are cloned to be their own children for the next generation.  The resulting children chromosomes then undergo \emph{mutation}, altering the chromosome slightly.  Once enough new children have been generated, this new set of individuals forms the next generation to repeat the process.  \Cref{fig:ga_block} is a block diagram that illustrates this general process as proposed for this approach.  Each of these steps are described in further detail below.
+A genetic algorithm is an iterative metaheuristic algorithm inspired by the concept of natural selection in which an approximate solution to a given optimization problem is arrived at via a series of progressive generations.  Each generation contains a number of candidate solutions, called individuals, each of which is defined by a chromosome.  During a given generation, a fitness heuristic is assessed for each individual based on its chromosome.  Then individuals are \emph{selected} at random to become parents, with more fit individuals being selected with higher probability.  Parents are then paired off, and each pair of parents may, with probability $p_\text{xov}$, undergo a process called \emph{crossover}, a process similar to genetic recombination, in which the parents' chromosomes are mixed to form two individuals (children) for the next generation.  If crossover does not occur, the parents are cloned to be their own children for the next generation.  The chromosomes of the resulting children then undergo \emph{mutation}, altering the chromosome slightly.  Once enough new children have been generated, this new set of individuals forms the next generation to repeat the process.  \Cref{fig:ga_block} is a block diagram that illustrates this general process as proposed for this approach.  Each of these steps is described in further detail below.
 
 \begin{figure}[!ht]
 \centering
@@ -834,7 +869,7 @@ Let $\mathcal{G} \defeq \left\{ 1,\, 2,\, \ldots,\, G \right\}$ be the set of ge
 \ifisdoublespacing
 \begin{singlespacing}
 \begin{equation}
-z_s^{\{ig\}} \defeq
+z_s^{\left\{ ig \right\}} \defeq
 	\begin{cases}
 		1,& \text{if BS $s$ is selected by the VNB for individual $i$ in generation $g$;}\\
 		\\
@@ -844,7 +879,7 @@ z_s^{\{ig\}} \defeq
 \end{singlespacing}
 \else
 \begin{equation}
-z_s^{\{ig\}} \defeq
+z_s^{\left\{ ig \right\}} \defeq
 	\begin{cases}
 		1,& \text{if BS $s$ is selected by the VNB for individual $i$ in generation $g$;}\\
 		0,& \text{otherwise.}
@@ -854,7 +889,15 @@ z_s^{\{ig\}} \defeq
 
 \subsubsection{Chromosome Fitness}
 
-To evaluate the fitness of each chromosome in the GA approach, I assume that all demand over the region is allocated to the closest resource.  Let $\mathcal{S}' \subseteq \mathcal{S}$ be the set of resources that have been selected by an arbitrary chromosome (i.e., $z_s^{\left\{ ig \right\}} = 1, \forall s \in \mathcal{S}'$ and $z_s^{\left\{ ig \right\}} = 0, \forall s \notin \mathcal{S}'$ for an arbitrary chromosome $\left\{ ig \right\}$).  By making this assumption, $\mathcal{S}'$ partitions the region of consideration into a Voronoi tessellation using the point locations of the selected resources.  The region bounded by the cell of BS $s$ in the Voronoi tessellation is denoted by $V_s$, and the region within the coverage radius of BS $s$, $b_s$, is denoted by $R_s$.  It is desired that $V_s$ be wholly contained within $R_s$ (i.e., $V_s \subseteq R_s$), but this is not guaranteed by the Voronoi tessellation assumption.  If $V_s$ is not wholly contained within $R_s$, BS $s$ is considered to be \emph{overcoverage}.  The total demand allocated to a selected resource $s \in \mathcal{S}' \subseteq \mathcal{S}$ is $\sum_{i = 1}^N \iint_{V_s} \lambda_i \left( x,\, y \right) \,dx \,dy$.  If the total demand allocated to BS $s$ exceeds $r_s$, BS $s$ is considered to be \emph{overcapacity}.
+To evaluate the fitness of each chromosome in the GA approach, I assume that all demand over $\mathcal{R}$ is allocated to the closest resource relative to that resource's coverage radius.  That is, the demand allocated to a BS $s \in \mathcal{S}$ is all the demand located in the region $V_s$ such that
+
+\begin{equation}
+V_s = \left\{ p \in \mathcal{R} \mid \frac{d \left( p,\, s \right)}{b_s} \leq \frac{d \left( p,\, t \right)}{b_t} \; \forall s \neq t \right\}
+\end{equation}
+
+\noindent where $d \left( p,\, s \right)$ is the euclidean distance between an arbitrary point $p$ and BS $s$.  Let $\mathcal{S}' \subseteq \mathcal{S}$ be the set of resources that have been selected by an arbitrary chromosome (i.e., $z_s^{\left\{ ig \right\}} = 1,\, \forall s \in \mathcal{S}'$ and $z_s^{\left\{ ig \right\}} = 0,\, \forall s \not\in \mathcal{S}'$ for an arbitrary chromosome $\left\{ ig \right\}$).  By making this assumption, $\mathcal{S}'$ partitions $\mathcal{R}$ into a multiplicatively weighted Voronoi tessellation using the point locations of the selected BSs as the defining sites and BS coverage radii, $b_s,\, s \in \mathcal{S}'$, as weights; if all BSs in $\mathcal{S}'$ have homogeneous coverage radii (i.e., $b_s = b,\, \forall s \in \mathcal{S}'$), this partition is a standard unweighted Voronoi tessellation.
+
+The region within the coverage radius of BS $s$ is denoted by $B_s$.  It is desired that $V_s$ be wholly contained within $B_s$ (i.e., $V_s \subseteq B_s$), but this is not guaranteed by the Voronoi tessellation assumption.  If $V_s$ is not wholly contained within $B_s$, BS $s$ is considered to be \emph{overcoverage}.  The total demand allocated to a selected resource $s \in \mathcal{S}' \subseteq \mathcal{S}$ is $\sum_{i = 1}^N \iint_{V_s} \lambda_i \left( x,\, y \right) \,dx \,dy$.  If the total demand allocated to BS $s$ exceeds $B_s$, BS $s$ is considered to be \emph{overcapacity}.
 
 The fitness heuristic of each individual chromosome, $z^{\{ig\}}$, is assessed as the reciprocal of the chromosome's cost
 
@@ -865,7 +908,7 @@ The fitness heuristic of each individual chromosome, $z^{\{ig\}}$, is assessed a
 The cost of a given chromosome is the sum of the direct (OpEx) costs of the individual selected BSs and their associated overcoverage ($c_{\text{cov}}$) and overcapacity ($c_{\text{cap}}$) costs
 
 \begin{multline} \label{eq:GACost}
-\text{cost}\left(z^{\{ig\}}\right) = \sum_{s \in \mathcal{S}} \Biggl( c_s \; z_s^{\{ig\}} + c_\text{cov} \; \left[ V_s \not\subseteq R_s \right] + \\ \left(c_\text{cap}^g - 1\right) \; \max\left( 0,\, \sum_{i = 1}^N \left( \iint_{R_s} \lambda_i\left(x,\, y\right)\, dx\, dy \right) - r_s \right) \Biggr)
+\text{cost}\left(z^{\{ig\}}\right) = \sum_{s \in \mathcal{S}} \Biggl( c_s \; z_s^{\{ig\}} + c_\text{cov} \; \left[ V_s \not\subseteq B_s \right] + \\ \left(c_\text{cap}^g - 1\right) \; \max\left( 0,\, \sum_{i = 1}^N \left( \iint_{V_s} \lambda_i\left(x,\, y\right)\, dx\, dy \right) - r_s \right) \Biggr)
 \end{multline}
 
 \noindent where $\left[ * \right]$ is the Iverson bracket (\cref{eq:iverson}).
@@ -874,13 +917,13 @@ Resources being overcoverage is not desired; solutions that assume some demand i
 
 \subsection{Forming the Next Generation} \label{subsec:ga_next}
 
-Once the fitness calculation of all of the individuals of the current generation has been performed, the generation begins to form.
+Once the fitness calculation of all of the individuals of the current generation has been performed, the next generation begins to form.
 
 \subsubsection{Elitism and Selection}
 
-Generating the next generation begins with selection.  First, I use elitism selection.  Under elitism selection, a defined number of the fittest individuals from each generation are selected as that generation's elitist members.  These elitist members, the $n$ fittest individuals of the generation, are cloned into the next generation without undergoing the genetic operators of crossover or mutation.  Through elitism, I ensure that the fittest individual of a given generation is not less fit than the previous generation's fittest individual.  The only exception comes from if the fittest individual's fitness decreases from inefficiency cost, but these are eventually removed as the overcapcity cost increases.
+Generating the next generation begins with selection.  First, I use elitism selection.  Under elitism selection, a defined number of the fittest individuals from each generation is selected as that generation's elitist members.  These elitist members, the $n$ fittest individuals of the generation, are cloned into the next generation without undergoing the genetic operators of crossover or mutation.  Through elitism, I ensure that the fittest individual of a given generation is not less fit than the previous generation's fittest individual.  The only exception comes from if the fittest individual's fitness decreases from inefficiency cost, but these are eventually removed as the overcapcity cost increases.
 
-After elitism, standard selection occurs using roulette-wheel selection.  In roulette-wheel selection, the fitnesses of each individual are normalized to the total fitness of the generation and organized into a list.  From this list, a new list of the cumulative fitnesses is generated such that the cumulative fitness of individual $i$ is $\sum_{j = 1}^i \text{fitness} \left( z^{\left\{ jg \right\}} \right)$; the cumulative fitness of individual $I$ (i.e., the last individual in the generation) is thereby 1.  A random number, $P \sim \mathcal{U} \left( 0,\, 1 \right)$, is then generated.  The selected individual (or parent) is the first individual in the list that has a cumulative fitness value larger than $P$.
+After elitism, standard selection occurs using roulette-wheel selection.  In roulette-wheel selection, the fitness of each individual to normalized to the total fitness of the generation and organized into a list.  From this list, a new list of the cumulative fitnesses is generated such that the cumulative fitness of individual $i$ is $\sum_{j = 1}^i \text{fitness} \left( z^{\left\{ jg \right\}} \right)$; the cumulative fitness of individual $I$ (i.e., the last individual in the generation) is thereby 1.  A random number, $P \sim \mathcal{U} \left( 0,\, 1 \right)$, is then generated.  The selected individual (or parent) is the first individual in the list that has a cumulative fitness value larger than $P$.
 
 Under roulette-wheel selection, parents are each randomly selected with a probability given by
 
@@ -896,7 +939,7 @@ I use uniform crossover as it has been suggested~\cite{Picek:2011:ECO:2184629.21
 
 \subsubsection{Mutation}
 
-Once each child has been generated, each bit within the child's genome has a independent chance, $p_{\text{mut}}$, to mutate.  When a bit mutates, the bit flips from 1 to 0, or from 0 to 1.  Typically, the chance of each bit to mutate is $p_{\text{mut}} = \frac{1}{l}$, where $l$ is the length of the chromosome, which provides an average of one bit mutation per child.  For $z^{\left\{ ig \right\}},\, p_{\text{mut}} = \frac{1}{S}$.
+Once each child has been generated, each bit within the child's genome has an independent chance, $p_{\text{mut}}$, to mutate.  When a bit mutates, the bit flips from 1 to 0, or from 0 to 1.  Typically, the chance of each bit to mutate is $p_{\text{mut}} = \frac{1}{l}$, where $l$ is the length of the chromosome, which provides an average of one bit mutation per child.  For $z^{\left\{ ig \right\}},\, p_{\text{mut}} = \frac{1}{S}$.
 
 \subsubsection{Uniqueness}
 
@@ -904,14 +947,90 @@ In a traditional genetic algorithm, once mutation has been completed, the next g
 
 \subsection{Stopping the GA} \label{subsec:ga_stop}
 
-The GA iterates for a number of generations $G$.  If the GA settles on a single individual as the fittest individual for a number of continuous generations, $G_{\text{ind}}$, it will halt and present that individual's chromosome as the final approximate solution for $z_s$.  Further, if the fitness of the fittest individual of a number of continuous generations, $G_{\text{fit}} \leq G_{\text{ind}}$, the GA also halts and presents that fittest individual's chromosome as the final approximate solution for $z_s$.  For both of these halting conditions, a minimum number of generations, $G_{\min}$ must be first pass.  Otherwise, the chromosome of the fittest individual of generation $G$ determines $z_s$.
+The GA iterates for a number of generations $G$.  If the GA settles on a single individual as the fittest individual for a number of continuous generations, $G_{\text{ind}}$, it will halt and present that individual's chromosome as the final approximate solution for $z_s$.  Further, if the fitness of the fittest individual of a number of continuous generations, $G_{\text{fit}} \leq G_{\text{ind}}$, the GA also halts and presents that fittest individual's chromosome as the final approximate solution for $z_s$.  For both of these halting conditions, a minimum number of generations, $G_{\min}$, must first pass.  Otherwise, the chromosome of the fittest individual of generation $G$ determines $z_s$.
 
 In each case, the chromosome of the fittest individual when the GA halts is an approximate solution for the VNB's resource selection, $z_s$.  As the GA only handles the resource selection, it only represents a solution of the first stage (\cref{eq:SOPS1O,eq:SOPS1C1}) of the original stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}).  That is, while joint resource selection has occurred, and that the process was informed by the demand to be satisfied (i.e., $\lambda_n$), the selected resources still need to be sliced to determine the allocations of those resources to specific VWNs.  This process of solving the second stage of the original optimization program can be adaptively handled to a hypothetical or real set of demand points using the adaptive slicing model (\cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}) of \Cref{subsec:dep_slicing}.
 \fi
 
 \iftrue
 \pagebreak
-\chapter{Testing and Simulations} \label{ch:testsim}
+\chapter{Simulations and Results} \label{ch:sim}
+
+\section{Setup} \label{sec:simsetup}
+
+In this section, we evaluate the sampled DEP and genetic algorithm approaches as approximations of Problem 1.  We will compare the cost, demand satisfaction, and time to generate of the resultant networks.
+
+%\begin{table*}[t]
+\begin{table}
+\vspace{0.25in}
+\centering
+\caption{Numerical Values of Relevant Parameters}
+\begin{tabular}{|c|c|} 
+\hline
+Width, Height of Geographic Area ($X$) & 2 km x 2 km \\
+\hline
+Number of BSs ($S$) & 60 \\ 
+\hline 
+Number of Demand Points ($M$) & 75 \\ 
+\hline 
+Number of Sampled Scenarios ($O$) & $\{5,\, 10,\, \ldots,\, 50\}$ \iffalse 25 \fi \\ 
+\hline 
+BS cost ($c_s, \forall s \in \mathcal{S}$) & 1 \\ 
+\hline 
+BS capacity ($r_s, \forall s \in \mathcal{S})$ & 1.50 Mbps \\ 
+\hline
+BS range ($b_s, \forall s \in \mathcal{S}$) & 500 m \\
+\hline 
+Point Traffic Demand ($d_m, \forall m \in \mathcal{M}$) & 0.178 Mbps \\ 
+\hline 
+Two-Stage Model Weight ($\alpha$) & 20\iffalse $\{5,\, 10,\, \ldots,\, 100\}$ \fi \\ 
+\hline 
+\hline
+SSLT Approximation Depth ($L$) & 50 \\ 
+\hline
+SSLT Maximum Angular Frequency ($\omega_{\max}$) & $\frac{2 \; \pi}{30}$ \\
+\hline 
+SSLT Location Parameter ($\sigma$) & 0 \\ 
+\hline 
+SSLT Scale Parameter ($\mu$) & 1 \\ 
+\hline
+Pixel Grid Size & 100 x 100, 20 m \\
+\hline 
+\hline
+Maximum Number of Generations ($G$) & 3000 \\ 
+\hline
+Minimum Number of Generations & 300 \\
+\hline
+Unchanged Generations Before Halt ($G_\text{halt}$) & 150 \\
+\hline 
+Number of Individuals per Generation ($I$) & 80 \\ 
+\hline
+Number of Elite Individuals per Generation & 4 \\
+\hline 
+Probability of Crossover ($p_\text{xov}$) & 0.7 \\ 
+\hline
+Probability of Mutation per bit ($p_\text{mut}$) & $\frac{1}{S} = 0.0167$ \\
+\hline 
+Overcoverage Cost ($c_\text{cov}$) & 3 \\
+\hline
+Overcapacity Cost ($c_\text{cap}$) & 1.015 \\
+\hline
+\end{tabular}
+\label{tab:simval}
+%\end{table*}
+\end{table}
+
+Unless stated otherwise, we use the default parameter values shown in Table \ref{tab:simval}.  BS locations are determined as a stationary PPP.  Demand point locations are generated independently for each scenario as a non-stationary PPP using $\rho\left(x,\, y\right),\, x \in [0,\, X],\, y \in [0,\, Y]$, as the spatial intensity function, as described in Section \ref{sec:model}.  Fig. \ref{fig:NetworkArea} provides a visualization of the simulation network area.  (\ref{fig:BSLocVor}) shows the BS locations of $\mathcal{S}$ with the associated Voronoi Tessellation showing the coverage areas of the BSs when all are active with respect to the genetic algorithm.  (\ref{fig:SSLTDPReal}) shows the SSLT demand density field with one example scenario of demand points, which acts as a single sample of the demand density field.  To compute $u_{ms}^{(\omega)}$, it is assumed that there is perfect propagation between the demand points and BSs.  Unlike as described in Section \ref{sec:model}, $u_{ms}^{(\omega)} = 1$ if the distance between demand point $m \in \mathcal{M}$ of scenario $\omega \in \hat{\Omega}$ and BS $s \in \mathcal{S}$ is less than $b_s$, and 0 otherwise.  To compute the integral of the fitness function (\ref{eq:GACost}), $\rho\left(x,\, y\right)$ is discretized into a grid of congruent pixels, and the demands of all pixels within a Voronoi cell of interest are summed together.
+
+We ran our simulations on an Intel Core i7-4790K 4.00 GHz 4 real/8 virtual core CPU with 16 GB of DDR3 RAM.  We used CPLEX \cite{Cplex} to solve the sampled DEP optimization problems and we used MATLAB to simulate the genetic algorithm and to generate the demand field and stochastic data (i.e., $\rho\left(x,\, y\right)$ and $u_{ms}^{(\omega)}$).  During the simulations, extraneous processes were culled to allow maximal use of computer resources.  Average values for the performance of the genetic algorithm are provided from 50 independent runs using the identical data set except for the set of initial individuals.  The sampled DEP solutions were solved across multiple values of $\alpha$ as cost, time, and demand satisfaction are directly dependent on $\alpha$.
+
+In Fig. \ref{fig:AlgSpeedupRunTime} is a comparison of the approach run times.  It shows the run times of both the DEP and genetic algorithm in terms of the speedup ratio and in absolute number of seconds.  As the number of scenarios sampled increases, the CPU run time of the sampled DEP increases exponentionally, and fails to converge to a final solution with 50 scenarios within the time limit of 15 minutes.  Except for the 5 scenario case, the genetic algorithm converges to a solution in less CPU time (125.8 seconds) than the sampled DEP.  When 20 scenarios are sampled, the DEP takes approximately 440\% of the time as the genetic algorithm; at 45 scenarios, this has increased to 4,630\%.  CPLEX is capable of parallelizing across the 8 CPU cores, allowing for the wall clock run time to be, at minimum, one-eighth the CPU run time.  In terms of the adjusted approximate ``wall clock" time, the genetic algorithm converges in less wall clock time than the sampled DEP for 25 or more sampled scenarios.
+
+The trade off for the genetic algorithm's improved run time is that the solution provided is less optimal than the sampled DEP, as indicated by an increased cost for the VNB to build the VWN.  Fig. \ref{fig:VWNCompCost} compares the increasing cost of the sampled DEP as $\alpha$ increases with the cost of the various genetic algorithm solutions.  On average, the genetic algorithm incurs a 36\% increased cost in selecting the BSs for the VWN.  At minimum, the incurred cost is only 20\% than the sampled DEP, which implies the genetic algorithm might be terminating early, and a tighter solution might be found by increasing $G_\text{halt}$.  It should also be noted that one unit of cost is one additional BS being selected for the VWN, and the sampled DEP selections for $\alpha \geq 30$ have a cost of only 10 BSs.  Any variance that incurs one additional BS for the genetic algorithm incurs 10\% increased cost.  Increasing the number of BSs required to comprise the VWN would introduce additional granularity in $\mathcal{S}$ that might decrease the inefficiency of the genetic algorithm.  This was not done as this data set was chosen specifically so the sampled DEP would terminate within 15 minutes (i.e., in a reasonable amount of time); increasing the number of BSs available to the VNB drastically increases the time it would take the sampled DEP to converge to a solution.
+
+There is a direct correlation between the number of BSs in the VWN and its capability for satisfying demand.  As the cost - and, therefore, the number of BSs - increases for a given solution, the average demand satisfaction trends towards 100\%, as shown in Fig. \ref{fig:VWNCompSatis}.  Because of this overallocation of resources, the genetic algorithm solutions have a very high demand satisfaction, averaging 99.9\% satisfaction and reaching 100\% for some solutions.  The worst performing genetic algorithm solution exceeded 99.1\% demand satisfaction.  The most expensive 10-BS sampled DEP solutions reach 99.2\% when slicing to the same set of demand point scenarios, $\Omega$, that determined the sampled DEP BS selection.
+
+When the set of demand points change to a scenario no longer in $\Omega$, the sampled DEP performs very similarly.  Fig. \ref{fig:VWNCompSatisEval} shows the demand satisfaction for both the sampled DEP and genetic algorithm BS selections when sliced to a new set of scenarios as evaluated with Problem 3.  Here, the number of demand points increases to 200 points per scenario, each with 66.8 kbps rate demand, across 50 independent scenarios.  The demand satisfaction trend of the sampled DEP BS selection follows very closely to the original set of scenarios but hits a maximum of 99.0\% demand satisfaction with 10 BSs.  In comparison, the SP demand point scenarios are far more beneficial to the genetic algorithm, which reaches greater than 99.99\% demand satisfaction for all generated VWNs.  This is expected as a side effect of the increased number of points and scenarios more accurately describing a sampling of the original SSLT demand density field of the SP, $\rho$.
 
 \improvement{Start this chapter ASAP.  Start running Case I data now.}
 
