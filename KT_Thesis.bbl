@@ -163,13 +163,6 @@ T.~Cui, R.~Bai, A.~J. Parkes, F.~He, R.~Qu, and J.~Li, ``A hybrid genetic
   \url{http://www.leeds.ac.uk/StochasticRockFractures/Download/ReportsSeminars/Report1\_POISSON\_Prog.pdf}
 \BIBentrySTDinterwordspacing
 
-\bibitem{Aurenhammer:1991:VDS:116873.116880}
-\BIBentryALTinterwordspacing
-F.~Aurenhammer, ``Voronoi diagrams --- a survey of a fundamental geometric data
-  structure,'' \emph{ACM Computing Surveys}, vol.~23, no.~3, pp. 345--405, Sep.
-  1991. [Online]. Available: \url{http://doi.acm.org/10.1145/116873.116880}
-\BIBentrySTDinterwordspacing
-
 \bibitem{686105}
 U.~Gotzner and R.~Rathgeber, ``Spatial traffic distribution in cellular
   networks,'' in \emph{Proceedings of the IEEE Vehicular Technology Conference
@@ -202,6 +195,21 @@ D.~Lee, S.~Zhou, and Z.~Niu, ``Spatial modeling of scalable
   energy-efficient network planning,'' in \emph{Proceedings of the IEEE
   Wireless Communications and Networking Conference (WCNC)}, Apr 2013, pp.
   1285--1290.
+
+\bibitem{Dobrin_areview}
+\BIBentryALTinterwordspacing
+A.~Dobrin, ``A review of properties and variations of voronoi diagrams,'' 2005.
+  [Online]. Available:
+  \url{https://www.whitman.edu/Documents/Academics/Mathematics/dobrinat.pdf}
+\BIBentrySTDinterwordspacing
+
+\bibitem{AURENHAMMER1984251}
+\BIBentryALTinterwordspacing
+F.~Aurenhammer and H.~Edelsbrunner, ``An optimal algorithm for constructing the
+  weighted voronoi diagram in the plane,'' \emph{Pattern Recognition}, vol.~17,
+  no.~2, pp. 251 -- 257, 1984. [Online]. Available:
+  \url{http://www.sciencedirect.com/science/article/pii/0031320384900645}
+\BIBentrySTDinterwordspacing
 
 \bibitem{Picek:2011:ECO:2184629.2184665}
 \BIBentryALTinterwordspacing

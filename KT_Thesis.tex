@@ -130,6 +130,14 @@
 }
 
 \newcommand*\mean[1]{\widebar{#1}}
+\newcommand{\ind}[1]{\mathbbm{1}_{\left\{ #1 \right\}}}
+
+%\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmin}{minimize}
+%\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmax}{maximize}
+\DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\var}{Var}
 
 \allowdisplaybreaks
 
@@ -439,7 +447,7 @@ The objective of this thesis is to develop two approaches to joint resource allo
 
 \section{Thesis Outline} \label{sec:outline}
 
-This thesis is organized as follows.  \Cref{ch:vnbmodel} defines the model used for the resource allocation methods explored in this thesis.  Further, \Cref{ch:vnbmodel} also details the two-stage stochastic optimization problem which optimally performs resource selection and slicing as a basis of approaches presented within this work.  \Cref{ch:approaches} establishes the two approaches investigated to provide solutions to the optimization problem posed in \Cref{ch:vnbmodel}: a sampled deterministic equivalent program which solves the problem as a whole and a genetic algorithm that simplifies the problem by providing an estimated optimal resource selection.  \Cref{ch:casesim} tests these two approaches by presenting four data sets that mimic real world cellular networks and evaluates the results.  \Cref{ch:conc} contains the conclusions and proposed future work in this area.
+This thesis is organized as follows.  \Cref{ch:vnbmodel} defines the model used for the resource allocation methods explored in this thesis.  Further, \Cref{ch:vnbmodel} also details the two-stage stochastic optimization problem which optimally performs resource selection and slicing as a basis of approaches presented within this work.  \Cref{ch:approaches} establishes the two approaches investigated to provide solutions to the optimization problem posed in \Cref{ch:vnbmodel}: a sampled deterministic equivalent program which solves the problem as a whole and a genetic algorithm that simplifies the problem by providing an estimated optimal resource selection.  \Cref{ch:sim} tests these two approaches by presenting four data sets that mimic real world cellular networks and evaluates the results.  \Cref{ch:conc} contains the conclusions and proposed future work in this area.
 \fi
 
 \iftrue
@@ -448,15 +456,17 @@ This thesis is organized as follows.  \Cref{ch:vnbmodel} defines the model used 
 
 This chapter establishes the mathematical foundation for this thesis.  First, a geographic model is presented defining an area of interest, the pool of resources maintained by the RPs for use by the VNB, and a characterization of the service demand of each SP.  Second, a specific demand model, based on the empirical analysis of collected cellular network traces, is presented.  This is the demand model that will be used throughout this thesis.  Third, a two-stage stochastic program is developed to model the problem of resource selection and adaptive slicing within the VNB.
 
+Throughout this thesis, stochastic variables will be differentiated from deterministic variables with a tilde ($\sim$) placed above the symbol.
+
 \section{Network Area Definitions} \label{sec:networkdefs}
 
 Consider a geographic region, $\mathcal{R}$, of width $X$ meters and length $Y$ meters that contains a VNB and a set $\mathcal{S} \defeq \left\{ 1,\, 2,\, \ldots,\, S \right\}$ of virtualized resources (i.e., BSs) the VNB has aggregated for use in the construction of VWNs.  The pool of BSs, $\mathcal{S}$, is mapped to physical BSs owned and maintained by RPs and made available for use through contracts between the RPs and the VNB.  The contract-negotiated cost for the VNB to lease BS $s \in \mathcal{S}$ is denoted by $c_s$.  The costs for the BSs used within a constructed VWN are passed to the SPs as part of the overall cost of the network.  The rate capacity of BS $s \in \mathcal{S}$ is denoted by $r_s$ and its coverage radius is denoted by $b_s$.
 
 Let $\mathcal{N} \defeq \left\{ 1,\, 2,\, \ldots,\, N \right\}$ be the set of SPs seeking a VWN with coverage within the region $\mathcal{R}$.  An SP $n \in \mathcal{N}$ associates with the VNB to create the desired VWN.  Through this association, SP $n$ must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  SP $n$ must know and communicate to the VNB the estimated geographic distribution of the service's traffic demand density (or demand \emph{intensity}) as a function, $\lambda_n\left( x,\, y \right),\, n \in \mathcal{N},\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right],\,$ in terms of $\frac{\text{bits}}{\text{km}^2}$.  The demand intensity function could be in the form of a continuous function or as discrete pixels (e.g., a bitmap), and indicates the locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  For an example of $\lambda_n$, see \Cref{subsec:networkdefs_sslt}.
 
-Further, the SP would also provide the desired or needed percent demand satisfaction rate for the service.  \improvement{Diversifying $\alpha$ to very according to the various SPs (i.e., $\alpha_n, n \in \mathcal{N}$, or $\alpha_m, m \in \mathcal{M}$) would be required for this.}Some services have high priority, such as those related to emergency services, and must have nearly if not perfect 100\% demand satisfaction.  Others, such as the aforementioned generic voice lines or video streaming, can withstand some demand to remain unsatisfied as a tradeoff for decreased network leasing or operational costs.
+Further, the SP would also provide the desired or needed \change{Define ``percent demand satisfaction rate''}percent demand satisfaction rate for the service.  Some services, such as those related to emergency services, must have nearly 100\% demand satisfaction.  Others, such as generic voice lines or video streaming, may be able to tolerate some unsatisfied demand as a tradeoff for decreased network leasing or operational costs.
 
-Let $\mathcal{M}_n \defeq \left\{1,\, 2,\, \ldots,\, M_n\right\}$ be the set of demand points SP $n \in \mathcal{N}$ is attempting to satisfy with its service.  Each demand point $m \in \mathcal{M}_n$ is seeking to connect to the VWN operated by SP $n \in \mathcal{N}$ and is located within the domain of $\mathcal{R}$ (i.e., $\left( \tilde{x}_{m_n},\, \tilde{y}_{m_n} \right),\, \tilde{x}_{m_n} \in \left[ 0,\, X \right],\, \tilde{y}_{m_n} \in \left[ 0,\, Y \right]$).  Demand point locations are stochastically determined by the distribution of traffic as described by the demand intensity function $\lambda_n$.  A realization of these demand points can be found as a two-dimensional non-stationary (or inhomogeneous) Poisson point process (PPP) using $\lambda_n$ as it's spatial intensity function.
+$\lambda_n$ describes the geographic distribution of SP $n \in \mathcal{N}$ within $\mathcal{R}$.  At any instantaneous point in time, $\lambda_n$ is realized as a set of discrete demand points (each representing e.g., user equipment).  Let $\mathcal{M}_n \defeq \left\{1,\, 2,\, \ldots,\, M_n\right\}$ be this set of demand points SP $n$ is attempting to satisfy with its service at a given point in time.  Each demand point $m \in \mathcal{M}_n$ is seeking to connect to the VWN operated by SP $n \in \mathcal{N}$ and is located within the domain of $\mathcal{R}$ (i.e., $\left( \tilde{x}_{m_n},\, \tilde{y}_{m_n} \right),\, \tilde{x}_{m_n} \in \left[ 0,\, X \right],\, \tilde{y}_{m_n} \in \left[ 0,\, Y \right]$).  Demand point locations are stochastically determined by the distribution of traffic as described by the demand intensity function $\lambda_n$.  A realization of these demand points can be found as a two-dimensional non-stationary (or inhomogeneous) Poisson point process (PPP) using $\lambda_n$ as it's spatial intensity function.
 
 For purposes of visualization or compuation, this non-stationary PPP is generatable using an accept-reject method~\cite{leeds:nsPPPgeneration}.  A stationary PPP is generated relative to the maximum value of the traffic demand density function within $\mathcal{R}$.  That is, a number of points generated within the region is selected from a Poisson random variable with parameter (or mean) $\lambda_{n,\max}*X*Y$, where $\lambda_{n,\max}$ is the maximum value of $\lambda_n$ within $\mathcal{R}$.  Each point is then independently and uniformly distributed (i.e., each point has a location $\left( x,\, y \right)$ with $x \sim \mathcal{U}\left( 0,\, X \right)$\footnote{$\mathcal{U}\left( a,\, b \right)$ refers to a random variable uniformly distributed over the domain $\left[ a,\, b \right]$, where $a < b$.} and $y \sim \mathcal{U}\left( 0,\, Y \right)$) over $\mathcal{R}$.  Then, each point undergoes the accept-reject procedure to inhomogenize the stationary PPP.  Each point is kept with a probability of the ratio of the value of the intensity function at that point's location to the maximum value of the intensity function.  That is, for each point in the PPP a uniform random variable, $P \sim \mathcal{U}\left( 0,\, 1 \right)$, is generated and the point is either \emph{accepted} and kept or \emph{rejected} and discarded according to
 
@@ -481,11 +491,7 @@ For purposes of visualization or compuation, this non-stationary PPP is generata
 
 \noindent where $x_i$ and $y_i$ are the x- and y-coordinates of the $i^{\text{th}}$ point of the stationary PPP.
 
-Generally, stationary PPPs and non-stationary PPPs generate a number of points correlating to the intensity value and function, respectively.  A specific number, $M_n$, of points can also be generated as necessary to populate a realization for $\mathcal{M}_n,\, n \in \mathcal{N}$.  Instead of generating a random number of points according to a Poisson random variable, points are generated one at a time and individually either kept or discarded as defined in \cref{eq:nsPPPaccrej}.  Once $M_n$ points have been generated and kept, a non-stationary PPP of $\mathcal{M}_n$ has been generated.
-
-This is allowed because, by definition, each point in a PPP is independent and identically distributed; each point is generated independently and identically distributed according to a uniform distribution.  Generating more points is only indicative of a higher intensity PPP.  Specifically, the number of points generated in the initial, stationary PPP is linearly dependent on a Poisson random variable with mean $\lambda_{n,\max} * X * Y$; doubling the expected number of generated points correlates with a doubling of $\lambda_{n,\max}$, which itself correlates with a scaled doubling of $\lambda_n \left( x,\, y \right)$.  Scaling $\lambda_n \left( x,\, y \right)$ according to any desired number of points does not change the overall structural characteristics of the underlying described distribution.
-
-Each demand point $m \in \mathcal{M}_n$ loads the VWN of SP $n \in \mathcal{N}$ with point traffic demand denoted by $d_{mn}$.  So that the total demand described by $\lambda_n$ is allocated by the points in $\mathcal{M}_n$, the overall demand 
+Each demand point $m \in \mathcal{M}_n$ loads the VWN of SP $n \in \mathcal{N}$ with point traffic demand denoted by $d_{n}$.  So that the total demand described by $\lambda_n$ is allocated by the points in $\mathcal{M}_n$, the overall demand 
 
 \begin{equation} \label{eq:demandintegral}
 D_n = \int_0^X \int_0^Y \lambda_n\left( x,\, y \right) dy \, dx, n \in \mathcal{N},
@@ -494,7 +500,7 @@ D_n = \int_0^X \int_0^Y \lambda_n\left( x,\, y \right) dy \, dx, n \in \mathcal{
 \noindent of the demand density distribution is evenly distributed such that
 
 \begin{equation} \label{eq:pointdemand}
-d_{mn} = \frac{D}{M_n},\, m \in \mathcal{M}_n,\, n \in \mathcal{N}.
+d_{n} = \frac{D_n}{M_n},\, n \in \mathcal{N}.
 \end{equation}
 
 Let $\tilde{u}_{mns} \in \left[ 0,\, 1 \right]$ represent the normalized capacity (with respect to $r_s$) of BS $s \in \mathcal{S}$ at point $m \in \mathcal{M}_n, n \in \mathcal{N},$ associated with SP $n \in \mathcal{N}$ (i.e., the normalized maximum rate that a user can receive at point $m$ from BS $s$).  Specifically,
@@ -554,15 +560,17 @@ It is apparent that $\tilde{u}_{mns}$ will vary according to the path-loss chara
 \end{equation}
 \fi
 
+\iffalse
 This simplification allows the available pool of BSs, or any subset thereof, to be easily visualized as a Voronoi tessellation \cite{Aurenhammer:1991:VDS:116873.116880}.  In a Voronoi tessellation, a two-dimensional plane is tessellated into a set of convex polygons, each of which is defined by a single point contained within.  All points comprising the area enclosed by a polygon is closer to that polygon's defining point than any other polygons'.  Using the simplified definition for $\tilde{u}_{mns}$, the Voronoi tessellation of a set of BS locations functions as a coverage map for those BSs, assuming that all polygons are within the respective ranges for their associated BSs; each polygon represents a region where $\tilde{u}_{mns} = 1$.  This binary condition is a simplification that aids in the implementation of the approach used in \Cref{sec:ga}, and is generally assumed in the rest of this thesis.
+\fi
 
-From the perspective of the VNB, each SP is only distinguishable by its overall demand characteristics.  These demand characteristics are defined by its demand density distribution which defines $\tilde{u}_{mns}$.  The VNB must construct a VWN for each SP, but for optimal VWNs to be created, the VNB must consider the demands of all SPs simultaneously and in context of each other.  For the VNB, all SP demand points are indistinguishable.  Therefore, the VNB considers a single set of demand points
+From the perspective of the VNB, each SP is only distinguishable by its overall demand characteristics ().  These demand characteristics are defined by the SPs' demand density distributions\iffalse , on which demand point locations that determine $\tilde{u}_{mns}$ are dependent\fi .  The VNB must construct a VWN for each SP, but for optimal VWNs to be created, the VNB must consider the demands of all SPs simultaneously and in context of each other.  For the VNB, all SP demand points are indistinguishable and independent.  Therefore, the VNB considers a single set of demand points
 
 \begin{equation}
 \mathcal{M} \defeq \bigcup_{i=1}^N \mathcal{M}_i = \left\{ 1,\, 2,\, \ldots,\, M \right\},
 \end{equation}
 
-\noindent where $M = \sum_{i=1}^N M_i$, with demands $d_m,\, m \in \mathcal{M}$, and stochastic normalized capacities $\tilde{u}_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}$.
+\noindent where $M = \sum_{i=1}^N M_i$, with demands $d$, and stochastic normalized capacities $\tilde{u}_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}$.
 
 I assume that a resource $s \in \mathcal{S}$ can be allocated between multiple demand points, and $\delta_{ms} \in [0,\, r_s],\, m \in \mathcal{M},\, s \in \mathcal{S}$, represents the rate of resource $s$ that is allocated to point $m$.  $\delta_{ms}$ is said to be the \emph{slice} of BS $s \in \mathcal{S}$ that is allocated to demand point $m \in \mathcal{M}$.  The VWN constructed for SP $n \in \mathcal{N}$ is comprised of all of the slices allocated to the SP's demand points.  That is, the VWN constructed for SP $n \in \mathcal{N}$ is 
 
@@ -572,13 +580,11 @@ I assume that a resource $s \in \mathcal{S}$ can be allocated between multiple d
 
 \noindent where $\delta_{ms} = 0,\, \forall m \not\in \mathcal{M}_n \subseteq \mathcal{M}$ and $\delta_{ms} > 0,\, \forall m \in \mathcal{M}_n \subseteq \mathcal{M}$.
 
-Throughout this thesis, stochastic variables will be differentiated from deterministic variables with a tilde ($\sim$) placed above the symbol (e.g., $\tilde{u}_{ms}$).
-
 \subsection{Example Demand Distribution; The SSLT Model} \label{subsec:networkdefs_sslt}
 
 One major assumption made in \Cref{sec:networkdefs} is that SPs must communicate the demand characteristics (i.e., $\lambda_n$) of their service to the VNB to properly facilitate VWN construction.  In this subsection, I establish an example model demonstrating the demand characteristics to be communicated by generating an example hypothetical demand intensity function.  For testing the approaches for VWN construction presented in \Cref{ch:approaches}, this example is the fundamental model used for simulating SP demand in cellular network-based services.
 
-Gotzner et al.~\cite{686105} have shown that a log-normal distribution\footnote{It has also been shown that traffic distributions in cellular networks can be more accurately approximated by a Weibull distribution~\cite{6757900}, by mixtures of log-normal distributions~\cite{5936263, 6757900}, or by an $\alpha$-stable distribution~\cite{7202841}.} can approximate traffic demand in real-world cellular networks.  It has also been shown that traffic distributions are spatially correlated~\cite{5936263, eigenplaces}.  Lee et al.~\cite{6554749, 6757900} presented the Scalable, Spatially-correlated, and Log-normally distributed Traffic (SSLT) model to emulate the characteristics of real world cellular data networks.  This model is flexible and can be adjusted to simulate numerous cellular networks, and can characterize the demand of a supposed SP in a way that mimics real-world data.  I use a variant of the SSLT demand model presented by Lee et al., which I altered to be a continuous function serving as a continuous or pixelated demand density map.
+Gotzner et al.~\cite{686105} have shown that a log-normal distribution\footnote{It has also been shown that traffic distributions in cellular networks can be approximated by a Weibull distribution~\cite{6757900}, by mixtures of log-normal distributions~\cite{5936263, 6757900}, or by an $\alpha$-stable distribution~\cite{7202841}.} can approximate traffic demand in real-world cellular networks.  It has also been shown that traffic distributions are spatially correlated~\cite{5936263, eigenplaces}.  Lee et al.~\cite{6554749, 6757900} presented the Scalable, Spatially-correlated, and Log-normally distributed Traffic (SSLT) model to emulate the characteristics of real world cellular data networks.  This model is flexible and can be adjusted to simulate numerous cellular networks, and can characterize the demand of a supposed SP in a way that mimics real-world data.  I use a variant of the SSLT demand model presented by Lee et al., which I altered to be a continuous function serving as a continuous or pixelated demand density map.
 
 To generate this spatial SSLT model distribution over the area of consideration, an initial Gaussian field, $\lambda^G = \lambda^G\left( x,\, y \right),\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right]$, is generated by
 \begin{equation} \label{eq:lambdaG}
@@ -588,7 +594,7 @@ where $\mathcal{L} \defeq \left\{ 1,\, 2,\, \ldots,\, L \right\}$ is a set of th
 
 According to Lee et al.~\cite{6554749}, $\lambda^G$ is spatially correlated with autocorrelation function
 \begin{equation} \label{eq:sslt_autocorrelation}
-R\left( dx,\, dy \right) = E\left[ \lambda^G\left( x,\, y \right) \; \lambda^G\left( x + dx,\, y + dy \right) \right] = \frac{1}{4L} \; \text{sinc}\left( \omega_{\max} dx \right) \; \text{sinc}\left( \omega_{\max} dy \right).
+R\left( dx,\, dy \right) = E\left[ \lambda^G\left( x,\, y \right) \; \lambda^G\left( x + dx,\, y + dy \right) \right] = \frac{1}{4L} \; \sinc\left( \omega_{\max} dx \right) \; \sinc\left( \omega_{\max} dy \right).
 \end{equation}
 The autocorrelation function is notably dependent on the maximum angular frequency defining $\rho^G$, $\omega_{\max}$.  As $\omega_{\max}$ increases, the demand of adjacent regions become less correlated.  $\omega_{\max}$ is effectively a measure of the inhomogeneity of $\rho^G$.  This effect of $\omega_{\max}$ on the inhomogeneity of $\lambda^G$ is shown in Fig. \ref{fig:lambdaG}; Fig. \ref{fig:lambdaG_4pi-300} fluctuates more rapidly than Fig. \ref{fig:lambdaG_2pi-300}, which is generated from a smaller $\omega_{\max}$.
 
@@ -614,10 +620,10 @@ The autocorrelation function is notably dependent on the maximum angular frequen
 The approximate Gaussian distribution $\lambda^G$ is then normalized to a standard normal distribution\footnote{A standard normal distribution is a Gaussian distribution with mean $\mu = 0$ and variance $\sigma = 1$.}, $\lambda^S = \lambda^S\left( x,\, y \right),\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right]$,
 
 \begin{equation} \label{eq:lambdaS}
-\lambda^S\left( x,\, y \right) = \frac{\lambda^G\left( x,\, y \right) - \mean{\lambda^G}}{\sqrt{\text{Var}\left( \lambda^G \right)}},
+\lambda^S\left( x,\, y \right) = \frac{\lambda^G\left( x,\, y \right) - \mean{\lambda^G}}{\sqrt{\var\left( \lambda^G \right)}},
 \end{equation}
 
-\noindent where $\text{Var}\left( \lambda^G \right) = \mathbb{E}\left[ \left( \lambda^G \right)^2 \right] - \mathbb{E}\left[ \lambda^G \right]^2$ is the variance of $\lambda^G$ and $\mean{\lambda^G} = \mathbb{E}\left[ \lambda^G \right]$ is the mean of $\lambda^G$.  While this could be mathematically derived, in practice $\text{Var}\left( \lambda^G \right)$ and $\mean{\lambda^G}$ are the sample variance and mean which are empirically found from a set of uniformly distributed sampled points (i.e., a simple random sample of $\lambda^G$).
+\noindent where $\var\left( \lambda^G \right) = \mathbb{E}\left[ \left( \lambda^G \right)^2 \right] - \mathbb{E}\left[ \lambda^G \right]^2$ is the variance of $\lambda^G$ and $\mean{\lambda^G} = \mathbb{E}\left[ \lambda^G \right]$ is the mean of $\lambda^G$.  While this could be mathematically derived, in practice $\var\left( \lambda^G \right)$ and $\mean{\lambda^G}$ are the sample variance and mean which are empirically found from a set of uniformly distributed sampled points (i.e., a simple random sample of $\lambda^G$).
 
 The final log-normal distribution, $\lambda = \lambda\left( x,\, y \right), x \in \left[ 0,\, X \right], y \in \left[ 0,\, Y \right]$, is determined by assigning location ($\mu$) and scale ($\sigma$) parameters to $\lambda^S$ according to
 \begin{equation}\label{eq:lambdaLN}
@@ -668,7 +674,7 @@ I deviate from their implementation by leaving the SSLT distribution as a contin
 \label{fig:lambda_nsPPP}
 \end{figure}
 
-This SSLT model is used in \Cref{ch:casesim} to generate SP service demand and end-user demand points while testing the approaches described in \Cref{ch:approaches}.
+This SSLT model is used in \Cref{ch:sim} to generate SP service demand and end-user demand points while testing the approaches described in \Cref{ch:approaches}.
 
 \section{Stochastic Optimization} \label{sec:stochopt}
 
@@ -699,19 +705,19 @@ z_s \defeq
 
 \noindent which establishes VNB resource selection.  $\delta_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}$, which is defined in \Cref{sec:networkdefs} to represent the rate of resource $s$ that is allocated to point $m$, is a second decision variable which establishes the slice of resource $s$ that has been allocated to the VWN service that is associated with demand point $m$.
 
-To balance the interest of maximizing demand satisfaction against minimizing cost, I introduce the positive real number $\alpha$ as a weighting coefficient between the two stages (\cref{eq:SOPS2O}).  The SP indicates the desired amount of demand satisfaction necessary for the service the SP provides; \info{This doesn't differentiate between the various SPs of $\mathcal{N}$.\\Effectively, all SPs share a single $\alpha$.\\This could be altered to do so\\Needs discussion.}$\alpha$, as set by the VNB, realizes this degree of demand satisfaction of the constructed VWNs relative to their cost.
+To balance the interest of maximizing demand satisfaction against minimizing cost, I introduce the positive real number $\alpha$ as a weighting coefficient between the two stages (\cref{eq:SOPS2O}).  The SP indicates the desired amount of demand satisfaction necessary for the service the SP provides; $\alpha$, as set by the VNB, realizes this degree of demand satisfaction of the constructed VWNs relative to their cost.
 
 \begin{tcolorbox}[floatplacement = !ht, float, title = Two-Stage Stochastic Optimization Program for BS Selection and Adaptive Slicing]
 \begin{align}
-& \underset{\left\{z_s,\, s \in \mathcal{S}\right\}}{\text{minimize}} \left\{ \sum_{s \in \mathcal{S}} c_s \; z_s + \mathbb{E}\left[ h\left( z,\, u \right) \right] \right\} \label{eq:SOPS1O}\\
+& \argmin_{\left\{ z_s \right\}} \left\{ \sum_{s \in \mathcal{S}} c_s \; z_s - \alpha \; \mathbb{E}\left[ h\left( \textit{\textbf{z}},\, \tilde{\textit{\textbf{u}}} \right) \right] \right\} \label{eq:SOPS1O}\\
 & \text{subject to:}  \nonumber \\
 & \hspace{0.4in} z_s \in \left\{ 0,\, 1 \right\},\, \forall s \in \mathcal{S} \label{eq:SOPS1C1}
 \end{align}
-where $h(z, u)$ is the optimal value of the second-stage problem, which is given by:
+where $h(\textit{\textbf{z}}, \tilde{\textit{\textbf{u}}})$ is the optimal value of the second-stage problem, which is given by:
 \begin{align}
-& \underset{\left\{ \substack{\delta_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}} \right\}}{\mathrm{minimize}} \left\{ - \alpha \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms} \; \tilde{u}_{ms} \right\} \label{eq:SOPS2O}\\
+& \argmax_{\left\{ \delta_{ms} \right\}} \left\{ \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms} \; \tilde{u}_{ms} \right\} \label{eq:SOPS2O}\\
 & \text{subject to:}  \nonumber \\
-& \hspace{0.4in} z_s = \left[ \sum_{m \in \mathcal{M}} \delta_{ms} > 0 \right],\, \forall s \in \mathcal{S} \label{eq:SOPS2C1}\\
+& \hspace{0.4in} z_s = \ind{\sum_{m \in \mathcal{M}} \delta_{ms} > 0},\, \forall s \in \mathcal{S} \label{eq:SOPS2C1}\\
 & \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms} \; \tilde{u}_{ms} \leq d_m,\, \forall m \in \mathcal{M} \label{eq:SOPS2C2}\\
 & \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms} \leq r_s,\, \forall s \in \mathcal{S} \label{eq:SOPS2C3}\\
 & \hspace{0.4in} \delta_{ms} \in \left[ 0,\, d_m \right],\, \forall m \in \mathcal{M},\, \forall s \in \mathcal{S} \label{eq:SOPS2C4}
@@ -722,12 +728,12 @@ The first stage objective function (\cref{eq:SOPS1O}) minimizes the total cost o
 
 \Cref{eq:SOPS1C1,eq:SOPS2C4} are constraints that implement the defined ranges of the decision variables $z_s$ and $\delta_{ms}$.  \Cref{eq:SOPS2C2} is a constraint that reinforces \cref{eq:SOPS2C4} and asserts that a demand point is not overallocated by slicing it more resources than it demands.  Similarly, \cref{eq:SOPS2C3} ensures that a given BS is not over allocated to demand points.
 
-\Cref{eq:SOPS2C1} ensures that demand is only allocated from available, selected resources.  For this constraint, $\left[ * \right]$ is the Iverson bracket, which is defined by
+\Cref{eq:SOPS2C1} ensures that demand is only allocated from available, selected resources.  For this constraint, $\ind{*}$ is the indicator function, which is defined by
 
 \ifisdoublespacing
 \begin{singlespacing}
-\begin{equation} \label{eq:iverson}
-\left[ * \right] \defeq
+\begin{equation} \label{eq:indicator}
+\ind{*} \defeq
 	\begin{cases}
 		1,& \text{if condition $*$ is true;}\\
 		\\
@@ -736,8 +742,8 @@ The first stage objective function (\cref{eq:SOPS1O}) minimizes the total cost o
 \end{equation}
 \end{singlespacing}
 \else
-\begin{equation} \label{eq:iverson}
-\left[ * \right] \defeq
+\begin{equation} \label{eq:indicator}
+\ind{*} \defeq
 	\begin{cases}
 		1,& \text{if condition $*$ is true;}\\
 		0,& \text{otherwise}.
@@ -745,19 +751,7 @@ The first stage objective function (\cref{eq:SOPS1O}) minimizes the total cost o
 \end{equation}
 \fi
 
-% Old definition
-%$\mathbbm{1}_{\left\{ * \right\}}$ is defined by
-\iffalse
-\begin{equation} \label{eq:iverson}
-\mathbbm{1}_{\left\{ * \right\}} \defeq
-	\begin{cases}
-		1,& \text{if condition $\{*\}$ is true;}\\
-		0,& \text{otherwise}.
-	\end{cases}
-\end{equation}
-\fi
-
-The stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) models the optimization that the VNB must perform to construct VWNs for and balance the needs of the various SPs.  However, this program is not directly solvable, as mixed integer programming optimization tools cannot be used to solve stochastic optimization programs.  \Cref{ch:approaches} poses two approaches for solving this program.
+The stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) models the problem faced by a VNB that wishes to construct VWNs for and balance the needs of the various SPs.  However, this program is not directly solvable, as mixed integer programming optimization tools cannot be used to solve stochastic optimization programs.  \Cref{ch:approaches} poses two approaches for solving this program.
 
 \iftrue
 \pagebreak
@@ -765,7 +759,7 @@ The stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOP
 
 \Cref{ch:vnbmodel} established a mathematical model for analyzing the relationship between SPs and a VNB and proposed a two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) for constructing VWNs in the context of that relationship.  In this chapter, I present two approaches that arrive at a solution for this program.  First, I modify the stochastic program to convert it into a deterministic form, the deterministic equivalent program (DEP), and sample it such that it is solvable using typical mixed integer programming optimization tools.  From this, I further derive a model to adaptively slice BSs into new VWNs when resources are already selected.  I then present a heuristic approach via genetic algorithm (GA) to handle resource selection with lower computational complexity.
 
-\section{Approach I: The Deterministic Equivalent Program} \label{sec:dep}
+\section{Approach I: Deterministic Equivalent Program} \label{sec:dep}
 
 In order to directly solve the two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}), it must be converted into a deterministic equivalent program (DEP).  The DEP is equivalent to the original stochastic optimization program, but does not contain any stochastic variables (only deterministic variables)~\cite{stochprogramming}.  This is accomplished by converting stochastic variables into sets which contain every scenario or realization in the scope of the stochastic variables.
 
@@ -773,11 +767,7 @@ Let $\Omega$ be defined as the sample space (i.e., the set of all scenarios) of 
 
 \begin{tcolorbox}[floatplacement = !ht, float, title = Deterministic Equivalent Program (DEP) of \Cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}]
 \begin{align}
-& \underset{\left\{ \substack{
-	z_s,\, \delta_{ms}^{\left( \omega \right)},\\
-	m \in \mathcal{M},\, s \in \mathcal{S},\\
-	\omega \in \Omega} \right\}} {\text{minimize}}
-\left\{ \sum_{s \in \mathcal{S}} c_s \; z_s - \alpha \sum_{\omega \in \Omega} p^{\left( \omega \right)} \left( \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms}^{\left( \omega \right)} \; u_{ms}^{\left( \omega \right)} \right) \right\} \label{eq:DEPO}\\
+& \argmin_{\left\{ z_s,\, \delta_{ms}^{\left( \omega \right)} \right\}} \left\{ \sum_{s \in \mathcal{S}} c_s \; z_s - \alpha \sum_{\omega \in \Omega} p^{\left( \omega \right)} \left( \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms}^{\left( \omega \right)} \; u_{ms}^{\left( \omega \right)} \right) \right\} \label{eq:DEPO}\\
 & \text{subject to:} \nonumber \\
 & \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms}^{\left( \omega \right)} \; u_{ms}^{\left( \omega \right)} \leq d_m,\, \forall m \in \mathcal{M},\, \forall \omega \in \Omega \label{eq:DEPC1}\\
 & \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms}^{\left( \omega \right)} \leq r_s \; z_s,\, \forall s \in \mathcal{S},\, \forall \omega \in \Omega \label{eq:DEPC2}\\
@@ -788,7 +778,7 @@ Let $\Omega$ be defined as the sample space (i.e., the set of all scenarios) of 
 
 The objective function (\cref{eq:DEPO}) combines both objective functions of the initial stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS2O}) into a single deterministic objective.  The goal modeled by \cref{eq:DEPO} is unchanged from that modeled by \cref{eq:SOPS1O,eq:SOPS2O}; the first half handles resource selection by finding the minimal cost network relative to the second half, which handles adaptive slicing of those selected BSs by allocating slices of the BSs to demand for maximum demand satisfaction.  These competing goals of minimizing VWN cost and maximizing VWN demand satisfaction are controlled by $\alpha$.
 
-\Cref{eq:DEPC1} is a constraint that ensures that demand is allocated to BSs that it is within range of and that it is not overallocated resources, adapting \cref{eq:SOPS2C2} for all demand scenarios.  \Cref{eq:DEPC2} is a constraint that ensures only selected BSs are allocated demand, and that BSs are allocated within capacity, combining and adapting \cref{eq:SOPS2C1,eq:SOPS2C3} for all demand scenarios.  \Cref{eq:DEPC3,eq:DEPC4} define bounds on the decision variables according to \cref{eq:SOPS1C1,eq:SOPS2C4}.
+\Cref{eq:DEPC1} is a constraint that ensures that demand is allocated to BSs that are within range of and that it is not overallocated resources, adapting \cref{eq:SOPS2C2} for all demand scenarios.  \Cref{eq:DEPC2} is a constraint that ensures only selected BSs are allocated demand, and that BSs are allocated within capacity, combining and adapting \cref{eq:SOPS2C1,eq:SOPS2C3} for all demand scenarios.  \Cref{eq:DEPC3,eq:DEPC4} define bounds on the decision variables according to \cref{eq:SOPS1C1,eq:SOPS2C4}.
 
 As the DEP reformulation is equivalent to the original stochastic optimization program, the solution of the DEP is also a solution of the original.  However, the stochastic variable of the original problem, $\tilde{u}_{ms}$, is dependent on the locations of the demand points in $\mathcal{M}$.  As these demand point locations are stochastic and capable of assuming any of an uncountably infinite number of locations over $\mathcal{R}$, the set of deterministic scenarios, $\Omega$, has an infinite cardinality.  This renders the DEP as also not directly solvable.
 
@@ -798,11 +788,7 @@ In order to find a solution to the DEP reformulation, the set of considered scen
 
 \begin{tcolorbox}[floatplacement = !ht, float, title = Sampled Deterministic Equivalent Program (sDEP) of \Cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}]
 \begin{align}
-& \underset{\left\{ \substack{
-	z_s,\, \delta_{ms}^{\left( \omega \right)},\\
-	m \in \mathcal{M},\, s \in \mathcal{S},\\
-	\omega \in \hat{\Omega}} \right\}} {\text{minimize}}
-\left\{ \sum_{s \in \mathcal{S}} c_s \; z_s - \alpha \sum_{\omega \in \hat{\Omega}} p^{\left( \omega \right)} \left( \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms}^{\left( \omega \right)} \; u_{ms}^{\left( \omega \right)} \right) \right\} \label{eq:sDEPO}\\
+& \argmin_{\left\{ z_s,\, \delta_{ms}^{\left( \omega \right)} \right\}} \left\{ \sum_{s \in \mathcal{S}} c_s \; z_s - \alpha \sum_{\omega \in \hat{\Omega}} p^{\left( \omega \right)} \left( \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms}^{\left( \omega \right)} \; u_{ms}^{\left( \omega \right)} \right) \right\} \label{eq:sDEPO}\\
 & \text{subject to:}  \nonumber \\
 & \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms}^{\left( \omega \right)} \; u_{ms}^{\left( \omega \right)} \leq d_m,\, \forall m \in \mathcal{M},\, \forall \omega \in \hat{\Omega} \label{eq:sDEPC1}\\
 & \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms}^{\left( \omega \right)} \leq r_s \; z_s,\, \forall s \in \mathcal{S},\, \forall \omega \in \hat{\Omega} \label{eq:sDEPC2}\\
@@ -895,23 +881,23 @@ To evaluate the fitness of each chromosome in the GA approach, I assume that all
 V_s = \left\{ p \in \mathcal{R} \mid \frac{d \left( p,\, s \right)}{b_s} \leq \frac{d \left( p,\, t \right)}{b_t} \; \forall s \neq t \right\}
 \end{equation}
 
-\noindent where $d \left( p,\, s \right)$ is the euclidean distance between an arbitrary point $p$ and BS $s$.  Let $\mathcal{S}' \subseteq \mathcal{S}$ be the set of resources that have been selected by an arbitrary chromosome (i.e., $z_s^{\left\{ ig \right\}} = 1,\, \forall s \in \mathcal{S}'$ and $z_s^{\left\{ ig \right\}} = 0,\, \forall s \not\in \mathcal{S}'$ for an arbitrary chromosome $\left\{ ig \right\}$).  By making this assumption, $\mathcal{S}'$ partitions $\mathcal{R}$ into a multiplicatively weighted Voronoi tessellation using the point locations of the selected BSs as the defining sites and BS coverage radii, $b_s,\, s \in \mathcal{S}'$, as weights; if all BSs in $\mathcal{S}'$ have homogeneous coverage radii (i.e., $b_s = b,\, \forall s \in \mathcal{S}'$), this partition is a standard unweighted Voronoi tessellation.
+\noindent where $d \left( p,\, s \right)$ is the euclidean distance between an arbitrary point $p$ and BS $s$.  Let $\mathcal{S}' \subseteq \mathcal{S}$ be the set of resources that have been selected by an arbitrary chromosome (i.e., $z_s^{\left\{ ig \right\}} = 1,\, \forall s \in \mathcal{S}'$ and $z_s^{\left\{ ig \right\}} = 0,\, \forall s \not\in \mathcal{S}'$ for an arbitrary chromosome $\left\{ ig \right\}$).  By making this assumption, $\mathcal{S}'$ partitions $\mathcal{R}$ into a multiplicatively weighted Voronoi tessellation~\cite{Dobrin_areview,AURENHAMMER1984251} using the point locations of the selected BSs as the defining sites and BS coverage radii, $b_s,\, s \in \mathcal{S}'$, as weights; if all BSs in $\mathcal{S}'$ have homogeneous coverage radii (i.e., $b_s = b,\, \forall s \in \mathcal{S}'$), this partition is a standard unweighted Voronoi tessellation.
 
-The region within the coverage radius of BS $s$ is denoted by $B_s$.  It is desired that $V_s$ be wholly contained within $B_s$ (i.e., $V_s \subseteq B_s$), but this is not guaranteed by the Voronoi tessellation assumption.  If $V_s$ is not wholly contained within $B_s$, BS $s$ is considered to be \emph{overcoverage}.  The total demand allocated to a selected resource $s \in \mathcal{S}' \subseteq \mathcal{S}$ is $\sum_{i = 1}^N \iint_{V_s} \lambda_i \left( x,\, y \right) \,dx \,dy$.  If the total demand allocated to BS $s$ exceeds $B_s$, BS $s$ is considered to be \emph{overcapacity}.
+The region within the coverage radius of BS $s$ is denoted by $B_s$.  It is desired that $V_s$ be wholly contained within $B_s$ (i.e., $V_s \subseteq B_s$), but this is not guaranteed by the Voronoi tessellation assumption.  If $V_s$ is not wholly contained within $B_s$, BS $s$ is considered to be \emph{overcoverage}.  The total demand allocated to a selected resource $s \in \mathcal{S}'$ is $\sum_{i = 1}^N \iint_{V_s} \lambda_i \left( x,\, y \right) \,dx \,dy$.  If the total demand allocated to BS $s$ exceeds $B_s$, BS $s$ is considered to be \emph{overcapacity}.
 
 The fitness heuristic of each individual chromosome, $z^{\{ig\}}$, is assessed as the reciprocal of the chromosome's cost
 
 \begin{equation} \label{eq:GAFit}
-\text{fitness}\left( z^{\left\{ ig \right\}} \right) = \frac{1}{\text{cost}\left( z^{\left\{ ig \right\}} \right)}
+\mathrm{fitness}\left( z^{\left\{ ig \right\}} \right) = \frac{1}{\mathrm{cost}\left( z^{\left\{ ig \right\}} \right)}
 \end{equation}
 
 The cost of a given chromosome is the sum of the direct (OpEx) costs of the individual selected BSs and their associated overcoverage ($c_{\text{cov}}$) and overcapacity ($c_{\text{cap}}$) costs
 
 \begin{multline} \label{eq:GACost}
-\text{cost}\left(z^{\{ig\}}\right) = \sum_{s \in \mathcal{S}} \Biggl( c_s \; z_s^{\{ig\}} + c_\text{cov} \; \left[ V_s \not\subseteq B_s \right] + \\ \left(c_\text{cap}^g - 1\right) \; \max\left( 0,\, \sum_{i = 1}^N \left( \iint_{V_s} \lambda_i\left(x,\, y\right)\, dx\, dy \right) - r_s \right) \Biggr)
+\mathrm{cost}\left( z^{\left\{ ig \right\}} \right) = \sum_{s \in \mathcal{S}} \Biggl( c_s \; z_s^{\left\{ ig \right\}} + c_\text{cov} \; \ind{V_s \not\subseteq B_s} + \\ \left( c_\text{cap}^g - 1 \right) \; \max\left( 0,\, \sum_{i = 1}^N \left( \iint_{V_s} \lambda_i\left( x,\, y \right)\, dx\, dy \right) - r_s \right) \Biggr)
 \end{multline}
 
-\noindent where $\left[ * \right]$ is the Iverson bracket (\cref{eq:iverson}).
+\noindent where $\ind{*}$ is the indicator function (\cref{eq:indicator}).
 
 Resources being overcoverage is not desired; solutions that assume some demand is unallocatable by being out of range should be consider less-than-feasible or completely infeasible from the outset.  In contrast, the overcapacity cost starts at zero and grows exponentially with each successive generation.  For early generations, this allows for inefficient or infeasible solutions to temporarily exist to seed later generations and improve generational diversity.  This increases the probability that the final solution (a local maxima) is the global maximum or closer to the global maximum of the fitness function.
 
@@ -1098,7 +1084,8 @@ When the set of demand points change to a scenario no longer in $\Omega$, the sa
 -- Other heuristic approaches (e.g., particle swarm optimization, simulated annealing, deep learning approaches)\\%
 -- \info{$\beta$ already works this way for the GA implementation, as it applies a constant to $\lambda\left( x,\, y \right)$.} Altering $\alpha$ to vary according to the demand points of the various SPs, allowing for each SP to independently control the desired demand satisfaction of their network.\\%
 -- Handling varying values of $b_s$ within the GA\\%
--- Improve the GA implementation such that it uses some form of integration of $\lambda\left( x,\, y \right)$
+-- Improve the GA implementation such that it uses some form of integration of $\lambda\left( x,\, y \right)$\\%
+-- Adjust the demand of each demand point to be based on the expected number of demand points, not the exact amount of demand in the region; allow for different numbers of demand points than a fixed value so that it accurately reflects a PPP.
 \fi
 
 \iffalse

@@ -13,7 +13,7 @@
 \BOOKMARK [2][-]{subsection.2.1.1}{Example Demand Distribution; The SSLT Model}{section.2.1}% 13
 \BOOKMARK [1][-]{section.2.2}{Stochastic Optimization}{chapter.2}% 14
 \BOOKMARK [0][-]{chapter.3}{Approximation Approaches}{}% 15
-\BOOKMARK [1][-]{section.3.1}{Approach I: The Deterministic Equivalent Program}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.1}{Approach I: Deterministic Equivalent Program}{chapter.3}% 16
 \BOOKMARK [2][-]{subsection.3.1.1}{Sampling the DEP; Sample Average Approximation}{section.3.1}% 17
 \BOOKMARK [2][-]{subsection.3.1.2}{Adaptive Slicing}{section.3.1}% 18
 \BOOKMARK [1][-]{section.3.2}{Approach II: The Genetic Algorithm}{chapter.3}% 19
