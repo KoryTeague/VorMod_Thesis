@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  3 AUG 2018 19:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2018.2.9)  7 AUG 2018 23:05
 entering extended mode
 **./KT_Thesis.tex
 (KT_Thesis.tex
@@ -859,59 +859,62 @@ File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
 Chapter 3.
 [39
 
-] [40] [41] [42] [43]
+]
 
-LaTeX Warning: Marginpar on page 44 moved.
+LaTeX Warning: Marginpar on page 40 moved.
 
-[44] [45] [46]
-<Figures/Genetic_Algorithm_Basic.png, id=732, 470.75874pt x 280.04625pt>
+
+LaTeX Warning: Marginpar on page 40 moved.
+
+[40] [41] [42] [43] [44] [45] [46]
+<Figures/Genetic_Algorithm_Basic.png, id=742, 470.75874pt x 280.04625pt>
 File: Figures/Genetic_Algorithm_Basic.png Graphic file (type png)
 <use Figures/Genetic_Algorithm_Basic.png>
 Package pdftex.def Info: Figures/Genetic_Algorithm_Basic.png  used on input lin
-e 846. on input line 846.
+e 852. on input line 852.
 Package pdftex.def Info: Requested size: 469.75499pt x 279.45157pt on input lin
-e 846.
- [47] [48 <./Figures/Genetic_Algorithm_Basic.png>] [49] [50]
-[51] [52] [53] [54]
+e 852.
+ [47] [48 <./Figures/Genetic_Algorithm_Basic.png>] [49] [50] [51] [52] [53] [54
+]
 Chapter 4.
 
-LaTeX Warning: Reference `sec:model' on page 55 undefined on input line 1009.
+LaTeX Warning: Reference `sec:model' on page 55 undefined on input line 1018.
 
 
 LaTeX Warning: Reference `fig:NetworkArea' on page 55 undefined on input line 1
-009.
+018.
 
 
-LaTeX Warning: Reference `fig:BSLocVor' on page 55 undefined on input line 1009
+LaTeX Warning: Reference `fig:BSLocVor' on page 55 undefined on input line 1018
 .
 
 
 LaTeX Warning: Reference `fig:SSLTDPReal' on page 55 undefined on input line 10
-09.
+18.
 
 
-LaTeX Warning: Reference `sec:model' on page 55 undefined on input line 1009.
+LaTeX Warning: Reference `sec:model' on page 55 undefined on input line 1018.
 
 [55
 
 ] [56]
 
 LaTeX Warning: Reference `fig:AlgSpeedupRunTime' on page 57 undefined on input 
-line 1013.
+line 1022.
 
 [57]
 
 LaTeX Warning: Reference `fig:VWNCompCost' on page 58 undefined on input line 1
-015.
+024.
 
 
 LaTeX Warning: Reference `fig:VWNCompSatis' on page 58 undefined on input line 
-1017.
+1026.
 
 [58]
 
 LaTeX Warning: Reference `fig:VWNCompSatisEval' on page 59 undefined on input l
-ine 1019.
+ine 1028.
 
 [59] [60] [61] [62]
 Chapter 5.
@@ -933,11 +936,11 @@ Missing character: There is no ¤ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¶ in font cmr12!
  [69]) [70]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1144.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1144.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1153.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1153.
  (KT_Thesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1144.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1144.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1153.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1153.
 
 Package rerunfilecheck Info: File `KT_Thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 6D96487892BD7C9B7C201E847B79E059;2529.
@@ -948,13 +951,13 @@ LaTeX Warning: There were undefined references.
  )
 (\end occurred when \iftrue on line 453 was incomplete) 
 Here is how much of TeX's memory you used:
- 22652 strings out of 493312
- 437925 string characters out of 3138900
- 527019 words of memory out of 3000000
- 25558 multiletter control sequences out of 15000+200000
+ 22784 strings out of 493312
+ 440433 string characters out of 3138900
+ 557023 words of memory out of 3000000
+ 25679 multiletter control sequences out of 15000+200000
  17569 words of font info for 68 fonts, out of 3000000 for 9000
  1146 hyphenation exceptions out of 8191
- 54i,18n,77p,1515b,712s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 54i,17n,77p,1515b,712s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): n
 ame{Hfootnote.7} has been referenced but does not exist, replaced by a fixed on
 e
@@ -984,22 +987,23 @@ ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program File
 s/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
-ic/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
-12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C
-:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program 
-Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on KT_Thesis.pdf (78 pages, 1594281 bytes).
+ype1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
+10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Program
+ Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX 2.9/fo
+nts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmss8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/c
+m/cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.p
+fb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on KT_Thesis.pdf (78 pages, 1608469 bytes).
 PDF statistics:
- 1039 PDF objects out of 1200 (max. 8388607)
- 261 named destinations out of 1000 (max. 500000)
+ 1056 PDF objects out of 1200 (max. 8388607)
+ 272 named destinations out of 1000 (max. 500000)
  324 words of extra memory for PDF output out of 10000 (max. 10000000)
 

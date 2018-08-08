@@ -15,16 +15,16 @@
 \contentsline {chapter}{\numberline {3}Approximation Approaches}{39}{chapter.3}
 \contentsline {section}{\numberline {3.1}Approach I: Deterministic Equivalent Program}{40}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Sampling the DEP; Sample Average Approximation}{42}{subsection.3.1.1}
-\contentsline {subsubsection}{The Sample Average Approximation Estimator}{43}{section*.19}
+\contentsline {subsubsection}{The Sample Average Approximation Estimator}{43}{section*.24}
 \contentsline {subsection}{\numberline {3.1.2}Adaptive Slicing}{44}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}Approach II: The Genetic Algorithm}{46}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}The GA Chromosome}{47}{subsection.3.2.1}
-\contentsline {subsubsection}{Chromosome Fitness}{49}{section*.24}
+\contentsline {subsection}{\numberline {3.2.1}The GA Chromosome}{48}{subsection.3.2.1}
+\contentsline {subsubsection}{Chromosome Fitness}{49}{section*.33}
 \contentsline {subsection}{\numberline {3.2.2}Forming the Next Generation}{51}{subsection.3.2.2}
-\contentsline {subsubsection}{Elitism and Selection}{51}{section*.25}
-\contentsline {subsubsection}{Crossover}{52}{section*.26}
-\contentsline {subsubsection}{Mutation}{53}{section*.28}
-\contentsline {subsubsection}{Uniqueness}{53}{section*.29}
+\contentsline {subsubsection}{Elitism and Selection}{51}{section*.34}
+\contentsline {subsubsection}{Crossover}{52}{section*.35}
+\contentsline {subsubsection}{Mutation}{53}{section*.37}
+\contentsline {subsubsection}{Uniqueness}{53}{section*.39}
 \contentsline {subsection}{\numberline {3.2.3}Stopping the GA}{53}{subsection.3.2.3}
 \contentsline {chapter}{\numberline {4}Simulations and Results}{55}{chapter.4}
 \contentsline {section}{\numberline {4.1}Setup}{55}{section.4.1}
@@ -33,10 +33,10 @@
 \contentsline {subsection}{\numberline {4.2.2}Case II: Impact of Heterogeneous Resources}{60}{subsection.4.2.2}
 \contentsline {section}{\numberline {4.3}VWN Construction for Multiple SPs}{61}{section.4.3}
 \contentsline {subsection}{\numberline {4.3.1}Case III: Two Similar Urban Cellular Networks}{61}{subsection.4.3.1}
-\contentsline {subsubsection}{Homogeneous Resources}{61}{section*.33}
-\contentsline {subsubsection}{Heterogeneous Resources}{61}{section*.34}
+\contentsline {subsubsection}{Homogeneous Resources}{61}{section*.44}
+\contentsline {subsubsection}{Heterogeneous Resources}{61}{section*.45}
 \contentsline {subsection}{\numberline {4.3.2}Case IV: SPs with Specialized Demands}{61}{subsection.4.3.2}
-\contentsline {subsubsection}{Homogeneous Resources}{62}{section*.35}
-\contentsline {subsubsection}{Heterogeneous Resources}{62}{section*.36}
+\contentsline {subsubsection}{Homogeneous Resources}{62}{section*.46}
+\contentsline {subsubsection}{Heterogeneous Resources}{62}{section*.47}
 \contentsline {chapter}{\numberline {5}Conclusions}{63}{chapter.5}
 \contentsline {section}{\numberline {5.1}Considerations for Future Work}{63}{section.5.1}
