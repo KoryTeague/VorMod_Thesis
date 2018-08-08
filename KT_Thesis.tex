@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: August 7, 2018
+% REVISED: August 8, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -560,17 +560,15 @@ It is apparent that $\tilde{u}_{mns}$ will vary according to the path-loss chara
 \end{equation}
 \fi
 
-\iffalse
-This simplification allows the available pool of BSs, or any subset thereof, to be easily visualized as a Voronoi tessellation \cite{Aurenhammer:1991:VDS:116873.116880}.  In a Voronoi tessellation, a two-dimensional plane is tessellated into a set of convex polygons, each of which is defined by a single point contained within.  All points comprising the area enclosed by a polygon is closer to that polygon's defining point than any other polygons'.  Using the simplified definition for $\tilde{u}_{mns}$, the Voronoi tessellation of a set of BS locations functions as a coverage map for those BSs, assuming that all polygons are within the respective ranges for their associated BSs; each polygon represents a region where $\tilde{u}_{mns} = 1$.  This binary condition is a simplification that aids in the implementation of the approach used in \Cref{sec:ga}, and is generally assumed in the rest of this thesis.
-\fi
+\noindent Under this definition, $\tilde{u}_{mns}$ is binary and wholly determined by the stochastic locations of the demand points and the fixed locations and ranges of the BSs.
 
-From the perspective of the VNB, each SP is only distinguishable by its overall demand characteristics ().  These demand characteristics are defined by the SPs' demand density distributions\iffalse , on which demand point locations that determine $\tilde{u}_{mns}$ are dependent\fi .  The VNB must construct a VWN for each SP, but for optimal VWNs to be created, the VNB must consider the demands of all SPs simultaneously and in context of each other.  For the VNB, all SP demand points are indistinguishable and independent.  Therefore, the VNB considers a single set of demand points
+From the perspective of the VNB, each SP is only distinguishable by its overall demand characteristics.  These demand characteristics are defined by the SPs' demand density distributions.  The VNB must construct a VWN for each SP, but for optimal VWNs to be created, the VNB must consider the demands of all SPs simultaneously and in context of each other.  For the VNB, all SP demand points are indistinguishable and independent.  Therefore, the VNB considers a single set of demand points
 
 \begin{equation}
 \mathcal{M} \defeq \bigcup_{i=1}^N \mathcal{M}_i = \left\{ 1,\, 2,\, \ldots,\, M \right\},
 \end{equation}
 
-\noindent where $M = \sum_{i=1}^N M_i$, with demands $d$, and stochastic normalized capacities $\tilde{u}_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}$.
+\noindent where $M = \sum_{i=1}^N M_i$, with demands $d$ and stochastic normalized capacities $\tilde{u}_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}$.
 
 I assume that a resource $s \in \mathcal{S}$ can be allocated between multiple demand points, and $\delta_{ms} \in [0,\, r_s],\, m \in \mathcal{M},\, s \in \mathcal{S}$, represents the rate of resource $s$ that is allocated to point $m$.  $\delta_{ms}$ is said to be the \emph{slice} of BS $s \in \mathcal{S}$ that is allocated to demand point $m \in \mathcal{M}$.  The VWN constructed for SP $n \in \mathcal{N}$ is comprised of all of the slices allocated to the SP's demand points.  That is, the VWN constructed for SP $n \in \mathcal{N}$ is 
 
