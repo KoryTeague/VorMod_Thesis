@@ -15,28 +15,28 @@
 \contentsline {chapter}{\numberline {3}Approximation Approaches}{39}{chapter.3}
 \contentsline {section}{\numberline {3.1}Approach I: Deterministic Equivalent Program}{40}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Sampling the DEP; Sample Average Approximation}{42}{subsection.3.1.1}
-\contentsline {subsubsection}{The Sample Average Approximation Estimator}{43}{section*.24}
+\contentsline {subsubsection}{The Sample Average Approximation Estimator}{44}{section*.19}
 \contentsline {subsection}{\numberline {3.1.2}Adaptive Slicing}{44}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Approach II: The Genetic Algorithm}{46}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}The GA Chromosome}{48}{subsection.3.2.1}
-\contentsline {subsubsection}{Chromosome Fitness}{49}{section*.33}
+\contentsline {section}{\numberline {3.2}Approach II: The Genetic Algorithm}{47}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}The GA Chromosome}{49}{subsection.3.2.1}
+\contentsline {subsubsection}{Chromosome Fitness}{49}{section*.28}
 \contentsline {subsection}{\numberline {3.2.2}Forming the Next Generation}{51}{subsection.3.2.2}
-\contentsline {subsubsection}{Elitism and Selection}{51}{section*.34}
-\contentsline {subsubsection}{Crossover}{52}{section*.35}
-\contentsline {subsubsection}{Mutation}{53}{section*.37}
-\contentsline {subsubsection}{Uniqueness}{53}{section*.39}
-\contentsline {subsection}{\numberline {3.2.3}Stopping the GA}{53}{subsection.3.2.3}
-\contentsline {chapter}{\numberline {4}Simulations and Results}{55}{chapter.4}
-\contentsline {section}{\numberline {4.1}Setup}{55}{section.4.1}
-\contentsline {section}{\numberline {4.2}VWN Construction for a Single SP}{60}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Case I: Homogeneous Urban Cellular Network}{60}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Case II: Impact of Heterogeneous Resources}{60}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}VWN Construction for Multiple SPs}{61}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Case III: Two Similar Urban Cellular Networks}{61}{subsection.4.3.1}
-\contentsline {subsubsection}{Homogeneous Resources}{61}{section*.44}
-\contentsline {subsubsection}{Heterogeneous Resources}{61}{section*.45}
-\contentsline {subsection}{\numberline {4.3.2}Case IV: SPs with Specialized Demands}{61}{subsection.4.3.2}
-\contentsline {subsubsection}{Homogeneous Resources}{62}{section*.46}
-\contentsline {subsubsection}{Heterogeneous Resources}{62}{section*.47}
-\contentsline {chapter}{\numberline {5}Conclusions}{63}{chapter.5}
-\contentsline {section}{\numberline {5.1}Considerations for Future Work}{63}{section.5.1}
+\contentsline {subsubsection}{Elitism and Selection}{51}{section*.29}
+\contentsline {subsubsection}{Crossover}{52}{section*.30}
+\contentsline {subsubsection}{Mutation}{53}{section*.32}
+\contentsline {subsubsection}{Uniqueness}{53}{section*.34}
+\contentsline {subsection}{\numberline {3.2.3}Stopping the GA}{54}{subsection.3.2.3}
+\contentsline {chapter}{\numberline {4}Simulations and Results}{56}{chapter.4}
+\contentsline {section}{\numberline {4.1}Setup}{56}{section.4.1}
+\contentsline {section}{\numberline {4.2}VWN Construction for a Single SP}{61}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Case I: Homogeneous Urban Cellular Network}{61}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Case II: Impact of Heterogeneous Resources}{61}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}VWN Construction for Multiple SPs}{62}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Case III: Two Similar Urban Cellular Networks}{62}{subsection.4.3.1}
+\contentsline {subsubsection}{Homogeneous Resources}{62}{section*.39}
+\contentsline {subsubsection}{Heterogeneous Resources}{62}{section*.40}
+\contentsline {subsection}{\numberline {4.3.2}Case IV: SPs with Specialized Demands}{62}{subsection.4.3.2}
+\contentsline {subsubsection}{Homogeneous Resources}{63}{section*.41}
+\contentsline {subsubsection}{Heterogeneous Resources}{63}{section*.42}
+\contentsline {chapter}{\numberline {5}Conclusions}{64}{chapter.5}
+\contentsline {section}{\numberline {5.1}Considerations for Future Work}{64}{section.5.1}
