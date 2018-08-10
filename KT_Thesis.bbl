@@ -222,19 +222,25 @@ S.~Picek, M.~Golub, and D.~Jakobovic, ``Evaluation of crossover operator
   \url{http://dx.doi.org/10.1007/978-3-642-24553-4_31}
 \BIBentrySTDinterwordspacing
 
-\bibitem{Cplex}
+\bibitem{782011}
+E.~Falkenauer, ``The worth of the uniform,'' in \emph{Proceedings of the 1999
+  Congress on Evolutionary Computation-CEC99 (Cat. No. 99TH8406)}, vol.~1, July
+  1999, pp. 776--782.
+
+\bibitem{GREENWELL19951}
 \BIBentryALTinterwordspacing
-IBM, ``Optimization model development toolkit for mathematical and constraint
-  programming {(CPLEX)},'' 2012. [Online]. Available:
-  \url{http://www-03.ibm.com/software/products/en/ibmilogcpleoptistud}
+R.~Greenwell, J.~Angus, and M.~Finck, ``Optimal mutation probability for
+  genetic algorithms,'' \emph{Mathematical and Computer Modelling}, vol.~21,
+  no.~8, pp. 1 -- 11, 1995. [Online]. Available:
+  \url{http://www.sciencedirect.com/science/article/pii/089571779500035Z}
 \BIBentrySTDinterwordspacing
 
-\bibitem{PhysRevE.72.026116}
+\bibitem{Deb2011}
 \BIBentryALTinterwordspacing
-Y.~Xia, C.~K. Tse, W.~M. Tam, F.~C.~M. Lau, and M.~Small, ``Scale-free
-  user-network approach to telephone network traffic analysis,'' \emph{Phys.
-  Rev. E}, vol.~72, p. 026116, Aug 2005. [Online]. Available:
-  \url{https://link.aps.org/doi/10.1103/PhysRevE.72.026116}
+K.~Deb, \emph{Multi-objective Optimisation Using Evolutionary Algorithms: An
+  Introduction}.\hskip 1em plus 0.5em minus 0.4em\relax London: Springer
+  London, 2011, pp. 3--34. [Online]. Available:
+  \url{https://doi.org/10.1007/978-0-85729-652-8_1}
 \BIBentrySTDinterwordspacing
 
 \end{thebibliography}

@@ -18,25 +18,11 @@
 \contentsline {subsubsection}{The Sample Average Approximation Estimator}{44}{section*.19}
 \contentsline {subsection}{\numberline {3.1.2}Adaptive Slicing}{44}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}Approach II: The Genetic Algorithm}{47}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}The GA Chromosome}{49}{subsection.3.2.1}
-\contentsline {subsubsection}{Chromosome Fitness}{49}{section*.28}
-\contentsline {subsection}{\numberline {3.2.2}Forming the Next Generation}{51}{subsection.3.2.2}
-\contentsline {subsubsection}{Elitism and Selection}{51}{section*.29}
-\contentsline {subsubsection}{Crossover}{52}{section*.30}
-\contentsline {subsubsection}{Mutation}{53}{section*.32}
-\contentsline {subsubsection}{Uniqueness}{53}{section*.34}
-\contentsline {subsection}{\numberline {3.2.3}Stopping the GA}{54}{subsection.3.2.3}
-\contentsline {chapter}{\numberline {4}Simulations and Results}{56}{chapter.4}
-\contentsline {section}{\numberline {4.1}Setup}{56}{section.4.1}
-\contentsline {section}{\numberline {4.2}VWN Construction for a Single SP}{61}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Case I: Homogeneous Urban Cellular Network}{61}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Case II: Impact of Heterogeneous Resources}{61}{subsection.4.2.2}
-\contentsline {section}{\numberline {4.3}VWN Construction for Multiple SPs}{62}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Case III: Two Similar Urban Cellular Networks}{62}{subsection.4.3.1}
-\contentsline {subsubsection}{Homogeneous Resources}{62}{section*.39}
-\contentsline {subsubsection}{Heterogeneous Resources}{62}{section*.40}
-\contentsline {subsection}{\numberline {4.3.2}Case IV: SPs with Specialized Demands}{62}{subsection.4.3.2}
-\contentsline {subsubsection}{Homogeneous Resources}{63}{section*.41}
-\contentsline {subsubsection}{Heterogeneous Resources}{63}{section*.42}
-\contentsline {chapter}{\numberline {5}Conclusions}{64}{chapter.5}
-\contentsline {section}{\numberline {5.1}Considerations for Future Work}{64}{section.5.1}
+\contentsline {subsection}{\numberline {3.2.1}The GA Chromosome}{48}{subsection.3.2.1}
+\contentsline {subsubsection}{Chromosome Fitness}{49}{section*.24}
+\contentsline {subsection}{\numberline {3.2.2}Forming the Next Generation}{52}{subsection.3.2.2}
+\contentsline {subsubsection}{Elitism and Selection}{52}{section*.25}
+\contentsline {subsubsection}{Crossover}{53}{section*.26}
+\contentsline {subsubsection}{Mutation}{54}{section*.27}
+\contentsline {subsubsection}{Uniqueness}{54}{section*.28}
+\contentsline {subsection}{\numberline {3.2.3}Stopping the GA}{55}{subsection.3.2.3}

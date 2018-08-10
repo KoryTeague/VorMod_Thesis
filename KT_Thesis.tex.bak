@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: August 8, 2018
+% REVISED: August 9, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -564,16 +564,16 @@ It is apparent that $\tilde{u}_{mns}$ will vary according to the path-loss chara
 
 From the perspective of the VNB, each SP is only distinguishable by its overall demand characteristics.  These demand characteristics are defined by the SPs' demand density distributions.  The VNB must construct a VWN for each SP, but for optimal VWNs to be created, the VNB must consider the demands of all SPs simultaneously and in context of each other.  For the VNB, all SP demand points are indistinguishable and independent.  Therefore, the VNB considers a single set of demand points
 
-\begin{equation}
-\mathcal{M} \defeq \bigcup_{i=1}^N \mathcal{M}_i = \left\{ 1,\, 2,\, \ldots,\, M \right\},
+\begin{equation} \label{eq:union_M}
+\mathcal{M} \defeq \bigcup_{n \in \mathcal{N}} \mathcal{M}_n = \left\{ 1,\, 2,\, \ldots,\, M \right\},
 \end{equation}
 
-\noindent where $M = \sum_{i=1}^N M_i$, with demands $d$ and stochastic normalized capacities $\tilde{u}_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}$.
+\noindent where $M = \sum_{n \in \mathcal{N}} M_n$, with demands $d$ and stochastic normalized capacities $\tilde{u}_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}$.  $\mathcal{M}$ can be considered a set of demand points associated with a superposition of PPPs with intensity $\lambda = \sum_{n \in \mathcal{N}} \lambda_n$.
 
 I assume that a resource $s \in \mathcal{S}$ can be allocated between multiple demand points, and $\delta_{ms} \in [0,\, r_s],\, m \in \mathcal{M},\, s \in \mathcal{S}$, represents the rate of resource $s$ that is allocated to point $m$.  $\delta_{ms}$ is said to be the \emph{slice} of BS $s \in \mathcal{S}$ that is allocated to demand point $m \in \mathcal{M}$.  The VWN constructed for SP $n \in \mathcal{N}$ is comprised of all of the slices allocated to the SP's demand points.  That is, the VWN constructed for SP $n \in \mathcal{N}$ is 
 
 \begin{equation}
-\bigcup_{i=1}^{M} \delta_{is},\, s \in \mathcal{S},
+\bigcup_{m \in \mathcal{M}} \delta_{ms},\, s \in \mathcal{S},
 \end{equation}
 
 \noindent where $\delta_{ms} = 0,\, \forall m \not\in \mathcal{M}_n \subseteq \mathcal{M}$ and $\delta_{ms} > 0,\, \forall m \in \mathcal{M}_n \subseteq \mathcal{M}$.
@@ -588,11 +588,11 @@ To generate this spatial SSLT model distribution over the area of consideration,
 \begin{equation} \label{eq:lambdaG}
 \lambda^G\left( x,\, y \right) = \frac{1}{L} \; \sum_{l=1}^L \cos\left( i_l x + \phi_l \right) \; \cos\left( j_l y + \psi_l \right)
 \end{equation}
-where $\mathcal{L} \defeq \left\{ 1,\, 2,\, \ldots,\, L \right\}$ is a set of the products of two cosines with stochastic angular frequencies $i_l,\, j_l\, \sim \mathcal{U}\left( 0,\, \omega_{\max} \right),\, l \in \mathcal{L}$ and phases $\phi_l,\, \psi_l\, \sim \mathcal{U}\left( 0,\, 2 \pi \right),\, l \in \mathcal{L}$.  As $L$ increases, it is expected that $\lambda_G$ approaches a Gaussian random field according to the central limit theorem.
+where $\mathcal{L} \defeq \left\{ 1,\, 2,\, \ldots,\, L \right\}$ is a set of the products of two cosines with stochastic angular frequencies $i_l,\, j_l\, \sim \mathcal{U}\left( 0,\, \omega_{\max} \right),\, l \in \mathcal{L}$ and phases $\phi_l,\, \psi_l\, \sim \mathcal{U}\left( 0,\, 2 \pi \right),\, l \in \mathcal{L}$.  As $L$ increases, it is expected that $\lambda^G$ approaches a Gaussian random field according to the central limit theorem.
 
 According to Lee et al.~\cite{6554749}, $\lambda^G$ is spatially correlated with autocorrelation function
 \begin{equation} \label{eq:sslt_autocorrelation}
-R\left( dx,\, dy \right) = E\left[ \lambda^G\left( x,\, y \right) \; \lambda^G\left( x + dx,\, y + dy \right) \right] = \frac{1}{4L} \; \sinc\left( \omega_{\max} dx \right) \; \sinc\left( \omega_{\max} dy \right).
+R\left( dx,\, dy \right) = \mathbb{E}\left[ \lambda^G\left( x,\, y \right) \; \lambda^G\left( x + dx,\, y + dy \right) \right] = \frac{1}{4L} \; \sinc\left( \omega_{\max} dx \right) \; \sinc\left( \omega_{\max} dy \right).
 \end{equation}
 The autocorrelation function is notably dependent on the maximum angular frequency defining $\rho^G$, $\omega_{\max}$.  As $\omega_{\max}$ increases, the demand of adjacent regions become less correlated.  $\omega_{\max}$ is effectively a measure of the inhomogeneity of $\rho^G$.  This effect of $\omega_{\max}$ on the inhomogeneity of $\lambda^G$ is shown in Fig. \ref{fig:lambdaG}; Fig. \ref{fig:lambdaG_4pi-300} fluctuates more rapidly than Fig. \ref{fig:lambdaG_2pi-300}, which is generated from a smaller $\omega_{\max}$.
 
@@ -802,17 +802,18 @@ The differences between the DEP and sDEP formulations are seemingly cosmetic.  T
 \subsubsection{The Sample Average Approximation Estimator} \label{subsubsec:dep_sampling_estimator}
 
 \info{If I don't finish figuring out the SAA estimator, the following will be edited into the preceeding subsection.}%
-For a sufficiently large $O$, $\hat{\Omega}$ contains enough scenarios to represent an arbitrarily tight approximation of $\Omega$.  However, as $O$ increases, the computational complexity of the solution increases exponentially, causing the manageability of $\hat{\Omega}$ and the sDEP to decrease.  While an arbitrary number of scenarios could be considered within $\hat{\Omega}$ to provide an overly-sufficient approximation, doing so would impose an unnecessary burden on the solution's computational complexity and increase computation time.  It is therefore valuable to understand and find the minimum value of $O$ that provides a sufficiently tight approximation of $\Omega$.  This can be done via an analysis of the SAA estimator
+For a sufficiently large $O$, $\hat{\Omega}$ contains enough scenarios to represent an arbitrarily tight approximation of $\Omega$.  However, as $O$ increases, the computational complexity of the solution increases exponentially, causing the manageability of $\hat{\Omega}$ and the sDEP to decrease.  While an arbitrary number of scenarios could be considered within $\hat{\Omega}$ to provide an overly-sufficient approximation, doing so would impose an unnecessary burden on the solution's computational complexity and increase computation time.  It is therefore valuable to understand and find the minimum value of $O$ that provides a sufficiently tight approximation of $\Omega$.  This can be done via an analysis of the SAA estimator.
 
 \change{Figure out the SAA estimator.\\Continue from here and fill out this section.}
 %\textit{At what point is the sampling enough?  As the set of scenarios considered within the sampled DEP increases, it more closely compares to the original DEP and the stochastic optimization problem, but it also becomes increasingly difficult to solve as the number of scenarios considered increases.  So, it is beneficial to understand that a certain known number of scenarios provides a reasonably tight - what does reasonable mean? - solution to the original DEP to avoid being unnecessarily computationally expensive to solve.  Finding this minimum necessary number of scenarios can be done via a sample average approximation (SAA) analysis, which should not be too complicated to do.}
 
 \subsection{Adaptive Slicing} \label{subsec:dep_slicing}
 
-After the solution to the sDEP model has been found, the VNB has determined the joint BS selection that supports the VWNs.  It further provides a proposed resource slicing of the BSs to the SPs' demand points, which determine the VWN constructions for those scenarios considered in $\hat{\Omega}$.  As a condition for the sDEP model, $\hat{\Omega}$ is a finite set that does not comprehensively cover all scenarios.  For an actual implementation of the sDEP, any observed scenario of demand points is certain to not be within $\hat{\Omega}$, and the sDEP solution would not provide a slicing of the selected resources to construct a VWN for the new scenario.
+After the solution to the sDEP model has been found, the VNB has determined the joint BS selection that supports the VWNs.  It further provides a proposed resource slicing of the BSs to the SPs' demand points, which determine the VWN constructions for those scenarios considered in $\hat{\Omega}$.  Each specific realization of demand points requires a proper resource slicing to construct the VWNs.
 
-%note: M: I don't think "infeasibility" is the primary problem here.  The problem is one of time scales.  The realizations of demand points happen on a much shorter (faster) time scale than the resource selecitons.
-Due to the computational complexity of the sDEP model, it is \info{M: See comment note}infeasible to find a new resource selection as the realization of demand changes.  Further, assuming that the underlying demand characteristics do not change (i.e., that demand realizations still correlate to the demand intensity function, $\lambda_n$), it is unnecessary to determine a new joint resource selection as it is still optimally selected within a given confidence for the demands.  \change{M: Previous two sentences spend a lot of words saying little\\you're overexplaining this.}Instead, it is valuable to have a model which assigns an adaptive slicing of the selected resources so the VWNs can adapt according to specific realizations of demand without needing to determine a new joint resource selection.  This new adaptive slicing model (\cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}) is found by fixing the selected resources, $z_s$, and only considering the specific demand realization $\omega \notin \hat{\Omega}$ to be sliced to and satisfied.
+As a condition for the sDEP model, $\hat{\Omega}$ does not comprehensively cover all scenarios in $\Omega$.  For an actual implementation of the sDEP, any observed scenario of demand points is highly unlikely to be in $\hat{\Omega}$, and the sDEP solution would not provide a slicing of the selected resources to construct a VWN for the new scenario.  Further, demand point realizations change on a much shorter time scale than the underlying statistics that inform the appropriate resource selection.  To find a resource slicing with a new realization in mind using the sDEP model would require resolving the sDEP with the new realization added to $\hat{\Omega}$.  This solution would likely be irrelevant as it could take longer to solve than the realization would exist and provide a resource selection that would be unchanged from the selection provided in the original solution.
+
+Instead, it is valuable to have a model which assigns only an adaptive slicing of the selected resources so the VWNs can adapt according to specific realizations of demand without needing to determine a new joint resource selection.  This new adaptive slicing model (\cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}) is found by fixing the selected resources, $z_s$, and only considering the specific demand realization $\omega \notin \hat{\Omega}$ to be sliced to and satisfied.
 
 \begin{tcolorbox}[floatplacement = !ht, float, title = Adaptive Slicing Model]
 \begin{align}
@@ -824,18 +825,11 @@ Due to the computational complexity of the sDEP model, it is \info{M: See commen
 \end{align}
 \end{tcolorbox}
 
-%note: M: I think you are answering questions that no one will have.  The goal here is to maximize the satisfied demand through slicing; the selected resources are fixed.\\
-%Replace these three sentences that say this.  The goal is to choose a slicing of the selected resources to maximize the satisfied demand in the given scenario.
-The objective function (\cref{eq:ASMO}) is a simplified version of the sDEP objective function (\cref{eq:sDEPO}).  \info{M: See comment note}As $z_s$ is fixed to be a constant, the first block in the sDEP objective is constant for the adaptive slicing model and is removed as a simplification.  Similarly, $\alpha$ no longer impacts the objective and is removed as a simplification.  As only a single scenario is being considered, the summation across $\hat{\Omega}$ is trivial and $p^{(1)} = 1$, allowing both to be removed as a simplification.  The constraints (\cref{eq:ASMC1,eq:ASMC2,eq:ASMC3}) are unchanged from the sDEP (\cref{eq:sDEPC1,eq:sDEPC2,eq:sDEPC4}), except that $z_s$ is now a constant and without mention of $\hat{\Omega}$.
+The objective function (\cref{eq:ASMO}) is a simplified version of the sDEP objective function (\cref{eq:sDEPO}).  The goal is to choose a slicing of the selected resources to maximize the satisfied demand in the given scenario with fixed resources.  The constraints (\cref{eq:ASMC1,eq:ASMC2,eq:ASMC3}) are unchanged from the sDEP (\cref{eq:sDEPC1,eq:sDEPC2,eq:sDEPC4}), except that $z_s$ is a constant and without $\hat{\Omega}$.
 
 This new formulation is far more tractable than the sDEP formulation, as there is only a single decision variable, $\delta_{ms}$, to solve.  Further, as $\delta_{ms}$ is not discrete, the adaptive slicing model is a linear programming problem and has better time order classification compared to the sDEP, which is a mixed integer linear programming problem.
 
-Effectively, the adaptive slicing model is a self-contained form of the second stage of the original stochastic program.  With a given resource selection, this optimization program provides the slicing of the selected resources that optimizes the demand satisfaction in a specific realization of demand.  Explicitly, it provides a determination in the VNB for how those resources are allocated to construct the VWNs for the SPs.  Since this simplified model can provide the optimization for adaptive slicing and VWN specification, it allows for other approaches to the problem of just resource selection.
-
-\change{M: Italics Important}%
-\textit{M: I think you need to summarixe the overall approach, either here or earlier in section 3.1.  Namely: sample possible scenarios and solve the sDEP for the sampled distribution of scenarios in order to determine the resource selection.  Then, for realized scenarios, solve the adaptive slicing problem.}
-
-\textit{M: One thing that I'm stuggling with in your writing is that you are delving into unneccessary detail about some fairly obvious things, while failing to provide your reader with a big picture about what is going on.}
+With the adaptive slicing model, the first approach to find a solution to the original two-stage stochastic program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) is established.  First, as with the stochastic program, an SP coordinates with a VNB to construct it a VWN by communicating the expected demands of its service in the form of a demand intensity function, $\lambda \left( x,\, y \right)$.  The VNB concatenates the new SP's demand with the other SPs into $\mathcal{N}$.  Second, the VNB finds $O$, the number scenarios that are required for the sDEP solution to be a tight approximation of the stochastic program.  Third, the VNB generates one scenario of demand points with corresponding demands (\cref{eq:nsPPPaccrej,eq:demandintegral,eq:pointdemand}) for each SP $n \in \mathcal{N}$ according to $\lambda_n$ and aggregates them into a single set $\mathcal{M}$ (\cref{eq:union_M}).  This is repeated until $O$ distinct scenarios are generated, establishing $\hat{\Omega}$ and $u_{ms}^{\left( \omega \right)}, m \in \mathcal{M},\, s \in \mathcal{S},\, \omega \in \hat{\Omega}$.  Fourth, the sDEP model (\cref{eq:sDEPO,eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}) is solved using this set of generated scenarios of $u_{ms}^{\left( \omega \right)}$, providing a resource selection and optimal slicing for any scenarios in $\hat{\Omega}$.  This informs which resources the VNB leases from the RPs.  Finally, for any observed realization of demand points, the adaptive slicing model (\cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}) is solved with that fixed resource selection, handling VWN construction in the short term.  The sDEP is only later used according to longer term changes in the demand statistics, indicating a new resource selection.
 
 \section{Approach II: The Genetic Algorithm} \label{sec:ga}
 
@@ -852,7 +846,7 @@ A genetic algorithm is an iterative metaheuristic algorithm inspired by the conc
 
 \subsection{The GA Chromosome} \label{subsec:ga_chromosome}
 
-Let $\mathcal{G} \defeq \left\{ 1,\, 2,\, \ldots,\, G \right\}$ be the set of generations used in the genetic algorithm and $\mathcal{I}_g \defeq \left\{ 1,\, 2,\, \ldots,\, I \right\},\, g \in \mathcal{G}$ be the set of individuals within generation $g$.  Each individual $i \in \mathcal{I}_g$ has a binary chromosome $z^{\left\{ ig \right\}}$ of length $S$.  $z_s^{\left\{ ig \right\}},\, s \in \mathcal{S}$, denoting each individual bit of the chromosome, is defined as
+Let $\mathcal{G} \defeq \left\{ 1,\, 2,\, \ldots,\, G \right\}$ be the set of generations used in the genetic algorithm and $\mathcal{I}_g \defeq \left\{ 1,\, 2,\, \ldots,\, I \right\},\, g \in \mathcal{G}$ be the set of individuals within generation $g$.  Each individual $i \in \mathcal{I}_g$ has a binary chromosome $\textbf{z}^{\left\{ ig \right\}}$ of length $S$.  $z_s^{\left\{ ig \right\}},\, s \in \mathcal{S}$, denoting each individual bit, or gene, of the chromosome, is defined as
 
 \ifisdoublespacing
 \begin{singlespacing}
@@ -885,7 +879,7 @@ V_s = \left\{ p \in \mathcal{R} \mid \frac{d \left( p,\, s \right)}{b_s} \leq \f
 
 \noindent where $d \left( p,\, s \right)$ is the euclidean distance between an arbitrary point $p$ and BS $s$.  Let $\mathcal{S}' \subseteq \mathcal{S}$ be the set of resources that have been selected by an arbitrary chromosome (i.e., $z_s^{\left\{ ig \right\}} = 1,\, \forall s \in \mathcal{S}'$ and $z_s^{\left\{ ig \right\}} = 0,\, \forall s \not\in \mathcal{S}'$ for an arbitrary chromosome $\left\{ ig \right\}$).  By making this assumption, $\mathcal{S}'$ partitions $\mathcal{R}$ into a multiplicatively weighted Voronoi tessellation~\cite{Dobrin_areview,AURENHAMMER1984251} using the point locations of the selected BSs as the defining sites and BS coverage radii, $b_s,\, s \in \mathcal{S}'$, as weights; if all BSs in $\mathcal{S}'$ have homogeneous coverage radii (i.e., $b_s = b,\, \forall s \in \mathcal{S}'$), this partition is a standard unweighted Voronoi tessellation.
 
-The region within the coverage radius of BS $s$ is denoted by $B_s$.  It is desired that $V_s$ be wholly contained within $B_s$ (i.e., $V_s \subseteq B_s$), but this is not guaranteed by the Voronoi tessellation assumption.  If $V_s$ is not wholly contained within $B_s$, BS $s$ is considered to be \emph{overcoverage}.  The total demand allocated to a selected resource $s \in \mathcal{S}'$ is $\sum_{i = 1}^N \iint_{V_s} \lambda_i \left( x,\, y \right) \,dx \,dy$.  If the total demand allocated to BS $s$ exceeds $B_s$, BS $s$ is considered to be \emph{overcapacity}.
+The region within the coverage radius of BS $s$ is denoted by $B_s$.  It is desired that $V_s$ be wholly contained within $B_s$ (i.e., $V_s \subseteq B_s$), but this is not guaranteed by the Voronoi tessellation assumption.  If $V_s$ is not wholly contained within $B_s$, BS $s$ is considered to be \emph{overcoverage}.  The total demand allocated to a selected resource $s \in \mathcal{S}'$ is $\sum_{n \in \mathcal{N}} \iint_{V_s} \lambda_n \left( x,\, y \right) \,dx \,dy$.  If the total demand allocated to BS $s$ exceeds $B_s$, BS $s$ is considered to be \emph{overcapacity}.
 
 The fitness heuristic of each individual chromosome, $z^{\{ig\}}$, is assessed as the reciprocal of the chromosome's cost
 
@@ -896,12 +890,14 @@ The fitness heuristic of each individual chromosome, $z^{\{ig\}}$, is assessed a
 The cost of a given chromosome is the sum of the direct costs of the individual selected BSs and their associated overcoverage ($c_{\text{cov}}$) and overcapacity ($c_{\text{cap}}$) costs
 
 \begin{multline} \label{eq:GACost}
-\mathrm{cost}\left( z^{\left\{ ig \right\}} \right) = \sum_{s \in \mathcal{S}} \Biggl( c_s \; z_s^{\left\{ ig \right\}} + c_\text{cov} \; \ind{V_s \not\subseteq B_s} + \\ \left( c_\text{cap}^g - 1 \right) \; \max\left( 0,\, \sum_{i = 1}^N \left( \iint_{V_s} \lambda_i\left( x,\, y \right)\, dx\, dy \right) - r_s \right) \Biggr)
+\mathrm{cost}\left( \textbf{z}^{\left\{ ig \right\}} \right) = \sum_{s \in \mathcal{S}} \Biggl( c_s \; z_s^{\left\{ ig \right\}} + c_\text{cov} \; \ind{V_s \not\subseteq B_s} + \\ \left( c_\text{cap}^g - 1 \right) \; \max\left( 0,\, \sum_{n \in \mathcal{N}} \left( \iint_{V_s} \lambda_n\left( x,\, y \right)\, dx\, dy \right) - r_s \right) \Biggr)
 \end{multline}
 
 \noindent where $\ind{*}$ is the indicator function (\cref{eq:indicator}).
 
-Resources being overcoverage is not desired; solutions that assume some demand is unallocatable by being out of range should be consider less-than-feasible or completely infeasible from the outset.  In contrast, the overcapacity cost starts at zero and grows exponentially with each successive generation.  For early generations, this allows for inefficient or infeasible solutions to temporarily exist to seed later generations and improve generational diversity.  This increases the probability that the final solution (a local maxima) is the global maximum or closer to the global maximum of the fitness function.
+Resources that are overcoverage are not desired; solutions that assume some demand is unallocatable by being out of range should be consider less-than-feasible or completely infeasible from the outset.  In contrast, the overcapacity cost starts at zero and grows exponentially with each successive generation.  For early generations, this allows for inefficient or infeasible solutions to temporarily exist to seed later generations and improve generational diversity.  This increases the probability that the final solution (a local maxima) is the global maximum or closer to the global maximum of the fitness function.
+
+It should be explicitly noted that the fitness (cost) of a given genome is monotonically non-increasing (non-decreasing) over $g \in \mathcal{G}$; a genome's fitness is constant over $g$ if the genome is not overcapacity, and strictly decreases every generation if the genome is overcapacity.
 
 \subsection{Forming the Next Generation} \label{subsec:ga_next}
 
@@ -923,12 +919,13 @@ Under roulette-wheel selection, parents are each randomly selected with a probab
 
 Once selection has occurred, the individuals selected via roulette-wheel selection are paired off.  With a probability of $p_{\text{xov}}$, the pair undergoes crossover to form their two children which go on to the next generation; otherwise, the parents are cloned as their own children.  During crossover, the chromosomes of each pair of parents are mixed.  Typical forms of crossover include single-point, k-point, and uniform crossover, though there are other more exotic forms that are application specific.
 
-I use uniform crossover as it has been suggested~\cite{Picek:2011:ECO:2184629.2184665} to be one of the best crossover operators in terms of general performance.  With uniform crossover, each bit in the chromosomes of the children are independently chosen from the parents' genomes with equal probability (i.e., 50\%).  Compared to single-point crossover, uniform crossover is also suggested to increase exploration of the search space as it severs the positional bias of the bits\change{M: Cite}; bits with possible spatial significance to one another no longer undergo crossover in segments like they would in single or k-point crossover.
+I use uniform crossover as it has been suggested~\cite{Picek:2011:ECO:2184629.2184665} to be one of the best crossover operators in terms of general performance.  With uniform crossover, each gene in the chromosomes of the children are independently chosen from the parents' genomes with equal probability (i.e., 50\%).  A random binary mask of length $S$ is generated.  The first child inherits genes from the first parent where there is a $1$ in the mask and from the second parent where there is a $0$; the second child inherits the inverse.
+
+Compared to single-point crossover, uniform crossover is also suggested to increase exploration of the search space as it severs the positional bias (linkage) of the bits in the genome~\cite{782011}; bits with possible spatial significance to one another no longer undergo crossover in segments like they would in single or k-point crossover.
 
 \subsubsection{Mutation}
 
-%note: M: You're going to need to give me a citation on this, too.  I've never heard this rule.
-Once each child has been generated, each bit within the child's genome has an independent chance, $p_{\text{mut}}$, to mutate.  When a bit mutates, the bit flips from 1 to 0, or from 0 to 1.  \change{M: Cite\\see comment note}Typically, the chance of each bit to mutate is $p_{\text{mut}} = \frac{1}{l}$, where $l$ is the length of the chromosome, which provides an average of one bit mutation per child.  For $z^{\left\{ ig \right\}},\, p_{\text{mut}} = \frac{1}{S}$.
+Once each child has been generated, each bit within the child's genome has an independent chance, $p_{\text{mut}}$, to mutate.  When a bit mutates, the bit flips from 1 to 0, or from 0 to 1.  Typically, the chance of each bit to mutate is $p_{\text{mut}} = \frac{1}{l}$, where $l$ is the length of the chromosome, which provides an average of one bit mutation per child~\cite{GREENWELL19951,Deb2011}.  For $\textbf{z}^{\left\{ ig \right\}}$, $p_{\text{mut}} = \frac{1}{S}$.
 
 \subsubsection{Uniqueness}
 
@@ -936,14 +933,18 @@ In a traditional genetic algorithm, once mutation has been completed, the next g
 
 \subsection{Stopping the GA} \label{subsec:ga_stop}
 
-\improvement{Improve on second halting condition explanation}%
-%note: M: I don't understand this second halting condition.
-The GA iterates for a number of generations $G$.  If the GA settles on a single individual as the fittest individual for a number of continuous generations, $G_{\text{ind}}$, it will halt and present that individual's chromosome as the final approximate solution for $z_s$.  Further, if the fitness of the fittest individual of a number of continuous generations, $G_{\text{fit}} \leq G_{\text{ind}}$, the GA also halts and presents that fittest individual's chromosome as the final approximate solution for $z_s$.  For both of these halting conditions, a minimum number of generations, $G_{\min}$, must first pass.  Otherwise, the chromosome of the fittest individual of generation $G$ determines $z_s$.
+The GA iterates for a specified maximum number of generations $G$.  However, once the GA converges to a stable solution, it is worthwhile to halt the GA early to conserve time.  There are two halting conditions that control this.  First, the \emph{fitness halt} condition halts the GA if the fitness of the fittest individual remains unchanged for a number of sequential generations, $G_{\text{fit}}$.  Due to the fitness function's monotonicity, a solution under this condition is not overcapacity.  This halting condition is expected to provide a solution that is feasible to provide nearly 100\% demand satisfaction; a solution provided under fitness halt can be overcoverage, but should be unlikely if $c_{\text{cov}}$ is sufficiently high and if $\mathcal{S}$ is not too sparse to satisfy $\mathcal{R}$.
+
+The second halting condition is the \emph{genome halt}.  Under this condition, the GA halts early if the genome of the fittest individual remains unchanged for a number of sequential generations, $G_{\text{gen}} \geq G_{\text{fit}}$.  Due to the fitness function's monotonicity, a solution under this condition is overcapacity; unlike the fitness halt condition, this allows for an infeasible (i.e., overcapacity) solution to evolve, especially when no solution is feasible.  The genome halt primarily contrasts with the fitness halt by forcing more generations to occur.  This allows for enough generations to pass so the overcapacity cost increases sufficiently that a hypothetical more feasible (i.e., less overcapacity) solution becomes more fit than the less feasible solution, and for enough generations to pass that it is statistically probable that the more feasible solution evolves.  Otherwise, an individual that satisfies the fitness halt condition also satisfies the genome halt condition; the fitness halt condition is a more strict form of convergence.
+
+For both of these halting conditions, a minimum number of generations, $G_{\min} < G$, must first pass.  Once any halting condition occurs, the fittest individual of the final processed generation is the solution, with $\textbf{z}^{\left\{ ig \right\}}$ of the solution determining $z_s,\, s \in \mathcal{S}$.
 
 In each case, the chromosome of the fittest individual when the GA halts is an approximate solution for the VNB's resource selection, $z_s$.  As the GA only handles the resource selection, it only represents a solution of the first stage (\cref{eq:SOPS1O,eq:SOPS1C1}) of the original stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}).  That is, while joint resource selection has occurred, and that the process was informed by the demand to be satisfied (i.e., $\lambda_n$), the selected resources still need to be sliced to determine the allocations of those resources to specific VWNs.  This process of solving the second stage of the original optimization program can be adaptively handled to a hypothetical or real set of demand points using the adaptive slicing model (\cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}) of \Cref{subsec:dep_slicing}.
+
+The process of applying the GA approach is similar to the process used to apply the DEP approach of \Cref{sec:dep}.  An SP coordinates with a VNB, communicates its demands in the form of a demand intensity function, $\lambda \left( x,\, y \right)$, and the VNB concatenates the new demand into $\mathcal{N}$.  Then, the GA processes over $\lambda_n,\, n \in \mathcal{N}$ until either halting condition occurs or the maximum number of generations is reached.  The solution provided by the GA indicates the VNB's joint resource selection.  Finally, for any observed realization of demand points, the adaptive slicing model (\cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}) is solved with that fixed resource selection, handling VWN construction in the short term.  The GA is rerun later as $\lambda_n$ changes for long term VWN construction.
 \fi
 
-\iftrue
+\iffalse
 \pagebreak
 \chapter{Simulations and Results} \label{ch:sim}
 
@@ -1072,7 +1073,7 @@ When the set of demand points change to a scenario no longer in $\Omega$, the sa
 \textit{also with heterogeneous resources.}
 \fi
 
-\iftrue
+\iffalse
 \pagebreak
 \chapter{Conclusions} \label{ch:conc}
 
