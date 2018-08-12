@@ -55,6 +55,34 @@ H.~S. Dhillon, R.~K. Ganti, F.~Baccelli, and J.~G. Andrews, ``Modeling and
   Journal on Selected Areas in Communications}, vol.~30, no.~3, pp. 550--560,
   Apr 2012.
 
+\bibitem{FCC:NationalBroadbandPlan}
+\BIBentryALTinterwordspacing
+``Connecting america: The national broadband plan,'' {Federal Communications
+  Commission}, Tech. Rep., Mar 2010. [Online]. Available:
+  \url{https://www.fcc.gov/general/national-broadband-plan}
+\BIBentrySTDinterwordspacing
+
+\bibitem{ITU:M2078}
+\BIBentryALTinterwordspacing
+``Estimated spectrum bandwidth requirements for the future development of
+  {IMT}-2000 and {IMT}-advanced,'' International Telecommunication Union, Tech.
+  Rep., 2006. [Online]. Available: \url{http://www.itu.int/pub/R-REP-M.2078}
+\BIBentrySTDinterwordspacing
+
+\bibitem{1491267}
+M.~Marcus and B.~Pattan, ``Millimeter wave propagation: spectrum management
+  implications,'' \emph{IEEE Microwave Magazine}, vol.~6, no.~2, pp. 54--62,
+  June 2005.
+
+\bibitem{5783993}
+Z.~Pi and F.~Khan, ``An introduction to millimeter-wave mobile broadband
+  systems,'' \emph{IEEE Communications Magazine}, vol.~49, no.~6, pp. 101--107,
+  June 2011.
+
+\bibitem{6515173}
+T.~S. Rappaport \emph{et~al.}, ``Millimeter wave mobile communications for {5G}
+  cellular: It will work!'' \emph{IEEE Access}, vol.~1, pp. 335--349, 2013.
+
 \bibitem{5595728}
 T.~L. Marzetta, ``Noncooperative cellular wireless with unlimited numbers of
   base station antennas,'' \emph{IEEE Transactions on Wireless Communications},
@@ -241,6 +269,21 @@ K.~Deb, \emph{Multi-objective Optimisation Using Evolutionary Algorithms: An
   Introduction}.\hskip 1em plus 0.5em minus 0.4em\relax London: Springer
   London, 2011, pp. 3--34. [Online]. Available:
   \url{https://doi.org/10.1007/978-0-85729-652-8_1}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Cplex}
+\BIBentryALTinterwordspacing
+IBM, ``Optimization model development toolkit for mathematical and constraint
+  programming {(CPLEX)},'' 2012. [Online]. Available:
+  \url{http://www-03.ibm.com/software/products/en/ibmilogcpleoptistud}
+\BIBentrySTDinterwordspacing
+
+\bibitem{PhysRevE.72.026116}
+\BIBentryALTinterwordspacing
+Y.~Xia, C.~K. Tse, W.~M. Tam, F.~C.~M. Lau, and M.~Small, ``Scale-free
+  user-network approach to telephone network traffic analysis,'' \emph{Phys.
+  Rev. E}, vol.~72, p. 026116, Aug 2005. [Online]. Available:
+  \url{https://link.aps.org/doi/10.1103/PhysRevE.72.026116}
 \BIBentrySTDinterwordspacing
 
 \end{thebibliography}

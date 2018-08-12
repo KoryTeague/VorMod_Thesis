@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: August 9, 2018
+% REVISED: August 10, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -319,10 +319,7 @@ The technology underlying the mobile data network needs to continue to evolve wi
 
 The first strategy is extreme densification and offloading.  By making network cells smaller, the number of active nodes increases for the same unit area.  This is a common strategy across cellular generations, and a large impetus behind the use of smaller range RANs like microcells and femtocells~\cite{4623708}.  Cell sizes have shrunk, dropping from the order of hundreds of square kilometers to now fractions of a square kilometer.  The most important benefit of cell densification is that it increases spectral reuse, which reduces the amount of users competing for the same resources.  Theoretically, since signal-to-interference ratio is maintained as the cell shrinks, such densification can be repeated indefinitely as deployments allow~\cite{6824752, 6171996}.
 
-The second strategy is to increase bandwidth through the use of previously unused spectra such as millimeter wave (mmWave) and Wi-Fi.  Cellular networks have utilized microwave frequencies ranging from a few centimeters to about a meter in wavelength; this range has become thoroughly occupied and to generate new bandwidth would require expanding to new frequencies~[?]\change{cite (1)}.  Up to now, mmWave has been unused and in some cases unlicensed due to very poor propagation properties and high equipment costs.  However, equipment costs are falling rapidly due to technological maturation.  Further, the propagation qualities are increasingly surmountable as cell sizes shrink~[?]\change{cite (2)}.
-
-% Cite (1) - FCC National Broadband Plan; Bandwidth Requirements for Future IMT-2000 Development
-% Cite (2) - Millimeter Wave Propagation: Spectrum Management Implications; Measurement and Analysis of Propagation Mechanisms at 40 GHz; An Introduction to Millimeter-wave Mobile Broadband systems; Millimeter Wave Mobile Communications for 5G Cellular: It Will Work; Millimeter-wave Beamforming...; Millimeter-Wave Cellular Wireless Networks: Potentials and Challenges.
+The second strategy is to increase bandwidth through the use of previously unused spectra such as millimeter wave (mmWave) and Wi-Fi.  Cellular networks have utilized microwave frequencies ranging from a few centimeters to about a meter in wavelength; this range has become thoroughly occupied and to generate new bandwidth would require expanding to new frequencies~\cite{FCC:NationalBroadbandPlan,ITU:M2078}.  Up to now, mmWave has been unused and in some cases unlicensed due to very poor propagation properties~\cite{1491267,5783993} and high equipment costs~\cite{5783993}.  However, equipment costs are falling rapidly due to technological maturation.  Further, the propagation qualities are increasingly surmountable as cell sizes shrink~\cite{6515173}.
 
 The third strategy involves the use of massive MIMO to increase spectral efficiency.  MIMO uses multiple transmit and receive antennas to exploit multipath signal propagation, multiplying the capacity of a given radio link.  The technology has been used for over a decade as a component of Wi-Fi before being introduced into the 3G and 4G standards~\cite{6824752}.  A new approach to be used in 5G is that of ``massive MIMO'', where the number of transmit antennas at the BS greatly outnumber the number of active users~\cite{5595728}.  For example, a given BS might have hundreds of antennas while maintaining data links for tens of users.  This provides several benefits, most importantly vastly improving spectral efficiency.
 
@@ -464,7 +461,7 @@ Consider a geographic region, $\mathcal{R}$, of width $X$ meters and length $Y$ 
 
 Let $\mathcal{N} \defeq \left\{ 1,\, 2,\, \ldots,\, N \right\}$ be the set of SPs seeking a VWN with coverage within the region $\mathcal{R}$.  An SP $n \in \mathcal{N}$ associates with the VNB to create the desired VWN.  Through this association, SP $n$ must coordinate with the VNB to indicate the demands of the intended service the VWN would need to satisfy.  SP $n$ must know and communicate to the VNB the estimated geographic distribution of the service's traffic demand density (or demand \emph{intensity}) as a function, $\lambda_n\left( x,\, y \right),\, n \in \mathcal{N},\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right],\,$ in terms of $\frac{\text{bits}}{\text{km}^2}$.  The demand intensity function could be in the form of a continuous function or as discrete pixels (e.g., a bitmap), and indicates the locations of necessary coverage and the desired capacity within specific regions of the area.  Examples of possible maps could be for services such as localized video streaming (specific, localized coverage with high regional capacities) or MNO-like voice lines (broad coverage with comparatively low capacity).  For an example of $\lambda_n$, see \Cref{subsec:networkdefs_sslt}.
 
-Further, the SP would also provide the desired or needed \change{Define ``percent demand satisfaction rate''}percent demand satisfaction rate for the service.  Some services, such as those related to emergency services, must have nearly 100\% demand satisfaction.  Others, such as generic voice lines or video streaming, may be able to tolerate some unsatisfied demand as a tradeoff for decreased network leasing or operational costs.
+Further, the SP would also provide the desired or needed percent demand satisfaction rate\footnote{Percent demand satisfaction rate refers to the percent of the demand described by $\lambda_n$ that is satisfied by VWN constructed by the VNB.  In this context, it is the percent of total requested demand that is sliced resources by the VNB.  This will be more formally described later in \Cref{sec:stochopt} (\cref{eq:VWN_demand_sat}) and evaluated during simulations in \Cref{ch:sim}.} for the service.  Some services, such as those related to emergency services, must have nearly 100\% demand satisfaction.  Others, such as generic voice lines or video streaming, may be able to tolerate some unsatisfied demand as a tradeoff for decreased network leasing or operational costs.
 
 $\lambda_n$ describes the geographic distribution of SP $n \in \mathcal{N}$ within $\mathcal{R}$.  At any instantaneous point in time, $\lambda_n$ is realized as a set of discrete demand points (each representing e.g., user equipment).  Let $\mathcal{M}_n \defeq \left\{1,\, 2,\, \ldots,\, M_n\right\}$ be this set of demand points SP $n$ is attempting to satisfy with its service at a given point in time.  Each demand point $m \in \mathcal{M}_n$ is seeking to connect to the VWN operated by SP $n \in \mathcal{N}$ and is located within the domain of $\mathcal{R}$ (i.e., $\left( \tilde{x}_{m_n},\, \tilde{y}_{m_n} \right),\, \tilde{x}_{m_n} \in \left[ 0,\, X \right],\, \tilde{y}_{m_n} \in \left[ 0,\, Y \right]$).  Demand point locations are stochastically determined by the distribution of traffic as described by the demand intensity function $\lambda_n$.  A realization of these demand points can be found as a two-dimensional non-stationary (or inhomogeneous) Poisson point process (PPP) using $\lambda_n$ as it's spatial intensity function.
 
@@ -570,14 +567,6 @@ From the perspective of the VNB, each SP is only distinguishable by its overall 
 
 \noindent where $M = \sum_{n \in \mathcal{N}} M_n$, with demands $d$ and stochastic normalized capacities $\tilde{u}_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}$.  $\mathcal{M}$ can be considered a set of demand points associated with a superposition of PPPs with intensity $\lambda = \sum_{n \in \mathcal{N}} \lambda_n$.
 
-I assume that a resource $s \in \mathcal{S}$ can be allocated between multiple demand points, and $\delta_{ms} \in [0,\, r_s],\, m \in \mathcal{M},\, s \in \mathcal{S}$, represents the rate of resource $s$ that is allocated to point $m$.  $\delta_{ms}$ is said to be the \emph{slice} of BS $s \in \mathcal{S}$ that is allocated to demand point $m \in \mathcal{M}$.  The VWN constructed for SP $n \in \mathcal{N}$ is comprised of all of the slices allocated to the SP's demand points.  That is, the VWN constructed for SP $n \in \mathcal{N}$ is 
-
-\begin{equation}
-\bigcup_{m \in \mathcal{M}} \delta_{ms},\, s \in \mathcal{S},
-\end{equation}
-
-\noindent where $\delta_{ms} = 0,\, \forall m \not\in \mathcal{M}_n \subseteq \mathcal{M}$ and $\delta_{ms} > 0,\, \forall m \in \mathcal{M}_n \subseteq \mathcal{M}$.
-
 \subsection{Example Demand Distribution; The SSLT Model} \label{subsec:networkdefs_sslt}
 
 One major assumption made in \Cref{sec:networkdefs} is that SPs must communicate the demand characteristics (i.e., $\lambda_n$) of their service to the VNB to properly facilitate VWN construction.  In this subsection, I establish an example model demonstrating the demand characteristics to be communicated by generating an example hypothetical demand intensity function.  For testing the approaches for VWN construction presented in \Cref{ch:approaches}, this example is the fundamental model used for simulating SP demand in cellular network-based services.
@@ -678,7 +667,7 @@ This SSLT model is used in \Cref{ch:sim} to generate SP service demand and end-u
 
 As presented in \Cref{sec:networkdefs}, the VNB present within the $\mathcal{R}$ must construct a set of VWNs to satisfy the needs of the services the various SPs seek to provide.  Each service provider provides a characterization of its demand, such as the SSLT model presented in \Cref{subsec:networkdefs_sslt}.  With this information, the VNB must select the subset of virtual resources available in $\mathcal{S}$ that minimizes the cost to the VNB, and associate slices of these resources to VWNs that optimally satisfy the SPs' demand.
 
-I formulate the presented problem of resource selection as Problem 1 (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}), a two-stage stochastic optimization program.  Let $z_s,\, s \in \mathcal{S}$, be a binary decision variable defined as
+I formulate the presented problem of resource selection as a two-stage stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}).  Let $z_s,\, s \in \mathcal{S}$, be a binary decision variable defined as
 
 \ifisdoublespacing
 \begin{singlespacing}
@@ -701,7 +690,7 @@ z_s \defeq
 \end{equation}
 \fi
 
-\noindent which establishes VNB resource selection.  $\delta_{ms},\, m \in \mathcal{M},\, s \in \mathcal{S}$, which is defined in \Cref{sec:networkdefs} to represent the rate of resource $s$ that is allocated to point $m$, is a second decision variable which establishes the slice of resource $s$ that has been allocated to the VWN service that is associated with demand point $m$.
+\noindent which establishes VNB resource selection.  Further let $\delta_{ms} \in \left[ 0 ,\, r_s \right],\, m \in \mathcal{M},\, s \in \mathcal{S}$, be a decision variable defined as the rate of resource $s$ that is allocated to demand point $m$.  $\delta_{ms}$ is said to be the \emph{slice} of BS $s$ allocated to the VWN service that is associated with demand point $m$.
 
 To balance the interest of maximizing demand satisfaction against minimizing cost, I introduce the positive real number $\alpha$ as a weighting coefficient between the two stages (\cref{eq:SOPS2O}).  The SP indicates the desired amount of demand satisfaction necessary for the service the SP provides; $\alpha$, as set by the VNB, realizes this degree of demand satisfaction of the constructed VWNs relative to their cost.
 
@@ -748,6 +737,18 @@ The first stage objective function (\cref{eq:SOPS1O}) minimizes the total cost o
 	\end{cases}
 \end{equation}
 \fi
+
+$\delta_{ms}$ is the slice of BS $s \in \mathcal{S}$ that is allocated to demand point $m \in \mathcal{M}$.  The VWN constructed for SP $n \in \mathcal{N}$ is comprised of all of the slices allocated to the SP's demand points.  That is, the VWN constructed for SP $n \in \mathcal{N}$ is 
+
+\begin{equation} \label{eq:delta_union_VWN}
+\bigcup_{m \in \mathcal{M}_n} \delta_{ms},\, s \in \mathcal{S},
+\end{equation}
+
+\noindent where $\mathcal{M}_n \subseteq \mathcal{M}$ is the set of demand points associated with SP $n$.  It should be noted that $\delta_{ms} = 0,\, \forall m \not\in \mathcal{M}_n \subseteq \mathcal{M}$ and $\delta_{ms} > 0,\, \forall m \in \mathcal{M}_n \subseteq \mathcal{M}$.  From this, the percent demand satisfaction rate can be determined for each SP $n \in \mathcal{N}$ as
+
+\begin{equation} \label{eq:VWN_demand_sat}
+\text{VWN Demand Satisfaction Rate for SP $n$} = \sum_{m \in \mathcal{M}_n} \sum_{s \in \mathcal{S}} \frac{\delta_{ms}}{d_n \; M_n}
+\end{equation}
 
 The stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) models the problem faced by a VNB that wishes to construct VWNs for and balance the needs of the various SPs.  However, this program is not directly solvable, as mixed integer programming optimization tools cannot be used to solve stochastic optimization programs.  \Cref{ch:approaches} poses two approaches for solving this program.
 
@@ -944,7 +945,7 @@ In each case, the chromosome of the fittest individual when the GA halts is an a
 The process of applying the GA approach is similar to the process used to apply the DEP approach of \Cref{sec:dep}.  An SP coordinates with a VNB, communicates its demands in the form of a demand intensity function, $\lambda \left( x,\, y \right)$, and the VNB concatenates the new demand into $\mathcal{N}$.  Then, the GA processes over $\lambda_n,\, n \in \mathcal{N}$ until either halting condition occurs or the maximum number of generations is reached.  The solution provided by the GA indicates the VNB's joint resource selection.  Finally, for any observed realization of demand points, the adaptive slicing model (\cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}) is solved with that fixed resource selection, handling VWN construction in the short term.  The GA is rerun later as $\lambda_n$ changes for long term VWN construction.
 \fi
 
-\iffalse
+\iftrue
 \pagebreak
 \chapter{Simulations and Results} \label{ch:sim}
 
@@ -1073,7 +1074,7 @@ When the set of demand points change to a scenario no longer in $\Omega$, the sa
 \textit{also with heterogeneous resources.}
 \fi
 
-\iffalse
+\iftrue
 \pagebreak
 \chapter{Conclusions} \label{ch:conc}
 

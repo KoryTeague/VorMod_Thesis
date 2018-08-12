@@ -20,3 +20,13 @@
 \BOOKMARK [2][-]{subsection.3.2.1}{The GA Chromosome}{section.3.2}% 20
 \BOOKMARK [2][-]{subsection.3.2.2}{Forming the Next Generation}{section.3.2}% 21
 \BOOKMARK [2][-]{subsection.3.2.3}{Stopping the GA}{section.3.2}% 22
+\BOOKMARK [0][-]{chapter.4}{Simulations and Results}{}% 23
+\BOOKMARK [1][-]{section.4.1}{Setup}{chapter.4}% 24
+\BOOKMARK [1][-]{section.4.2}{VWN Construction for a Single SP}{chapter.4}% 25
+\BOOKMARK [2][-]{subsection.4.2.1}{Case I: Homogeneous Urban Cellular Network}{section.4.2}% 26
+\BOOKMARK [2][-]{subsection.4.2.2}{Case II: Impact of Heterogeneous Resources}{section.4.2}% 27
+\BOOKMARK [1][-]{section.4.3}{VWN Construction for Multiple SPs}{chapter.4}% 28
+\BOOKMARK [2][-]{subsection.4.3.1}{Case III: Two Similar Urban Cellular Networks}{section.4.3}% 29
+\BOOKMARK [2][-]{subsection.4.3.2}{Case IV: SPs with Specialized Demands}{section.4.3}% 30
+\BOOKMARK [0][-]{chapter.5}{Conclusions}{}% 31
+\BOOKMARK [1][-]{section.5.1}{Considerations for Future Work}{chapter.5}% 32
