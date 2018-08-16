@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: August 15, 2018
+% REVISED: August 16, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -954,11 +954,76 @@ In this chapter I evaluate the effectiveness of the sDEP (\Cref{sec:dep}) and GA
 
 Unless stated otherwise, simulations are set up with the following assumptions.  BS locations are determined as a stationary PPP with a fixed number of BSs.  Demand point locations are generated independently for each SP $n \in \mathcal{N}$ in each scenario as a non-stationary PPP using $\lambda_n\left( x,\, y \right),\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right]$, as the spatial intensity function, as described in \Cref{sec:networkdefs} (\cref{eq:nsPPPaccrej}).  Demand points have homogeneous demand (\cref{eq:demandintegral,eq:pointdemand}).  To compute $u_{ms}^{\left( \omega \right)}$, it is assumed that there is perfect propagation between demand points and BSs within the BSs' coverage radii (\cref{eq:umns_simp}).  To compute the fitness function for the GA approach (\cref{eq:GAFit,eq:GACost}), $\lambda_n$ is discretized into a grid of equal-sized square pixels with a given side length for the problem.  The demand of a given pixel is the product of $\lambda_n$ at the center of the pixel and the area of the pixel.  The demand allocated to a selected resource $s \in \mathcal{S}' \subseteq \mathcal{S}$ is the sum of the demand of all pixels within $V_s$, the resource's Voronoi cell.
 
-Simulations were run on an Intel Core i7-4790K 4.00 GHz 4 real/8 virtual core CPU with 16 GB of DDR3 RAM.  I used CPLEX~\cite{Cplex} to solve the sDEP model (\cref{eq:sDEPO,eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}) and the adaptive slicing model (\cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}).  I used MATLAB to implement the GA and to generate the simulated region.  During the simulations, extraneous processes were culled to allow maximal use of computer resources.  For a given comparison to the sDEP, the GA results are provided from 50 independent runs using and identical data set except for the set of initial individuals.  The sDEP approach was solved across multiple values of $\alpha$.
+Simulations were run on an Intel Core i7-4790K 4.00 GHz 4 real/8 virtual core CPU with 16 GB of DDR3 RAM.  I used CPLEX~\cite{Cplex} to solve the sDEP model (\cref{eq:sDEPO,eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}) and the adaptive slicing model (\cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}).  I used MATLAB to implement the GA and to generate the simulated region.  D uring the simulations, extraneous processes were culled to allow maximal use of computer resources.  For a given comparison to the sDEP, the GA results are provided from 50 independent runs using an identical data set except for the set of initial individuals.  The sDEP approach was solved across multiple values of $\alpha$.
 
-\section{Preliminary Results} \label{sec:prelim}
+\section{Preliminary Simulations} \label{sec:prelim}
+
+This first considered problem is an initial simulation testing the performance of the sDEP and GA approaches for a general problem intended to be solved in less than 15 minutes.  This test was intended to show that the two approaches work correctly and present preliminary results later test cases.  \change{Only include if submitted}These results were compiled and collated in a paper submitted to the International Conference on Computing, Networking and Communications (ICNC 2019)~\cite{KTeague:BSSelection}\change{Double check}.
 
 \subsection{Setup} \label{subsec:prelim_setup}
+
+\begin{table}[ht]
+\centering
+\caption{Numerical Values of\\Relevant Parameters for Preliminary Simulations}
+\begin{tabular}{|c|c|} 
+\hline
+Width, Height of Geographic Area ($X$) & 2 km x 2 km \\
+\hline
+Number of BSs ($S$) & 60 \\ 
+\hline 
+Number of Demand Points ($M$) & 75 \\ 
+\hline 
+Number of SPs ($N$) & 1 \\
+\hline
+Number of Sampled Scenarios ($O$) & $\{5,\, 10,\, \ldots,\, 50\}$ \iffalse 25 \fi \\ 
+\hline 
+BS cost ($c_s,\, \forall s \in \mathcal{S}$) & 1 \\ 
+\hline 
+BS capacity ($r_s,\, \forall s \in \mathcal{S})$ & 1.50 Mbps \\ 
+\hline
+BS range ($b_s,\, \forall s \in \mathcal{S}$) & 500 m \\
+\hline 
+Point Traffic Demand ($d$) & 0.178 Mbps \\ 
+%\hline 
+%Two-Stage Model Weight ($\alpha$) & 20\iffalse $\{5,\, 10,\, \ldots,\, 100\}$ \fi \\ 
+\hline 
+\hline
+SSLT Approximation Depth ($L$) & 50 \\ 
+\hline
+SSLT Maximum Angular Frequency ($\omega_{\max}$) & $\frac{2 \; \pi}{30}$ \\
+\hline 
+SSLT Location Parameter ($\sigma$) & 0 \\ 
+\hline 
+SSLT Scale Parameter ($\mu$) & 1 \\ 
+\hline
+Pixel Grid Size & 100 x 100, 20 m \\
+\hline 
+\hline
+Maximum Number of Generations ($G$) & 3000 \\ 
+\hline
+Minimum Number of Generations ($G_{\min}$) & 300 \\
+\hline
+Unchanged Generations Before Fitness Halt ($G_{\text{fit}}$) & 150 \\
+\hline 
+Unchanged Generations Before Genome Halt ($G_{\text{gen}}$) & 400 \\
+\hline 
+Number of Individuals per Generation ($I$) & 80 \\ 
+\hline
+Number of Elite Individuals per Generation & 4 \\
+\hline 
+Probability of Crossover ($p_\text{xov}$) & 0.7 \\ 
+\hline
+Probability of Mutation per bit ($p_\text{mut}$) & $\frac{1}{S} = 0.0167$ \\
+\hline 
+Overcoverage Cost ($c_\text{cov}$) & 3 \\
+\hline
+Overcapacity Cost ($c_\text{cap}$) & 1.015 \\
+\hline
+\end{tabular}
+\label{tab:prelim_simval}
+\end{table}
+
+For these preliminary simulations, I use the parameter values shown in \Cref{tab:prelim_simval}.  There is only one SP, and its demand intensity function, $\lambda$, is generated using default location and scale parameters from the SSLT model ($\sigma = 0,\, \mu = 1$).  $\lambda$ is pixelated into a 100 by 100 grid of square pixels with 20 m side length, so that $\mathcal{R}$ is a region 2 km by 2 km.  The listed maximum angular frequency, $\omega_{\max}$, is in terms where each pixel is one unit (i.e., it correlates to a region that is 100 m by 100 m); in terms of absolute distance, $\omega_{\max}$ is scaled according to the side length (i.e., $\omega_{\max} = \frac{\pi}{300}$).  Resources are homogeneous and constructed to saturate the region's demands.
 
 \subsection{Results} \label{subsec:prelim_results}
 
@@ -975,65 +1040,7 @@ Simulations were run on an Intel Core i7-4790K 4.00 GHz 4 real/8 virtual core CP
 \subsection{Results} \label{subsec:caseII_results}
 
 \iffalse
-%\begin{table*}[t]
-\begin{table}
-\vspace{0.25in}
-\centering
-\caption{Numerical Values of Relevant Parameters}
-\begin{tabular}{|c|c|} 
-\hline
-Width, Height of Geographic Area ($X$) & 2 km x 2 km \\
-\hline
-Number of BSs ($S$) & 60 \\ 
-\hline 
-Number of Demand Points ($M$) & 75 \\ 
-\hline 
-Number of Sampled Scenarios ($O$) & $\{5,\, 10,\, \ldots,\, 50\}$ \iffalse 25 \fi \\ 
-\hline 
-BS cost ($c_s, \forall s \in \mathcal{S}$) & 1 \\ 
-\hline 
-BS capacity ($r_s, \forall s \in \mathcal{S})$ & 1.50 Mbps \\ 
-\hline
-BS range ($b_s, \forall s \in \mathcal{S}$) & 500 m \\
-\hline 
-Point Traffic Demand ($d_m, \forall m \in \mathcal{M}$) & 0.178 Mbps \\ 
-\hline 
-Two-Stage Model Weight ($\alpha$) & 20\iffalse $\{5,\, 10,\, \ldots,\, 100\}$ \fi \\ 
-\hline 
-\hline
-SSLT Approximation Depth ($L$) & 50 \\ 
-\hline
-SSLT Maximum Angular Frequency ($\omega_{\max}$) & $\frac{2 \; \pi}{30}$ \\
-\hline 
-SSLT Location Parameter ($\sigma$) & 0 \\ 
-\hline 
-SSLT Scale Parameter ($\mu$) & 1 \\ 
-\hline
-Pixel Grid Size & 100 x 100, 20 m \\
-\hline 
-\hline
-Maximum Number of Generations ($G$) & 3000 \\ 
-\hline
-Minimum Number of Generations & 300 \\
-\hline
-Unchanged Generations Before Halt ($G_\text{halt}$) & 150 \\
-\hline 
-Number of Individuals per Generation ($I$) & 80 \\ 
-\hline
-Number of Elite Individuals per Generation & 4 \\
-\hline 
-Probability of Crossover ($p_\text{xov}$) & 0.7 \\ 
-\hline
-Probability of Mutation per bit ($p_\text{mut}$) & $\frac{1}{S} = 0.0167$ \\
-\hline 
-Overcoverage Cost ($c_\text{cov}$) & 3 \\
-\hline
-Overcapacity Cost ($c_\text{cap}$) & 1.015 \\
-\hline
-\end{tabular}
-\label{tab:simval}
-%\end{table*}
-\end{table}
+
 
 In Fig. \ref{fig:AlgSpeedupRunTime} is a comparison of the approach run times.  It shows the run times of both the DEP and genetic algorithm in terms of the speedup ratio and in absolute number of seconds.  As the number of scenarios sampled increases, the CPU run time of the sampled DEP increases exponentionally, and fails to converge to a final solution with 50 scenarios within the time limit of 15 minutes.  Except for the 5 scenario case, the genetic algorithm converges to a solution in less CPU time (125.8 seconds) than the sampled DEP.  When 20 scenarios are sampled, the DEP takes approximately 440\% of the time as the genetic algorithm; at 45 scenarios, this has increased to 4,630\%.  CPLEX is capable of parallelizing across the 8 CPU cores, allowing for the wall clock run time to be, at minimum, one-eighth the CPU run time.  In terms of the adjusted approximate ``wall clock" time, the genetic algorithm converges in less wall clock time than the sampled DEP for 25 or more sampled scenarios.
 
