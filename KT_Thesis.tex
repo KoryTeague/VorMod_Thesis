@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: August 16, 2018
+% REVISED: August 19, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -60,6 +60,7 @@
 \newcommand{\creflastconjunction}{, and~}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 
+% Start of \widebar implementation
 \makeatletter
 \let\save@mathaccent\mathaccent
 \newcommand*\if@single[3]{%
@@ -128,6 +129,7 @@
   \fi
   \endgroup
 }
+% End of \widebar implementation
 
 \newcommand*\mean[1]{\widebar{#1}}
 \newcommand{\ind}[1]{\mathbbm{1}_{\left\{ #1 \right\}}}
@@ -958,7 +960,7 @@ Simulations were run on an Intel Core i7-4790K 4.00 GHz 4 real/8 virtual core CP
 
 \section{Preliminary Simulations} \label{sec:prelim}
 
-This first considered problem is an initial simulation testing the performance of the sDEP and GA approaches for a general problem intended to be solved in less than 15 minutes.  This test was intended to show that the two approaches work correctly and present preliminary results later test cases.  \change{Only include if submitted}These results were compiled and collated in a paper submitted to the International Conference on Computing, Networking and Communications (ICNC 2019)~\cite{KTeague:BSSelection}\change{Double check}.
+This first considered problem is an initial simulation testing the performance of the sDEP and GA approaches for a general problem intended to be solved in less than 15 minutes.  This test was intended to show that the two approaches work correctly and present preliminary results to inform later test cases.  These results were compiled and collated in a paper submitted to the International Conference on Computing, Networking and Communications (ICNC 2019)~\cite{KTeague:BSSelection}.
 
 \subsection{Setup} \label{subsec:prelim_setup}
 
@@ -1023,9 +1025,85 @@ Overcapacity Cost ($c_\text{cap}$) & 1.015 \\
 \label{tab:prelim_simval}
 \end{table}
 
-For these preliminary simulations, I use the parameter values shown in \Cref{tab:prelim_simval}.  There is only one SP, and its demand intensity function, $\lambda$, is generated using default location and scale parameters from the SSLT model ($\sigma = 0,\, \mu = 1$).  $\lambda$ is pixelated into a 100 by 100 grid of square pixels with 20 m side length, so that $\mathcal{R}$ is a region 2 km by 2 km.  The listed maximum angular frequency, $\omega_{\max}$, is in terms where each pixel is one unit (i.e., it correlates to a region that is 100 m by 100 m); in terms of absolute distance, $\omega_{\max}$ is scaled according to the side length (i.e., $\omega_{\max} = \frac{\pi}{300}$).  Resources are homogeneous and constructed to saturate the region's demands.
+\iffalse
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=0.45\textheight]{Figures/BSLocationsVoronoi}
+	\caption{Voronoi tessellation of BS locations}
+	\label{fig:BSLocVor}
+\end{figure}
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=0.45\textheight]{Figures/SSLTnsPPP_demandpointreal}
+	\caption{$\lambda$ with one realization of $\mathcal{M}$}
+	\label{fig:SSLTDPReal}
+\end{figure}
+
+\begin{figure}[p]
+	\centering
+	\begin{subfigure}{.55\textheight}
+		\centering
+		\includegraphics[width=\linewidth]{Figures/BSLocationsVoronoi}
+		\caption{Voronoi tesselation of BS locations}
+		\label{fig:BSLocVor}
+	\end{subfigure} \\
+	\begin{subfigure}{.55\textheight}
+		\centering
+		\includegraphics[width=\linewidth]{Figures/SSLTnsPPP_demandpointreal}
+		\caption{$\lambda$ with one realization of $\mathcal{M}$}
+		\label{fig:SSLTDPReal}
+	\end{subfigure}
+	\caption{Illustration of $\mathcal{R}$}
+\end{figure}
+\fi
+
+\begin{figure}[p]
+	\centering
+	\begin{minipage}{0.64\textwidth}
+	
+	\end{minipage}
+\end{figure}
+
+\iffalse
+\begin{figure*}[t]
+	\centering
+	\begin{minipage}{0.64\textwidth}
+		\begin{subfigure}{.48\textwidth}
+			\centering
+			\includegraphics[width=0.95\linewidth]{Figures/BSLocationsVoronoi}
+			\caption{Voronoi tesselation of BS locations}
+			\label{fig:BSLocVor}
+		\end{subfigure} \hfill
+		\begin{subfigure}{.48\textwidth}
+			\centering
+			\includegraphics[width=0.95\linewidth]{Figures/SSLTnsPPP_demandpointreal}
+			\caption{$\lambda$ with one realization of $\mathcal{M}$}
+			\label{fig:SSLTDPReal}
+		\end{subfigure}
+		\caption{\small Visualization of resources (\cref{fig:BSLocVor}) and demand (\cref{fig:SSLTDPReal}) in $\mathcal{R}$.}
+		\label{fig:NetworkArea}
+	\end{minipage} \hfill
+	\begin{minipage}{0.32\textwidth}
+		\centering
+		\includegraphics[width=0.95\textwidth]{Figures/VOSGA_SpeedupRatio_AbsComp_alpha20}
+		\caption{\small Absolute run time and speedup ratio of the GA and sDEP approaches. $\alpha = 20$}
+		\label{fig:AlgSpeedupRunTime}
+	\end{minipage}
+\end{figure*}
+\fi
+
+For these preliminary simulations, I use the parameter values shown in \Cref{tab:prelim_simval}.  There is only one SP, and its demand intensity function, $\lambda$, is generated using default location and scale parameters from the SSLT model ($\sigma = 0,\, \mu = 1$).  $\lambda$ is pixelated into a 100 by 100 grid of square pixels with 20 m side length; $\mathcal{R}$ is a region 2 km by 2 km in size.  The listed maximum angular frequency, $\omega_{\max}$, is in terms where each pixel is one unit (i.e., it correlates to a region that is 100 m by 100 m); in terms of absolute distance, $\omega_{\max}$ is scaled according to the side length (i.e., absolute $\omega_{\max} = \frac{\pi}{300}$).  Resources are homogeneous and constructed to saturate the region's demands.
 
 \subsection{Results} \label{subsec:prelim_results}
+
+In Fig. \ref{fig:AlgSpeedupRunTime} is a comparison of the approach run times.  It shows the run times of both the DEP and genetic algorithm in terms of the speedup ratio and in absolute number of seconds.  As the number of scenarios sampled increases, the CPU run time of the sampled DEP increases exponentially, and fails to converge to a final solution with 50 scenarios within the time limit of 15 minutes.  Except for the 5 scenario case, the genetic algorithm converges to a solution in less CPU time (125.8 seconds) than the sampled DEP.  When 20 scenarios are sampled, the DEP takes approximately 440\% of the time as the genetic algorithm; at 45 scenarios, this has increased to 4,630\%.  CPLEX is capable of parallelizing across the 8 CPU cores, allowing for the wall clock run time to be, at minimum, one-eighth the CPU run time.  In terms of the adjusted approximate ``wall clock" time, the genetic algorithm converges in less wall clock time than the sampled DEP for 25 or more sampled scenarios.
+
+The trade off for the genetic algorithm's improved run time is that the solution provided is less optimal than the sampled DEP, as indicated by an increased cost for the VNB to build the VWN.  Fig. \ref{fig:VWNCompCost} compares the increasing cost of the sampled DEP as $\alpha$ increases with the cost of the various genetic algorithm solutions.  On average, the genetic algorithm incurs a 36\% increased cost in selecting the BSs for the VWN.  At minimum, the incurred cost is only 20\% than the sampled DEP, which implies the genetic algorithm might be terminating early, and a tighter solution might be found by increasing $G_\text{halt}$.  It should also be noted that one unit of cost is one additional BS being selected for the VWN, and the sampled DEP selections for $\alpha \geq 30$ have a cost of only 10 BSs.  Any variance that incurs one additional BS for the genetic algorithm incurs 10\% increased cost.  Increasing the number of BSs required to comprise the VWN would introduce additional granularity in $\mathcal{S}$ that might decrease the inefficiency of the genetic algorithm.  This was not done as this data set was chosen specifically so the sampled DEP would terminate within 15 minutes (i.e., in a reasonable amount of time); increasing the number of BSs available to the VNB drastically increases the time it would take the sampled DEP to converge to a solution.
+
+There is a direct correlation between the number of BSs in the VWN and its capability for satisfying demand.  As the cost - and, therefore, the number of BSs - increases for a given solution, the average demand satisfaction trends towards 100\%, as shown in Fig. \ref{fig:VWNCompSatis}.  Because of this overallocation of resources, the genetic algorithm solutions have a very high demand satisfaction, averaging 99.9\% satisfaction and reaching 100\% for some solutions.  The worst performing genetic algorithm solution exceeded 99.1\% demand satisfaction.  The most expensive 10-BS sampled DEP solutions reach 99.2\% when slicing to the same set of demand point scenarios, $\Omega$, that determined the sampled DEP BS selection.
+
+When the set of demand points change to a scenario no longer in $\Omega$, the sampled DEP performs very similarly.  Fig. \ref{fig:VWNCompSatisEval} shows the demand satisfaction for both the sampled DEP and genetic algorithm BS selections when sliced to a new set of scenarios as evaluated with Problem 3.  Here, the number of demand points increases to 200 points per scenario, each with 66.8 kbps rate demand, across 50 independent scenarios.  The demand satisfaction trend of the sampled DEP BS selection follows very closely to the original set of scenarios but hits a maximum of 99.0\% demand satisfaction with 10 BSs.  In comparison, the SP demand point scenarios are far more beneficial to the genetic algorithm, which reaches greater than 99.99\% demand satisfaction for all generated VWNs.  This is expected as a side effect of the increased number of points and scenarios more accurately describing a sampling of the original SSLT demand density field of the SP, $\rho$.
 
 \section{Case I: Single SP with Homogeneous Resources} \label{sec:caseI}
 
