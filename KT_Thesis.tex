@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: August 23, 2018
+% REVISED: August 26, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -1045,7 +1045,7 @@ Overcapacity Cost ($c_\text{cap}$) & 1.015 \\
 
 In this subsection I will present the results of these preliminary simulations.  First, I will present run time results of the two approaches and make comparisons.  Second, I will present network cost results, and, third, network demand satisfaction results.  Finally, this section will end with my conclusions of these simulations.
 
-\subsubsection{Run Time Comparisons}
+\subsubsection{Run Time}
 
 \Cref{fig:Prelim_GARunTime} shows the run time trend of the GA approach as a histogram PDF.  Across 50 independent simulations, the GA approach converges to a solution in 94 to 209 seconds, averaging 125.9 seconds (CPU time) with a 95\% confidence interval of (118.4, 135.4).  These results are heavily weighted towards the low end, with more than 20\% of simulations terminating in under 100 seconds.
 
@@ -1056,7 +1056,7 @@ In this subsection I will present the results of these preliminary simulations. 
 	\label{fig:Prelim_GARunTime}
 \end{figure}
 
-\Cref{fig:Prelim_AlgSpeedupRunTime} compares the sDEP run time with the GA run times shown in \Cref{fig:Prelim_GARunTime} in terms of absolute CPU and approximate wall clock run times and the GA approach's mean speedup ratio.  For each set of scenarios, the sDEP approach was performed 5 times to find mean run times and associated confidence intervals.  As the number of scenarios sampled increases, the CPU time of the sDEP expectedly increased exponentially, and failed to converge to a final solution with 50 scenarios within the time limit of 15 minutes (wall clock time).  Except for the trivial five scenario case--which allocated zero BSs to the VWN--the GA approach converged to a solution in less CPU time than the sDEP.  When 20 scenarios are sampled, the GA provided a 4.4x speedup over the sDEP approach; at 45 scenarios, this increased to 46.3x.
+\Cref{fig:Prelim_AlgSpeedupRunTime} compares the sDEP run time with the GA run times shown in \Cref{fig:Prelim_GARunTime} in terms of absolute CPU and approximate wall clock run times and the GA approach's mean speedup ratio.  For each set of scenarios, the sDEP approach was performed 5 times to find mean run times and associated confidence intervals.  As the number of scenarios sampled increased, the CPU time of the sDEP increased exponentially, and failed to converge to a final solution with 50 scenarios within the time limit of 15 minutes (wall clock time), and is not plotted in \Cref{fig:Prelim_AlgSpeedupRunTime}.  Except for the trivial five scenario case--which allocated zero BSs to the VWN--the GA approach converged to a solution in less CPU time than the sDEP.  When 20 scenarios are sampled, the GA provided a 4.4x speedup over the sDEP approach; at 45 scenarios, this increased to 46.3x.
 
 \begin{figure}[ht]
 	\centering
@@ -1065,9 +1065,11 @@ In this subsection I will present the results of these preliminary simulations. 
 	\label{fig:Prelim_AlgSpeedupRunTime}
 \end{figure}
 
-CPLEX is capable of parallelizing across the 8 CPU cores, allowing for the sDEP approach's wall clock run time to be, at minimum, one-eighth the CPU run time\footnote{In reality, the CPU time was approximately 7.1x that of the wall clock time, not 8x.  The 50 scenario case did not complete in 15 minutes wall clock time (ideally 7200 seconds CPU time; 8 threads x 900 seconds), but only took 6,366.7 seconds CPU time.}.  This theoretical wall clock limit is displayed as the sDEP's adjusted time.  In terms of this adjusted wall clock time, the sDEP is more competitive to the GA.  However, the GA converges in less time for 25 or more sampled scenarios.
+CPLEX is capable of parallelizing across the PC's 8 CPU cores, allowing for the sDEP approach's wall clock run time to be, at minimum, one-eighth the CPU run time\footnote{Experimentally, the CPU time was approximately 7.1x that of the wall clock time, not 8x.  The 50 scenario case (not plotted) did not complete in 15 minutes wall clock time (ideally 7200 seconds CPU time; 8 threads of 900 seconds each), but only took 6,367 seconds CPU time.}.  This theoretical wall clock limit is displayed as the sDEP's adjusted time.  In terms of this adjusted wall clock time, the sDEP is more competitive to the GA.  However, the GA converges in less time for 25 or more sampled scenarios.
 
 %Discuss the time trends of the sDEP vs \alpha
+
+\subsubsection{Network Cost}
 
 The trade off for the genetic algorithm's improved run time is that the solution provided is less optimal than the sampled DEP, as indicated by an increased cost for the VNB to build the VWN.  \Cref{fig:Prelim_VWNCompCost} compares the increasing cost of the sampled DEP as $\alpha$ increases with the cost of the various genetic algorithm solutions.  On average, the genetic algorithm incurs a 36\% increased cost in selecting the BSs for the VWN.  At minimum, the incurred cost is only 20\% than the sampled DEP, which implies the genetic algorithm might be terminating early, and a tighter solution might be found by increasing $G_\text{halt}$.  It should also be noted that one unit of cost is one additional BS being selected for the VWN, and the sampled DEP selections for $\alpha \geq 30$ have a cost of only 10 BSs.  Any variance that incurs one additional BS for the genetic algorithm incurs 10\% increased cost.  Increasing the number of BSs required to comprise the VWN would introduce additional granularity in $\mathcal{S}$ that might decrease the inefficiency of the genetic algorithm.  This was not done as this data set was chosen specifically so the sampled DEP would terminate within 15 minutes (i.e., in a reasonable amount of time); increasing the number of BSs available to the VNB drastically increases the time it would take the sampled DEP to converge to a solution.
 
@@ -1077,6 +1079,8 @@ The trade off for the genetic algorithm's improved run time is that the solution
 	\caption[VWN Costs for Preliminary Simulations]{VWN Costs; 95\% bootstrap confidence interval shown in black}
 	\label{fig:Prelim_VWNCompCost}
 \end{figure}
+
+\subsubsection{Demand Satisfaction}
 
 There is a direct correlation between the number of BSs in the VWN and its capability for satisfying demand.  As the cost - and, therefore, the number of BSs - increases for a given solution, the average demand satisfaction trends towards 100\%, as shown in \Cref{fig:Prelim_VWNCompSatis}.  Because of this overallocation of resources, the genetic algorithm solutions have a very high demand satisfaction, averaging 99.9\% satisfaction and reaching 100\% for some solutions.  The worst performing genetic algorithm solution exceeded 99.1\% demand satisfaction.  The most expensive 10-BS sampled DEP solutions reach 99.2\% when slicing to the same set of demand point scenarios, $\Omega$, that determined the sampled DEP BS selection.
 
@@ -1095,6 +1099,11 @@ When the set of demand points change to a scenario no longer in $\Omega$, the sa
 	\caption{50 new scenarios of 200 SP demand points evalutaed with Problem 3.}
 	\label{fig:Prelim_VWNCompSatisEval}
 \end{figure}
+
+\subsubsection{Takeaway Conclusions}
+
+\change{Do this}%
+\textit{Place takeaway conclusions of the preliminary results here.}
 
 \section{Case I: Single SP with Homogeneous Resources} \label{sec:caseI}
 
