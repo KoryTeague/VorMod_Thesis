@@ -977,7 +977,7 @@ Number of Demand Points ($M$) & 75 \\
 \hline 
 Number of SPs ($N$) & 1 \\
 \hline
-Number of Sampled Scenarios ($O$) & $\{5,\, 10,\, \ldots,\, 50\}$ \iffalse 25 \fi \\ 
+Number of Sampled Scenarios ($O$) & $\{5,\, 10,\, \ldots,\, 50\}$ and 25 \\ 
 \hline 
 BS cost ($c_s,\, \forall s \in \mathcal{S}$) & 1 \\ 
 \hline 
@@ -1052,7 +1052,7 @@ In this subsection I will present the results of these preliminary simulations. 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[height=0.45\textheight]{Figures/Prelim_GARuntime50}
-	\caption[GA Approach CPU run time PDF over 50 runs]{GA Approach CPU run time PDF over 50 runs; mean (125.9 secs) shown in red, 95\% confidence interval (118.4, 135.4) shown in dashed black}
+	\caption[GA Approach CPU run time PDF over 50 runs of the preliminary simulations]{GA Approach CPU run time PDF over 50 runs; mean (125.9 secs) shown in red, 95\% confidence interval (118.4, 135.4) shown in dashed black}
 	\label{fig:Prelim_GARunTime}
 \end{figure}
 
@@ -1061,13 +1061,22 @@ In this subsection I will present the results of these preliminary simulations. 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[height=0.45\textheight]{Figures/Prelim_VOSGA_SpeedupRatio_AbsComp_alpha20}
-	\caption[Run time comparison of the GA and sDEP approaches with $\alpha = 20$]{Run time comparison of the GA and sDEP approaches with $\alpha = 20$; sDEP confidence intervals shown as errorbars, GA confidence intervals too small to display}
+	\caption[Preliminary simulation run time comparison of the GA and sDEP approaches with fixed $\alpha$]{Run time comparison of the GA and sDEP approaches with $\alpha = 20$ and varying numbers of sampled scenarios; sDEP confidence intervals shown as errorbars, GA confidence intervals too small to display}
 	\label{fig:Prelim_AlgSpeedupRunTime}
 \end{figure}
 
 CPLEX is capable of parallelizing across the PC's 8 CPU cores, allowing for the sDEP approach's wall clock run time to be, at minimum, one-eighth the CPU run time\footnote{Experimentally, the CPU time was approximately 7.1x that of the wall clock time, not 8x.  The 50 scenario case (not plotted) did not complete in 15 minutes wall clock time (ideally 7200 seconds CPU time; 8 threads of 900 seconds each), but only took 6,367 seconds CPU time.}.  This theoretical wall clock limit is displayed as the sDEP's adjusted time.  In terms of this adjusted wall clock time, the sDEP is more competitive to the GA.  However, the GA converges in less time for 25 or more sampled scenarios.
 
-%Discuss the time trends of the sDEP vs \alpha
+\Cref{fig:Prelim_O25_CPUTime} shows run time trend for the sDEP approach for varying $\alpha$ and a fixed ($O = 25$) number of scenarios.  Except for the region around $\alpha = \left\{ 20,\, 25 \right\}$, shows a fairly consistent run time requirement for the sDEP approach for varying values of $\alpha$.  Due to this, $\alpha$ is not a primary concern to compare the GA run time to the sDEP; for this setup the GA provided an approximate speedup ratio of approximately 10.1x.  However, the sole exceptions of $\alpha = \left\{ 20,\, 25 \right\}$ are significant, as CPLEX encounters a critical point in the optimization of the sDEP model within the region surrounding those values of $\alpha$.  Within this region, the optimal resource selection is less immediately apparent to the branch-and-cut algorithm CPLEX uses; below and it is apparent to use fewer resources, above more resources.  This is discussed further as an analysis of the constructed networks' cost.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[height=0.45\textheight]{Figures/Prelim_O25_CPUTime}
+	\caption[Preliminary simulation run time comparison of the GA and sDEP approaches with fixed scenarios]{Run time comparison of the GA and sDEP approaches with 25 scenarios and varying values of $\alpha$}
+	\label{fig:Prelim_O25_CPUTime}
+\end{figure}
+
+One caveat to the simulations run in \Cref{fig:Prelim_AlgSpeedupRunTime} and \Cref{fig:Prelim_O25_CPUTime} is that the data sets shown do not intersect.  That is, it would be expected that the value of \Cref{fig:Prelim_AlgSpeedupRunTime} at 25 scenarios (1,562 seconds) would be on the order of the value of \Cref{fig:Prelim_O25_CPUTime} at $\alpha = 20$ (5,641 seconds).  That they do not is worth noting.  The data sets that were used to generate the two figures only differ in the scenarios of demand points; the 5 to 50 scenarios used in \Cref{fig:Prelim_AlgSpeedupRunTime} are independent of and distinct from the 25 scenarios used in \Cref{fig:Prelim_O25_CPUTime}.  All other parameters (e.g., resources, number of demand points per scenario, $\lambda$) are identical.
 
 \subsubsection{Network Cost}
 
