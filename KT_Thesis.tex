@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: August 27, 2018
+% REVISED: August 28, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -130,10 +130,16 @@
   \fi
   \endgroup
 }
-% End of \widebar implementation
+% End of \widebar setup
 
+% widebar command implementation
 \newcommand*\mean[1]{\widebar{#1}}
+
+% Indicator function command implementation
 \newcommand{\ind}[1]{\mathbbm{1}_{\left\{ #1 \right\}}}
+
+% exponent number (e-notation) command implementation
+\newcommand{\expnumber}[2]{{#1}\mathrm{e}{#2}}
 
 %\DeclareMathOperator*{\argmin}{arg\,min}
 \DeclareMathOperator*{\argmin}{minimize}
@@ -1047,12 +1053,12 @@ In this subsection I will present the results of these preliminary simulations. 
 
 \subsubsection{Run Time}
 
-\Cref{fig:Prelim_GARunTime} shows the run time trend of the GA approach as a histogram PDF.  Across 50 independent simulations, the GA approach converges to a solution in 94 to 209 seconds, averaging 125.9 seconds (CPU time) with a 95\% confidence interval of (118.4, 135.4).  These results are heavily weighted towards the low end, with more than 20\% of simulations terminating in under 100 seconds.
+\Cref{fig:Prelim_GARunTime} shows the run time trend of the GA approach as a histogram PMF.  Across 50 independent simulations, the GA approach converges to a solution in 94 to 209 seconds, averaging 125.9 seconds (CPU time) with a 95\% confidence interval of (118.4, 135.4).  These results are heavily weighted towards the low end, with more than 20\% of simulations terminating in under 100 seconds.
 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[height=0.45\textheight]{Figures/Prelim_GARuntime50}
-	\caption[GA Approach CPU run time PDF over 50 runs of the preliminary simulations]{GA Approach CPU run time PDF over 50 runs; mean (125.9 secs) shown in red, 95\% confidence interval (118.4, 135.4) shown in dashed black}
+	\caption[GA Approach CPU run time PDF over 50 runs of the preliminary simulations]{GA Approach CPU run time PDF over 50 runs.  Mean (125.9 secs) shown in orange, 95\% confidence interval (118.4, 135.4) shown in dashed black.}
 	\label{fig:Prelim_GARunTime}
 \end{figure}
 
@@ -1078,7 +1084,7 @@ CPLEX is capable of parallelizing across the PC's 8 CPU cores, allowing for the 
 
 \subsubsection{Network Cost}
 
-The spike of CPU run times corresponds to the regions of $\alpha$ that the sDEP solution is in transition, where the optimal number of resources selected is more difficult for the CPLEX branch-and-cut algorithm to determine.  This can be seen in \Cref{fig:Prelim_sDEPCompCostRunTime}, where the run time spike of $\alpha = \left[ 25,\, 45 \right]$ surrounds the transition between the selection of 9 BSs and 10 BSs.  CPLEX converges to a solution ($\alpha < 25$, 9 BSs; $\alpha > 45$, 10 BSs) within around 1000 seconds CPU time.  However, within this critical region, the CPLEX branch-and-cut algorithm is unable to cut many considered solutions, increasing run time up to the 6000 seconds CPU time.  This trend continues outside of the shown values of $\alpha$; at higher values, such as $\alpha \approx 10^6$, there is another spike where CPLEX is unable to complete within 15 minutes as the solution transitions between 12 and 13 selected BSs.
+The spike of CPU run times corresponds to the regions of $\alpha$ that the sDEP solution is in transition, where the optimal number of resources selected is more difficult for the CPLEX branch-and-cut algorithm to determine.  This can be seen in \Cref{fig:Prelim_sDEPCompCostRunTime}, where the run time spike of $\alpha = \left[ 25,\, 45 \right]$ surrounds the transition between the selection of 9 BSs and 10 BSs.  CPLEX converges to a solution ($\alpha < 25$, 9 BSs; $\alpha > 45$, 10 BSs) within approximately 1000 seconds.  However, within this critical region, the CPLEX branch-and-cut algorithm is unable to cut many close-to-feasible solutions, increasing run time up to 6000 seconds.
 
 \begin{figure}[ht]
 	\centering
@@ -1087,15 +1093,41 @@ The spike of CPU run times corresponds to the regions of $\alpha$ that the sDEP 
 	\label{fig:Prelim_sDEPCompCostRunTime}
 \end{figure}
 
-% Then lead into GA Cost for the values tested (Histogram?  Cost vs runtime?).  Talk about the cost characteristics.  Imply that modifying the magnitude of $\lambda$ would be similar to affecting $\alpha$ in the sDEP, and allow the GA to allocate less and more resources fo the VWN
-
-% Directly compare the sDEP and the GA costs
-
-The trade off for the GA's improved run time is that the solution provided is less optimal than the sDEP, as indicated by an increased cost for the VNB to build the VWN.  \Cref{fig:Prelim_VWNCompCost} compares the increasing cost of the sDEP as $\alpha$ increases with the cost of the various GA solutions.  On average, the GA incurs a 36\% increased cost for the VWN, a significant amount of incurred error.
+This trend continues for higher values of $\alpha$.  As shown in \Cref{fig:Prelim_sDEPCompCostRunTimeExpanded}, the region surrounding the transition between selecting 11 and 12 BSs ($\alpha \approx \left[ \expnumber{2.2}{2},\, \expnumber{4.6}{3} \right]$) has a wider spike before settling down to easier solutions, including the trivial, all-BS case for $\alpha \geq \expnumber{1.0}{6}$.  It should be noted that for $\alpha = \left\{ \expnumber{4.6}{2},\, \expnumber{1.0}{3} \right\}$ the sDEP model did not complete within the 15 minute (wall clock) time limit, and the solution presented for those values is not necessarily the most optimal solution for the problem, only the most optimal solution found.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[height=0.45\textheight]{Figures/Prelim_ComparisonCost_VOSGA25ScenarioSet}
+	\includegraphics[height=0.45\textheight]{Figures/Prelim_O25sDEPComparisonCostRunTimeExpandedAlpha}
+	\caption[Expanded preliminary simulation comparison of sDEP run time and VWN cost]{Comparison of sDEP CPU run time and VWN construction cost for further values of $\alpha$.}
+	\label{fig:Prelim_sDEPCompCostRunTimeExpanded}
+\end{figure}
+
+The GA approach settles on solutions with four different values of network cost.  \Cref{fig:Prelim_GACostsPMF} visualizes these four types of solutions as a histogram PMF of the 50 GA simulations.  Half of the simulations ended with a selection of 13 BSs.  However, almost half ended with 14 or 15 selected BSs as the optimal selection; this implies that the GA is terminating too early for the solutions to settle into the better, more common 13-BS solution.  This is further implied by the single 12-BS solution, which, like all of the other solutions, is neither overcoverage nor overcapacity.  The 12-BS solution is completely feasible and stronger than all 49 other solutions.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[height=0.45\textheight]{Figures/Prelim_GACostsPMF}
+	\caption[GA approach VWN cost trend for preliminary simulations]{PMF of constructed VWN costs of the GA approach.  Mean (13.6 BSs) shown in orange, 95\% confidence interval (13.4, 13.82) shown in dashed black.}
+	\label{fig:Prelim_GACostsPMF}
+\end{figure}
+
+\Cref{fig:Prelim_GARunTimesVCosts} plots the costs of the various GA solutions against their CPU run times.  There is no apparent trend in the plot; a linear line of best fit would be sloping upwards, implying that more time would allocate more resources.  However, the 12-BS solution (189.9 seconds) is far above the mean run time (125.9 seconds), while most 13-BS solutions are below.  The GA discovers an easy, weak solution of 13 BSs fairly quickly and halts before it has a reasonable chance to discover the stronger but more difficult-to-find 12-BS solution.  The GA run time will be extended in the proper test cases (\Cref{sec:caseI,sec:caseII}) to avoid premature halting.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[height=0.45\textheight]{Figures/Prelim_GARunTimesVCosts_cis}
+	\caption[GA approach VWN cost and run time trend for preliminary simulations]{Various GA simulation solution costs and associate CPU run times.  Means shown in orange, 95\% confidence intervals shown in dashed black.}
+	\label{fig:Prelim_GARunTimesVCosts}
+\end{figure}
+
+% Directly compare the sDEP and the GA costs
+The trade off for the GA's improved run time is that the solution provided is expected to be less optimal than the sDEP, as indicated by an increased cost for the VWN and/or a decreased demand satisfaction compared to the sDEP.  \Cref{fig:Prelim_VWNCompCost} compares the cost of the sDEP as $\alpha$ increases with the cost of the various GA solutions.  
+
+On average, the GA incurs a 36\% increased cost for the VWN, a significant amount of incurred error.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[height=0.45\textheight]{Figures/Prelim_O25sDEPGACostComparison_Expanded}
 	\caption[Preliminary simulation constructed VWN costs]{VWN Costs; 95\% confidence interval shown in black}
 	\label{fig:Prelim_VWNCompCost}
 \end{figure}
@@ -1135,13 +1167,29 @@ In this section I present the first test case as an extension of last section's 
 
 \subsection{Results} \label{subsec:caseI_results}
 
-\section{Case II: Single SP with Heterogeneous Resources} \label{caseII}
+\subsubsection{Run Time}
+
+\subsubsection{Network Cost}
+
+\subsubsection{Demand Satisfaction}
+
+\subsubsection{Takeaway Conclusions}
+
+\section{Case II: Single SP with Heterogeneous Resources} \label{sec:caseII}
 
 In this section I present the second test
 
 \subsection{Setup} \label{subsec:caseII_setup}
 
 \subsection{Results} \label{subsec:caseII_results}
+
+\subsubsection{Run Time}
+
+\subsubsection{Network Cost}
+
+\subsubsection{Demand Satisfaction}
+
+\subsubsection{Takeaway Conclusions}
 
 \iffalse
 In \Cref{fig:AlgSpeedupRunTime} is a comparison of the approach run times.  It shows the run times of both the DEP and genetic algorithm in terms of the speedup ratio and in absolute number of seconds.  As the number of scenarios sampled increases, the CPU run time of the sampled DEP increases exponentionally, and fails to converge to a final solution with 50 scenarios within the time limit of 15 minutes.  Except for the 5 scenario case, the genetic algorithm converges to a solution in less CPU time (125.8 seconds) than the sampled DEP.  When 20 scenarios are sampled, the DEP takes approximately 440\% of the time as the genetic algorithm; at 45 scenarios, this has increased to 4,630\%.  CPLEX is capable of parallelizing across the 8 CPU cores, allowing for the wall clock run time to be, at minimum, one-eighth the CPU run time.  In terms of the adjusted approximate ``wall clock" time, the genetic algorithm converges in less wall clock time than the sampled DEP for 25 or more sampled scenarios.
