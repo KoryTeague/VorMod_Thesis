@@ -1067,7 +1067,7 @@ In this subsection I will present the results of these preliminary simulations. 
 
 CPLEX is capable of parallelizing across the PC's 8 CPU cores, allowing for the sDEP approach's wall clock run time to be, at minimum, one-eighth the CPU run time\footnote{Experimentally, the CPU time was approximately 7.1x that of the wall clock time, not 8x.  The 50 scenario case (not plotted) did not complete in 15 minutes wall clock time (ideally 7200 seconds CPU time; 8 threads of 900 seconds each), but occupied only 6,367 seconds CPU time before the time limit expired.}.  This theoretical wall clock limit is displayed as the sDEP's adjusted time.  In terms of this adjusted wall clock time, the sDEP is more competitive to the GA.  However, the GA converges in less time for 25 or more sampled scenarios.
 
-\Cref{fig:Prelim_O25_CPUTime} provides a comparison of the run time trend for the sDEP approach for varying $\alpha$ and a fixed ($O = 25$) number of scenarios.  Except for the region around $\alpha = \left[ 25,\, 45 \right]$, shows a fairly consistent run time requirement for the sDEP approach for varying values of $\alpha$.  Due to this, $\alpha$ is not a primary concern to compare the GA run time to the sDEP; for this setup the GA provided an approximate speedup ratio of approximately 10.1x.  However, the region of $\alpha = \left[ 25,\, 45 \right]$ is significant, as, within the region, CPLEX approaches a critical point in the optimization of the sDEP model.  Within this region, the optimal resource selection is less immediately apparent to the branch-and-cut algorithm CPLEX uses; below and it is apparent to use fewer resources, above more resources.  This is discussed further as an analysis of the constructed network's cost.
+\Cref{fig:Prelim_O25_CPUTime} provides a comparison of the run time trend for the sDEP approach for varying $\alpha$ and a fixed ($O = 25$) number of scenarios.  Except for the region around $\alpha = \left[ 25,\, 45 \right]$, shows a fairly consistent run time requirement for the sDEP approach for varying values of $\alpha$.  Due to this, $\alpha$ is not a primary concern to compare the GA run time to the sDEP; for this setup the GA provided an approximate speedup ratio of approximately 10.1x.  However, the region of $\alpha = \left[ 25,\, 45 \right]$ is significant, as, within the region, CPLEX approaches a critical point in the optimization of the sDEP model.  Within this region, the optimal resource selection is less immediately apparent to the branch-and-cut algorithm CPLEX uses; below and it is apparent to use fewer resources, above more resources.
 
 \begin{figure}[ht]
 	\centering
@@ -1078,7 +1078,20 @@ CPLEX is capable of parallelizing across the PC's 8 CPU cores, allowing for the 
 
 \subsubsection{Network Cost}
 
-The trade off for the GA's improved run time is that the solution provided is less optimal than the sDEP, as indicated by an increased cost for the VNB to build the VWN.  \Cref{fig:Prelim_VWNCompCost} compares the increasing cost of the sDEP as $\alpha$ increases with the cost of the various GA solutions.  On average, the GA incurs a 36\% increased cost in selecting the BSs for the VWN, a significant amount of incurred error.
+The spike of CPU run times corresponds to the regions of $\alpha$ that the sDEP solution is in transition, where the optimal number of resources selected is more difficult for the CPLEX branch-and-cut algorithm to determine.  This can be seen in \Cref{fig:Prelim_sDEPCompCostRunTime}, where the run time spike of $\alpha = \left[ 25,\, 45 \right]$ surrounds the transition between the selection of 9 BSs and 10 BSs.  CPLEX converges to a solution ($\alpha < 25$, 9 BSs; $\alpha > 45$, 10 BSs) within around 1000 seconds CPU time.  However, within this critical region, the CPLEX branch-and-cut algorithm is unable to cut many considered solutions, increasing run time up to the 6000 seconds CPU time.  This trend continues outside of the shown values of $\alpha$; at higher values, such as $\alpha \approx 10^6$, there is another spike where CPLEX is unable to complete within 15 minutes as the solution transitions between 12 and 13 selected BSs.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[height=0.45\textheight]{Figures/Prelim_O25sDEPComparisonCostRunTime}
+	\caption[Preliminary simulation comparison of sDEP run time and VWN cost]{Comparison of sDEP CPU run time and VWN construction cost}
+	\label{fig:Prelim_sDEPCompCostRunTime}
+\end{figure}
+
+% Then lead into GA Cost for the values tested (Histogram?  Cost vs runtime?).  Talk about the cost characteristics.  Imply that modifying the magnitude of $\lambda$ would be similar to affecting $\alpha$ in the sDEP, and allow the GA to allocate less and more resources fo the VWN
+
+% Directly compare the sDEP and the GA costs
+
+The trade off for the GA's improved run time is that the solution provided is less optimal than the sDEP, as indicated by an increased cost for the VNB to build the VWN.  \Cref{fig:Prelim_VWNCompCost} compares the increasing cost of the sDEP as $\alpha$ increases with the cost of the various GA solutions.  On average, the GA incurs a 36\% increased cost for the VWN, a significant amount of incurred error.
 
 \begin{figure}[ht]
 	\centering
