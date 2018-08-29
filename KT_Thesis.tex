@@ -1120,31 +1120,71 @@ The GA approach settles on solutions with four different values of network cost.
 	\label{fig:Prelim_GARunTimesVCosts}
 \end{figure}
 
-% Directly compare the sDEP and the GA costs
-The trade off for the GA's improved run time is that the solution provided is expected to be less optimal than the sDEP, as indicated by an increased cost for the VWN and/or a decreased demand satisfaction compared to the sDEP.  \Cref{fig:Prelim_VWNCompCost} compares the cost of the sDEP as $\alpha$ increases with the cost of the various GA solutions.  
-
-On average, the GA incurs a 36\% increased cost for the VWN, a significant amount of incurred error.
+The trade off for the GA's improved run time is that the solution provided is expected to be less optimal than the sDEP, as indicated by decreased demand satisfaction for the constructed VWN compared to the sDEP for similar cost networks.  \Cref{fig:Prelim_VWNCompCost} compares the cost of the sDEP as $\alpha$ increases with the cost of the GA solutions.  It should be noted that, since the constructed networks are on the order of ten BSs, each addition or removal of a BS incurs a large amount of cost error.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[height=0.45\textheight]{Figures/Prelim_O25sDEPGACostComparison_Expanded}
-	\caption[Preliminary simulation constructed VWN costs]{VWN Costs; 95\% confidence interval shown in black}
+	\includegraphics[height=0.45\textheight]{Figures/Prelim_O25sDEPGACostComparison_Expanded2}
+	\caption[Preliminary simulation constructed VWN costs]{Constructed VWN Costs for sDEP and GA approaches.}
 	\label{fig:Prelim_VWNCompCost}
 \end{figure}
 
-At minimum, the incurred cost is only 20\% than the sampled DEP, which implies the genetic algorithm might be terminating early, and a tighter solution might be found by increasing $G_\text{halt}$.  It should also be noted that one unit of cost is one additional BS being selected for the VWN, and the sampled DEP selections for $\alpha \geq 30$ have a cost of only 10 BSs.  Any variance that incurs one additional BS for the genetic algorithm incurs 10\% increased cost.  Increasing the number of BSs required to comprise the VWN would introduce additional granularity in $\mathcal{S}$ that might decrease the inefficiency of the genetic algorithm.  This was not done as this data set was chosen specifically so the sampled DEP would terminate within 15 minutes (i.e., in a reasonable amount of time); increasing the number of BSs available to the VNB drastically increases the time it would take the sampled DEP to converge to a solution.
+Differing ranges of $\alpha$ provide distinct solutions to compare against the GA, notably: $\alpha < \expnumber{4.6}{2}$, where the sDEP provides a solution of less cost than the GA; $\alpha \approx \left[ \expnumber{4.6}{2},\, \expnumber{1.0}{4} \right]$, where the sDEP provides a solution of equal cost to the best GA solution; $\alpha \approx \left\{ \expnumber{2.2}{4},\, \expnumber{4.6}{4} \right\}$, where the GA provides solutions around the mean of the GA; and $\alpha \geq \expnumber{1.0}{5}$, where the sDEP provides solutions that are more costly than the GA.  Of these, the first two regions are of the most interest.  The first range generates networks with lower cost than the GA and is expected to provide less demand satisfaction.  Alternatively, the second range generates a network with equal cost to the GA and should provide equal or greater demand satisfaction.
+
+The later test cases (\Cref{sec:caseI,sec:caseII}) will consider a modification to $\lambda_n$ to allow the GA approach to construct networks with more or less intended cost.
 
 \subsubsection{Demand Satisfaction}
 
-There is a direct correlation between the number of BSs in the VWN and its capability for satisfying demand.  As the cost - and, therefore, the number of BSs - increases for a given solution, the average demand satisfaction trends towards 100\%, as shown in \Cref{fig:Prelim_VWNCompSatis}.  Because of this overallocation of resources, the genetic algorithm solutions have a very high demand satisfaction, averaging 99.9\% satisfaction and reaching 100\% for some solutions.  The worst performing genetic algorithm solution exceeded 99.1\% demand satisfaction.  The most expensive 10-BS sampled DEP solutions reach 99.2\% when slicing to the same set of demand point scenarios, $\Omega$, that determined the sampled DEP BS selection.
+There is a direct correlation between the number of BSs in the VWN and its capability for satisfying demand.  As the cost increases for a given solution, the average demand satisfaction trends towards 100\%.  This trend for the sDEP and the GA is depicted in \Cref{fig:Prelim_VOSDemandSatisfaction} and \Cref{tab:Prelim_DemandSatisfaction}.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[height=0.45\textheight]{Figures/Prelim_ComparisonSatisfaction}
-	\caption{SP demand point satisfaction}
-	\label{fig:Prelim_VWNCompSatis}
+	\includegraphics[height=0.45\textheight]{Figures/Prelim_O25_VOSDemandSatisfaction}
+	\caption[Preliminary simulation sDEP demand satisfaction]{Demand satisfaction of various sDEP constructed VWns.}
+	\label{fig:Prelim_VOSDemandSatisfaction}
 \end{figure}
 
+\begin{table}[htp]
+\centering
+\caption{Demand Satisfaction Results for Various sDEP- and the GA-Constructed VWNs for Preliminary Simulations}
+\begin{tabular}{|c|c|} 
+\hline
+\textbf{Number of Selected BSs; sDEP} & \textbf{Demand Satisfaction} \\
+\hline
+0 & 0.00\% \\
+\hline
+7 & 78.1\% \\
+\hline
+9 & 95.8\% \\
+\hline
+10 & 99.0\% \\
+\hline
+11 & 99.7\% \\
+\hline
+12+ & 100\% \\
+\hline
+\hline
+\textbf{Number of Solutions, BSs; GA} & \textbf{Demand Satisfaction} \\
+\hline
+1, 13-BS & 99.99\% \\
+\hline
+1, 14-BS & 99.99\% \\
+\hline
+48, all others & 100.0\% \\
+\hline
+\end{tabular}
+\label{tab:Prelim_DemandSatisfaction}
+\end{table}
+
+Demand satisfaction approaches 100\% until reaching it for all sDEP solutions containing 12 or more BSs.  This covers the latter two ranges described while discussing VWN cost (i.e., $\alpha \approx \left\{ \expnumber{2.2}{4},\, \expnumber{4.6}{4} \right\}$ and $\alpha \geq \expnumber{1.0}{5}$), which generate 100\% demand satisfaction for the scenarios that they were optimized for.  That is, VWNs constructed by the sDEP approach that have similar (or higher) VWN cost to the average GA solution have perfect demand satisfaction.  Similarly, 48 of the 50 GA approaches also have 100\% demand satisfaction.  These solutions are over allocating resources to the VWNs, but this shows that the GA does not allocate ineffectively.
+
+Further, the second sDEP range (i.e., $\alpha \approx \left[ \expnumber{4.6}{2},\, \expnumber{1.0}{4} \right]$) also allocates sufficient resources (12 BSs) to provide 100\% demand satisfaction.  The single 12-BS GA solution, which shows the GA is capable of finding an equivalent cost network to the sDEP in this range, also has 100\% demand satisfaction.  For this critical range where the sDEP and the best GA findings intersect, the GA provides a 100\% demand satisfaction network for no additional cost than the sDEP, and provides it in 189.9 seconds, or a 36.4x CPU time speedup; for equal cost networks, the GA provides a network with zero error in these preliminary simulations.
+
+The first sDEP range (i.e., $\alpha < \expnumber{4.6}{2}$) is wholly described by solutions that provide less than 100\% demand satisfaction, but quickly approach that value with obviously diminishing returns.  This does inform to appropriate values of $\alpha$ to consider within the VNB to aim for specific percent demand satisfactions, though this will likely change according problem parameters.  What this range most importantly shows is that there does not exist, at least as far as the sDEP is an approximation of the original two-stage stochastic optimization program, any solutions that give equal demand satisfaction for less cost than the GA's solution.  This shows that the GA's intent--providing a minimum cost network for maximal demand satisfaction with low error to the optimal--is validly approached; the GA optimizes for a network that provides 100\% demand satisfaction, and provides that optimization with zero error.
+
+As mentioned within analysis of VWN cost, the two following test cases (\Cref{sec:caseI,sec:caseII}) consider a modification to $\lambda_n$ that allows for the GA to consider networks not aiming to provide 100\% demand satisfaction.
+
+\improvement{Pick up from here}%
 When the set of demand points change to a scenario no longer in $\Omega$, the sampled DEP performs very similarly.  \Cref{fig:Prelim_VWNCompSatisEval} shows the demand satisfaction for both the sampled DEP and genetic algorithm BS selections when sliced to a new set of scenarios as evaluated with Problem 3.  Here, the number of demand points increases to 200 points per scenario, each with 66.8 kbps rate demand, across 50 independent scenarios.  The demand satisfaction trend of the sampled DEP BS selection follows very closely to the original set of scenarios but hits a maximum of 99.0\% demand satisfaction with 10 BSs.  In comparison, the SP demand point scenarios are far more beneficial to the genetic algorithm, which reaches greater than 99.99\% demand satisfaction for all generated VWNs.  This is expected as a side effect of the increased number of points and scenarios more accurately describing a sampling of the original SSLT demand density field of the SP, $\rho$.
 
 \begin{figure}[ht]
