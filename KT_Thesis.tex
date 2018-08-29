@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: August 28, 2018
+% REVISED: August 29, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -338,7 +338,7 @@ The third strategy involves the use of massive MIMO to increase spectral efficie
 
 \section{Virtualization, Virtualized Wireless Networks, and the Networks without Borders Paradigm} \label{sec:virtualization}
 
-One approach towards minimizing CapEx and OpEx of networks has been the utilization of resource sharing.  Resource sharing encompases the sharing of resources between multiple networks and can take the form of \emph{passive sharing}--referring to the sharing of physical sites, tower masts, cabling, power supplies, and other components that are not actively on part of the network architecture--and \emph{active sharing}--referring to the sharing of the active network architecture itself, such as backhaul and RAN.  The practice has been utilized since 2G and 3G networks as a tool for reducing CapEx in expanding the network~\cite{1421931}.  Since then, resource sharing has become more common; it is now available, standardized~\cite{3GPP_TS_23.251}, and implemented in many major carrier networks.  As reported by Costa-Perez et al.~\cite{6553675}, a 2010 market survey~\cite{NetSharingReport} found that over 65\% of European MNOs have deployed mobile infrastructure sharing in some form.  It was further reported~\cite{6553675} that 20\% of cells carry about 50\% of total network traffic, with the remaining 80\% of cells still causing OpEx with less utility.  Through active resource sharing, networks can reduce or avoid redundant deployments and wasted capacity, reducing overall CapEx and OpEx.
+One approach towards minimizing CapEx and OpEx of networks has been the utilization of resource sharing.  Resource sharing encompases the sharing of resources between multiple networks and can take the form of \emph{passive sharing}---referring to the sharing of physical sites, tower masts, cabling, power supplies, and other components that are not actively on part of the network architecture---and \emph{active sharing}---referring to the sharing of the active network architecture itself, such as backhaul and RAN.  The practice has been utilized since 2G and 3G networks as a tool for reducing CapEx in expanding the network~\cite{1421931}.  Since then, resource sharing has become more common; it is now available, standardized~\cite{3GPP_TS_23.251}, and implemented in many major carrier networks.  As reported by Costa-Perez et al.~\cite{6553675}, a 2010 market survey~\cite{NetSharingReport} found that over 65\% of European MNOs have deployed mobile infrastructure sharing in some form.  It was further reported~\cite{6553675} that 20\% of cells carry about 50\% of total network traffic, with the remaining 80\% of cells still causing OpEx with less utility.  Through active resource sharing, networks can reduce or avoid redundant deployments and wasted capacity, reducing overall CapEx and OpEx.
 
 The increasing prominence of active resource sharing challenges the traditional model of ownership of the various network layers and elements.  Once it became feasible for network operators to utilize resources owned and maintained by other operators, it became possible for these MNOs to operate networks primarily or only using these shared resources.  A given shared resource can be decoupled from a specific physical resource.  This enables it to be adaptively associated with any of a given pool of qualifying physical resources as network conditions allow, establishing the shared resource as a virtual resource.  Further, virtual networks can adapt to changing network conditions, adding and removing virtual resources as capacity requirements change.  For example, an MVNO with a network of virtual resources can add additional virtual resources during peak hours when additional capacity for end user satisfaction is needed, and removing unneeded resources during times of low demand to reduce OpEx of the network.
 
@@ -381,7 +381,7 @@ Recognizing the critical nature of virtualization and resource allocation, this 
 
 RPs deploy and maintain the physical resources that are to be virtualized and offered for use within the virtualization framework and are the various entities that occupy the right-most column of segments (i.e., resources) in the NwoB value chain (\Cref{fig:NwoBValueChain}~\cite{6737248}).  These resources can be in the form of any network-capable resource.  For example, the resources could be BSs as provided by a traditional MNO, a company- or individual-owned WLAN, femtocell access points, available licensed or unlicensed spectrum, or cloud computing.  An RP is then any entity that offers a virtualizable resource, such as a traditional MNO, company, or individual.  RPs maintain the resources, but also determine how the resource would be sliced and shared.
 
-The VNB acts as resource aggregator, VWN constructor, and as intermediary between SPs and RPs.  Therefore, the VNB acts as a combination virtual network operator and resource aggregator in the NwoB value chain (\Cref{fig:NwoBValueChain}~\cite{6737248}).  The VNB aggregates the resources maintained by individual RPs to establish the pool of available virtual resources.  The VNB also coordinates with SPs to understand the demands of their services and constructs VWNs tuned specifically to these demands.  By understanding the needs of the services provided by the SPs, the VNB will evaluate which virtual and virtualizable resources available from the RPs are needed to construct the optimal\footnote{In this network context, ``optimal'' is loosely defined to mean a network that provides the maximum demand satisfaction for the SP at the minimum cost to be paid to the RP.  These two requirements -- maximum demand satisfaction and minimum cost -- are frequently contradictory and need to be balanced by the VNB.} network for the SPs' needs, coordinate with the necessary RPs to obtain access to these resources for a given wholesale (OpEx) cost, and construct the network for the SPs to operate.  Multiple VNBs can coexist, each with their potentially overlapping set of RPs from which to aggregate resources.
+The VNB acts as resource aggregator, VWN constructor, and as intermediary between SPs and RPs.  Therefore, the VNB acts as a combination virtual network operator and resource aggregator in the NwoB value chain (\Cref{fig:NwoBValueChain}~\cite{6737248}).  The VNB aggregates the resources maintained by individual RPs to establish the pool of available virtual resources.  The VNB also coordinates with SPs to understand the demands of their services and constructs VWNs tuned specifically to these demands.  By understanding the needs of the services provided by the SPs, the VNB will evaluate which virtual and virtualizable resources available from the RPs are needed to construct the optimal\footnote{In this network context, ``optimal'' is loosely defined to mean a network that provides the maximum demand satisfaction for the SP at the minimum cost to be paid to the RP.  These two requirements---maximum demand satisfaction and minimum cost---are frequently contradictory and need to be balanced by the VNB.} network for the SPs' needs, coordinate with the necessary RPs to obtain access to these resources for a given wholesale (OpEx) cost, and construct the network for the SPs to operate.  Multiple VNBs can coexist, each with their potentially overlapping set of RPs from which to aggregate resources.
 
 SPs operate similarly to the service providers in the NwoB approach.  Primarily, an SP determines a service that they wish to provide, understands and enumerates the demands that are to be satisfied for that service, and provides the service over the VWN to their end users.  SPs can provide a wide range of services over the network.  The service could be a traditional MNO or be providing MNO-like services, such as voice calling and texting.  Services could cover specific applications, such as IoT, teleconferencing, augmented or virtual reality, or emergency services.  Other examples include traditional over-the-top services, such as Netflix-like or real-time (live) video streaming, social media (Facebook, Twitter, etc.), messaging (Skype, Groupme, etc.), or news/content feeds.  Further, an SP could also bundle several services, either through a single VWN built for the bundle, or by bundling services provided by several SPs.
 
@@ -414,7 +414,7 @@ The focus of this thesis is on optimization approaches largely in the context of
 
 \section{Review of Optimization Methods} \label{sec:optreview}
 
-In this thesis, I address the problem of the creation of optimal networks by a VNB that satisfy the specific demands of SPs using a pool of resources provided by a set of RPs.  This is naturally an optimization problem, in which some objective function is either minimized or maximized.  At it's most basic, optimization techniques (e.g., linear programming, integer programming) will find the set of input parameters that minimize or maximize a single decision variable -- the value of the objective function -- in context of a set of constraints.
+In this thesis, I address the problem of the creation of optimal networks by a VNB that satisfy the specific demands of SPs using a pool of resources provided by a set of RPs.  This is naturally an optimization problem, in which some objective function is either minimized or maximized.  At it's most basic, optimization techniques (e.g., linear programming, integer programming) will find the set of input parameters that minimize or maximize a single decision variable---the value of the objective function---in context of a set of constraints.
 
 \subsection{Stochastic Programming}	\label{subsec:optreview_stoch}
 
@@ -426,7 +426,7 @@ Introducing stochastic parameters and constraints allows the optimization model 
 
 However, standard linear programming techniques cannot solve models with stochastic parameters.  Stochastic programming therefore requires converting the stochastic program into its deterministic equivalent program (DEP) which replaces all stochastic variables with deterministic variables~\cite{stochprogramming}.  The process of forming a DEP from a stochastic program involves converting each stochastic variable into a set of all possible scenarios and scenario probabilities.  These scenarios and scenario probabilities are present within the model as a new dimension and weight for the now-deterministic variable.  To fully encapsulate the stochastic variable, the deterministic equivalent variable may be composed of an infinite set.
 
-Resource allocation problems are typically some form of integer programming--in which all decision variables (unknowns) are integers--or mixed integer programming--in which some decision variables (unknowns) are integers.  Both integer and mixed integer programs are generally\footnote{Some subclasses of integer and mixed integer programs are efficiently solvable, but these are the exception.  Several classic NP-Complete (a subset of NP-Hard) problems~\cite{Karp1972} are integer programs and mixed integer programs.} considered NP-hard\footnote{Finding the minimum resource allocation that provides coverage over a geographic area falls within a category of problems referred to as \emph{minimum set cover problems}.  It is apparent that the problem considered in this thesis--specifically the stochastic program proposed in \Cref{sec:stochopt}--is some form of minimum set cover problem; specifically, it might be referred to as a capacitated set cover problem.  Minimum set cover problems are provably NP-hard and typically rely on approximation solutions to solve in a feasible amount of time~\cite{Korte:2007:CombOptimization}.}.  As the programs increase in scope, they become more computationally complex to solve; accounting for the scenarios of the previously stochastic variables further increases this complexity.  Finding the optimal solution may require more time than is feasible; in the worst case, these problems run in exponential time complexity.
+Resource allocation problems are typically some form of integer programming---in which all decision variables (unknowns) are integers---or mixed integer programming---in which some decision variables (unknowns) are integers.  Both integer and mixed integer programs are generally\footnote{Some subclasses of integer and mixed integer programs are efficiently solvable, but these are the exception.  Several classic NP-Complete (a subset of NP-Hard) problems~\cite{Karp1972} are integer programs and mixed integer programs.} considered NP-hard\footnote{Finding the minimum resource allocation that provides coverage over a geographic area falls within a category of problems referred to as \emph{minimum set cover problems}.  It is apparent that the problem considered in this thesis---specifically the stochastic program proposed in \Cref{sec:stochopt}---is some form of minimum set cover problem; specifically, it might be referred to as a capacitated set cover problem.  Minimum set cover problems are provably NP-hard and typically rely on approximation solutions to solve in a feasible amount of time~\cite{Korte:2007:CombOptimization}.}.  As the programs increase in scope, they become more computationally complex to solve; accounting for the scenarios of the previously stochastic variables further increases this complexity.  Finding the optimal solution may require more time than is feasible; in the worst case, these problems run in exponential time complexity.
 
 \subsection{Metaheuristic Approaches} \label{subsec:optreview_meta}
 
@@ -1062,7 +1062,7 @@ In this subsection I will present the results of these preliminary simulations. 
 	\label{fig:Prelim_GARunTime}
 \end{figure}
 
-\Cref{fig:Prelim_AlgSpeedupRunTime} compares the sDEP run time with the GA run times shown in \Cref{fig:Prelim_GARunTime} in terms of absolute CPU and approximate wall clock run times and the GA approach's mean speedup ratio.  For each set of scenarios, the sDEP approach was performed 5 times to find mean run times and associated confidence intervals.  As the number of scenarios sampled increased, the CPU time of the sDEP increased exponentially, and failed to converge to a final solution with 50 scenarios within the time limit of 15 minutes (wall clock time), and is not plotted in \Cref{fig:Prelim_AlgSpeedupRunTime}.  Except for the trivial five scenario case--which allocated zero BSs to the VWN--the GA approach converged to a solution in less CPU time than the sDEP.  When 20 scenarios are sampled, the GA provided a 4.4x speedup over the sDEP approach; at 45 scenarios, this increased to 46.3x.
+\Cref{fig:Prelim_AlgSpeedupRunTime} compares the sDEP run time with the GA run times shown in \Cref{fig:Prelim_GARunTime} in terms of absolute CPU and approximate wall clock run times and the GA approach's mean speedup ratio.  For each set of scenarios, the sDEP approach was performed 5 times to find mean run times and associated confidence intervals.  As the number of scenarios sampled increased, the CPU time of the sDEP increased exponentially, and failed to converge to a final solution with 50 scenarios within the time limit of 15 minutes (wall clock time), and is not plotted in \Cref{fig:Prelim_AlgSpeedupRunTime}.  Except for the trivial five scenario case---which allocated zero BSs to the VWN---the GA approach converged to a solution in less CPU time than the sDEP.  When 20 scenarios are sampled, the GA provided a 4.4x speedup over the sDEP approach; at 45 scenarios, this increased to 46.3x.
 
 \begin{figure}[ht]
 	\centering
@@ -1129,13 +1129,13 @@ The trade off for the GA's improved run time is that the solution provided is ex
 	\label{fig:Prelim_VWNCompCost}
 \end{figure}
 
-Differing ranges of $\alpha$ provide distinct solutions to compare against the GA, notably: $\alpha < \expnumber{4.6}{2}$, where the sDEP provides a solution of less cost than the GA; $\alpha \approx \left[ \expnumber{4.6}{2},\, \expnumber{1.0}{4} \right]$, where the sDEP provides a solution of equal cost to the best GA solution; $\alpha \approx \left\{ \expnumber{2.2}{4},\, \expnumber{4.6}{4} \right\}$, where the GA provides solutions around the mean of the GA; and $\alpha \geq \expnumber{1.0}{5}$, where the sDEP provides solutions that are more costly than the GA.  Of these, the first two regions are of the most interest.  The first range generates networks with lower cost than the GA and is expected to provide less demand satisfaction.  Alternatively, the second range generates a network with equal cost to the GA and should provide equal or greater demand satisfaction.
+Differing ranges of $\alpha$ provide distinct solutions to compare against the GA, notably: $\alpha \leq \expnumber{2.2}{2}$, where the sDEP provides a solution of less cost than the GA; $\alpha \in \left[ \expnumber{4.6}{2},\, \expnumber{1.0}{4} \right]$, where the sDEP provides a solution of equal cost to the best GA solution; $\alpha \in \left[ \expnumber{2.2}{4},\, \expnumber{4.6}{4} \right]$, where the GA provides solutions around the mean of the GA; and $\alpha \geq \expnumber{1.0}{5}$, where the sDEP provides solutions that are more costly than the GA.  Of these, the first two regions are of the most interest.  The first range generates networks with lower cost than the GA and is expected to provide less demand satisfaction.  Alternatively, the second range generates a network with equal cost to the GA and should provide equal or greater demand satisfaction.
 
 The later test cases (\Cref{sec:caseI,sec:caseII}) will consider a modification to $\lambda_n$ to allow the GA approach to construct networks with more or less intended cost.
 
 \subsubsection{Demand Satisfaction}
 
-There is a direct correlation between the number of BSs in the VWN and its capability for satisfying demand.  As the cost increases for a given solution, the average demand satisfaction trends towards 100\%.  This trend for the sDEP and the GA is depicted in \Cref{fig:Prelim_VOSDemandSatisfaction} and \Cref{tab:Prelim_DemandSatisfaction}.
+There is a direct correlation between the number of BSs in the VWN and its capability for satisfying demand.  As the cost increases for a given solution, the average demand satisfaction trends towards 100\%.  This trend for the sDEP is depicted in \Cref{fig:Prelim_VOSDemandSatisfaction} and \Cref{tab:Prelim_sDEPDemandSatisfaction}.
 
 \begin{figure}[ht]
 	\centering
@@ -1146,10 +1146,10 @@ There is a direct correlation between the number of BSs in the VWN and its capab
 
 \begin{table}[htp]
 \centering
-\caption{Demand Satisfaction Results for Various sDEP- and the GA-Constructed VWNs for Preliminary Simulations}
+\caption[Demand Satisfaction Results for Various sDEP-Constructed VWNs for Preliminary Simulations]{Demand Satisfaction Results for Various sDEP-Constructed VWNs}
 \begin{tabular}{|c|c|} 
 \hline
-\textbf{Number of Selected BSs; sDEP} & \textbf{Demand Satisfaction} \\
+\textbf{Number of Selected BSs} & \textbf{Demand Satisfaction} \\
 \hline
 0 & 0.00\% \\
 \hline
@@ -1163,36 +1163,74 @@ There is a direct correlation between the number of BSs in the VWN and its capab
 \hline
 12+ & 100\% \\
 \hline
-\hline
-\textbf{Number of Solutions, BSs; GA} & \textbf{Demand Satisfaction} \\
-\hline
-1, 13-BS & 99.99\% \\
-\hline
-1, 14-BS & 99.99\% \\
-\hline
-48, all others & 100.0\% \\
-\hline
 \end{tabular}
-\label{tab:Prelim_DemandSatisfaction}
+\label{tab:Prelim_sDEPDemandSatisfaction}
 \end{table}
 
-Demand satisfaction approaches 100\% until reaching it for all sDEP solutions containing 12 or more BSs.  This covers the latter two ranges described while discussing VWN cost (i.e., $\alpha \approx \left\{ \expnumber{2.2}{4},\, \expnumber{4.6}{4} \right\}$ and $\alpha \geq \expnumber{1.0}{5}$), which generate 100\% demand satisfaction for the scenarios that they were optimized for.  That is, VWNs constructed by the sDEP approach that have similar (or higher) VWN cost to the average GA solution have perfect demand satisfaction.  Similarly, 48 of the 50 GA approaches also have 100\% demand satisfaction.  These solutions are over allocating resources to the VWNs, but this shows that the GA does not allocate ineffectively.
+Demand satisfaction approaches 100\% until reaching it for all sDEP solutions containing 12 or more BSs.  This covers the latter three ranges described while discussing VWN cost (i.e., $\alpha \in \left[ \expnumber{4.6}{2},\, \expnumber{1.0}{4} \right],\, \alpha \in \left[ \expnumber{2.2}{4},\, \expnumber{4.6}{4} \right],\, \alpha \geq \expnumber{1.0}{5}$), which generate 100\% demand satisfaction for the scenarios that they were optimized for.  That is, VWNs constructed by the sDEP that have construction costs greater than or equal to the GA solutions have perfect demand satisfaction.
+
+The first range described (i.e., $\alpha \leq \expnumber{2.2}{2}$) is wholly described by solutions that provide less than 100\% demand satisfaction, but quickly approach that value with diminishing returns.  This does help to inform of the appropriate values of $\alpha$ to consider wtihin the VNB to aim for specific percents of demand satisfaction, though this will likely adjust with changes in the problem parameters and $\lambda_n$.  What this range most importantly shows is that there does not exist, at least as far as the sDEP is an approximation of the original two-stage stochastic optimization program, any solutions that give equal demand satisfaction for less cost than the GA's solutions.
+
+The GA approach performs fairly well, exceeding 99\% demand satisfaction for all solutions.  \Cref{fig:Prelim_GAEval_Histogram} visualizes the distribution of the various GA solutions.  Forty-five of the fifty GA solutions have at least 99.8\% demand satisfaction, averaging 99.90\% with a 95\% confidence interval of (99.83\%, 99.94\%).  Demand satisfaction for the 13-, 14-, and 15-BS solutions is dominated by solutions giving 100\% demand satisfaction.  See \Cref{tab:Prelim_GADemandSatisfaction} for specific ranges of the GA solutions.
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[height=0.45\textheight]{Figures/Prelim_GAEval_VAE_HistogramBoxplot}
+	\caption[Preliminary simulation GA demand satisfaction]{Proportional demand satisfaction of the GA approaches as a histogram and box-and-wisker plot.  Histogram mean shown in orange, 95\% confidence intervals shown in dashed black. Black dots indicate medians, blue bars the inner quartiles (25\%--50\% and 50\%--75\%), blue lines the outer quartiles (0\%--25\% and 75\%--100\%), and empty circles the outliers.}
+	\label{fig:Prelim_GAEval_Histogram}
+\end{figure}
+
+\begin{table}[htp]
+\centering
+\caption[Demand Satisfaction Results for Various GA-Constructed VWNs for Preliminary Simulations]{Demand Satisfaction Results for Various GA-Constructed VWNs}
+\begin{tabular}{|c|c|c|c|c|} 
+\hline
+\textbf{Number of BSs} & \textbf{Number of Solutions} & \textbf{Min} & \textbf{Avg} & \textbf{Max} \\
+\hline
+12 & 1 & 99.72\% & 99.72\% & 99.72\% \\
+\hline
+13 & 25 & 99.10\% & 99.92\% & 100.0\% \\
+\hline
+14 & 17 & 99.14\% & 99.86\% & 100.0\% \\
+\hline
+15 & 7 & 99.79\% & 99.94\% & 100.0\% \\
+\hline
+\end{tabular}
+\label{tab:Prelim_GADemandSatisfaction}
+\end{table}
+
+Comparing the demand satisfaction for the two approaches shows the GA providing an average difference of 0.1\% demand satisfaction for the 13-, 14-, and 15-BS solutions.
+
+\iffalse
+Demand satisfaction approaches 100\% until reaching it for all sDEP solutions containing 12 or more BSs.  This covers the latter two ranges described while discussing VWN cost (i.e., $\alpha \approx \left[ \expnumber{2.2}{4},\, \expnumber{4.6}{4} \right]$ and $\alpha \geq \expnumber{1.0}{5}$), which generate 100\% demand satisfaction for the scenarios that they were optimized for.  That is, VWNs constructed by the sDEP that have similar (or higher) VWN cost to the average GA solution have perfect demand satisfaction.  Similarly, 48 of the 50 GA approaches also have 100\% demand satisfaction.  These solutions are over allocating resources to the VWNs, but this shows that the GA does not allocate ineffectively.
 
 Further, the second sDEP range (i.e., $\alpha \approx \left[ \expnumber{4.6}{2},\, \expnumber{1.0}{4} \right]$) also allocates sufficient resources (12 BSs) to provide 100\% demand satisfaction.  The single 12-BS GA solution, which shows the GA is capable of finding an equivalent cost network to the sDEP in this range, also has 100\% demand satisfaction.  For this critical range where the sDEP and the best GA findings intersect, the GA provides a 100\% demand satisfaction network for no additional cost than the sDEP, and provides it in 189.9 seconds, or a 36.4x CPU time speedup; for equal cost networks, the GA provides a network with zero error in these preliminary simulations.
 
-The first sDEP range (i.e., $\alpha < \expnumber{4.6}{2}$) is wholly described by solutions that provide less than 100\% demand satisfaction, but quickly approach that value with obviously diminishing returns.  This does inform to appropriate values of $\alpha$ to consider within the VNB to aim for specific percent demand satisfactions, though this will likely change according problem parameters.  What this range most importantly shows is that there does not exist, at least as far as the sDEP is an approximation of the original two-stage stochastic optimization program, any solutions that give equal demand satisfaction for less cost than the GA's solution.  This shows that the GA's intent--providing a minimum cost network for maximal demand satisfaction with low error to the optimal--is validly approached; the GA optimizes for a network that provides 100\% demand satisfaction, and provides that optimization with zero error.
+The first sDEP range (i.e., $\alpha < \expnumber{4.6}{2}$) is wholly described by solutions that provide less than 100\% demand satisfaction, but quickly approach that value with obviously diminishing returns.  This does inform to appropriate values of $\alpha$ to consider within the VNB to aim for specific percent demand satisfactions, though this will likely change according problem parameters.  What this range most importantly shows is that there does not exist, at least as far as the sDEP is an approximation of the original two-stage stochastic optimization program, any solutions that give equal demand satisfaction for less cost than the GA's solution.  This shows that the GA's intent---providing a minimum cost network for maximal demand satisfaction with low error to the optimal---is validly approached; the GA optimizes for a network that provides 100\% demand satisfaction, and provides that optimization with zero error.
+\fi
 
 As mentioned within analysis of VWN cost, the two following test cases (\Cref{sec:caseI,sec:caseII}) consider a modification to $\lambda_n$ that allows for the GA to consider networks not aiming to provide 100\% demand satisfaction.
 
-\improvement{Pick up from here}%
-When the set of demand points change to a scenario no longer in $\Omega$, the sampled DEP performs very similarly.  \Cref{fig:Prelim_VWNCompSatisEval} shows the demand satisfaction for both the sampled DEP and genetic algorithm BS selections when sliced to a new set of scenarios as evaluated with Problem 3.  Here, the number of demand points increases to 200 points per scenario, each with 66.8 kbps rate demand, across 50 independent scenarios.  The demand satisfaction trend of the sampled DEP BS selection follows very closely to the original set of scenarios but hits a maximum of 99.0\% demand satisfaction with 10 BSs.  In comparison, the SP demand point scenarios are far more beneficial to the genetic algorithm, which reaches greater than 99.99\% demand satisfaction for all generated VWNs.  This is expected as a side effect of the increased number of points and scenarios more accurately describing a sampling of the original SSLT demand density field of the SP, $\rho$.
+Each sDEP solution is an optimization for the specific scenarios in $\hat{\Omega}$ that were used to generate the solution.  However, when new scenarios arise that are not in $\hat{\Omega}$, it is expected for those solutions to no longer perform as optimally.  \Cref{fig:Prelim_VWNCompSatisEval} visualizes the proportional demand satisfaction for both the sDEP and GA approaches when sliced to a new set of 50 scenarios as evaluated by the adaptive slicing model of \Cref{subsec:dep_slicing}.  The new scenarios are independently generated using the same method as the original scenarios, but with 200 demand points per scenario, each with 66.7 kbps rate demand.
 
 \begin{figure}[ht]
 	\centering
-	\includegraphics[height=0.45\textheight]{Figures/Prelim_ComparisonSatisfactionEval}
-	\caption{50 new scenarios of 200 SP demand points evalutaed with Problem 3.}
+	\includegraphics[height=0.45\textheight]{Figures/Prelim_EvalO25_ComparisonSatisfactionFull}
+	\caption[Demand satisfaction of the preliminary simulations evaluated against 50 new scenarios]{Proportional demand satisfaction of the sDEP and GA approaches sliced to 50 new scenarios using the adaptive slicing model.}
 	\label{fig:Prelim_VWNCompSatisEval}
 \end{figure}
+
+For the range of $\alpha \leq 100$, the sDEP solutions perform slightly better for the new scenario sets compared to the scenarios they were optimized for.  For these larger scenarios which distribute demand more thoroughly, the sDEP solutions are capable of marginally higher demand satisfaction without the unneeded expense of the GA constructed VWN.  However, for all $\alpha > 100$, these new scenarios cause demand satisfaction to slightly decrease; a closer look over this range is shown in %\Cref{}.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[height=0.45\textheight]{Figures/Prelim_EvalO25_ComparisonSatisfactionFull}
+	\caption[Demand satisfaction of the preliminary simulations evaluated against 50 new scenarios]{Proportional demand satisfaction of the sDEP and GA approaches sliced to 50 new scenarios using the adaptive slicing model.}
+	\label{fig:Prelim_VWNCompSatisEval}
+\end{figure}
+
+\improvement{Pick up from here}%
+When the set of demand points change to a scenario no longer in $\Omega$, the sampled DEP performs very similarly.  \Cref{fig:Prelim_VWNCompSatisEval} shows the demand satisfaction for both the sampled DEP and genetic algorithm BS selections when sliced to a new set of scenarios as evaluated with Problem 3.  Here, the number of demand points increases to 200 points per scenario, each with 66.8 kbps rate demand, across 50 independent scenarios.  The demand satisfaction trend of the sampled DEP BS selection follows very closely to the original set of scenarios but hits a maximum of 99.0\% demand satisfaction with 10 BSs.  In comparison, the SP demand point scenarios are far more beneficial to the genetic algorithm, which reaches greater than 99.99\% demand satisfaction for all generated VWNs.  This is expected as a side effect of the increased number of points and scenarios more accurately describing a sampling of the original SSLT demand density field of the SP, $\rho$.
 
 \subsubsection{Takeaway Conclusions}
 
