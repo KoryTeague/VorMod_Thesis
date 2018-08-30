@@ -7,6 +7,7 @@
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
+%\documentclass[12pt,dvipsnames,draft]{report}
 \documentclass[12pt,dvipsnames]{report}
 
 \setlength{\textwidth}{6.5in}
@@ -1058,7 +1059,7 @@ In this subsection I will present the results of these preliminary simulations. 
 \begin{figure}[ht]
 	\centering
 	\includegraphics[height=0.45\textheight]{Figures/Prelim_GARuntime50}
-	\caption[GA Approach CPU run time PDF over 50 runs of the preliminary simulations]{GA Approach CPU run time PDF over 50 runs.  Mean (125.9 secs) shown in orange, 95\% confidence interval (118.4, 135.4) shown in dashed black.}
+	\caption[Preliminary simulations GA CPU run time PDF]{GA approach CPU run time PDF over 50 runs.  Mean (125.9 secs) shown in orange, 95\% confidence interval (118.4, 135.4) shown in dashed black.}
 	\label{fig:Prelim_GARunTime}
 \end{figure}
 
@@ -1098,7 +1099,7 @@ This trend continues for higher values of $\alpha$.  As shown in \Cref{fig:Preli
 \begin{figure}[ht]
 	\centering
 	\includegraphics[height=0.45\textheight]{Figures/Prelim_O25sDEPComparisonCostRunTimeExpandedAlpha}
-	\caption[Expanded preliminary simulation comparison of sDEP run time and VWN cost]{Comparison of sDEP CPU run time and VWN construction cost for further values of $\alpha$.}
+	\caption[Expanded preliminary simulation comparison of sDEP run time and cost]{Comparison of sDEP CPU run time and VWN construction cost for further values of $\alpha$.}
 	\label{fig:Prelim_sDEPCompCostRunTimeExpanded}
 \end{figure}
 
@@ -1146,7 +1147,7 @@ There is a direct correlation between the number of BSs in the VWN and its capab
 
 \begin{table}[htp]
 \centering
-\caption[Demand Satisfaction Results for Various sDEP-Constructed VWNs for Preliminary Simulations]{Demand Satisfaction Results for Various sDEP-Constructed VWNs}
+\caption[Preliminary Simulation Demand Satisfaction of sDEP-Constructed VWNs]{Demand Satisfaction Results for Various sDEP-Constructed VWNs}
 \begin{tabular}{|c|c|} 
 \hline
 \textbf{Number of Selected BSs} & \textbf{Demand Satisfaction} \\
@@ -1182,7 +1183,7 @@ The GA approach performs fairly well, exceeding 99\% demand satisfaction for all
 
 \begin{table}[htp]
 \centering
-\caption[Demand Satisfaction Results for Various GA-Constructed VWNs for Preliminary Simulations]{Demand Satisfaction Results for Various GA-Constructed VWNs}
+\caption[Preliminary Simulation Demand Satisfaction of GA-Constructed VWNs]{Demand Satisfaction Results for Various GA-Constructed VWNs}
 \begin{tabular}{|c|c|c|c|c|} 
 \hline
 \textbf{Number of BSs} & \textbf{Number of Solutions} & \textbf{Min} & \textbf{Avg} & \textbf{Max} \\
@@ -1199,43 +1200,60 @@ The GA approach performs fairly well, exceeding 99\% demand satisfaction for all
 \label{tab:Prelim_GADemandSatisfaction}
 \end{table}
 
-Comparing the demand satisfaction for the two approaches shows the GA providing an average difference of 0.1\% demand satisfaction for the 13-, 14-, and 15-BS solutions.
+The sDEP approach is able to provide a 12-BS solution with 100\% demand satisfaction.  This solution is of equal cost to the cheapest GA solution, which had a loss or error of 0.3\% demand satisfaction but was solved 190 seconds for a 36.4x speedup.  More expensive and common GA solutions can provide a solution averaging within 0.1\% demand satisfaction with the addition of 1 additional resource (an error of 8.33\% additional cost); half of these solutions has 100\% demand satisfaction, equal to the 12-BS sDEP solutions.  11-BS sDEP solutions provide similar demand satisfaction (i.e., 99.7\%) to the 12-BS GA solution; comparing similar demand satisfactions shows the GA introducing 1 BS of error, or 9.09\% additional cost.
 
-\iffalse
-Demand satisfaction approaches 100\% until reaching it for all sDEP solutions containing 12 or more BSs.  This covers the latter two ranges described while discussing VWN cost (i.e., $\alpha \approx \left[ \expnumber{2.2}{4},\, \expnumber{4.6}{4} \right]$ and $\alpha \geq \expnumber{1.0}{5}$), which generate 100\% demand satisfaction for the scenarios that they were optimized for.  That is, VWNs constructed by the sDEP that have similar (or higher) VWN cost to the average GA solution have perfect demand satisfaction.  Similarly, 48 of the 50 GA approaches also have 100\% demand satisfaction.  These solutions are over allocating resources to the VWNs, but this shows that the GA does not allocate ineffectively.
+Each sDEP solution is an optimization for the specific scenarios in $\hat{\Omega}$ that were used to generate the solution.  This is inherently an unfair comparison for the GA, as the GA is intended to be optimized for $\lambda_n$, not the scenarios of $\hat{\Omega}$.  By considering new scenarios that are not in $\hat{\Omega}$, it is expected for the sDEP solutions to no longer perform as optimally, and the two approaches can be more appropriately compared.  \Cref{fig:Prelim_VWNCompSatisEval} visualizes the proportional demand satisfaction for both the sDEP and GA approaches when sliced to a new set of 50 scenarios as evaluated by the adaptive slicing model of \Cref{subsec:dep_slicing}.  The new scenarios are independently generated using the same method as the original scenarios, but with 200 demand points per scenario, each with 66.7 kbps rate demand.
 
-Further, the second sDEP range (i.e., $\alpha \approx \left[ \expnumber{4.6}{2},\, \expnumber{1.0}{4} \right]$) also allocates sufficient resources (12 BSs) to provide 100\% demand satisfaction.  The single 12-BS GA solution, which shows the GA is capable of finding an equivalent cost network to the sDEP in this range, also has 100\% demand satisfaction.  For this critical range where the sDEP and the best GA findings intersect, the GA provides a 100\% demand satisfaction network for no additional cost than the sDEP, and provides it in 189.9 seconds, or a 36.4x CPU time speedup; for equal cost networks, the GA provides a network with zero error in these preliminary simulations.
-
-The first sDEP range (i.e., $\alpha < \expnumber{4.6}{2}$) is wholly described by solutions that provide less than 100\% demand satisfaction, but quickly approach that value with obviously diminishing returns.  This does inform to appropriate values of $\alpha$ to consider within the VNB to aim for specific percent demand satisfactions, though this will likely change according problem parameters.  What this range most importantly shows is that there does not exist, at least as far as the sDEP is an approximation of the original two-stage stochastic optimization program, any solutions that give equal demand satisfaction for less cost than the GA's solution.  This shows that the GA's intent---providing a minimum cost network for maximal demand satisfaction with low error to the optimal---is validly approached; the GA optimizes for a network that provides 100\% demand satisfaction, and provides that optimization with zero error.
-\fi
-
-As mentioned within analysis of VWN cost, the two following test cases (\Cref{sec:caseI,sec:caseII}) consider a modification to $\lambda_n$ that allows for the GA to consider networks not aiming to provide 100\% demand satisfaction.
-
-Each sDEP solution is an optimization for the specific scenarios in $\hat{\Omega}$ that were used to generate the solution.  However, when new scenarios arise that are not in $\hat{\Omega}$, it is expected for those solutions to no longer perform as optimally.  \Cref{fig:Prelim_VWNCompSatisEval} visualizes the proportional demand satisfaction for both the sDEP and GA approaches when sliced to a new set of 50 scenarios as evaluated by the adaptive slicing model of \Cref{subsec:dep_slicing}.  The new scenarios are independently generated using the same method as the original scenarios, but with 200 demand points per scenario, each with 66.7 kbps rate demand.
-
-\begin{figure}[ht]
+\begin{figure}[htp]
 	\centering
-	\includegraphics[height=0.45\textheight]{Figures/Prelim_EvalO25_ComparisonSatisfactionFull}
-	\caption[Demand satisfaction of the preliminary simulations evaluated against 50 new scenarios]{Proportional demand satisfaction of the sDEP and GA approaches sliced to 50 new scenarios using the adaptive slicing model.}
+	\includegraphics[height=0.4\textheight]{Figures/Prelim_EvalO25_ComparisonSatisfactionFull}
+	\caption[Demand satisfaction of the preliminary simulations evaluated against 50 new scenarios]{Proportional demand satisfaction of the sDEP and GA approaches sliced to 50 new scenarios using the adaptive slicing model. Shows the demand satisfaction for both the new scenarios not in $\hat{\Omega}$ (blue squares) and the original scenarios comprising $\hat{\Omega}$ (purple dotted circles).}
 	\label{fig:Prelim_VWNCompSatisEval}
 \end{figure}
 
-For the range of $\alpha \leq 100$, the sDEP solutions perform slightly better for the new scenario sets compared to the scenarios they were optimized for.  For these larger scenarios which distribute demand more thoroughly, the sDEP solutions are capable of marginally higher demand satisfaction without the unneeded expense of the GA constructed VWN.  However, for all $\alpha > 100$, these new scenarios cause demand satisfaction to slightly decrease; a closer look over this range is shown in %\Cref{}.
+For the range of $\alpha \leq 100$, the sDEP solutions perform slightly better for the new scenario sets compared to the scenarios they were optimized for.  For these larger scenarios which distribute demand more thoroughly, the sDEP solutions are capable of marginally higher demand satisfaction.  However, for all points $\alpha > 100$, these new scenarios cause demand satisfaction to slightly decrease; a closer look over this range is shown in \Cref{fig:Prelim_VWNCompSatisEvalClose}.
 
-\begin{figure}[ht]
+\begin{figure}[htp]
 	\centering
-	\includegraphics[height=0.45\textheight]{Figures/Prelim_EvalO25_ComparisonSatisfactionFull}
-	\caption[Demand satisfaction of the preliminary simulations evaluated against 50 new scenarios]{Proportional demand satisfaction of the sDEP and GA approaches sliced to 50 new scenarios using the adaptive slicing model.}
-	\label{fig:Prelim_VWNCompSatisEval}
+	\includegraphics[height=0.4\textheight]{Figures/Prelim_EvalO25_ComparisonSatisfactionZoomed}
+	\caption[Demand satisfaction of the preliminary simulations evaluated against 50 new scenarios in finer detail]{Proportional demand satisfaction of the sDEP and GA approaches sliced to 50 new scenarios. Finer detail of \Cref{fig:Prelim_VWNCompSatisEval} for the scope around 100\% demand satisfaction.}
+	\label{fig:Prelim_VWNCompSatisEvalClose}
 \end{figure}
 
-\improvement{Pick up from here}%
-When the set of demand points change to a scenario no longer in $\Omega$, the sampled DEP performs very similarly.  \Cref{fig:Prelim_VWNCompSatisEval} shows the demand satisfaction for both the sampled DEP and genetic algorithm BS selections when sliced to a new set of scenarios as evaluated with Problem 3.  Here, the number of demand points increases to 200 points per scenario, each with 66.8 kbps rate demand, across 50 independent scenarios.  The demand satisfaction trend of the sampled DEP BS selection follows very closely to the original set of scenarios but hits a maximum of 99.0\% demand satisfaction with 10 BSs.  In comparison, the SP demand point scenarios are far more beneficial to the genetic algorithm, which reaches greater than 99.99\% demand satisfaction for all generated VWNs.  This is expected as a side effect of the increased number of points and scenarios more accurately describing a sampling of the original SSLT demand density field of the SP, $\rho$.
+For the range of $\alpha > 100$, this indicates that near the boundary of 100\% demand satisfaction, the scenarios are not a complete representation of the original demand field, $\lambda_n$.  Each scenario has more demand points, which more evenly spread the demand over $\mathcal{R}$.  The several 12-BS sDEP solutions which provided 100\% demand satisfaction for the scenarios in $\hat{\Omega}$ no longer provide 100\% demand satisfaction, but instead fluctuate over 99.8\%--99.9\% demand satisfaction.  This actually shows that the 12-BS solutions are not identical, despite being the same cost, and highlight the subtle differences between them.  Further, the sDEP is unable to provide 100\% demand satisfaction up to $\alpha < \expnumber{4.6}{5}$, which includes solutions containing up to 18 BSs.  Above this range of $\alpha$, the sDEP is heavily overallocating resources; at $\alpha = \expnumber{4.6}{5}$ the sDEP is selecting 43 BSs, jumping from 18 at the previous point of $\alpha = \expnumber{2.2}{5}$.  This implies that a key part of the original demand field is not demonstrated adequately by the scenarios of $\hat{\Omega}$, and that the sDEP needs to consider more demand points and include more scenarios in $\hat{\Omega}$ to more accurately represent the full sample space of $\lambda_n$.
+
+The GA instead performs far better with the new scenarios due their improved distribution of demand.  All but 2 GA solutions reach 100\% demand satisfaction; the two exceptions instead reach 99.99\% demand satisfaction.  This is tabulated in \Cref{tab:Prelim_GAEvalDemandSatisfaction}.
+
+\begin{table}[ht]
+\centering
+\caption[Preliminary Simulation Demand Satisfaction of GA-Constructed VWNs and New Scenarios]{Demand Satisfaction Results for Various GA-Constructed VWNs Over 50 Non-$\hat{\Omega}$ Scenarios}
+\begin{tabular}{|c|c|c|} 
+\hline
+\textbf{Number of BSs} & \textbf{Number of Solutions} & \textbf{Proportional Demand Satisfaction} \\
+\hline
+12 & 1 & 100.0\% \\
+\hline
+13 & 1 & 99.99\% \\
+\hline
+13 & 24 & 100.00\% \\
+\hline
+14 & 1 & 99.99\% \\
+\hline
+14 & 16 & 100.0\% \\
+\hline
+15 & 7 & 100.0\% \\
+\hline
+\end{tabular}
+\label{tab:Prelim_GAEvalDemandSatisfaction}
+\end{table}
+
+Notably, the 12-BS solution reaches 100\% demand satisfaction, which is actually \emph{higher} than the same-cost VWNs constructed by the sDEP.  Importantly, it appears with the number of scenarios and demand points tested here, the 12-BS GA solution provides a better resource selection than the sDEP, and did so with a overall speedup factor of 36.4x; for the sDEP to improve resource selection would require additional scenarios and demand points, which would increase the approach's run time exponentially, as shown in \Cref{fig:Prelim_AlgSpeedupRunTime}.
+
+As mentioned within analysis of VWN cost, the two following test cases (\Cref{sec:caseI,sec:caseII}) consider a modification to $\lambda_n$ that allows for the GA to consider networks not aiming to provide 100\% demand satisfaction.  This will allow for better comparisons between constructed VWNs that are not aiming for 100\% demand satisfaction.
 
 \subsubsection{Takeaway Conclusions}
 
-\change{Do this}%
-\textit{Place takeaway conclusions of the preliminary results here.}
+These preliminary simulations provide several optimistic findings.  First, the GA approach, as expected, does provide a solution to the original program in much less time than the sDEP approach, reaching up to a speedup factor of 50x.  The run time of the GA is only dependent on the number of BSs being considered for selection and the number of pixels for integration within the fitness heuristic; in contrast the sDEP is dependent on the number of resources and the number of demand points and the number of scenarios sampled forming $\hat{\Omega}$.  The GA as designed generates a solution targeting 100\% demand satisfaction whereas the sDEP is tunable via $\alpha$.  For equal-cost VWNs, the GA approach introduces a small amount of error on the order of 0.3\% demand satisfaction when considering scenarios the sDEP is optimized for.  For scenarios not in $\hat{\Omega}$, the sDEP provides solutions that are less optimal whereas the GA's solutions accuracy is directly related to how accurately the scenarios reflect the initial demand intensity field, $\lambda_n$.
 
 \section{Case I: Single SP with Homogeneous Resources} \label{sec:caseI}
 
