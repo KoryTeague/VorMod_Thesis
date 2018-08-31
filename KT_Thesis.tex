@@ -1054,7 +1054,7 @@ In this subsection I present the results of these preliminary simulations.  Firs
 
 \subsubsection{Run Time}
 
-\Cref{fig:Prelim_GARunTime} shows the run time trend of the GA approach as a histogram PMF.  Across 50 independent simulations, the GA approach converges to a solution in 94 to 209 seconds, averaging 125.9 seconds (CPU time) with a 95\% confidence interval of (118.4, 135.4).  These results are heavily weighted towards the low end, with more than 20\% of simulations terminating in under 100 seconds.
+\Cref{fig:Prelim_GARunTime} shows the run time trend of the GA approach as a histogram \change{PDF\\Update Figures Too}PMF.  Across 50 independent simulations, the GA approach converges to a solution in 94 to 209 seconds, averaging 125.9 seconds (CPU time) with a 95\% confidence interval of (118.4, 135.4).  These results are heavily weighted towards the low end, with more than 20\% of simulations terminating in under 100 seconds.
 
 \begin{figure}[ht]
 	\centering
@@ -1063,7 +1063,7 @@ In this subsection I present the results of these preliminary simulations.  Firs
 	\label{fig:Prelim_GARunTime}
 \end{figure}
 
-\Cref{fig:Prelim_AlgSpeedupRunTime} compares the sDEP run time with the GA run times shown in \Cref{fig:Prelim_GARunTime} in terms of absolute CPU and approximate wall clock run times and the GA approach's mean speedup ratio.  For each set of scenarios, the sDEP approach was performed 5 times to find mean run times and associated confidence intervals.  As the number of scenarios sampled increased, the CPU time of the sDEP increased exponentially, and failed to converge to a final solution with 50 scenarios within the time limit of 15 minutes (wall clock time), and is not plotted in \Cref{fig:Prelim_AlgSpeedupRunTime}.  Except for the trivial five scenario case---which allocated zero BSs to the VWN---the GA approach converged to a solution in less CPU time than the sDEP.  When 20 scenarios are sampled, the GA provided a 4.4x speedup over the sDEP approach; at 45 scenarios, this increased to 46.3x.
+\Cref{fig:Prelim_AlgSpeedupRunTime} compares the sDEP run time with the GA run times shown in \Cref{fig:Prelim_GARunTime} in terms of absolute CPU and approximate wall clock run times and the GA approach's mean speedup ratio.  For each set of scenarios, the sDEP approach was performed five times to find mean run times and associated confidence intervals.  As the number of scenarios sampled increased, the CPU time of the sDEP increased exponentially, and failed to converge to a final solution with 50 scenarios within the time limit of 15 minutes (wall clock time), and is not plotted in \Cref{fig:Prelim_AlgSpeedupRunTime}.  Except for the trivial five scenario case---which allocated zero BSs to the VWN---the GA approach converged to a solution in less CPU time than the sDEP.  When 20 scenarios are sampled, the GA provided a 4.4x speedup over the sDEP approach; at 45 scenarios, this increased to 46.3x.
 
 \begin{figure}[ht]
 	\centering
