@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: August 31, 2018
+% REVISED: September 1, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -700,7 +700,7 @@ z_s \defeq
 
 To balance the interest of maximizing demand satisfaction against minimizing cost, I introduce the positive real number $\alpha$ as a weighting coefficient between the two stages (\cref{eq:SOPS2O}).  The SP indicates the desired amount of demand satisfaction necessary for the service the SP provides; $\alpha$, as set by the VNB, realizes this degree of demand satisfaction of the constructed VWNs relative to their cost.
 
-\begin{tcolorbox}[floatplacement = !ht, float, title = Two-Stage Stochastic Optimization Program for BS Selection and Adaptive Slicing]
+\begin{tcolorbox}[floatplacement = !htp, float, title = Two-Stage Stochastic Optimization Program for BS Selection and Adaptive Slicing]
 \begin{align}
 & \argmin_{\left\{ z_s \right\}} \left\{ \sum_{s \in \mathcal{S}} c_s \; z_s - \alpha \; \mathbb{E}\left[ h\left( \textit{\textbf{z}},\, \tilde{\textit{\textbf{u}}} \right) \right] \right\} \label{eq:SOPS1O}\\
 & \text{subject to:}  \nonumber \\
@@ -844,7 +844,7 @@ A major limitation of the approach in \Cref{sec:dep} is that the sDEP is increas
 
 A genetic algorithm is an iterative metaheuristic algorithm inspired by the concept of natural selection in which an approximate solution to a given optimization problem is arrived at via a series of progressive generations.  Each generation contains a number of candidate solutions, called individuals, each of which is defined by a chromosome.  During a given generation, a fitness heuristic is assessed for each individual based on its chromosome.  Then individuals are \emph{selected} at random to become parents, with more fit individuals being selected with higher probability.  Parents are then paired off, and each pair of parents may, with probability $p_\text{xov}$, undergo a process called \emph{crossover}, a process similar to genetic recombination, in which the parents' chromosomes are mixed to form two individuals (children) for the next generation.  If crossover does not occur, the parents are cloned to be their own children for the next generation.  The chromosomes of the resulting children then undergo \emph{mutation}, altering the chromosome slightly.  Once enough new children have been generated, this new set of individuals forms the next generation to repeat the process.  \Cref{fig:ga_block} is a block diagram that illustrates this general process.  Each of these steps is described in further detail below.
 
-\begin{figure}[!ht]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=1\linewidth]{Genetic_Algorithm_Basic}
 \caption[Genetic Algorithm Block Diagram]{\small Block diagram of the GA approach.  This is for a typical genetic algorithm utilizing elitism and enforcing generational uniqueness.}
@@ -968,11 +968,11 @@ This first considered problem is an initial simulation testing the performance o
 
 \subsection{Setup} \label{subsec:prelim_setup}
 
-For these preliminary simulations, I use the parameter values shown in \Cref{tab:Prelim_SimVal}\improvement{Double check when completed\\Solo-page if table cannot share at least 6 lines of text on the same page}.  There is only one SP, and its demand intensity function, $\lambda$, is generated using default location and scale parameters for the SSLT model ($\sigma = 0,\, \mu = 1$).  $\lambda$ is pixelated into a 100 by 100 grid of square pixels with 20 m side length; $\mathcal{R}$ is a region 2 km by 2 km in size illustrated in \Cref{fig:Prelim_NetworkArea}.  The first listed maximum angular frequency, $\omega_{\max}$, is expressed in units of cycles per pixel; in terms of absolute distance, $\omega_{\max}$ is scaled according to the side length (i.e., absolute $\omega_{\max} = \nicefrac{\pi}{300}$ cycles per meter) and parenthetically stated.  Resources are homogeneous and constructed to saturate the region's demands both in terms of coverage and capacity.
+For these preliminary simulations, I use the parameter values shown in \Cref{tab:Prelim_SimVal}.  There is only one SP, and its demand intensity function, $\lambda$, is generated using default location and scale parameters for the SSLT model ($\sigma = 0,\, \mu = 1$).  $\lambda$ is pixelated into a 100 by 100 grid of square pixels with 20 m side length; $\mathcal{R}$ is a region 2 km by 2 km in size illustrated in \Cref{fig:Prelim_NetworkArea}.  The first listed maximum angular frequency, $\omega_{\max}$, is expressed in units of cycles per pixel; in terms of absolute distance, $\omega_{\max}$ is scaled according to the side length (i.e., absolute $\omega_{\max} = \nicefrac{\pi}{300}$ cycles per meter) and parenthetically stated.  Resources are homogeneous and constructed to saturate the region's demands both in terms of coverage and capacity.
 
-\begin{table}[htp]
+\begin{table}[!htp]
 \centering
-\caption{Numerical Values of\\Relevant Parameters for Preliminary Simulations}
+\caption{Numerical Values of Relevant Parameters for Preliminary Simulations}
 \begin{tabular}{|c|c|} 
 \hline
 Width, Height of Geographic Area ($X$) & 2 km x 2 km \\
@@ -1032,7 +1032,7 @@ Overcapacity Cost ($c_\text{cap}$) & 1.015 \\
 \label{tab:Prelim_SimVal}
 \end{table}
 
-\begin{figure}[ht]
+\begin{figure}[htp]
 	\centering
 	\begin{subfigure}{.49\textwidth}
 		\centering
@@ -1263,8 +1263,7 @@ In this section I present the first test case that builds on the work of the pre
 
 \subsection{Setup} \label{subsec:caseI_setup}
 
-\unsure{Double check all these values and parameters}%
-This test case is constructed considering the following considerations and parameters.  There is only one SP, and its demand intensity function $\lambda$ is generated using parameters (i.e., $\omega_{\max},\, \sigma,\, \mu$) that were empirically found to match a real world urban cellular network in China~[?]\change{cite}.  $\lambda$ is pixelated into a 200 by 200 grid of square pixels with 15 m side length; $\mathcal{R}$, illustrated in \Cref{fig:CaseI_NetworkArea}, is a region 3 km by 3 km in size.  Resources are homogeneous and constructed to represent small macrocells.  The parameter values used in the simulations are shown in \Cref{tab:CaseI_SimVal}\improvement{Double check text spacing\\Solo-page if less than 6 lines of text fit on the same page.}.
+This test case is constructed considering the following considerations and parameters.  There is only one SP, and its demand intensity function, $\lambda$, is generated using parameters (i.e., $\omega_{\max},\, \sigma,\, \mu$) that were empirically found to match a real world urban cellular network in China~\cite{6757900}.  $\lambda$ is pixelated into a 200 by 200 grid of square pixels with 15 m side length; $\mathcal{R}$, illustrated in \Cref{fig:CaseI_NetworkArea}, is a region 3 km by 3 km in size.  Resources are homogeneous and constructed to represent small macrocells.  The number of BSs, demand points, and scenarios were chosen such that the sDEP would converge to a solution in just under a new time limit of 1 hour wall clock time.  Due to the more chaotic demand field, this data set is \emph{smaller} than the set used in the preliminary simulations of last section.  Notably, due to their being fewer demand points, each demand point contains a larger amount of the overall field's demand.  This will be more properly handled with additional scenarios and the adaptive slicing model (\Cref{subsec:dep_slicing}).  GA generation limits (i.e., $G$, $G_{\min}$, $G_{\text{fit}}$, and $G_{\text{gen}}$) were increased to avoid the possible premature convergence seen in the last section.  The parameter values used in the simulations are shown in \Cref{tab:CaseI_SimVal}.
 
 \begin{figure}[htp]
 	\centering
@@ -1284,51 +1283,51 @@ This test case is constructed considering the following considerations and param
 	\label{fig:CaseI_NetworkArea}
 \end{figure}
 
-\begin{table}[ht]
+\begin{table}[!htp]
 \centering
 \caption{Numerical Values of Relevant Parameters for Case I}
 \begin{tabular}{|c|c|} 
 \hline
-Width, Height of Geographic Area ($X$) & 2 km x 2 km \\
+Width, Height of Geographic Area ($X$) & 3 km x 3 km \\
 \hline
-Number of BSs ($S$) & 60 \\ 
+Number of BSs ($S$) & 22 \\ 
 \hline 
-Number of Demand Points ($M$) & 75 \\ 
+Number of Demand Points ($M$) & 90 \\ 
 \hline 
 Number of SPs ($N$) & 1 \\
 \hline
-Number of Sampled Scenarios ($O$) & $\{5,\, 10,\, \ldots,\, 50\}$ and 25 \\ 
+Number of Sampled Scenarios ($O$) & 30 \\ 
 \hline 
-sDEP Objective Weights ($\alpha$) & $\left\{ 5,\, 10,\, \ldots,\, 100 \right\}$ and \\
-& $\left\{ \expnumber{2.2}{2},\, \expnumber{4.6}{2},\, \expnumber{1.0}{3},\, \ldots,\, \expnumber{1.0}{9} \right\}$ \\
+sDEP Objective Weights ($\alpha$) & $\left\{ 6,\, 8,\, \ldots,\, 30 \right\}$ and \\
+& $\left\{ 40,\, 50,\, \ldots,\, 100 \right\}$ \\
 \hline
 BS cost ($c_s,\, \forall s \in \mathcal{S}$) & 1 \\ 
 \hline 
-BS capacity ($r_s,\, \forall s \in \mathcal{S})$ & 1.50 Mbps \\ 
+BS capacity ($r_s,\, \forall s \in \mathcal{S})$ & 2 Gbps \\ 
 \hline
-BS range ($b_s,\, \forall s \in \mathcal{S}$) & 500 m \\
+BS range ($b_s,\, \forall s \in \mathcal{S}$) & 1500 m \\
 \hline 
-Point Traffic Demand ($d$) & 0.178 Mbps \\ 
+Point Traffic Demand ($d$) & 221.89 Mbps \\ 
 \hline 
 \hline
 SSLT Approximation Depth ($L$) & 50 \\ 
 \hline
-SSLT Maximum Angular Frequency ($\omega_{\max}$) & $\nicefrac{2 \pi}{30} \; \left( \nicefrac{\pi}{300} \right)$ \\
+SSLT Maximum Angular Frequency ($\omega_{\max}$) & 0.19010 (0.012673) \\
 \hline 
-SSLT Location Parameter ($\sigma$) & 0 \\ 
+SSLT Location Parameter ($\sigma$) & 18.93 \\ 
 \hline 
-SSLT Scale Parameter ($\mu$) & 1 \\ 
+SSLT Scale Parameter ($\mu$) & 2.3991 \\ 
 \hline
-Pixel Grid Size & 100 x 100, 20 m \\
+Pixel Grid Size & 200 x 200, 15 m \\
 \hline 
 \hline
-Maximum Number of Generations ($G$) & 3000 \\ 
+Maximum Number of Generations ($G$) & 4000 \\ 
 \hline
-Minimum Number of Generations ($G_{\min}$) & 300 \\
+Minimum Number of Generations ($G_{\min}$) & 450 \\
 \hline
-Unchanged Generations Before Fitness Halt ($G_{\text{fit}}$) & 150 \\
+Unchanged Generations Before Fitness Halt ($G_{\text{fit}}$) & 300 \\
 \hline 
-Unchanged Generations Before Genome Halt ($G_{\text{gen}}$) & 400 \\
+Unchanged Generations Before Genome Halt ($G_{\text{gen}}$) & 600 \\
 \hline 
 Number of Individuals per Generation ($I$) & 80 \\ 
 \hline
@@ -1336,7 +1335,7 @@ Number of Elite Individuals per Generation & 4 \\
 \hline 
 Probability of Crossover ($p_\text{xov}$) & 0.7 \\ 
 \hline
-Probability of Mutation per bit ($p_\text{mut}$) & $\nicefrac{1}{S} = 0.0167$ \\
+Probability of Mutation per bit ($p_\text{mut}$) & $\nicefrac{1}{S} = 0.0455$ \\
 \hline 
 Overcoverage Cost ($c_\text{cov}$) & 3 \\
 \hline
