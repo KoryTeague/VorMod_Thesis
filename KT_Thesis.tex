@@ -1004,8 +1004,6 @@ SSLT Maximum Angular Frequency ($\omega_{\max}$) & $\nicefrac{2 \pi}{30} \; \lef
 SSLT Location Parameter ($\sigma$) & 0 \\ 
 \hline 
 SSLT Scale Parameter ($\mu$) & 1 \\ 
-\hline
-Pixel Grid Size & 100 x 100, 20 m \\
 \hline 
 \hline
 Maximum Number of Generations ($G$) & 3000 \\ 
@@ -1026,7 +1024,9 @@ Probability of Mutation per bit ($p_\text{mut}$) & $\nicefrac{1}{S} = 0.0167$ \\
 \hline 
 Overcoverage Cost ($c_\text{cov}$) & 3 \\
 \hline
-Overcapacity Cost ($c_\text{cap}$) & 1.015 \\
+Overcapacity Cost ($c_\text{cap}$) & 1.015 \\ 
+\hline
+Pixel Grid Size & 100 x 100, 20 m \\
 \hline
 \end{tabular}
 \label{tab:Prelim_SimVal}
@@ -1263,23 +1263,23 @@ In this section I present the first test case that builds on the work of the pre
 
 \subsection{Setup} \label{subsec:caseI_setup}
 
-This test case is constructed considering the following considerations and parameters.  There is only one SP, and its demand intensity function, $\lambda$, is generated using parameters (i.e., $\omega_{\max},\, \sigma,\, \mu$) that were empirically found to match a real world urban cellular network in China~\cite{6757900}.  $\lambda$ is pixelated into a 200 by 200 grid of square pixels with 15 m side length; $\mathcal{R}$, illustrated in \Cref{fig:CaseI_NetworkArea}, is a region 3 km by 3 km in size.  Resources are homogeneous and constructed to represent small macrocells.  The number of BSs, demand points, and scenarios were chosen such that the sDEP would converge to a solution in just under a new time limit of 1 hour wall clock time.  Due to the more chaotic demand field, this data set is \emph{smaller} than the set used in the preliminary simulations of last section.  Notably, due to their being fewer demand points, each demand point contains a larger amount of the overall field's demand.  This will be more properly handled with additional scenarios and the adaptive slicing model (\Cref{subsec:dep_slicing}).  GA generation limits (i.e., $G$, $G_{\min}$, $G_{\text{fit}}$, and $G_{\text{gen}}$) were increased to avoid the possible premature convergence seen in the last section.  The parameter values used in the simulations are shown in \Cref{tab:CaseI_SimVal}.
+This test case is constructed considering the following considerations and parameters.  There is only one SP, and its demand intensity function, $\lambda$, is generated using parameters (i.e., $\omega_{\max},\, \sigma,\, \mu$) that were empirically found to match a real world urban cellular network in China~\cite{6757900}.  $\lambda$ is pixelated into a 200 by 200 grid of square pixels with 15 m side length; $\mathcal{R}$, illustrated in \Cref{fig:CaseI_NetworkArea}, is a region 3 km by 3 km in size.  Resources are homogeneous and constructed to represent small macrocells.  The number of BSs, demand points, and scenarios were chosen such that the sDEP would converge to a solution in just under a new time limit of 1 hour wall clock time.  Due to the more chaotic demand field, this data set is \emph{smaller} than the set used in the preliminary simulations of last section.  Notably, due to their being fewer demand points, each demand point contains a larger amount of the overall field's demand.  This will be more properly handled with additional scenarios and the adaptive slicing model (\Cref{subsec:dep_slicing}).  GA generation limits (i.e., $G$, $G_{\min}$, $G_{\text{fit}}$, and $G_{\text{gen}}$) were increased to avoid the possibly premature convergence seen in the last section.  The parameter values used in the simulations are shown in \Cref{tab:CaseI_SimVal}.
 
 \begin{figure}[htp]
 	\centering
 	\begin{subfigure}{.49\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{Figures/Prelim_BSLocationsVoronoi}
+		\includegraphics[width=1\linewidth]{Figures/CaseI_BSLocationsVoronoi}
 		\caption{\small Voronoi tesselation of BS locations}
 		\label{fig:CaseI_BSLocVor}
 	\end{subfigure} \hfill
 	\begin{subfigure}{.49\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{Figures/Prelim_SSLTnsPPP_demandpointreal}
+		\includegraphics[width=1\linewidth]{Figures/CaseI_SSLTnsPPP_demandpointreal}
 		\caption{\small $\lambda$ with one realization of demand points ($\mathcal{M}$)}
 		\label{fig:CaseI_SSLTDPReal}
 	\end{subfigure}
-	\caption[Illustration of resources and demand used for Case I]{Illustration of resources and demand in the region, $\mathcal{R}$, used for Case I.}
+	\caption[Illustration of resources and demand used for Case I]{Illustration of resources and demand in the region used for Case I.}
 	\label{fig:CaseI_NetworkArea}
 \end{figure}
 
@@ -1317,8 +1317,6 @@ SSLT Maximum Angular Frequency ($\omega_{\max}$) & 0.19010 (0.012673) \\
 SSLT Location Parameter ($\sigma$) & 18.93 \\ 
 \hline 
 SSLT Scale Parameter ($\mu$) & 2.3991 \\ 
-\hline
-Pixel Grid Size & 200 x 200, 15 m \\
 \hline 
 \hline
 Maximum Number of Generations ($G$) & 4000 \\ 
@@ -1339,7 +1337,12 @@ Probability of Mutation per bit ($p_\text{mut}$) & $\nicefrac{1}{S} = 0.0455$ \\
 \hline 
 Overcoverage Cost ($c_\text{cov}$) & 3 \\
 \hline
-Overcapacity Cost ($c_\text{cap}$) & 1.015 \\
+Overcapacity Cost ($c_\text{cap}$) & 1.015 \\ 
+\hline
+Pixel Grid Size & 200 x 200, 15 m \\ 
+\hline
+GA Demand Weights ($\beta$) & $\{ 0.5,\, 0.6,\, 0.7,\, 0.8,\, 0.9,$ \\
+& $1.0,\, 1.5,\, 2.0,\, 2.5 \}$ \\
 \hline
 \end{tabular}
 \label{tab:CaseI_SimVal}
@@ -1356,7 +1359,7 @@ This affects the fitness heuristic (\cref{eq:GAFit}) of the GA by changing the c
 \mathrm{cost}\left( \textbf{z}^{\left\{ ig \right\}} \right) = \sum_{s \in \mathcal{S}} \Biggl( c_s \; z_s^{\left\{ ig \right\}} + c_\text{cov} \; \ind{V_s \not\subseteq B_s} + \\ \left( c_\text{cap}^g - 1 \right) \; \max\left( 0,\, \sum_{n \in \mathcal{N}} \left( \iint_{V_s} \lambda_n\left( x,\, y \right)\, dx\, dy \right) - \frac{r_s}{\beta} \right) \Biggr)
 \end{multline}
 
-\noindent where $\ind{*}$ is the indicator function (\cref{eq:indicator}).  As indicated by the cost function, resource $s$ is also considered overcapacity if the \emph{true} demand allocated to the BS exceeds $\nicefrac{r_s}{\beta}$.
+\noindent where $\ind{*}$ is the indicator function (\cref{eq:indicator}).  As indicated by the modified cost function, resource $s$ is also considered overcapacity if the \emph{actual} demand allocated to the BS exceeds $\nicefrac{r_s}{\beta}$.
 
 This only impacts the resource selection performed by the GA and only in the context shown.  This affects neither the demand associated with individual demand points of a scenario nor the slicing of the selected resources to individual demand points in the adaptive slicing model (\Cref{subsec:dep_slicing}).
 
@@ -1365,6 +1368,8 @@ This only impacts the resource selection performed by the GA and only in the con
 In this section I present the results of the Case I simulations.  First, run time results of the two approaches will be presented and comparisons made.  Second, the network cost results will be presented and compared, followed by, third, the network demand satisfaction results.  Finally, this section will end with my conclusions of this study case.
 
 \subsubsection{Run Time}
+
+
 
 \subsubsection{Network Cost}
 
@@ -1387,60 +1392,6 @@ In this section I present the second test
 \subsubsection{Demand Satisfaction}
 
 \subsubsection{Takeaway Conclusions}
-
-\iffalse
-In \Cref{fig:AlgSpeedupRunTime} is a comparison of the approach run times.  It shows the run times of both the DEP and genetic algorithm in terms of the speedup ratio and in absolute number of seconds.  As the number of scenarios sampled increases, the CPU run time of the sampled DEP increases exponentionally, and fails to converge to a final solution with 50 scenarios within the time limit of 15 minutes.  Except for the 5 scenario case, the genetic algorithm converges to a solution in less CPU time (125.8 seconds) than the sampled DEP.  When 20 scenarios are sampled, the DEP takes approximately 440\% of the time as the genetic algorithm; at 45 scenarios, this has increased to 4,630\%.  CPLEX is capable of parallelizing across the 8 CPU cores, allowing for the wall clock run time to be, at minimum, one-eighth the CPU run time.  In terms of the adjusted approximate ``wall clock" time, the genetic algorithm converges in less wall clock time than the sampled DEP for 25 or more sampled scenarios.
-
-The trade off for the genetic algorithm's improved run time is that the solution provided is less optimal than the sampled DEP, as indicated by an increased cost for the VNB to build the VWN.  \Cref{fig:VWNCompCost} compares the increasing cost of the sampled DEP as $\alpha$ increases with the cost of the various genetic algorithm solutions.  On average, the genetic algorithm incurs a 36\% increased cost in selecting the BSs for the VWN.  At minimum, the incurred cost is only 20\% than the sampled DEP, which implies the genetic algorithm might be terminating early, and a tighter solution might be found by increasing $G_\text{halt}$.  It should also be noted that one unit of cost is one additional BS being selected for the VWN, and the sampled DEP selections for $\alpha \geq 30$ have a cost of only 10 BSs.  Any variance that incurs one additional BS for the genetic algorithm incurs 10\% increased cost.  Increasing the number of BSs required to comprise the VWN would introduce additional granularity in $\mathcal{S}$ that might decrease the inefficiency of the genetic algorithm.  This was not done as this data set was chosen specifically so the sampled DEP would terminate within 15 minutes (i.e., in a reasonable amount of time); increasing the number of BSs available to the VNB drastically increases the time it would take the sampled DEP to converge to a solution.
-
-There is a direct correlation between the number of BSs in the VWN and its capability for satisfying demand.  As the cost - and, therefore, the number of BSs - increases for a given solution, the average demand satisfaction trends towards 100\%, as shown in \Cref{fig:VWNCompSatis}.  Because of this overallocation of resources, the genetic algorithm solutions have a very high demand satisfaction, averaging 99.9\% satisfaction and reaching 100\% for some solutions.  The worst performing genetic algorithm solution exceeded 99.1\% demand satisfaction.  The most expensive 10-BS sampled DEP solutions reach 99.2\% when slicing to the same set of demand point scenarios, $\Omega$, that determined the sampled DEP BS selection.
-
-When the set of demand points change to a scenario no longer in $\Omega$, the sampled DEP performs very similarly.  \Cref{fig:VWNCompSatisEval} shows the demand satisfaction for both the sampled DEP and genetic algorithm BS selections when sliced to a new set of scenarios as evaluated with Problem 3.  Here, the number of demand points increases to 200 points per scenario, each with 66.8 kbps rate demand, across 50 independent scenarios.  The demand satisfaction trend of the sampled DEP BS selection follows very closely to the original set of scenarios but hits a maximum of 99.0\% demand satisfaction with 10 BSs.  In comparison, the SP demand point scenarios are far more beneficial to the genetic algorithm, which reaches greater than 99.99\% demand satisfaction for all generated VWNs.  This is expected as a side effect of the increased number of points and scenarios more accurately describing a sampling of the original SSLT demand density field of the SP, $\rho$.
-
-\textit{In this chapter I will be introducing four different cases to test the provided approximation approaches.  The first will be the test case used in my conference paper (one SP, with homogeneous resources).  The second will be an expansion of the test case used in my conference paper, but with heterogeneous resources.  The third will extend to service multiple similar cellular SPs.  The fourth will extend to a case with multiple SPs with various, specialized demands.}
-
-%\section{VWN Construction for a Single SP} \label{sec:onesp}
-
-\textit{Lead into the first two cases, which test the approaches while using a single SP.}
-
-%\subsection{Case I: Homogeneous Urban Cellular Network} \label{subsec:onesp_homres}
-
-\textit{Basically as presented in my conference paper.  One SP, homogeneous resources within the RPs.  Might need to use a new data set, though, with a larger data set.}
-
-%\subsection{Case II: Impact of Heterogeneous Resources} \label{subsec:onesp_hetres}
-
-\textit{Same as Case I, but with heterogeneous resources within the RPs.  Need to understand how this changes the approaches.}
-
-%\section{VWN Construction for Multiple SPs} \label{sec:mulsp}
-
-\textit{Lead into the second two cases (should I have more?), which test using multiple SPs to satisfy from the same set of resources.}
-
-%\subsection{Case III: Two Similar Urban Cellular Networks} \label{subsec:mulsp_sim}
-
-\textit{First consider a case with two SPs with similar demands.  Overlapping cellular networks.  Could see how the approaches behave while two SPs partially overlap.}
-
-%\subsubsection{Homogeneous Resources} \label{subsubsec:mulsp_sim_homres}
-
-\textit{If it appears that the difference between Case I and Case II (sections \ref{subsec:onesp_homres} and \ref{subsec:onesp_hetres}) is worth further consideration, then analyze here with homogeneous resources.  Otherwise, a single comparison should be sufficient.}
-
-%\subsubsection{Heterogeneous Resources} \label{subsubsec:mulsp_sim_hetres}
-
-\textit{As for the previous subsubsection (\ref{subsubsec:mulsp_sim_homres}), but consider with heterogeneous resources.}
-
-%\subsection{Case IV: SPs with Specialized Demands} \label{subsec:mulsp_spec}
-
-\textit{This is the major case that is the extension of my work.  Case I (\ref{subsec:onesp_homres}) analyzed what happens with a single SP, Case II (\ref{subsec:onesp_hetres}) expanded that to heterogeneous resources, and Case III (\ref{subsec:mulsp_sim}) added an additional similar SP, but Case IV considers when there are several SPs and with their own considerations and unique demands.  Need to consider what these SPs look like.  One would be a cellular network like in Case I (moderate to high number of users, moderate demand).  Another could be a streaming service (few users, high individual demand).  Another an emergency service (very low number of users and demand, but requiring virtually 100\% demand satisfaction - see note below).  What other SPs should I consider?}
-
-\textit{\textbf{Note}: I need to consider how to accurately label demand satisfaction within the approaches.  In effect, this would be controlled by $\alpha$ for the (sampled) DEP and controlled by $\beta$ or some such for the genetic algorithm.  I should investigate this at some point of the thesis, probably within their appropriate sections in chapter \ref{ch:approaches} (DEP: \ref{sec:dep} and GA: \ref{sec:ga}).}
-
-%\subsubsection{Homogeneous Resources} \label{subsubsec:mulsp_spec_homres}
-
-\textit{As for Case III (\ref{subsec:mulsp_sim}), if a considerable difference was detected between Cases I and II (\ref{subsec:onesp_homres} and \ref{subsec:onesp_hetres}), consider analyzing the case with homogeneous resources and}
-
-%\subsubsection{Heterogeneous Resources} \label{subsubsec:mulsp_spec_hetres}
-
-\textit{also with heterogeneous resources.}
-\fi
 
 \fi
 
