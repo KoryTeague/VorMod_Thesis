@@ -3,12 +3,12 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: September 4, 2018
+% REVISED: September 5, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
-\documentclass[12pt,dvipsnames,draft]{report}
-%\documentclass[12pt,dvipsnames]{report}
+%\documentclass[12pt,dvipsnames,draft]{report}
+\documentclass[12pt,dvipsnames]{report}
 
 \setlength{\textwidth}{6.5in}
 \setlength{\textheight}{8.5in}
@@ -1028,6 +1028,13 @@ Overcapacity Cost ($c_\text{cap}$) & 1.015 \\
 \hline
 Pixel Grid Size & 100 x 100, 20 m \\
 \hline
+\hline
+Number of Additional Evaluation Scenarios ($\not\in \hat{\Omega}$) & 50 \\
+\hline
+Number of Additional Scenario Demand Points ($M$) & 200 \\
+\hline
+Additional Demand Point Demand ($d$) & 66.7 kbps \\
+\hline
 \end{tabular}
 \label{tab:Prelim_SimVal}
 \end{table}
@@ -1344,6 +1351,13 @@ Pixel Grid Size & 200 x 200, 15 m \\
 GA Demand Weights ($\beta$) & $\{ 0.5,\, 0.6,\, 0.7,\, 0.8,\, 0.9,$ \\
 & $1.0,\, 1.5,\, 2.0,\, 2.5 \}$ \\
 \hline
+\hline
+Number of Additional Evaluation Scenarios ($\not\in \hat{\Omega}$) & 100 \\
+\hline
+Number of Additional Scenario Demand Points ($M$) & 300 \\
+\hline
+Additional Demand Point Demand ($d$) & 66.547 Mbps \\
+\hline
 \end{tabular}
 \label{tab:CaseI_SimVal}
 \end{table}
@@ -1371,25 +1385,50 @@ In this section I present the results of the Case I simulations.  First, the res
 
 \subsubsection{The Sampled Deterministic Equivalent Program}
 
-\change{??? refers to some figure.  See note.}%
-% Consider consolidating these results into a single figure with 2 subfigures horizontally arrayed.  Or on a separate figure page vertically if it lays well.
-% sDEPResultsFig1 would be this primary figure
-% sDEPResultsSubFig1 would be the run time trend
-% sDEPResultsSubFig2 would be the cost trend
-% These might be consolidatable into a single figure... Run time overlayed on cost, akin to Figure 4.5 on page 67.
-???sDEPResultsFig1 visualizes the sDEP approach, which behaves very similarly under this data set compared to the preliminary simulations.  As shown in ???sDEPResultsSubFig1, the run time averages at approximately 15000 seconds, spiking to nearly 25000 seconds for $\alpha \in \left\{ 10,\, 12 \right\}$.  For this region, the sDEP is in transition; ???sDEPResultsSubFig2 demonstrates that the sDEP allocates 9 BSs for $\alpha = 10$ and 10 BSs for $\alpha \geq 12$.
+\Cref{fig:CaseI_sDEPComparisonCostRunTime} visualizes the sDEP approach, which behaves very similarly under this data set compared to the preliminary simulations.  The run time averages at approximately 15000 seconds, spiking to nearly 25000 seconds for $\alpha \in \left\{ 10,\, 12 \right\}$.  For this region, the sDEP is in transition; the sDEP allocates 9 BSs for $\alpha = 10$ and 10 BSs for $\alpha \geq 12$.
 
-\change{Figure}%
-% sDEPResultsFig2 visualizes the demand satisfaction trend
-This rapid transition from the trivial no-allocation solution ($\alpha < 10$) to 9 and 10 BSs indicates that the data set is highly polarized.  Further simulations were conducted between $\alpha = 8$ and $\alpha = 10$ which demonstrates that the allocation transitions suddenly at approximately $\alpha = 9.88$ from 0 to 9 BSs.  As ???sDEPResultsFig2 shows, these allocations are the maximum necessary; at 9 BSs the sDEP reaches \change{get actual value}90\%, and at 10 BSs the sDEP achieves the maximum of 100\% demand satisfaction.  I posit that the data set chosen is too forgiving on the available resources.  Since resources have a coverage radius of half of the region's side length---a single BS can span from one edge of the region to the other if centrally placed---most BSs can reach most demand points.  This reduces the importance of coverage and simplifies slicing to a problem of capacity.
+\begin{figure}[htp]
+	\centering
+	\includegraphics[height=0.4\textheight]{Figures/CaseI_sDEPComparisonCostRuntime}
+	\caption[Comparison of sDEP approach run time and costs for Case I simulations]{Comparison of sDEP CPU run time and VWN construction cost}
+	\label{fig:CaseI_sDEPComparisonCostRunTime}
+\end{figure}
 
-\subsubsection{Network Cost}
+This rapid transition from the trivial no-allocation solution ($\alpha < 10$) to 9 and 10 BSs indicates that the data set is highly polarized.  Further simulations were conducted between $\alpha = 8$ and $\alpha = 10$ which demonstrates that the allocation transitions suddenly at approximately $\alpha = 9.88$ from 0 to 9 BSs.  As \Cref{fig:CaseI_sDEPComparisonCostSat} shows, these allocations are the maximum necessary; at 9 BSs the sDEP reaches 90.14\%, and at 10 BSs the sDEP achieves the maximum of 100\% demand satisfaction.  This remains true even for an additional set of 100 scenarios not in $\hat{\Omega}$.
 
-\textit{Discuss the GA results, especially the impact of $\beta$.}
+\begin{figure}[htp]
+	\centering
+	\includegraphics[height=0.4\textheight]{Figures/CaseI_sDEPComparisonCostSat}
+	\caption[Comparison of sDEP approach costs and demand satisfaction for Case I simulations]{Comparison of sDEP VWN construction cost and associated proportional demand satisfaction.  Both original scenarios (those in $\hat{\Omega}$) that the sDEP is optimized for and new scenarios (not in $\hat{\Omega}$) have identical demand satisfaction.}
+	\label{fig:CaseI_sDEPComparisonCostSat}
+\end{figure}
 
-\subsubsection{Demand Satisfaction}
+I posit that the data set chosen is too forgiving on the available resources.  Since resources have a coverage radius of half of the region's side length---a single BS can span from one edge of the region to the other if centrally placed---most BSs can reach most demand points.  This reduces the importance of coverage and simplifies slicing to solely a problem of capacity.  The high time complexity of this specific set is likely due to the BSs' high proportional radii, as BSs have many possible demand points to be sliced to.
 
-\subsubsection{Takeaway Conclusions}
+\subsubsection{The Genetic Algorithm}
+
+The GA also performs similarly to what was shown in \Cref{sec:prelim}, with the primary differences of controlling $\beta$ and increasing the number of generations before the halting condition occurs.  This discussion will present these results with focus on the changes caused by controlling $\beta$ similar to the focus spent on the sDEP with respect to $\alpha$ while presenting the preliminary simulation results.
+
+The GA's run time (\Cref{fig:CaseI_GARunTimeErrorbar}) varies according to $\beta$ with the solutions falling into three major categories.  The first category of solutions ($\beta < 0.8$) is characterized by halting with the stronger and shorter fitness halting condition (i.e., the fitness of the fittest individual did not change for $G_{\text{fit}}$ generations).  The second category ($\beta > 0.8$), in contrast, is characterized by halting with the weaker genome halting condition (i.e., the genome of the fittest individual did not change for $G_{\text{gen}}$ generations).  The third category ($\beta = 0.8$) is also characterized by the genome halt, but as a consistent and distinct outlier from the second category as a transition from the first.  \Cref{fig:CaseI_GARunTimeHists} presents the run times of the various solutions in greater detail as histogram PDFs, and clearly shows the separation of these three categories.
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[height=0.4\textheight]{Figures/CaseI_GARunTime50_Errorbar}
+	\caption[Case I GA CPU run time trends]{GA CPU run time trend as controlled by $\beta$ with 95\% confidence intervals}
+	\label{fig:CaseI_GARunTimeErrorbar}
+\end{figure}
+
+\begin{figure}[p]
+	\centering
+	\includegraphics[angle=-90,origin=c,height=0.8\textheight]{Figures/CaseI_GARunTime50_9HistogramsTall}
+	\caption[Case I GA CPU run time histogram PDFs]{GA CPU run time trend in further depth than \Cref{fig:CaseI_GARunTimeErrorbar} as histogram PDFs.  For each $\beta$, means are shown in orange and 95\% confidence intervals in dashed black.}
+	\label{fig:CaseI_GARunTimeHists}
+\end{figure}
+
+\improvement{Continue from here}%
+\textit{blah}
+
+\subsubsection{Comparisons and Conclusions}
 
 \section{Case II: Single SP with Heterogeneous Resources} \label{sec:caseII}
 
