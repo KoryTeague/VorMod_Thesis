@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: September 5, 2018
+% REVISED: September 6, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -37,6 +37,7 @@
 \usepackage{cleveref}
 \usepackage{setspace}
 \usepackage{nicefrac}
+\usepackage{multirow}
 
 \newif\ifisdoublespacing
 
@@ -974,67 +975,67 @@ For these preliminary simulations, I use the parameter values shown in \Cref{tab
 \centering
 \caption{Numerical Values of Relevant Parameters for Preliminary Simulations}
 \begin{tabular}{|c|c|} 
-\hline
-Width, Height of Geographic Area ($X$) & 2 km x 2 km \\
-\hline
-Number of BSs ($S$) & 60 \\ 
-\hline 
-Number of Demand Points ($M$) & 75 \\ 
-\hline 
-Number of SPs ($N$) & 1 \\
-\hline
-Number of Sampled Scenarios ($O$) & $\{5,\, 10,\, \ldots,\, 50\}$ and 25 \\ 
-\hline 
-sDEP Objective Weights ($\alpha$) & $\left\{ 5,\, 10,\, \ldots,\, 100 \right\}$ and \\
-& $\left\{ \expnumber{2.2}{2},\, \expnumber{4.6}{2},\, \expnumber{1.0}{3},\, \ldots,\, \expnumber{1.0}{9} \right\}$ \\
-\hline
-BS cost ($c_s,\, \forall s \in \mathcal{S}$) & 1 \\ 
-\hline 
-BS capacity ($r_s,\, \forall s \in \mathcal{S})$ & 1.50 Mbps \\ 
-\hline
-BS range ($b_s,\, \forall s \in \mathcal{S}$) & 500 m \\
-\hline 
-Point Traffic Demand ($d$) & 0.178 Mbps \\ 
-\hline 
-\hline
-SSLT Approximation Depth ($L$) & 50 \\ 
-\hline
-SSLT Maximum Angular Frequency ($\omega_{\max}$) & $\nicefrac{2 \pi}{30} \; \left( \nicefrac{\pi}{300} \right)$ \\
-\hline 
-SSLT Location Parameter ($\sigma$) & 0 \\ 
-\hline 
-SSLT Scale Parameter ($\mu$) & 1 \\ 
-\hline 
-\hline
-Maximum Number of Generations ($G$) & 3000 \\ 
-\hline
-Minimum Number of Generations ($G_{\min}$) & 300 \\
-\hline
-Unchanged Generations Before Fitness Halt ($G_{\text{fit}}$) & 150 \\
-\hline 
-Unchanged Generations Before Genome Halt ($G_{\text{gen}}$) & 400 \\
-\hline 
-Number of Individuals per Generation ($I$) & 80 \\ 
-\hline
-Number of Elite Individuals per Generation & 4 \\
-\hline 
-Probability of Crossover ($p_\text{xov}$) & 0.7 \\ 
-\hline
-Probability of Mutation per bit ($p_\text{mut}$) & $\nicefrac{1}{S} = 0.0167$ \\
-\hline 
-Overcoverage Cost ($c_\text{cov}$) & 3 \\
-\hline
-Overcapacity Cost ($c_\text{cap}$) & 1.015 \\ 
-\hline
-Pixel Grid Size & 100 x 100, 20 m \\
-\hline
-\hline
-Number of Additional Evaluation Scenarios ($\not\in \hat{\Omega}$) & 50 \\
-\hline
-Number of Additional Scenario Demand Points ($M$) & 200 \\
-\hline
-Additional Demand Point Demand ($d$) & 66.7 kbps \\
-\hline
+	\hline
+	Width, Height of Geographic Area ($X$) & 2 km x 2 km \\
+	\hline
+	Number of BSs ($S$) & 60 \\ 
+	\hline 
+	Number of Demand Points ($M$) & 75 \\ 
+	\hline 
+	Number of SPs ($N$) & 1 \\
+	\hline
+	Number of Sampled Scenarios ($O$) & $\{5,\, 10,\, \ldots,\, 50\}$ and 25 \\ 
+	\hline 
+	\multirow{2}{*}{sDEP Objective Weights ($\alpha$)} & $\left\{ 5,\, 10,\, \ldots,\, 100 \right\}$ \\
+	& $\left\{ \expnumber{2.2}{2},\, \expnumber{4.6}{2},\, \expnumber{1.0}{3},\, \ldots,\, \expnumber{1.0}{9} \right\}$ \\
+	\hline
+	BS cost ($c_s,\, \forall s \in \mathcal{S}$) & 1 \\ 
+	\hline 
+	BS capacity ($r_s,\, \forall s \in \mathcal{S})$ & 1.50 Mbps \\ 
+	\hline
+	BS range ($b_s,\, \forall s \in \mathcal{S}$) & 500 m \\
+	\hline 
+	Point Traffic Demand ($d$) & 0.178 Mbps \\ 
+	\hline 
+	\hline
+	SSLT Approximation Depth ($L$) & 50 \\ 
+	\hline
+	SSLT Maximum Angular Frequency ($\omega_{\max}$) & $\nicefrac{2 \pi}{30} \; \left( \nicefrac{\pi}{300} \right)$ \\
+	\hline 
+	SSLT Location Parameter ($\sigma$) & 0 \\ 
+	\hline 
+	SSLT Scale Parameter ($\mu$) & 1 \\ 
+	\hline 
+	\hline
+	Maximum Number of Generations ($G$) & 3000 \\ 
+	\hline
+	Minimum Number of Generations ($G_{\min}$) & 300 \\
+	\hline
+	Unchanged Generations Before Fitness Halt ($G_{\text{fit}}$) & 150 \\
+	\hline 
+	Unchanged Generations Before Genome Halt ($G_{\text{gen}}$) & 400 \\
+	\hline 
+	Number of Individuals per Generation ($I$) & 80 \\ 
+	\hline
+	Number of Elite Individuals per Generation & 4 \\
+	\hline 
+	Probability of Crossover ($p_\text{xov}$) & 0.7 \\ 
+	\hline
+	Probability of Mutation per bit ($p_\text{mut}$) & $\nicefrac{1}{S} = 0.0167$ \\
+	\hline 
+	Overcoverage Cost ($c_\text{cov}$) & 3 \\
+	\hline
+	Overcapacity Cost ($c_\text{cap}$) & 1.015 \\ 
+	\hline
+	Pixel Grid Size & 100 x 100, 20 m \\
+	\hline
+	\hline
+	Number of Additional Evaluation Scenarios ($\not\in \hat{\Omega}$) & 50 \\
+	\hline
+	Number of Additional Scenario Demand Points ($M$) & 200 \\
+	\hline
+	Additional Demand Point Demand ($d$) & 66.7 kbps \\
+	\hline
 \end{tabular}
 \label{tab:Prelim_SimVal}
 \end{table}
@@ -1156,21 +1157,21 @@ There is a direct correlation between the number of BSs in the VWN and its capab
 \centering
 \caption[Preliminary Simulation Demand Satisfaction of sDEP-Constructed VWNs]{Demand Satisfaction Results for Various sDEP-Constructed VWNs}
 \begin{tabular}{|c|c|} 
-\hline
-\textbf{Number of Selected BSs} & \textbf{Demand Satisfaction} \\
-\hline
-0 & 0.00\% \\
-\hline
-7 & 78.1\% \\
-\hline
-9 & 95.8\% \\
-\hline
-10 & 99.0\% \\
-\hline
-11 & 99.7\% \\
-\hline
-12+ & 100\% \\
-\hline
+	\hline
+	\textbf{Number of Selected BSs} & \textbf{Demand Satisfaction} \\
+	\hline
+	0 & 0.00\% \\
+	\hline
+	7 & 78.1\% \\
+	\hline
+	9 & 95.8\% \\
+	\hline
+	10 & 99.0\% \\
+	\hline
+	11 & 99.7\% \\
+	\hline
+	12+ & 100\% \\
+	\hline
 \end{tabular}
 \label{tab:Prelim_sDEPDemandSatisfaction}
 \end{table}
@@ -1179,11 +1180,11 @@ Demand satisfaction approaches 100\% until reaching it for all sDEP solutions co
 
 The first range described (i.e., $\alpha \leq \expnumber{2.2}{2}$) is wholly described by solutions that provide less than 100\% demand satisfaction, but quickly approach that value with diminishing returns.  This does help to inform of the appropriate values of $\alpha$ to consider wtihin the VNB to aim for specific percents of demand satisfaction, though this will likely adjust with changes in the problem parameters and $\lambda_n$.  What this range most importantly shows is that there does not exist, at least as far as the sDEP is an approximation of the original two-stage stochastic optimization program, any solutions that give equal demand satisfaction for less cost than the GA's solutions.
 
-One notable observation is that the sDEP provided a non-trivial solution at approximately $\alpha = 10$, but not for $\alpha = 5$.  The second summation of the sDEP, which handles slicing and demand satisfaction, is normalized according to the total expected demand of the field, $D$.  As a result, if a hypothetical constructed network provided 100\% demand satisfaction, the value of the second half of the sDEP objective function would be $\alpha$.  For a non-trivial solution to be optimal, the satisfaction of the demand within the scenarios comprising $\Omega$ must be larger than the cost of the network divided by $\alpha$.  That is, for $\alpha = 5$, there must be a BS that provides 20\% demand satisfaction per unit cost for a non-trivial solution to exist.  Each BS has a rate capacity of approximately 11\% of the total demand contained in the field; $\alpha = \nicefrac{\expnumber{1.5}{6}}{75 \cdot \expnumber{1.78}{5}} = \nicefrac{15}{13.35} = 8.9$ is the lowest value of $\alpha$ that provides a non-trivial solution.
+One notable observation is that the sDEP provided a non-trivial solution at approximately $\alpha = 10$, but not for $\alpha = 5$.  The second summation of the sDEP, which handles slicing and demand satisfaction, is normalized according to the total expected demand of the field, $D$.  As a result, if a hypothetical constructed network provided 100\% demand satisfaction, the value of the second half of the sDEP objective function would be $\alpha$.  For a non-trivial solution to be optimal, the satisfaction of the demand within the scenarios comprising $\Omega$ must be larger than the cost of the network divided by $\alpha$.  That is, for $\alpha = 5$, there must be a BS that provides 20\% demand satisfaction per unit cost for a non-trivial solution to exist.  Each BS has a rate capacity of approximately 11\% of the total demand contained in the field; $\alpha = \nicefrac{\expnumber{1.5}{6}}{75 \cdot \expnumber{1.78}{5}} = \nicefrac{15}{13.35} = 8.9$ is the lowest possible value of $\alpha$ that provides a non-trivial solution.
 
 The GA approach performs fairly well, exceeding 99\% demand satisfaction for all solutions.  \Cref{fig:Prelim_GAEval_Histogram} visualizes the distribution of the various GA solutions.  Forty-five of the fifty GA solutions have at least 99.8\% demand satisfaction, averaging 99.90\% with a 95\% confidence interval of (99.83\%, 99.94\%).  Demand satisfaction for the 13-, 14-, and 15-BS solutions is dominated by solutions giving 100\% demand satisfaction.  See \Cref{tab:Prelim_GADemandSatisfaction} for specific ranges of the GA solutions.
 
-\begin{figure}[htp]
+\begin{figure}[ht]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/Prelim_GAEval_VAE_HistogramBoxplot}
 	\caption[Preliminary simulation GA demand satisfaction]{Proportional demand satisfaction of the GA approaches as a histogram and box-and-wisker plot.  Histogram mean shown in orange, 95\% confidence intervals shown in dashed black. Black dots indicate medians, blue bars the inner quartiles (25\%--50\% and 50\%--75\%), blue lines the outer quartiles (0\%--25\% and 75\%--100\%), and empty circles the outliers.}
@@ -1194,17 +1195,17 @@ The GA approach performs fairly well, exceeding 99\% demand satisfaction for all
 \centering
 \caption[Preliminary Simulation Demand Satisfaction of GA-Constructed VWNs]{Demand Satisfaction Results for Various GA-Constructed VWNs}
 \begin{tabular}{|c|c|c|c|c|} 
-\hline
-\textbf{Number of BSs} & \textbf{Number of Solutions} & \textbf{Min} & \textbf{Avg} & \textbf{Max} \\
-\hline
-12 & 1 & 99.72\% & 99.72\% & 99.72\% \\
-\hline
-13 & 25 & 99.10\% & 99.92\% & 100.0\% \\
-\hline
-14 & 17 & 99.14\% & 99.86\% & 100.0\% \\
-\hline
-15 & 7 & 99.79\% & 99.94\% & 100.0\% \\
-\hline
+	\hline
+	\textbf{Number of BSs} & \textbf{Number of Solutions} & \textbf{Min} & \textbf{Avg} & \textbf{Max} \\
+	\hline
+	12 & 1 & 99.72\% & 99.72\% & 99.72\% \\
+	\hline
+	13 & 25 & 99.10\% & 99.92\% & 100.0\% \\
+	\hline
+	14 & 17 & 99.14\% & 99.86\% & 100.0\% \\
+	\hline
+	15 & 7 & 99.79\% & 99.94\% & 100.0\% \\
+	\hline
 \end{tabular}
 \label{tab:Prelim_GADemandSatisfaction}
 \end{table}
@@ -1235,23 +1236,23 @@ The GA instead performs far better with the new scenarios due their improved dis
 
 \begin{table}[htp]
 \centering
-\caption[Preliminary Simulation Demand Satisfaction of GA-Constructed VWNs and New Scenarios]{Demand Satisfaction Results for Various GA-Constructed VWNs Over 50 Non-$\hat{\Omega}$ Scenarios}
+\caption[Preliminary Simulation Demand Satisfaction of GA-Constructed VWNs with New Scenarios]{Demand Satisfaction Results for Various GA-Constructed VWNs Over 50 Non-$\hat{\Omega}$ Scenarios}
 \begin{tabular}{|c|c|c|} 
-\hline
-\textbf{Number of BSs} & \textbf{Number of Solutions} & \textbf{Proportional Demand Satisfaction} \\
-\hline
-12 & 1 & 100.0\% \\
-\hline
-13 & 1 & 99.99\% \\
-\hline
-13 & 24 & 100.00\% \\
-\hline
-14 & 1 & 99.99\% \\
-\hline
-14 & 16 & 100.0\% \\
-\hline
-15 & 7 & 100.0\% \\
-\hline
+	\hline
+	\textbf{Number of BSs} & \textbf{Number of Solutions} & \textbf{Proportional Demand Satisfaction} \\
+	\hline
+	12 & 1 & 100.0\% \\
+	\hline
+	13 & 1 & 99.99\% \\
+	\hline
+	13 & 24 & 100.00\% \\
+	\hline
+	14 & 1 & 99.99\% \\
+	\hline
+	14 & 16 & 100.0\% \\
+	\hline
+	15 & 7 & 100.0\% \\
+	\hline
 \end{tabular}
 \label{tab:Prelim_GAEvalDemandSatisfaction}
 \end{table}
@@ -1272,7 +1273,7 @@ In this section I present the first test case that builds on the work of the pre
 
 \subsection{Setup} \label{subsec:caseI_setup}
 
-This test case is constructed considering the following considerations and parameters.  There is only one SP, and its demand intensity function, $\lambda$, is generated using parameters (i.e., $\omega_{\max},\, \sigma,\, \mu$) that were empirically found to match a real world urban cellular network in China~\cite{6757900}.  $\lambda$ is pixelated into a 200 by 200 grid of square pixels with 15 m side length; $\mathcal{R}$, illustrated in \Cref{fig:CaseI_NetworkArea}, is a region 3 km by 3 km in size.  Resources are homogeneous and constructed to represent small macrocells.  The size of the region and the number of BSs, demand points, and scenarios were chosen such that the sDEP would converge to a solution in just under a new time limit of 1 hour wall clock time.  Resources have a large coverage radius relative to the region's size; a larger region introduces more demand and requires more BSs for a solution to be feasible, increasing run times, and a smaller coverage radius would cause the resources to have sub-macrocell coverage area.  This data set is \emph{smaller} than the set used in the preliminary simulations of last section.  Due to the decreased number of demand points, each demand point contains a larger amount of the overall field's demand.  This will be more properly handled with additional scenarios and the adaptive slicing model (\Cref{subsec:dep_slicing}).  GA generation limits (i.e., $G$, $G_{\min}$, $G_{\text{fit}}$, and $G_{\text{gen}}$) were increased to avoid the possibly premature convergence seen in the last section.  The parameter values used in the simulations are shown in \Cref{tab:CaseI_SimVal}.
+This test case is constructed considering the following considerations and parameters.  There is only one SP, and its demand intensity function, $\lambda$, is generated using parameters (i.e., $\omega_{\max},\, \sigma,\, \mu$) that were empirically found to match a real world urban cellular network in China~\cite{6757900}.  $\lambda$ is pixelated into a 200 by 200 grid of square pixels with 15 m side length; $\mathcal{R}$, illustrated in \Cref{fig:CaseI_NetworkArea}, is a region 3 km by 3 km in size.  Resources are homogeneous and constructed to represent small macrocells.  The size of the region and the number of BSs, demand points, and scenarios were chosen such that the sDEP would converge to a solution in just under a new time limit of one hour wall clock time.  Resources have a large coverage radius relative to the region's size; a larger region introduces more demand and requires more BSs for a solution to be feasible, increasing run times, and a smaller coverage radius would cause the resources to have sub-macrocell coverage area.  This data set is \emph{smaller} than the set used in the preliminary simulations of last section.  Due to the decreased number of demand points, each demand point contains a larger amount of the overall field's demand.  This will be more properly handled with additional scenarios and the adaptive slicing model (\Cref{subsec:dep_slicing}).  GA generation limits (i.e., $G$, $G_{\min}$, $G_{\text{fit}}$, and $G_{\text{gen}}$) were increased to avoid the possibly premature convergence seen in the last section.  The parameter values used in the simulations are shown in \Cref{tab:CaseI_SimVal}.
 
 \begin{figure}[htp]
 	\centering
@@ -1296,70 +1297,70 @@ This test case is constructed considering the following considerations and param
 \centering
 \caption{Numerical Values of Relevant Parameters for Case I}
 \begin{tabular}{|c|c|} 
-\hline
-Width, Height of Geographic Area ($X$) & 3 km x 3 km \\
-\hline
-Number of BSs ($S$) & 22 \\ 
-\hline 
-Number of Demand Points ($M$) & 90 \\ 
-\hline 
-Number of SPs ($N$) & 1 \\
-\hline
-Number of Sampled Scenarios ($O$) & 30 \\ 
-\hline 
-sDEP Objective Weights ($\alpha$) & $\left\{ 6,\, 8,\, \ldots,\, 30 \right\}$ and \\
-& $\left\{ 40,\, 50,\, \ldots,\, 100 \right\}$ \\
-\hline
-BS cost ($c_s,\, \forall s \in \mathcal{S}$) & 1 \\ 
-\hline 
-BS capacity ($r_s,\, \forall s \in \mathcal{S})$ & 2 Gbps \\ 
-\hline
-BS range ($b_s,\, \forall s \in \mathcal{S}$) & 1500 m \\
-\hline 
-Point Traffic Demand ($d$) & 221.89 Mbps \\ 
-\hline 
-\hline
-SSLT Approximation Depth ($L$) & 50 \\ 
-\hline
-SSLT Maximum Angular Frequency ($\omega_{\max}$) & 0.19010 (0.012673) \\
-\hline 
-SSLT Location Parameter ($\sigma$) & 18.93 \\ 
-\hline 
-SSLT Scale Parameter ($\mu$) & 2.3991 \\ 
-\hline 
-\hline
-Maximum Number of Generations ($G$) & 4000 \\ 
-\hline
-Minimum Number of Generations ($G_{\min}$) & 450 \\
-\hline
-Unchanged Generations Before Fitness Halt ($G_{\text{fit}}$) & 300 \\
-\hline 
-Unchanged Generations Before Genome Halt ($G_{\text{gen}}$) & 600 \\
-\hline 
-Number of Individuals per Generation ($I$) & 80 \\ 
-\hline
-Number of Elite Individuals per Generation & 4 \\
-\hline 
-Probability of Crossover ($p_\text{xov}$) & 0.7 \\ 
-\hline
-Probability of Mutation per bit ($p_\text{mut}$) & $\nicefrac{1}{S} = 0.0455$ \\
-\hline 
-Overcoverage Cost ($c_\text{cov}$) & 3 \\
-\hline
-Overcapacity Cost ($c_\text{cap}$) & 1.015 \\ 
-\hline
-Pixel Grid Size & 200 x 200, 15 m \\ 
-\hline
-GA Demand Weights ($\beta$) & $\{ 0.5,\, 0.6,\, 0.7,\, 0.8,\, 0.9,$ \\
-& $1.0,\, 1.5,\, 2.0,\, 2.5 \}$ \\
-\hline
-\hline
-Number of Additional Evaluation Scenarios ($\not\in \hat{\Omega}$) & 100 \\
-\hline
-Number of Additional Scenario Demand Points ($M$) & 300 \\
-\hline
-Additional Demand Point Demand ($d$) & 66.547 Mbps \\
-\hline
+	\hline
+	Width, Height of Geographic Area ($X$) & 3 km x 3 km \\
+	\hline
+	Number of BSs ($S$) & 22 \\ 
+	\hline 
+	Number of Demand Points ($M$) & 90 \\ 
+	\hline 
+	Number of SPs ($N$) & 1 \\
+	\hline
+	Number of Sampled Scenarios ($O$) & 30 \\ 
+	\hline 
+	\multirow{2}{*}{sDEP Objective Weights ($\alpha$)} & $\left\{ 6,\, 8,\, \ldots,\, 30 \right\}$ \\
+	& $\left\{ 40,\, 50,\, \ldots,\, 100 \right\}$ \\
+	\hline
+	BS cost ($c_s,\, \forall s \in \mathcal{S}$) & 1 \\ 
+	\hline 
+	BS capacity ($r_s,\, \forall s \in \mathcal{S})$ & 2 Gbps \\ 
+	\hline
+	BS range ($b_s,\, \forall s \in \mathcal{S}$) & 1500 m \\
+	\hline 
+	Point Traffic Demand ($d$) & 221.89 Mbps \\ 
+	\hline 
+	\hline
+	SSLT Approximation Depth ($L$) & 50 \\ 
+	\hline
+	SSLT Maximum Angular Frequency ($\omega_{\max}$) & 0.19010 (0.012673) \\
+	\hline 
+	SSLT Location Parameter ($\sigma$) & 18.93 \\ 
+	\hline 
+	SSLT Scale Parameter ($\mu$) & 2.3991 \\ 
+	\hline 
+	\hline
+	Maximum Number of Generations ($G$) & 4000 \\ 
+	\hline
+	Minimum Number of Generations ($G_{\min}$) & 450 \\
+	\hline
+	Unchanged Generations Before Fitness Halt ($G_{\text{fit}}$) & 300 \\
+	\hline 
+	Unchanged Generations Before Genome Halt ($G_{\text{gen}}$) & 600 \\
+	\hline 
+	Number of Individuals per Generation ($I$) & 80 \\ 
+	\hline
+	Number of Elite Individuals per Generation & 4 \\
+	\hline 
+	Probability of Crossover ($p_\text{xov}$) & 0.7 \\ 
+	\hline
+	Probability of Mutation per bit ($p_\text{mut}$) & $\nicefrac{1}{S} = 0.0455$ \\
+	\hline 
+	Overcoverage Cost ($c_\text{cov}$) & 3 \\
+	\hline
+	Overcapacity Cost ($c_\text{cap}$) & 1.015 \\ 
+	\hline
+	Pixel Grid Size & 200 x 200, 15 m \\ 
+	\hline
+	\multirow{2}{*}{GA Demand Weights ($\beta$)} & $\{ 0.5,\, 0.6,\, 0.7,\, 0.8,\, 0.9,$ \\
+	& $1.0,\, 1.5,\, 2.0,\, 2.5 \}$ \\
+	\hline
+	\hline
+	Number of Additional Evaluation Scenarios ($\not\in \hat{\Omega}$) & 100 \\
+	\hline
+	Number of Additional Scenario Demand Points ($M$) & 300 \\
+	\hline
+	Additional Demand Point Demand ($d$) & 66.547 Mbps \\
+	\hline
 \end{tabular}
 \label{tab:CaseI_SimVal}
 \end{table}
@@ -1381,11 +1382,11 @@ This only impacts the resource selection performed by the GA and only in the con
 
 \subsection{Results} \label{subsec:caseI_results}
 
-In this section I present the results of the Case I simulations.  The results of the sDEP approach are presented, followed by the results of the GA approach, including the effects of introducing the weighting factor.  Finally, conclusions are provided, comparing the two approaches for these simulations.
+In this section I present the results of the Case I simulations.  The results of the sDEP approach are presented, followed by the results of the GA approach, including the effects of introducing the weighting factor $\beta$.  Finally, comparisons of the two approaches for these simulations are provided, and conclusions made.
 
 \subsubsection{The Sampled Deterministic Equivalent Program}
 
-\Cref{fig:CaseI_sDEPComparisonCostRunTime} visualizes the sDEP approach, which behaves very similarly under this data set compared to the preliminary simulations.  The run time averages at approximately 15000 seconds, spiking to nearly 25000 seconds for $\alpha \in \left\{ 10,\, 12 \right\}$.  For this region, the sDEP is in transition; the sDEP allocates 9 BSs for $\alpha = 10$ and 10 BSs for $\alpha \geq 12$.
+\Cref{fig:CaseI_sDEPComparisonCostRunTime} visualizes the run time and cost of the sDEP approach, which behaves very similarly under this data set compared to the preliminary simulations.  The run time averages at approximately 15000 seconds, spiking to nearly 25000 seconds for $\alpha \in \left\{ 10,\, 12 \right\}$.  For this region, the sDEP is in transition; the sDEP allocates 9 BSs for $\alpha = 10$ and 10 BSs for $\alpha \geq 12$.
 
 \begin{figure}[htp]
 	\centering
@@ -1418,7 +1419,7 @@ The GA's run time (\Cref{fig:CaseI_GARunTimeErrorbar}) varies according to $\bet
 	\label{fig:CaseI_GARunTimeErrorbar}
 \end{figure}
 
-\Cref{fig:CaseI_GARunTimeHists} presents the run times of the various solutions in greater detail as histogram PDFs, and clearly shows the separation of these three categories.  Except for $\beta = 0.5$, the GA is highly consistent in terms of CPU run time as a result of increasing the number of generations that must be satisfied for the halting conditions.  The first category of solutions each have an average of less than 200 seconds run time, the second at approximately 700 seconds and higher, and the third transitions between the two at just under 500 seconds.
+\Cref{fig:CaseI_GARunTimeHists} presents the run times of the various solutions in greater detail as histogram PDFs, and clearly shows the separation of these three categories.  Except for $\beta = 0.5$, the GA is highly consistent in terms of CPU run time as a result of increasing the number of generations that must be satisfied for the halting conditions.  The first category of solutions each have an average of less than 300 seconds run time, the second at approximately 700 seconds and higher, and the third transitions between the two at just under 500 seconds.  All solutions of the GA in the preliminary simulations terminated using the fitness halting condition, but did so almost universally below 200 seconds.  This increase is due to the increased number of pixels in the field (10000 to 40000) and the increase to $G_{\text{fit}}$ (150 to 300).
 
 \begin{figure}[p]
 	\centering
@@ -1436,7 +1437,7 @@ As $\beta$ increases, the cost of the GA-selected network expectedly increases a
 	\label{fig:CaseI_GAComparisonCostRunTime}
 \end{figure}
 
-\Cref{fig:CaseI_GAComparisonCostSat} shows the level of demand satisfaction for the set of scenarios in $\hat{\Omega}$.  The demand satisfaction for the additional evaluation set of scenarios not in $\hat{\Omega}$ is identical to the demand satisfaction of $\hat{\Omega}$.  Demand satisfaction is less than 100\% for solutions selecting 7, 8, and 9 BSs ($\beta \in \left\{ 0.5,\, 0.6,\, 0.7 \right\}$; first category solutions), with demand satisfaction increasing near linearly with \change{Correct numbers}70\%, 80\%, and 90.14\% demand satisfaction, respectively.  For solutions selecting 10 or more BSs ($\beta \geq 0.8$; second and third category solutions), demand satisfaction universally reaches 100\%.
+\Cref{fig:CaseI_GAComparisonCostSat} shows the level of demand satisfaction for the set of scenarios in $\hat{\Omega}$.  The demand satisfaction for the additional evaluation set of scenarios not in $\hat{\Omega}$ is identical to the demand satisfaction of $\hat{\Omega}$.  Demand satisfaction is less than 100\% for solutions selecting 7, 8, and 9 BSs ($\beta \in \left\{ 0.5,\, 0.6,\, 0.7 \right\}$; first category solutions), with demand satisfaction increasing near linearly with 71.71\%, 80.12\%, and 90.14\% demand satisfaction, respectively.  For solutions selecting 10 or more BSs ($\beta \geq 0.8$; second and third category solutions), demand satisfaction universally reaches 100\%.
 
 \begin{figure}[htp]
 	\centering
@@ -1445,29 +1446,71 @@ As $\beta$ increases, the cost of the GA-selected network expectedly increases a
 	\label{fig:CaseI_GAComparisonCostSat}
 \end{figure}
 
-The differences between the first and second categories of solutions is indicative of their satisfied halting condition.  The first halted with the fitness halting condition, indicating that the GA was able to create a solution that was neither overcoverage nor overcapacity, and therefore could be expected to provide 100\% demand satisfaction for the demand considered by the GA (i.e., $\beta \cdot \lambda_n$).  Solutions that are neither overcoverage nor overcapacity should provide a minimum demand satisfaction equivalent to $\beta$.  \Cref{fig:CaseI_GAScaledSatisfaction} visualizes the demand satisfaction of the various solutions relative to the demand actually considered by the GA (i.e., demand of each demand point is scaled by $\beta$ before slicing is performed by the adaptive slicing model).  As shown...\change{Continue from here\\fix figure}
+The differences between the first and second categories of solutions is indicative of their satisfied halting condition.  The first halted with the fitness halting condition, indicating that the GA was able to create a solution that was neither overcoverage nor overcapacity, and therefore could be expected to provide 100\% demand satisfaction for the demand considered by the GA (i.e., $\beta \cdot \lambda$).  Solutions that are neither overcoverage nor overcapacity should provide a minimum demand satisfaction equivalent to $\beta$.  \Cref{fig:CaseI_GAScaledSatisfaction} visualizes the demand satisfaction of the various solutions relative to the demand actually considered by the GA (i.e., demand of each demand point is scaled by $\beta$ before slicing is performed by the adaptive slicing model; point demands associated with $\beta \cdot \lambda$).  For all of the non-overcapacity solutions, the GA allocated sufficient resources for 100\% demand satisfaction of the demand scaled by $\beta$.  This continues for the overcapacity solutions up to $\beta = 1.5$, above which there are insufficient resources to allocate to fully satisfy the highly inflated $\beta$-scaled demand field.
 
 \begin{figure}[htp]
 	\centering
-	% Fix figure
-	\includegraphics[height=0.4\textheight]{Figures/CaseI_GAComparisonCostSat}
+	\includegraphics[height=0.4\textheight]{Figures/CaseI_GAScaledSatisfaction}
 	\caption[GA demand satisfaction with $\beta$-scaled demands for Case I simulations]{GA demand satisfaction with $\beta$-scaled demands}
 	\label{fig:CaseI_GAScaledSatisfaction}
 \end{figure}
 
-\improvement{What else to say now the figure is here?}%
 In contrast, the second and third categories halted with the genome halting condition, indicating that the GA was unable to find a solution that was neither overcoverage nor overcapacity for the demand considered.  Solutions that are overcapacity are unable of targeting 100\% demand satisfaction.  However, with BSs sharing mutually covered points through the adaptive slicing model, it might still reach 100\% for the demand seen by the GA.  For this data set, all solutions for this category have 100\% demand satisfaction, though all of the second category ($\beta > 0.8$) overallocated resources.
 
-\subsubsection{Comparisons and Conclusions}
+\subsubsection{Comparisons Between the sDEP and GA Approaches}
 
 With the addition of the weighting factor $\beta$, the GA is capable of being tuned to provide a number of solutions, akin to the sDEP and its weighting coefficient $\alpha$.  Regardless of this tuning, the sDEP and GA both perform very similarly to what was shown by the preliminary simulations.
 
-% ???FigSpeedup is the left subfigure, which compares run times and the speedup ratio of the first and second categories of GA solutions to the sDEP \alpha trend
-For all $\beta$ and $\alpha$, the GA has a highly improved run time over the sDEP.  ???FigSpeedup compares the run time trends of the two approaches in terms of the GA's speedup ratio.\change{discuss speedup ratios}
+For all $\alpha$ and $\beta$, the GA has an improved run time over the sDEP.  \Cref{fig:CaseI_GASpeedup} compares the run time trends of the two approaches in terms of the GA's speedup ratio.  At its most optimal, the GA achieves a speedup ratio of up to 91.25x improvement over the sDEP.  Comparing equal cost solutions, the GA provides a speedup ratio of 77.08x for 9-BS solutions ($\alpha = 10;\, \beta = 0.7$, quick) and 31.12x for 10-BS solutions ($\alpha > 12;\, \beta = 0.8$, medium).
 
-Both approaches are capable of providing similar cost networks.  All of the GA solutions that provide less than 10 BSs---the cheapest 100\% demand satisfaction solution, as shown by the sDEP---converged with the fitness halting condition, whereas all of the genome halted solutions provide either the minimum-cost 100\% demand satisfaction solution (the third category, $\beta = 0.8$) or more expensive (the second category, $\beta > 0.8$).  However, this is likely coincidental, as the line between the first and second category of solutions is likely tied to the parameters of the resources and demand, and the results of the preliminary simulations had solutions from the fitness halting condition that provided 100\% demand satisfaction.
+\begin{figure}[ht]
+	\centering
+	\includegraphics[height=0.4\textheight]{Figures/CaseI_GASpeedupRatios2}
+	\caption[Case I GA speedup ratios]{GA speedup ratios of different category solutions.  Dotted black lines are the speedup ratio relative to the mean of the GA solution run times in that category.  Adjusted speedup ratios are considering the adjusted run time of the sDEP, which is a lower bound for the wall clock time.}
+	\label{fig:CaseI_GASpeedup}
+\end{figure}
 
-Further, as tabulated by ???TabCostSat, same cost networks of both approaches provide equal demand satisfaction.  However, this lack of error between the sDEP and GA solutions is likely due to the high relative radii of the resources as described in the sDEP results.  While coverage still matters, BSs have coverage that is near enough to universal that satisfaction is solely a question of how many BSs have been selected.  Each BS provides approximately 10\% demand satisfaction, which is approximately the portion of the demand of the overall field that can be satisfied by the BSs' rate capacities.
+Both approaches are capable of providing similar cost networks.  All of the GA solutions that select less than 10 BSs---the cheapest 100\% demand satisfaction solution, as shown by the sDEP---converged with the fitness halting condition, whereas all of the genome halted solutions provide either the minimum-cost 100\% demand satisfaction solution (the third category, $\beta = 0.8$) or more expensive (the second category, $\beta > 0.8$) solutions which overallocate.  However, this is likely coincidental, as the line between the first and second category of solutions is tied to the parameters of the resources and demand, and the results of the preliminary simulations had solutions from the fitness halting condition that provided 100\% demand satisfaction.
+
+Further, as tabulated by \Cref{tab:CaseI_ComparisonCostSat}, same cost networks of both approaches provide equal demand satisfaction.  However, this lack of error between the sDEP and GA solutions is likely due to the high relative radii of the resources as described in the sDEP results.  While coverage still matters, BSs have coverage that is near enough to universal that satisfaction is solely a question of how many BSs have been selected.  Each BS provides approximately 10\% demand satisfaction, which is approximately the portion of the demand of the overall field that can be satisfied by the BSs' rate capacities.
+
+\begin{table}[htp]
+\centering
+\caption[Cost and Demand Satisfaction Results of Case I Approaches]{Cost and Demand Satisfaction Results of Various sDEP- and GA-Constructed VWNs}
+\begin{tabular}{|c|c|c|c|} 
+	\hline
+	\textbf{Cost} & \textbf{Demand Satisfaction} & \textbf{sDEP $\alpha$} & \textbf{GA $\beta$ (Number of Solutions)} \\
+	\hline
+	0 & 0.000\% & $\leq 8$ & n/a \\
+	\hline
+	7 & 71.71\% & n/a & 0.5 (42) \\
+	\hline
+	\multirow{2}{*}{8} & \multirow{2}{*}{80.12\%} & \multirow{2}{*}{n/a} & 0.5 (8)\\
+	& & & 0.6 (50) \\
+	\hline
+	9 & 90.14\% & 10 & 0.7 (50) \\
+	\hline
+	10 & 100\% & $\geq 12$ & 0.8 (50) \\
+	\hline
+	\multirow{2}{*}{13} & \multirow{2}{*}{100\%} & \multirow{2}{*}{n/a} & 0.9 (50) \\
+	& & & 1.0 (50) \\
+	\hline
+	\multirow{2}{*}{17} & \multirow{2}{*}{100\%} & \multirow{2}{*}{n/a} & 1.5 (50) \\
+	& & & 2.0 (50) \\
+	\hline
+	19 & 100\% & n/a & 2.5 (50) \\
+	\hline
+\end{tabular}
+\label{tab:CaseI_ComparisonCostSat}
+\end{table}
+
+\subsubsection{Conclusions}
+
+The GA continues to show improvements over the sDEP in terms of run time due to not needing to scale according to the number of demand points or scenarios of $\hat{\Omega}$.  With the inclusion of $\beta$, the GA is now capable of providing solutions that aim for less than 100\% demand satisfaction; it is expected solutions that converge with the fitness halting condition will provide at least $\beta$ demand satisfaction, assuming that $\lambda$ fairly approximates the demand the constructed VWN is expected to meet.  Run times for the GA are consistent within the halting condition that terminates it, whereas the sDEP will spike in run time on the threshold between higher cost solutions.
+
+Regarding demand satisfaction, the results of this test case are \unsure{this wording seems inappropriate to me.\\Opinions?}too perfect and simple.  Ignoring coverage, each BS is capable of providing capacity (2 Gbps) for approximately 10\% of the demand within the field (19.97 Gbps).  Due to the wide coverage radii of the resources within this test case, the problem was almost completely reduced to the point of ignoring coverage; each BS selected effectively provided 10\% demand satisfaction with 100\% being reached with 10 BSs.  Due to such, there is no concept of error between the GA and sDEP solutions, nor between the slicings for the scenarios in $\hat{\Omega}$ and the scenarios not in $\hat{\Omega}$.
+
+The next test case may present nuance that counters this problem without reducing macrocells beneath realistic coverage radii, increasing the size of the demand field and the rate capacity of BSs to account for the new demand, or increasing the size of the data set beyond the point of computational feasibility for the sDEP.
 
 \section{Case II: Single SP with Heterogeneous Resources} \label{sec:caseII}
 
