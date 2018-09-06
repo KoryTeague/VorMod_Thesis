@@ -1179,6 +1179,8 @@ Demand satisfaction approaches 100\% until reaching it for all sDEP solutions co
 
 The first range described (i.e., $\alpha \leq \expnumber{2.2}{2}$) is wholly described by solutions that provide less than 100\% demand satisfaction, but quickly approach that value with diminishing returns.  This does help to inform of the appropriate values of $\alpha$ to consider wtihin the VNB to aim for specific percents of demand satisfaction, though this will likely adjust with changes in the problem parameters and $\lambda_n$.  What this range most importantly shows is that there does not exist, at least as far as the sDEP is an approximation of the original two-stage stochastic optimization program, any solutions that give equal demand satisfaction for less cost than the GA's solutions.
 
+One notable observation is that the sDEP provided a non-trivial solution at approximately $\alpha = 10$, but not for $\alpha = 5$.  The second summation of the sDEP, which handles slicing and demand satisfaction, is normalized according to the total expected demand of the field, $D$.  As a result, if a hypothetical constructed network provided 100\% demand satisfaction, the value of the second half of the sDEP objective function would be $\alpha$.  For a non-trivial solution to be optimal, the satisfaction of the demand within the scenarios comprising $\Omega$ must be larger than the cost of the network divided by $\alpha$.  That is, for $\alpha = 5$, there must be a BS that provides 20\% demand satisfaction per unit cost for a non-trivial solution to exist.  Each BS has a rate capacity of approximately 11\% of the total demand contained in the field; $\alpha = \nicefrac{\expnumber{1.5}{6}}{75 \cdot \expnumber{1.78}{5}} = \nicefrac{15}{13.35} = 8.9$ is the lowest value of $\alpha$ that provides a non-trivial solution.
+
 The GA approach performs fairly well, exceeding 99\% demand satisfaction for all solutions.  \Cref{fig:Prelim_GAEval_Histogram} visualizes the distribution of the various GA solutions.  Forty-five of the fifty GA solutions have at least 99.8\% demand satisfaction, averaging 99.90\% with a 95\% confidence interval of (99.83\%, 99.94\%).  Demand satisfaction for the 13-, 14-, and 15-BS solutions is dominated by solutions giving 100\% demand satisfaction.  See \Cref{tab:Prelim_GADemandSatisfaction} for specific ranges of the GA solutions.
 
 \begin{figure}[htp]
@@ -1227,7 +1229,7 @@ For the range of $\alpha \leq 100$, the sDEP solutions perform slightly better f
 	\label{fig:Prelim_VWNCompSatisEvalClose}
 \end{figure}
 
-For the range of $\alpha > 100$, this indicates that near the boundary of 100\% demand satisfaction, the scenarios are not a complete representation of the original demand field, $\lambda_n$.  Each scenario has more demand points, which more evenly spread the demand over $\mathcal{R}$.  The several 12-BS sDEP solutions which provided 100\% demand satisfaction for the scenarios in $\hat{\Omega}$ no longer provide 100\% demand satisfaction, but instead fluctuate over 99.8\%--99.9\% demand satisfaction.  This shows that the 12-BS solutions are not identical, despite being the same cost, and highlight the subtle differences between them.  Further, the sDEP is unable to provide 100\% demand satisfaction up to $\alpha < \expnumber{4.6}{5}$, which includes solutions containing up to 18 BSs.  Above this range of $\alpha$, the sDEP is heavily overallocating resources; at $\alpha = \expnumber{4.6}{5}$ the sDEP is selecting 43 BSs, jumping from 18 at the previous point of $\alpha = \expnumber{2.2}{5}$.  This implies that a key part of the original demand field is not demonstrated adequately by the scenarios of $\hat{\Omega}$, and that the sDEP needs to consider more demand points and include more scenarios in $\hat{\Omega}$ to more accurately represent the full sample space of $\lambda_n$.
+For the range of $\alpha > 100$, this indicates that near the boundary of 100\% demand satisfaction, the scenarios are not a complete representation of the original demand field, $\lambda_n$.  Each scenario has more demand points, which more evenly spread the demand over $\mathcal{R}$.  The several 12-BS sDEP solutions which provided 100\% demand satisfaction for the scenarios in $\hat{\Omega}$ no longer provide 100\% demand satisfaction, but instead fluctuate over 99.8\% to 99.9\% demand satisfaction.  This shows that the 12-BS solutions are not identical, despite being the same cost, and highlight the subtle differences between them.  Further, the sDEP is unable to provide 100\% demand satisfaction up to $\alpha < \expnumber{4.6}{5}$, which includes solutions containing up to 18 BSs.  Above this range of $\alpha$, the sDEP is heavily overallocating resources; at $\alpha = \expnumber{4.6}{5}$ the sDEP is selecting 43 BSs, jumping from 18 at the previous point of $\alpha = \expnumber{2.2}{5}$.  This implies that a key part of the original demand field is not demonstrated adequately by the scenarios of $\hat{\Omega}$, and that the sDEP needs to consider more demand points and include more scenarios in $\hat{\Omega}$ to more accurately represent the full sample space of $\lambda_n$.
 
 The GA instead performs far better with the new scenarios due their improved distribution of demand.  All but 2 GA solutions reach 100\% demand satisfaction; the two exceptions instead reach 99.99\%.  This is tabulated in \Cref{tab:Prelim_GAEvalDemandSatisfaction}.
 
@@ -1379,8 +1381,6 @@ This only impacts the resource selection performed by the GA and only in the con
 
 \subsection{Results} \label{subsec:caseI_results}
 
-%In this section I present the results of the Case I simulations.  First, run time results of the two approaches will be presented and comparisons made.  Second, the network cost results will be presented and compared, followed by, third, the network demand satisfaction results.  Finally, this section will end with my conclusions of this study case.
-
 In this section I present the results of the Case I simulations.  First, the results of the sDEP approach are presented.  Second, the results of the GA approach, including the effects of introducing the weighting factor $\beta$, are presented.  Finally, conclusions are provided, comparing the two approaches for these simulations.
 
 \subsubsection{The Sampled Deterministic Equivalent Program}
@@ -1409,7 +1409,7 @@ I posit that the data set chosen is too forgiving on the available resources.  S
 
 The GA also performs similarly to what was shown in \Cref{sec:prelim}, with the primary differences of controlling $\beta$ and increasing the number of generations before the halting condition occurs.  This discussion will present these results with focus on the changes caused by controlling $\beta$ similar to the focus spent on the sDEP with respect to $\alpha$ while presenting the preliminary simulation results.
 
-The GA's run time (\Cref{fig:CaseI_GARunTimeErrorbar}) varies according to $\beta$ with the solutions falling into three major categories.  The first category of solutions ($\beta < 0.8$) is characterized by halting with the stronger and shorter fitness halting condition (i.e., the fitness of the fittest individual did not change for $G_{\text{fit}}$ generations).  The second category ($\beta > 0.8$), in contrast, is characterized by halting with the weaker genome halting condition (i.e., the genome of the fittest individual did not change for $G_{\text{gen}}$ generations).  The third category ($\beta = 0.8$) is also characterized by the genome halt, but as a consistent and distinct outlier from the second category as a transition from the first.  \Cref{fig:CaseI_GARunTimeHists} presents the run times of the various solutions in greater detail as histogram PDFs, and clearly shows the separation of these three categories.
+The GA's run time (\Cref{fig:CaseI_GARunTimeErrorbar}) varies according to $\beta$ with the solutions falling into three major categories.  The first category of solutions ($\beta < 0.8$) is characterized by halting with the stronger and shorter fitness halting condition (i.e., the fitness of the fittest individual did not change for $G_{\text{fit}}$ generations).  The second category ($\beta > 0.8$), in contrast, is characterized by halting with the weaker genome halting condition (i.e., the genome of the fittest individual did not change for $G_{\text{gen}}$ generations).  The third category ($\beta = 0.8$) is also characterized by the genome halt, but as a consistent and distinct outlier from the second category as a transition from the first.
 
 \begin{figure}[htp]
 	\centering
@@ -1418,6 +1418,8 @@ The GA's run time (\Cref{fig:CaseI_GARunTimeErrorbar}) varies according to $\bet
 	\label{fig:CaseI_GARunTimeErrorbar}
 \end{figure}
 
+\Cref{fig:CaseI_GARunTimeHists} presents the run times of the various solutions in greater detail as histogram PDFs, and clearly shows the separation of these three categories.  Except for $\beta = 0.5$, the GA is highly consistent in terms of CPU run time.  The first category of solutions each have an average of less than 200 seconds run time, the second at approximately 700 seconds and higher, and the third transitions between the two at just under 500 seconds.
+
 \begin{figure}[p]
 	\centering
 	\includegraphics[angle=-90,origin=c,height=0.8\textheight]{Figures/CaseI_GARunTime50_9HistogramsTall}
@@ -1425,10 +1427,40 @@ The GA's run time (\Cref{fig:CaseI_GARunTimeErrorbar}) varies according to $\bet
 	\label{fig:CaseI_GARunTimeHists}
 \end{figure}
 
-\improvement{Continue from here}%
-\textit{blah}
+As $\beta$ increases, the cost of the GA-selected network expectedly increases as a response to the increasing demand.  \Cref{fig:CaseI_GAComparisonCostRunTime} presents the costs of the GA solutions in contrast to the run time taken to converge and halt.  The trend with respect to $\beta$ escalates fairly quickly and provides a variety of solutions with only two repeats.  These solutions are very consistent.  All but the $\beta = 0.5$ solutions have identical cost---though not identical selection---solutions across 50 executions of the GA.  Even for the $\beta = 0.5$ solutions, the GA is very consistent, selecting 7 BSs in 42 of the GA's 50 executions (84\%) and 8 BS for the remaining 8 (16\%).
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[height=0.4\textheight]{Figures/CaseI_GAComparisonCostRuntime}
+	\caption[Comparison of GA approach cost and run time for Case I simulations]{Comparison of GA cost and run time trends with 95\% confidence intervals}
+	\label{fig:CaseI_GAComparisonCostRunTime}
+\end{figure}
+
+\Cref{fig:CaseI_GAComparisonCostSat} shows the level of demand satisfaction for the set of scenarios in $\hat{\Omega}$.  The demand satisfaction for the additional evaluation set of scenarios not in $\hat{\Omega}$ is identical to the demand satisfaction of $\hat{\Omega}$.  Demand satisfaction increases near linearly with the number of BSs.  Demand satisfaction is less than 100\% for solutions selecting 7, 8, and 9 BSs ($\beta \in \left\{ 0.5,\, 0.6,\, 0.7 \right\}$; first category solutions).  For solutions selecting 10 or more BSs ($\beta \geq 0.8$; second and third category solutions), demand satisfaction reaches 100\%.
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[height=0.4\textheight]{Figures/CaseI_GAComparisonCostSat}
+	\caption[Comparison of GA approach cost and demand satisfaction for Case I simulations]{Comparison of GA cost and run time trends with 95\% confidence intervals.}
+	\label{fig:CaseI_GAComparisonCostSat}
+\end{figure}
+
+The differences between the first and second categories of solutions is indicative of their satisfied halting condition.  The first halted with the fitness halting condition, indicating that the GA was able to create a solution that was neither overcoverage nor overcapacity, and therefore could be expected to provide 100\% demand satisfaction for the demand considered (i.e., $\beta \cdot \lambda_n$).  Solutions that are neither overcoverage nor overcapacity should provide a minimum demand satisfaction equivalent to $\beta$.  \Cref{fig:CaseI_GAScaledSatisfaction} visualizes the demand satisfaction of the various solutions relative to the demand actually seen by the GA (i.e., demand of each demand point is scaled by $\beta$ before slicing is performed by the adaptive slicing model).  As shown...\change{Continue from here\\fix figure}
+
+\begin{figure}[htp]
+	\centering
+	% Fix figure
+	\includegraphics[height=0.4\textheight]{Figures/CaseI_GAComparisonCostSat}
+	\caption[GA demand satisfaction with $\beta$-scaled demands for Case I simulations]{GA demand satisfaction with $\beta$-scaled demands}
+	\label{fig:CaseI_GAScaledSatisfaction}
+\end{figure}
+
+\improvement{What else to say now the figure is here?}%
+In contrast, the second and third categories halted with the genome halting condition, indicating that the GA was unable to find a solution that was neither overcoverage nor overcapacity for the demand considered.  Solutions that are overcapacity are unable of truly targeting 100\% demand satisfaction, though by BSs sharing mutually covered points through the adaptive slicing model, it might still reach 100\% for the demand seen.  For this data set, all solutions for this category have 100\% demand satisfaction, though all of the second category ($\beta > 0.8$) overallocated resources.
 
 \subsubsection{Comparisons and Conclusions}
+
+With the addition of the weighting factor $\beta$, the GA is capable of being tuned to provide a number of solutions, akin to the sDEP and its weighting coefficient $\alpha$.  
 
 \section{Case II: Single SP with Heterogeneous Resources} \label{sec:caseII}
 
