@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: September 6, 2018
+% REVISED: September 7, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -805,15 +805,7 @@ Let $\hat{\Omega} \defeq \left\{ 1,\, 2,\, \ldots,\, O \right\} \subset \Omega$ 
 \end{align}
 \end{tcolorbox}
 
-The differences between the DEP and sDEP formulations are seemingly cosmetic.  The objective (\cref{eq:sDEPO}) and constraints (\cref{eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}) are effectively unchanged from the equivalent objective (\cref{eq:DEPO} and constraints (\cref{eq:DEPC1,eq:DEPC2,eq:DEPC3,eq:DEPC4}) of the DEP.  The distinction lies in that finding a solution of the sDEP optimizes for the specific scenarios in $\hat{\Omega}$.  By sampling $\Omega$ to form $\hat{\Omega}$, the sDEP formulation introduces solution error as a tradeoff for manageability.  The more accurately $\hat{\Omega}$ estimates $\Omega$, the more accurate the optimal solution of the sDEP estimates the solution of the original stochastic program.
-
-\subsubsection{The Sample Average Approximation Estimator} \label{subsubsec:dep_sampling_estimator}
-
-\info{If I don't finish figuring out the SAA estimator, the following will be edited into the preceeding subsection.}%
-For a sufficiently large $O$, $\hat{\Omega}$ contains enough scenarios to represent an arbitrarily tight approximation of $\Omega$.  However, as $O$ increases, the computational complexity of the solution increases exponentially, causing the manageability of $\hat{\Omega}$ and the sDEP to decrease.  While an arbitrary number of scenarios could be considered within $\hat{\Omega}$ to provide an overly-sufficient approximation, doing so would impose an unnecessary burden on the solution's computational complexity and increase computation time.  It is therefore valuable to understand and find the minimum value of $O$ that provides a sufficiently tight approximation of $\Omega$.  This can be done via an analysis of the SAA estimator.
-
-\change{Figure out the SAA estimator.\\Continue from here and fill out this section.}
-%\textit{At what point is the sampling enough?  As the set of scenarios considered within the sampled DEP increases, it more closely compares to the original DEP and the stochastic optimization problem, but it also becomes increasingly difficult to solve as the number of scenarios considered increases.  So, it is beneficial to understand that a certain known number of scenarios provides a reasonably tight - what does reasonable mean? - solution to the original DEP to avoid being unnecessarily computationally expensive to solve.  Finding this minimum necessary number of scenarios can be done via a sample average approximation (SAA) analysis, which should not be too complicated to do.}
+The differences between the DEP and sDEP formulations are seemingly cosmetic.  The objective (\cref{eq:sDEPO}) and constraints (\cref{eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}) are effectively unchanged from the equivalent objective (\cref{eq:DEPO} and constraints (\cref{eq:DEPC1,eq:DEPC2,eq:DEPC3,eq:DEPC4}) of the DEP.  The distinction lies in that finding a solution of the sDEP optimizes for the specific scenarios in $\hat{\Omega}$.  By sampling $\Omega$ to form $\hat{\Omega}$, the sDEP formulation introduces solution error as a tradeoff for manageability.  The more accurately $\hat{\Omega}$ estimates $\Omega$, the more accurate the optimal solution of the sDEP estimates the solution of the original stochastic program.  For a sufficiently large $O$, $\hat{\Omega}$ contains enough scenarios to represent an arbitrarily tight approximation of $\Omega$.  As $O$ increases, the computational complexity of the solution increases exponentially, causing the manageability of $\hat{\Omega}$ and the sDEP to decrease.
 
 \subsection{Adaptive Slicing} \label{subsec:dep_slicing}
 
@@ -989,11 +981,11 @@ For these preliminary simulations, I use the parameter values shown in \Cref{tab
 	\multirow{2}{*}{sDEP Objective Weights ($\alpha$)} & $\left\{ 5,\, 10,\, \ldots,\, 100 \right\}$ \\
 	& $\left\{ \expnumber{2.2}{2},\, \expnumber{4.6}{2},\, \expnumber{1.0}{3},\, \ldots,\, \expnumber{1.0}{9} \right\}$ \\
 	\hline
-	BS cost ($c_s,\, \forall s \in \mathcal{S}$) & 1 \\ 
+	BS Cost ($c_s,\, \forall s \in \mathcal{S}$) & 1 \\ 
 	\hline 
-	BS capacity ($r_s,\, \forall s \in \mathcal{S})$ & 1.50 Mbps \\ 
+	BS Capacity ($r_s,\, \forall s \in \mathcal{S})$ & 1.50 Mbps \\ 
 	\hline
-	BS range ($b_s,\, \forall s \in \mathcal{S}$) & 500 m \\
+	BS Range ($b_s,\, \forall s \in \mathcal{S}$) & 500 m \\
 	\hline 
 	Point Traffic Demand ($d$) & 0.178 Mbps \\ 
 	\hline 
@@ -1273,7 +1265,7 @@ In this section I present the first test case that builds on the work of the pre
 
 \subsection{Setup} \label{subsec:caseI_setup}
 
-This test case is constructed considering the following considerations and parameters.  There is only one SP, and its demand intensity function, $\lambda$, is generated using parameters (i.e., $\omega_{\max},\, \sigma,\, \mu$) that were empirically found to match a real world urban cellular network in China~\cite{6757900}.  $\lambda$ is pixelated into a 200 by 200 grid of square pixels with 15 m side length; $\mathcal{R}$, illustrated in \Cref{fig:CaseI_NetworkArea}, is a region 3 km by 3 km in size.  Resources are homogeneous and constructed to represent small macrocells.  The size of the region and the number of BSs, demand points, and scenarios were chosen such that the sDEP would converge to a solution in just under a new time limit of one hour wall clock time.  Resources have a large coverage radius relative to the region's size; a larger region introduces more demand and requires more BSs for a solution to be feasible, increasing run times, and a smaller coverage radius would cause the resources to have sub-macrocell coverage area.  This data set is \emph{smaller} than the set used in the preliminary simulations of last section.  Due to the decreased number of demand points, each demand point contains a larger amount of the overall field's demand.  This will be more properly handled with additional scenarios and the adaptive slicing model (\Cref{subsec:dep_slicing}).  GA generation limits (i.e., $G$, $G_{\min}$, $G_{\text{fit}}$, and $G_{\text{gen}}$) were increased to avoid the possibly premature convergence seen in the last section.  The parameter values used in the simulations are shown in \Cref{tab:CaseI_SimVal}.
+This test case is constructed considering the following considerations and parameters.  There is only one SP, and its demand intensity function, $\lambda$, is generated using parameters (i.e., $\omega_{\max},\, \sigma,\, \mu$) that were empirically found to match a real world urban cellular network in China~\cite{6757900}.  $\lambda$ is pixelated into a 200 by 200 grid of square pixels with 15 m side length; $\mathcal{R}$, illustrated in \Cref{fig:CaseI_NetworkArea}, is a region 3 km by 3 km in size.  Resources are homogeneous and constructed to represent small macrocells.  The size of the region and the number of BSs, demand points, and scenarios were chosen such that the sDEP would converge to a solution in just under a new time limit of one hour wall clock time.  Resources have a large coverage radius relative to the region's size; a larger region introduces more demand and requires more BSs for a solution to be feasible, increasing run times, and a smaller coverage radius would cause the resources to have sub-macrocell coverage area.  This data set is \emph{smaller} than the set used in the preliminary simulations of \Cref{sec:prelim}.  Due to the decreased number of demand points, each demand point contains a larger amount of the overall field's demand.  This will be more properly handled with additional scenarios and the adaptive slicing model (\Cref{subsec:dep_slicing}).  GA generation limits (i.e., $G$, $G_{\min}$, $G_{\text{fit}}$, and $G_{\text{gen}}$) were increased to avoid the possibly premature convergence seen in the last section.  The parameter values used in the simulations are shown in \Cref{tab:CaseI_SimVal}.
 
 \begin{figure}[htp]
 	\centering
@@ -1311,11 +1303,11 @@ This test case is constructed considering the following considerations and param
 	\multirow{2}{*}{sDEP Objective Weights ($\alpha$)} & $\left\{ 6,\, 8,\, \ldots,\, 30 \right\}$ \\
 	& $\left\{ 40,\, 50,\, \ldots,\, 100 \right\}$ \\
 	\hline
-	BS cost ($c_s,\, \forall s \in \mathcal{S}$) & 1 \\ 
+	BS Cost ($c_s,\, \forall s \in \mathcal{S}$) & 1 \\ 
 	\hline 
-	BS capacity ($r_s,\, \forall s \in \mathcal{S})$ & 2 Gbps \\ 
+	BS Capacity ($r_s,\, \forall s \in \mathcal{S})$ & 2 Gbps \\ 
 	\hline
-	BS range ($b_s,\, \forall s \in \mathcal{S}$) & 1500 m \\
+	BS Range ($b_s,\, \forall s \in \mathcal{S}$) & 1500 m \\
 	\hline 
 	Point Traffic Demand ($d$) & 221.89 Mbps \\ 
 	\hline 
@@ -1419,11 +1411,11 @@ The GA's run time (\Cref{fig:CaseI_GARunTimeErrorbar}) varies according to $\bet
 	\label{fig:CaseI_GARunTimeErrorbar}
 \end{figure}
 
-\Cref{fig:CaseI_GARunTimeHists} presents the run times of the various solutions in greater detail as histogram PDFs, and clearly shows the separation of these three categories.  Except for $\beta = 0.5$, the GA is highly consistent in terms of CPU run time as a result of increasing the number of generations that must be satisfied for the halting conditions.  The first category of solutions each have an average of less than 300 seconds run time, the second at approximately 700 seconds and higher, and the third transitions between the two at just under 500 seconds.  All solutions of the GA in the preliminary simulations terminated using the fitness halting condition, but did so almost universally below 200 seconds.  This increase is due to the increased number of pixels in the field (10000 to 40000) and the increase to $G_{\text{fit}}$ (150 to 300).
+\Cref{fig:CaseI_GARunTimeHists} presents the run times of the various solutions in greater detail as histogram PDFs, and clearly shows the separation of these three categories.  Except for $\beta = 0.5$, the GA is highly consistent in terms of CPU run time as a result of increasing the number of generations that must be satisfied for the halting conditions.  The solutions of the first category each have an average of less than 300 seconds run time, the second at approximately 700 seconds and higher, and the third transitions between the two at just under 500 seconds.  All solutions of the GA in the preliminary simulations terminated using the fitness halting condition, but did so almost universally below 200 seconds.  This increase is due to the increased number of pixels in the field (10000 to 40000) and the increase to $G_{\text{fit}}$ (150 to 300).
 
 \begin{figure}[p]
 	\centering
-	\includegraphics[angle=-90,origin=c,height=0.8\textheight]{Figures/CaseI_GARunTime50_9HistogramsTall}
+	\includegraphics[angle=90,origin=c,height=0.8\textheight]{Figures/CaseI_GARunTime50_9HistogramsTall}
 	\caption[Case I GA CPU run time histogram PDFs]{GA CPU run time trend in further depth than \Cref{fig:CaseI_GARunTimeErrorbar} as histogram PDFs.  For each $\beta$, means are shown in orange and 95\% confidence intervals in dashed black.}
 	\label{fig:CaseI_GARunTimeHists}
 \end{figure}
@@ -1508,15 +1500,113 @@ Further, as tabulated by \Cref{tab:CaseI_ComparisonCostSat}, same cost networks 
 
 The GA continues to show improvements over the sDEP in terms of run time due to not needing to scale according to the number of demand points or scenarios of $\hat{\Omega}$.  With the inclusion of $\beta$, the GA is now capable of providing solutions that aim for less than 100\% demand satisfaction; it is expected solutions that converge with the fitness halting condition will provide at least $\beta$ demand satisfaction, assuming that $\lambda$ fairly approximates the demand the constructed VWN is expected to meet.  Run times for the GA are consistent within the halting condition that terminates it, whereas the sDEP will spike in run time on the threshold between higher cost solutions.
 
-Regarding demand satisfaction, the results of this test case are \unsure{this wording seems inappropriate to me.\\Opinions?}too perfect and simple.  Ignoring coverage, each BS is capable of providing capacity (2 Gbps) for approximately 10\% of the demand within the field (19.97 Gbps).  Due to the wide coverage radii of the resources within this test case, the problem was almost completely reduced to the point of ignoring coverage; each BS selected effectively provided 10\% demand satisfaction with 100\% being reached with 10 BSs.  Due to such, there is no concept of error between the GA and sDEP solutions, nor between the slicings for the scenarios in $\hat{\Omega}$ and the scenarios not in $\hat{\Omega}$.
+Regarding demand satisfaction, the results of this test case are too consistent.  Ignoring coverage, each BS is capable of providing capacity (2 Gbps) for approximately 10\% of the demand within the field (19.97 Gbps).  Due to the wide coverage radii of the resources within this test case, the problem was almost completely reduced to the point of ignoring coverage; each BS selected effectively provided 10\% demand satisfaction with 100\% being reached with 10 BSs.  Due to such, there is no concept of error between the GA and sDEP solutions, nor between the slicings for the scenarios in $\hat{\Omega}$ and the scenarios not in $\hat{\Omega}$.
 
-The next test case may present nuance that counters this problem without reducing macrocells beneath realistic coverage radii, increasing the size of the demand field and the rate capacity of BSs to account for the new demand, or increasing the size of the data set beyond the point of computational feasibility for the sDEP.
+The next test case \unsure{may present nuance that...}counters this problem without reducing macrocells beneath realistic coverage radii, increasing the size of the demand field and the rate capacity of BSs to account for the new demand, or increasing the size of the data set beyond the point of computational feasibility for the sDEP.
 
 \section{Case II: Single SP with Heterogeneous Resources} \label{sec:caseII}
 
-In this section I present the second test
+In this section I present the second test case that builds on the work of the preliminary simulations comparing the sDEP and GA approaches.  These simulations use primarily the same parameters used by the first test case, but expand the set of resources aggregated by the VNB.  Instead of a single RP providing a set of homogeneous macrocell BSs, an additional RP is available for the VNB providing a set of microcell BSs.  Thus, the VNB considers a heterogeneous set of resources to satisfy the SP's demands in this test case.
 
 \subsection{Setup} \label{subsec:caseII_setup}
+
+This test case is constructed with the same considerations and parameters as Case I (\Cref{sec:caseI}), with the following exceptions.  Resources are heterogeneous, with most constructed to represent small macrocells and the rest constructed to represent microcells.  Macrocells are placed according to a stationary PPP.  Microcells are placed according to a non-stationary PPP using $\lambda$ as the intensity function, representing BSs placed to satisfy specific demand needs.  The size of the region and the number of BSs, demand points, and scenarios were chosen such that the sDEP would converge to a solution in just under a time limit of one hour wall clock time.  GA generation limits are unchanged from \Cref{sec:caseI} and should be sufficient for consistent GA solutions to converge.  The parameter values used are shown in \Cref{tab:CaseII_SimVal}.
+
+\begin{figure}[htp]
+	\centering
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/CaseII_BSLocationsVoronoi}
+		\caption{\small Microcell locations (orange) and Voronoi tesselation of Macrocell locations (blue)}
+		\label{fig:CaseI_BSLocVor}
+	\end{subfigure} \hfill
+	\begin{subfigure}{.49\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/CaseII_SSLTnsPPP_demandpointreal}
+		\caption{\small $\lambda$ with one realization of demand points ($\mathcal{M}$)}
+		\label{fig:CaseI_SSLTDPReal}
+	\end{subfigure}
+	\caption[Illustration of resources and demand used for Case I]{Illustration of resources and demand in the region used for Case I.}
+	\label{fig:CaseII_NetworkArea}
+\end{figure}
+
+\begin{table}[p]
+\centering
+\caption{Numerical Values of Relevant Parameters for Case II}
+\begin{tabular}{|c|c|} 
+	\hline
+	Width, Height of Geographic Area ($X$) & 3 km x 3 km \\
+	\hline
+	Number of BSs ($S$) &
+	\begin{tabular}{c|c}
+		\multirow{2}{*}{40 (Total)} & 22 (Macrocells) \\ & 18 (Microcells) \\
+	\end{tabular} \\
+	\hline
+	Number of Demand Points ($M$) & 90 \\ 
+	\hline 
+	Number of SPs ($N$) & 1 \\
+	\hline
+	Number of Sampled Scenarios ($O$) & 30 \\ 
+	\hline 
+	\multirow{2}{*}{sDEP Objective Weights ($\alpha$)} & $\left\{ 6,\, 8,\, \ldots,\, 30 \right\}$ \\
+	& $\left\{ 40,\, 50,\, \ldots,\, 100 \right\}$ \\
+	\hline 
+	\multirow{2}{*}{BS Cost ($c_s$)} & 1 (Macrocells) \\
+	& 0.04 (Microcells) \\
+	\hline
+	\multirow{2}{*}{BS Capacity ($r_s$)} & 2 Gbps (Macrocells) \\
+	& 100 Mbps (Microcells) \\
+	\hline
+	\multirow{2}{*}{BS Range ($b_s$)} & 1500 m (Macrocells) \\
+	& 250 m (Microcells) \\
+	\hline 
+	Point Traffic Demand ($d$) & 221.89 Mbps \\ 
+	\hline 
+	\hline
+	SSLT Approximation Depth ($L$) & 50 \\ 
+	\hline
+	SSLT Maximum Angular Frequency ($\omega_{\max}$) & 0.19010 (0.012673) \\
+	\hline 
+	SSLT Location Parameter ($\sigma$) & 18.93 \\ 
+	\hline 
+	SSLT Scale Parameter ($\mu$) & 2.3991 \\ 
+	\hline 
+	\hline
+	Maximum Number of Generations ($G$) & 4000 \\ 
+	\hline
+	Minimum Number of Generations ($G_{\min}$) & 450 \\
+	\hline
+	Unchanged Generations Before Fitness Halt ($G_{\text{fit}}$) & 300 \\
+	\hline 
+	Unchanged Generations Before Genome Halt ($G_{\text{gen}}$) & 600 \\
+	\hline 
+	Number of Individuals per Generation ($I$) & 80 \\ 
+	\hline
+	Number of Elite Individuals per Generation & 4 \\
+	\hline 
+	Probability of Crossover ($p_\text{xov}$) & 0.7 \\ 
+	\hline
+	Probability of Mutation per bit ($p_\text{mut}$) & $\nicefrac{1}{S} = 0.0455$ \\
+	\hline 
+	Overcoverage Cost ($c_\text{cov}$) & 3 \\
+	\hline
+	Overcapacity Cost ($c_\text{cap}$) & 1.015 \\ 
+	\hline
+	Pixel Grid Size & 200 x 200, 15 m \\ 
+	\hline
+	\multirow{2}{*}{GA Demand Weights ($\beta$)} & $\{ 0.5,\, 0.6,\, 0.7,\, 0.8,\, 0.9,$ \\
+	& $1.0,\, 1.5,\, 2.0,\, 2.5 \}$ \\
+	\hline
+	\hline
+	Number of Additional Evaluation Scenarios ($\not\in \hat{\Omega}$) & 100 \\
+	\hline
+	Number of Additional Scenario Demand Points ($M$) & 300 \\
+	\hline
+	Additional Demand Point Demand ($d$) & 66.547 Mbps \\
+	\hline
+\end{tabular}
+\label{tab:CaseII_SimVal}
+\end{table}
 
 \subsection{Results} \label{subsec:caseII_results}
 
