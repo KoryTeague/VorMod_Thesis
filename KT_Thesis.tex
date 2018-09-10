@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: September 7, 2018
+% REVISED: September 10, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -1502,31 +1502,31 @@ The GA continues to show improvements over the sDEP in terms of run time due to 
 
 Regarding demand satisfaction, the results of this test case are too consistent.  Ignoring coverage, each BS is capable of providing capacity (2 Gbps) for approximately 10\% of the demand within the field (19.97 Gbps).  Due to the wide coverage radii of the resources within this test case, the problem was almost completely reduced to the point of ignoring coverage; each BS selected effectively provided 10\% demand satisfaction with 100\% being reached with 10 BSs.  Due to such, there is no concept of error between the GA and sDEP solutions, nor between the slicings for the scenarios in $\hat{\Omega}$ and the scenarios not in $\hat{\Omega}$.
 
-The next test case \unsure{may present nuance that...}counters this problem without reducing macrocells beneath realistic coverage radii, increasing the size of the demand field and the rate capacity of BSs to account for the new demand, or increasing the size of the data set beyond the point of computational feasibility for the sDEP.
+The next test case counters this problem without reducing macrocells beneath realistic coverage radii, increasing the size of the demand field and the rate capacity of BSs to account for the new demand, or increasing the size of the data set beyond the point of computational feasibility for the sDEP.
 
 \section{Case II: Single SP with Heterogeneous Resources} \label{sec:caseII}
 
-In this section I present the second test case that builds on the work of the preliminary simulations comparing the sDEP and GA approaches.  These simulations use primarily the same parameters used by the first test case, but expand the set of resources aggregated by the VNB.  Instead of a single RP providing a set of homogeneous macrocell BSs, an additional RP is available for the VNB providing a set of microcell BSs.  Thus, the VNB considers a heterogeneous set of resources to satisfy the SP's demands in this test case.
+In this section I present the second test case that builds on the work of the preliminary simulations comparing the sDEP and GA approaches.  These simulations use primarily the same parameters used by the first test case, but expand the set of resources aggregated by the VNB.  Instead of a single RP providing a set of homogeneous macrocell BSs, an additional RP is available for the VNB providing a set of microcell BSs.  These microcells have a lower coverage radius and rate capacity, but increased cost efficiency (i.e., rate capacity per cost).  Thus, the VNB considers a heterogeneous set of resources to satisfy the SP's demands in this test case.
 
 \subsection{Setup} \label{subsec:caseII_setup}
 
-This test case is constructed with the same considerations and parameters as Case I (\Cref{sec:caseI}), with the following exceptions.  Resources are heterogeneous, with most constructed to represent small macrocells and the rest constructed to represent microcells.  Macrocells are placed according to a stationary PPP.  Microcells are placed according to a non-stationary PPP using $\lambda$ as the intensity function, representing BSs placed to satisfy specific demand needs.  The size of the region and the number of BSs, demand points, and scenarios were chosen such that the sDEP would converge to a solution in just under a time limit of one hour wall clock time.  GA generation limits are unchanged from \Cref{sec:caseI} and should be sufficient for consistent GA solutions to converge.  The parameter values used are shown in \Cref{tab:CaseII_SimVal}.
+This test case is constructed with the same considerations and parameters as Case I (\Cref{sec:caseI}), with the following exceptions.  Resources are heterogeneous, with most constructed to represent small macrocells and the rest constructed to represent microcells.  Macrocells are placed according to a stationary PPP.  Microcells are placed according to a non-stationary PPP using $\lambda$ as the intensity function, representing BSs placed to satisfy specific demand needs.  The size of the region and the number of BSs, demand points, and scenarios were chosen such that the sDEP would converge to a solution in just under a time limit of one hour wall clock time.  GA generation limits are unchanged from \Cref{sec:caseI} and should be sufficient for consistent GA solutions to converge.  The parameter values used are shown in \Cref{tab:CaseII_SimVal}, and the resources and demand in $\mathcal{R}$ is shown in \Cref{fig:CaseII_NetworkArea}.
 
 \begin{figure}[htp]
 	\centering
 	\begin{subfigure}{.49\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{Figures/CaseII_BSLocationsVoronoi}
+		\includegraphics[width=1\linewidth]{Figures/CaseII_BSLocationsVoronoiCircles}
 		\caption{\small Microcell locations (orange) and Voronoi tesselation of Macrocell locations (blue)}
-		\label{fig:CaseI_BSLocVor}
+		\label{fig:CaseII_BSLocVor}
 	\end{subfigure} \hfill
 	\begin{subfigure}{.49\textwidth}
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/CaseII_SSLTnsPPP_demandpointreal}
 		\caption{\small $\lambda$ with one realization of demand points ($\mathcal{M}$)}
-		\label{fig:CaseI_SSLTDPReal}
+		\label{fig:CaseII_SSLTDPReal}
 	\end{subfigure}
-	\caption[Illustration of resources and demand used for Case I]{Illustration of resources and demand in the region used for Case I.}
+	\caption[Illustration of resources and demand used for Case II]{Illustration of resources and demand in the region used for Case II}
 	\label{fig:CaseII_NetworkArea}
 \end{figure}
 
@@ -1610,13 +1610,24 @@ This test case is constructed with the same considerations and parameters as Cas
 
 \subsection{Results} \label{subsec:caseII_results}
 
-\subsubsection{Run Time}
+\subsubsection{The Sampled Deterministic Equivalent Program}
 
-\subsubsection{Network Cost}
+Due to the increased number of available resources, the sDEP approach took longer to solve for all values of $\alpha$.  For $\alpha \geq 12$ the sDEP approach exceeded the time limit of 1 hour wall clock time\footnote{Ideally, there are 28,800 seconds CPU time (8 cores) in 1 hour wall clock time.  These solutions terminated at 28,200 seconds CPU time, reaching 97.95\% of the ideal and a parallelism speedup ratio of 7.8x.  This is an improvement over the 7.1x speedup of the preliminary simulations (\Cref{sec:prelim}), and are closer to the limit presented by the \nicefrac{1}{8} adjusted run time in figures.}.  As a result, all solutions for $\alpha \geq 12$ are not guaranteed to be optimal, only the most optimal solution found.  $\alpha = 6$ presents a trivial, 0-BS selection solution, and $\alpha \in \left\{ 8,\, 10 \right\}$ are the only sDEP solutions that provided optimal non-trivial solutions within the 1 hour time limit; $\alpha = 8$ completed in less than 1 second CPU time, and $\alpha = 10$ completed in 16,000 seconds CPU time.
 
-\subsubsection{Demand Satisfaction}
 
-\subsubsection{Takeaway Conclusions}
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[height=0.4\textheight]{Figures/CaseII_sDEPComparisonCostCaseI}
+	\caption[Comparison of sDEP solutions between Case I and Case II]{Comparison of sDEP solutions between Case I and Case II.  The non-trivial $\alpha = 8$ Case II solution is not shown, but selected a network with 0.44 cost. $\alpha = 8$ for Case I is a trivial 0-BS solution.}
+	\label{fig:CaseII_sDEPComparisonCostCaseI}
+\end{figure}
+
+\subsubsection{The Genetic Algorithm}
+
+\subsubsection{Comparisons}
+
+\subsubsection{Conclusions}
 
 \fi
 
