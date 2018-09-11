@@ -261,14 +261,9 @@ This work received support in part from the National Science Foundation via work
 \listoftables
 \pagebreak
 
-% Uncomment if I want to add acronyms as a separate document ``acronyms.tex''
-%\include{acronyms}
 \chapter*{List of Acronyms}
 \begin{acronym}
 	\acro{3GPP}{Third-Generation Partnership Project}
-%	\acro{3G}{Third Generation}
-%	\acro{4G}{Fourth Generation}
-%	\acro{5G}{Fifth Generation}
 	\acro{5G-NR}{5G New Radio}
 	\acro{BS}{Base Station}
 	\acro{CapEx}{Capital Expenditures}
@@ -277,20 +272,12 @@ This work received support in part from the National Science Foundation via work
 	\acro{EB}{Exabytes}
 	\acro{GA}{Genetic Algorithm}
 	\acro{IoT}{Internet-of-Things}
-%	\acro{IP}{Integer Programming}
-%	\acro{IP}{Internet Protocol}
-%	\acro{LP}{Linear Programming}
-%	\acro{LTE}{Long Term Evolution}
-%	\acro{MILP}{Mixed Integer Linear Programming}
-%	\acro{MIP}{Mixed Integer Programming}
 	\acro{MIMO}{Multiple-Input Multiple-Output}
 	\acro{mmWave}{Millimeter Wave}
 	\acro{MNO}{Mobile Network Operator}
 	\acro{MVNO}{Mobile Virtual Network Operator}
-%	\acro{NP}{Nondeterministic Polynomial}
 	\acro{NVS}{Network Virtualization Substrate}
 	\acro{NwoB}{Networks without Borders}
-%	\acro{OFDMA}{Orthogonal Frequency Division Multiple Access}
 	\acro{OpEx}{Operational Expenditures}
 	\acro{PPP}{Poisson Point Process}
 	\acro{QoS}{Quality of Service}
@@ -302,7 +289,6 @@ This work received support in part from the National Science Foundation via work
 	\acro{SSLT}{Scalable, Spatially-correlated, Log-normal distributed Traffic}
 	\acro{VNB}{Virtual Network Builder}	
 	\acro{VWN}{Virtualized Wireless Network}
-%	\acro{WLAN}{Wireless Local Area Network}
 	\acro{ZB}{Zetabytes}
 \end{acronym}
 
@@ -1263,7 +1249,7 @@ The following two sections will expand on the results from these preliminary sim
 
 In this section I present the first test case that builds on the work of the previous section comparing the sDEP and GA approaches.  These simulations are designed to more accurately reflect real world resources and demand as suggested by empirical data.  Further, these simulations present a modification to the demand intensity field, $\lambda_n$, to adjust the GA's target level of demand satisfaction.  Specifically, this test case considers a situation where a VNB with access to purely homogeneous resources constructs a VWN for a single SP.
 
-\subsection{Setup} \label{subsec:caseI_setup}
+\subsection{Case I Setup} \label{subsec:caseI_setup}
 
 This test case is constructed considering the following considerations and parameters.  There is only one SP, and its demand intensity function, $\lambda$, is generated using parameters (i.e., $\omega_{\max},\, \sigma,\, \mu$) that were empirically found to match a real world urban cellular network in China~\cite{6757900}.  $\lambda$ is pixelated into a 200 by 200 grid of square pixels with 15 m side length; $\mathcal{R}$, illustrated in \Cref{fig:CaseI_NetworkArea}, is a region 3 km by 3 km in size.  Resources are homogeneous and constructed to represent small macrocells.  The size of the region and the number of BSs, demand points, and scenarios were chosen such that the sDEP would converge to a solution in just under a new time limit of one hour wall clock time.  Resources have a large coverage radius relative to the region's size; a larger region introduces more demand and requires more BSs for a solution to be feasible, increasing run times, and a smaller coverage radius would cause the resources to have sub-macrocell coverage area.  This data set is \emph{smaller} than the set used in the preliminary simulations of \Cref{sec:prelim}.  Due to the decreased number of demand points, each demand point contains a larger amount of the overall field's demand.  This will be more properly handled with additional scenarios and the adaptive slicing model (\Cref{subsec:dep_slicing}).  GA generation limits (i.e., $G$, $G_{\min}$, $G_{\text{fit}}$, and $G_{\text{gen}}$) were increased to avoid the possibly premature convergence seen in the last section.  The parameter values used in the simulations are shown in \Cref{tab:CaseI_SimVal}.
 
@@ -1372,11 +1358,11 @@ This affects the fitness heuristic (\cref{eq:GAFit}) of the GA by changing the c
 
 This only impacts the resource selection performed by the GA and only in the context shown.  This affects neither the demand associated with individual demand points of a scenario nor the slicing of the selected resources to individual demand points in the adaptive slicing model (\Cref{subsec:dep_slicing}).
 
-\subsection{Results} \label{subsec:caseI_results}
+\subsection{Case I Results} \label{subsec:caseI_results}
 
 In this section I present the results of the Case I simulations.  The results of the sDEP approach are presented, followed by the results of the GA approach, including the effects of introducing the weighting factor $\beta$.  Finally, comparisons of the two approaches for these simulations are provided, and conclusions made.
 
-\subsubsection{The Sampled Deterministic Equivalent Program}
+\subsubsection{Approach 1: The Sampled Deterministic Equivalent Program}
 
 \Cref{fig:CaseI_sDEPComparisonCostRunTime} visualizes the run time and cost of the sDEP approach, which behaves very similarly under this data set compared to the preliminary simulations.  The run time averages at approximately 15000 seconds, spiking to nearly 25000 seconds for $\alpha \in \left\{ 10,\, 12 \right\}$.  For this region, the sDEP is in transition; the sDEP allocates 9 BSs for $\alpha = 10$ and 10 BSs for $\alpha \geq 12$.
 
@@ -1398,7 +1384,7 @@ This rapid transition from the trivial no-allocation solution ($\alpha < 10$) to
 
 I posit that the data set chosen is too forgiving on the available resources.  Since resources have a coverage radius of half of the region's side length---a single BS can span from one edge of the region to the other if centrally placed---most BSs can reach most demand points.  This reduces the importance of coverage and simplifies slicing to solely a problem of capacity.  The high time complexity of this specific set is likely due to the BSs' high proportional radii, as BSs have many possible demand points to be sliced to.
 
-\subsubsection{The Genetic Algorithm}
+\subsubsection{Approach 2: The Genetic Algorithm}
 
 The GA also performs similarly to what was shown in \Cref{sec:prelim}, with the primary differences of controlling $\beta$ and increasing the number of generations before the halting condition occurs.  This discussion will present these results with focus on the changes caused by controlling $\beta$ similar to the focus spent on the sDEP with respect to $\alpha$ while presenting the preliminary simulation results.
 
@@ -1449,7 +1435,7 @@ The differences between the first and second categories of solutions is indicati
 
 In contrast, the second and third categories halted with the genome halting condition, indicating that the GA was unable to find a solution that was neither overcoverage nor overcapacity for the demand considered.  Solutions that are overcapacity are unable of targeting 100\% demand satisfaction.  However, with BSs sharing mutually covered points through the adaptive slicing model, it might still reach 100\% for the demand seen by the GA.  For this data set, all solutions for this category have 100\% demand satisfaction, though all of the second category ($\beta > 0.8$) overallocated resources.
 
-\subsubsection{Comparisons Between the sDEP and GA Approaches}
+\subsubsection{Comparisons of the Approaches}
 
 With the addition of the weighting factor $\beta$, the GA is capable of being tuned to provide a number of solutions, akin to the sDEP and its weighting coefficient $\alpha$.  Regardless of this tuning, the sDEP and GA both perform very similarly to what was shown by the preliminary simulations.
 
@@ -1496,7 +1482,7 @@ Further, as tabulated by \Cref{tab:CaseI_ComparisonCostSat}, same cost networks 
 \label{tab:CaseI_ComparisonCostSat}
 \end{table}
 
-\subsubsection{Conclusions}
+\subsubsection{Case I Conclusions}
 
 The GA continues to show improvements over the sDEP in terms of run time due to not needing to scale according to the number of demand points or scenarios of $\hat{\Omega}$.  With the inclusion of $\beta$, the GA is now capable of providing solutions that aim for less than 100\% demand satisfaction; it is expected solutions that converge with the fitness halting condition will provide at least $\beta$ demand satisfaction, assuming that $\lambda$ fairly approximates the demand the constructed VWN is expected to meet.  Run times for the GA are consistent within the halting condition that terminates it, whereas the sDEP will spike in run time on the threshold between higher cost solutions.
 
@@ -1508,7 +1494,7 @@ The next test case counters this problem without reducing macrocells beneath rea
 
 In this section I present the second test case that builds on the work of the preliminary simulations comparing the sDEP and GA approaches.  These simulations use primarily the same parameters used by the first test case, but expand the set of resources aggregated by the VNB.  Instead of a single RP providing a set of homogeneous macrocell BSs, an additional RP is available for the VNB providing a set of microcell BSs.  These microcells have a lower coverage radius and rate capacity, but increased cost efficiency (i.e., rate capacity per cost).  Thus, the VNB considers a heterogeneous set of resources to satisfy the SP's demands in this test case.
 
-\subsection{Setup} \label{subsec:caseII_setup}
+\subsection{Case II Setup} \label{subsec:caseII_setup}
 
 This test case is constructed with the same considerations and parameters as Case I (\Cref{sec:caseI}), with the following exceptions.  Resources are heterogeneous, with most constructed to represent small macrocells and the rest constructed to represent microcells.  Macrocells are placed according to a stationary PPP.  Microcells are placed according to a non-stationary PPP using $\lambda$ as the intensity function, representing BSs placed to satisfy specific demand needs.  The size of the region and the number of BSs, demand points, and scenarios were chosen such that the sDEP would converge to a solution in just under a time limit of one hour wall clock time.  GA generation limits are unchanged from \Cref{sec:caseI} and should be sufficient for consistent GA solutions to converge.  The parameter values used are shown in \Cref{tab:CaseII_SimVal}, and the resources and demand in $\mathcal{R}$ is shown in \Cref{fig:CaseII_NetworkArea}.
 
@@ -1517,7 +1503,7 @@ This test case is constructed with the same considerations and parameters as Cas
 	\begin{subfigure}{.49\textwidth}
 		\centering
 		\includegraphics[width=1\linewidth]{Figures/CaseII_BSLocationsVoronoiCircles}
-		\caption{\small Microcell locations (orange) and Voronoi tesselation of Macrocell locations (blue)}
+		\caption{\small Microcell locations (orange) and Voronoi tesselation of macrocell locations (blue)}
 		\label{fig:CaseII_BSLocVor}
 	\end{subfigure} \hfill
 	\begin{subfigure}{.49\textwidth}
@@ -1608,13 +1594,15 @@ This test case is constructed with the same considerations and parameters as Cas
 \label{tab:CaseII_SimVal}
 \end{table}
 
-\subsection{Results} \label{subsec:caseII_results}
+\subsection{Case II Results} \label{subsec:caseII_results}
 
-\subsubsection{The Sampled Deterministic Equivalent Program}
+In this section I present the results of the Case II simulations.  The results of the sDEP approach are presented with consideration of the changes caused by the use of heterogeneous resources.  The results of the GA approach are similarly presented.  Finally, comparisons for these approaches are provided, and conclusions made.
 
-Due to the increased number of available resources, the sDEP approach took longer to solve for all values of $\alpha$.  For $\alpha \geq 12$ the sDEP approach exceeded the time limit of 1 hour wall clock time\footnote{Ideally, there are 28,800 seconds CPU time (8 cores) in 1 hour wall clock time.  These solutions terminated at 28,200 seconds CPU time, reaching 97.95\% of the ideal and a parallelism speedup ratio of 7.8x.  This is an improvement over the 7.1x speedup of the preliminary simulations (\Cref{sec:prelim}), and are closer to the limit presented by the \nicefrac{1}{8} adjusted run time in figures.}.  As a result, all solutions for $\alpha \geq 12$ are not guaranteed to be optimal, only the most optimal solution found.  $\alpha = 6$ presents a trivial, 0-BS selection solution, and $\alpha \in \left\{ 8,\, 10 \right\}$ are the only sDEP solutions that provided optimal non-trivial solutions within the 1 hour time limit; $\alpha = 8$ completed in less than 1 second CPU time, and $\alpha = 10$ completed in 16,000 seconds CPU time.
+\subsubsection{Approach 1: The Sampled Deterministic Equivalent Program}
 
+Due to the increased number of available resources, the sDEP approach took longer to solve for all values of $\alpha$.  For $\alpha \geq 12$ the sDEP approach exceeded the time limit of 1 hour wall clock time\footnote{Ideally, there are 28,800 seconds CPU time (8 cores) in 1 hour wall clock time.  These solutions terminated at 28,200 seconds CPU time, reaching 97.95\% of the ideal and a parallelism speedup ratio of 7.8x.  This is an improvement over the 7.1x speedup of the preliminary simulations (\Cref{sec:prelim}), and are closer to the limit presented by the \nicefrac{1}{8} adjusted run time in figures.}.  As a result, all solutions for $\alpha \geq 12$ are not guaranteed to be optimal, only the most optimal solution found.  $\alpha = 6$ presents a trivial, 0-BS selection solution, and $\alpha \in \left\{ 8,\, 10 \right\}$ are the only sDEP solutions that provided optimal non-trivial solutions within the 1 hour time limit; $\alpha = 8$ completed in less than 1 second CPU time, and $\alpha = 10$ completed in 16,000 seconds CPU time.  As a comparison, the sDEP Case I results averaged 15,000 seconds outside of transition from 9- and 10-BS solutions.
 
+With the inclusion of the microcells heterogenizing the resources available to the VNB, the VNB is capable of more nuanced constructions.  \Cref{fig:CaseII_sDEPComparisonCostCaseI} shows the cost trend of the sDEP approach for the interesting range of $\alpha \in \left[ 10,\, 20 \right]$; $\alpha = 8$ constructs a network of 0.44 cost, and $\alpha \geq 20$ constructs a network with 10 cost.  At $\alpha = 10$, the sDEP constructs a network with 9.6 cost (9 macrocells, 15 microcells).  and steadily increasing the cost with additional microcells up to $\alpha = 16$ with 9.72 cost (9 macrocells, 18 microcells).
 
 \begin{figure}[htp]
 	\centering
@@ -1623,11 +1611,11 @@ Due to the increased number of available resources, the sDEP approach took longe
 	\label{fig:CaseII_sDEPComparisonCostCaseI}
 \end{figure}
 
-\subsubsection{The Genetic Algorithm}
+\subsubsection{Approach 2: The Genetic Algorithm}
 
-\subsubsection{Comparisons}
+\subsubsection{Comparisons of the Approaches}
 
-\subsubsection{Conclusions}
+\subsubsection{Case II Conclusions}
 
 \fi
 
