@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: September 17, 2018
+% REVISED: September 21, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -1742,7 +1742,7 @@ As the solutions for Case II trended towards the more expensive, the GA demand s
 
 Both the sDEP and GA approaches appear to be largely unimpacted by the addition of heterogeneity to the VNB's resource pool, at least for this test case.  Both approaches resulted in increased run times, which is expected with the increased number of resources; the GA's run time increased by approximately 25\% to 50\% while the sDEP failed to resolve within the allotted time limit of 1 hour wall clock time.  Cost was impacted, but largely in the context of additional granularity.  The sDEP was impacted more, as the addition of microcells allowed the sDEP to provide nuanced differentiation between 9 and 10 macrocell allocation.  In contrast, the GA was impacted by making the results less consistent; Case I resulted in only 8 deviations (all $\beta = 0.5$) from the best solution across 450 different runs of the GA whereas Case II resulted in 30 (24 for $\beta = 0.5$, 3 for $\beta = 0.7$, 3 for $\beta = 0.8$).  That is, the addition of microcells resulted in 200\% more error for $\beta = 0.5$ than the test without.  This could be the result of changes in the data set that are not reflected solely by the inclusion of microcells, however.
 
-It is expected to see the GA perform less efficiently than the sDEP as a result of its heuristic and approximations.  However, results have shown thus far that the GA performs very similarly to the sDEP.  \Cref{fig:CaseII_ComparisonCostvSat_CaseICaseII} shows the cost efficiency of the sDEP and GA approaches for both Case I and Case II.  When only considering the homogeneous resources of Case I, the GA performs exactly as cost effectively as the sDEP, though the GA was able to force sub-90\% demand satisfaction networks while the sDEP could not.  With the addition of microcells in Case II, the sDEP performed slightly better through nuanced steps; this is shown as the slightest improvement in \Cref{fig:CaseII_ComparisonCostvSat_CaseICaseII} over the effectively identical sDEP Case I, GA Case I, and GA Case II results.  For this data set, the GA has a visible, but insignificant amount of error compared to the sDEP.  At the cost of this insignificant error, the GA provides a solution with a notable speedup ratio, shown to reach in excess of 50x.
+It is expected to see the GA perform less efficiently than the sDEP as a result of its heuristic and approximations.  However, results have shown thus far that the GA performs very similarly to the sDEP.  \Cref{fig:CaseII_ComparisonCostvSat_CaseICaseII} shows the cost efficiency of the sDEP and GA approaches for both Case I and Case II.  When only considering the homogeneous resources of Case I, the GA performs exactly as cost effectively as the sDEP, though the GA was able to force sub-90\% demand satisfaction networks while the sDEP could not.  With the addition of microcells in Case II, the sDEP performed slightly better through nuanced steps; this is shown as the slightest improvement in \Cref{fig:CaseII_ComparisonCostvSat_CaseICaseII} over the effectively identical sDEP Case I, GA Case I, and GA Case II results.  For this data set, the GA has a visible, but insignificant amount of error compared to the sDEP.  At the cost of this insignificant error, the GA provides a solution with a notable speedup ratio, shown in \Cref{fig:CaseI_GASpeedup} to reach in excess of 50x.
 
 \begin{figure}[htp]
 	\centering
@@ -1757,7 +1757,9 @@ It is expected to see the GA perform less efficiently than the sDEP as a result 
 \pagebreak
 \chapter{Conclusions} \label{ch:conc}
 
-In this chapter I conclude my work described in this thesis.
+This thesis has considered the problem of resource allocation in the context of virtualized wireless networks.  It presented virtualization in \Cref{ch:intro} as a necessity of the expanding requirements of cellular networks, described a virtualization architecture as an extension of the Networks without Borders paradigm, and established the problem of resource allocation as a primary task of the virtual network builder of this architecture.  It then defined a system model and the VNB's problem of resource allocation and the dynamic slicing as a two-stage stochastic optimization problem in \Cref{ch:vnbmodel}.
+
+In this chapter I conclude my work described in this thesis.  I desc
 
 \change{Old work\\Update and Remove!}%
 \textit{Consider conclusions of my work.  I don't think this chapter would be long, but condense my findings into some coherent thoughts, and redirect to what they are.  Also expound on some of the further work that my research could be expanded to (e.g., further use cases investigating my approaches, use of (meta)heuristics other than a genetic algorithm to approximate the optimization problem, improve the basic capacity function used in my optimization model).}
