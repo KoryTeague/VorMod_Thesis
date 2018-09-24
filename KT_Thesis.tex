@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: September 22, 2018
+% REVISED: September 24, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -1757,12 +1757,15 @@ It is expected to see the GA perform less efficiently than the sDEP as a result 
 \pagebreak
 \chapter{Conclusions} \label{ch:conc}
 
-This thesis has considered the problem of BS selection and dynamic slicing in the context of virtualized wireless networks.  In \Cref{ch:intro}, this thesis presented virtualization as a necessity of the expanding requirements of cellular networks and described a virtualization architecture as an extension of the Networks without Borders paradigm.  Then, it established the problem of resource allocation as a primary task of the virtual network builder of this architecture.
+This thesis has considered the problem of BS selection and dynamic slicing in the context of VWNs.  In \Cref{ch:intro}, this thesis presented virtualization as a necessity of the expanding requirements of cellular networks.  It described a service-oriented virtualization architecture as an extension of the Networks without Borders paradigm, where RPs provide resources to VNBs which aggregate slices of resources to construct virtual networks optimized for the services offered by SPs.  It established the problem of resource allocation as a primary task of the VNB.
 
-It then defined a system model and the VNB's problem of resource allocation and the dynamic slicing as a two-stage stochastic optimization problem in \Cref{ch:vnbmodel}.
+\Cref{ch:vnbmodel} defined a system model providing context for the VNB.  This model established that RPs provide resources as cellular BSs which are aggregated by the VNB.  It further established the needs of SPs as a spatial demand intensity function, and provided an example using SSLT demand model, which was designed to mimic the empirically discovered demands of a urban cellular network.  The problem the VNB considers was then presented as a two-stage stochastic optimization program, in which the first stage selected resources from the pool made available by the RPs optimizing for minimum cost, and the second stage sliced the resources selected by the first stage to the SPs optimizing for maximum demand satisfaction.
 
-\change{Old work\\Update and Remove!}%
-\textit{Consider conclusions of my work.  I don't think this chapter would be long, but condense my findings into some coherent thoughts, and redirect to what they are.  Also expound on some of the further work that my research could be expanded to (e.g., further use cases investigating my approaches, use of (meta)heuristics other than a genetic algorithm to approximate the optimization problem, improve the basic capacity function used in my optimization model).}
+\Cref{ch:approaches} provided two approaches for solving the VNB's optimization program.  The first approach was a direct solution, converting the stochastic program into its deterministic equivalent program and sampling it into a solvably-tractable form.  The second approach applied a genetic algorithm as a heuristic for determining resource selection.  To provide a slicing of the selected resources, a pared down form of the deterministic equivalent program that solves only the second stage is applied to the solution of the genetic algorithm. 
+
+\Cref{ch:sim} considered the effectiveness of the two approaches via three separate simulations.  The first simulation was a proof of concept and showed that the two approaches converge to a solution and that the demand model worked as expected.  It showed that the GA approach converged to a solution in much less time than the sDEP, providing a speedup factor of up to 46.3x.  When comparing same cost solutions, the GA introduced only a marginal amount of error---0.3\% less demand satisfaction---for scenarios the sDEP was optimized for and marginally outperformed the sDEP---0.0\%--0.2\% more demand satisfaction---for scenarios the sDEP was not optimized for.  This highlighted the primary limitations of the two approaches.  First, the sDEP, while a direct solution of the original stochastic program, directly trades solution feasibility for accuracy by controlling the number of scenarios and demand points per scenario.  The scenarios in $\hat{\Omega}$ were sufficient to provide a close approximation of the demand field, but the demand satisfaction decreased with more scenarios containing more demand points, showing that a tighter approximation was possible but ignored for feasibility.  Second, the GA targets 100\% demand satisfaction, and was not able to be tuned to other solutions.  This limits the GA in effectiveness, and only allows the GA to be directly compared to the sDEP for similar cost, near 100\% demand satisfaction solutions.
+
+The latter two simulations acted as test cases which utilize more realistic looking parameters.  
 
 \section{Considerations for Future Work} \label{sec:futurework}
 
