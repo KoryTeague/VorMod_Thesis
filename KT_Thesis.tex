@@ -1757,19 +1757,53 @@ It is expected to see the GA perform less efficiently than the sDEP as a result 
 \pagebreak
 \chapter{Conclusions} \label{ch:conc}
 
-This thesis has considered the problem of BS selection and dynamic slicing in the context of VWNs.  In \Cref{ch:intro}, this thesis presented virtualization as a necessity of the expanding requirements of cellular networks.  It described a service-oriented virtualization architecture as an extension of the Networks without Borders paradigm, where RPs provide resources to VNBs which aggregate slices of resources to construct virtual networks optimized for the services offered by SPs.  It established the problem of resource allocation as a primary task of the VNB.
+In this thesis I considered the problem of BS selection and dynamic slicing in the context of VWNs.  In \Cref{ch:intro}, this thesis presented virtualization as a necessity of the expanding requirements of cellular networks.  It described a service-oriented virtualization architecture as an extension of the Networks without Borders paradigm, where RPs provide resources to VNBs which aggregate slices of resources to construct virtual networks optimized for the services offered by SPs.  It established the problem of resource allocation as a primary task of the VNB.
 
 \Cref{ch:vnbmodel} defined a system model providing context for the VNB.  This model established that RPs provide resources as cellular BSs which are aggregated by the VNB.  It further established the needs of SPs as a spatial demand intensity function, and provided an example using SSLT demand model, which was designed to mimic the empirically discovered demands of a urban cellular network.  The problem the VNB considers was then presented as a two-stage stochastic optimization program, in which the first stage selected resources from the pool made available by the RPs optimizing for minimum cost, and the second stage sliced the resources selected by the first stage to the SPs optimizing for maximum demand satisfaction.
 
 \Cref{ch:approaches} provided two approaches for solving the VNB's optimization program.  The first approach was a direct solution, converting the stochastic program into its deterministic equivalent program and sampling it into a solvably-tractable form.  The second approach applied a genetic algorithm as a heuristic for determining resource selection.  To provide a slicing of the selected resources, a pared down form of the deterministic equivalent program that solves only the second stage is applied to the solution of the genetic algorithm. 
 
-\Cref{ch:sim} considered the effectiveness of the two approaches via three separate simulations.  The first simulation was a proof of concept and showed that the two approaches converge to a solution and that the demand model worked as expected.  It showed that the GA approach converged to a solution in much less time than the sDEP, providing a speedup factor of up to 46.3x.  When comparing same cost solutions, the GA introduced only a marginal amount of error---0.3\% less demand satisfaction---for scenarios the sDEP was optimized for and marginally outperformed the sDEP---0.0\%--0.2\% more demand satisfaction---for scenarios the sDEP was not optimized for.  This highlighted the primary limitations of the two approaches.  First, the sDEP, while a direct solution of the original stochastic program, directly trades solution feasibility for accuracy by controlling the number of scenarios and demand points per scenario.  The scenarios in $\hat{\Omega}$ were sufficient to provide a close approximation of the demand field, but the demand satisfaction decreased with more scenarios containing more demand points, showing that a tighter approximation was possible but ignored for feasibility.  Second, the GA targets 100\% demand satisfaction, and was not able to be tuned to other solutions.  This limits the GA in effectiveness, and only allows the GA to be directly compared to the sDEP for similar cost, near 100\% demand satisfaction solutions.
+\Cref{ch:sim} considered the effectiveness of the two approaches via three separate simulations.  The first simulation was a proof of concept and showed that the two approaches converge to a solution and that the SSLT demand model worked as expected.  The latter two simulations served as test cases which modify RP resources and SP demand to more closely reflect real world resources and demand.  The second simulation, Case I, simulated homogeneous (i.e., macrocell) resources and the third simulation, Case II, simulated heterogeneous (i.e., macrocell and microcell) resources.
 
-The latter two simulations acted as test cases which utilize more realistic looking parameters.  
+The GA approach has an improved run time trend compared to the sDEP.  Across all three simulations, the GA approach converged to a solution in far less CPU time than the sDEP approach; due to this, the GA exhibits a significant speedup ratio relative to the sDEP, as shown in \Cref{tab:VWNConstructionRunTimes}.  
+
+\begin{table}[ht]
+	\centering
+	\caption{Average Simulation Speedup Ratios}
+	\begin{tabular}{|c|c|c|c|} 
+		\hline
+		\textbf{Simulation} & \textbf{Type} & \textbf{CPU} & \textbf{Adjusted} \\
+		\hline
+		\multirow{9}{*}{Preliminary} & $O=5$ & 0.701 & 0.0876 \\
+		& $O=10$ & 3.22 & 0.402 \\
+		& $O=15$ & 5.50 & 0.688 \\
+		& $O=20$ & 4.39 & 0.548 \\
+		& $O=25$ & 12.4 & 1.55 \\
+		& $O=30$ & 14.8 & 1.85 \\
+		& $O=35$ & 21.0 & 2.62 \\
+		& $O=40$ & 44.3 & 5.54 \\
+		& $O=45$ & 48.0 & 6.00 \\
+		\hline
+		\multirow{2}{*}{Preliminary} & Transition ($\alpha \in \left\{ 25,\, 30,\, 35,\, 40,\, 45 \right\}$) & 40.9 & 5.11 \\
+		& Steady ($\alpha \geq 50$) & 10.3 & 1.29 \\
+		\hline
+		\multirow{2}{*}{Case I} & GA Fitness Halt ($\beta < 0.8$) & 56.3 & 7.04 \\
+		& GA Genome Halt ($\beta > 0.8$) & 19.6 & 2.45 \\
+		\hline
+		\multirow{2}{*}{Case II} & GA Fitness Halt ($\beta < 0.8$) & 77.5 & 9.69 \\
+		& GA Genome Halt ($\beta > 0.8$) & 27.7 & 3.46 \\
+		\hline
+	\end{tabular}
+	\label{tab:VWNConstructionRunTimes}
+\end{table}
+
+GA-constructed VWNs have marginal to no demand satisfaction error compared to sDEP-constructed VWNs of the same cost.
+
+Both approaches are controllable to construct VWNs of variable cost.
+
+%It showed that the GA approach converged to a solution in much less time than the sDEP, providing a speedup factor of up to 46.3x.  When comparing same cost solutions, the GA introduced only a marginal amount of error---0.3\% less demand satisfaction---for scenarios the sDEP was optimized for and marginally outperformed the sDEP---0.0\%--0.2\% more demand satisfaction---for scenarios the sDEP was not optimized for.  This highlighted the primary limitations of the two approaches.  First, the sDEP, while a direct solution of the original stochastic program, directly trades solution feasibility for accuracy by controlling the number of scenarios and demand points per scenario.  The scenarios in $\hat{\Omega}$ were sufficient to provide a close approximation of the demand field, but the demand satisfaction decreased with more scenarios containing more demand points, showing that a tighter approximation was possible but ignored for feasibility.  Second, the GA targets 100\% demand satisfaction, and was not able to be tuned to other solutions.  This limits the GA in effectiveness, and only allows the GA to be directly compared to the sDEP for similar cost, near 100\% demand satisfaction solutions.
 
 \section{Considerations for Future Work} \label{sec:futurework}
-
-\info{Filled as ideas come to mind during writing}
 
 \noindent -- Other traffic demand models (log-normal mixtures, $\alpha$-stable)\info{See note.\\Integrate.}\footnote{In general, network traffic and the resource deployments that they are meant to model tend to exhibit characteristics of heavy-tailed spatial distributions.  It has been shown that traffic distributions in cellular networks can be more accurately approximated as a mixture of log-normal distributions~\cite{5936263, 6757900}; Lee et al.~\cite{6757900} describe that nonmixtures capture the distribution for a single moment while mixtures capture the distribution as it changes with time and place.  Similarly, Zhou et al.~\cite{7202841} have shown that distributions of deployed BSs can be accurately approximated as a $\alpha$-stable distribution.  The latter case might be explained through the central limit theorem, as the sum of power-law distributed (Paretian tailed) random variables, such as those describing traffic in telephone networks~\cite{PhysRevE.72.026116}, will tend towards an $\alpha$-stable distribution.  I use neither in this thesis as $\alpha$-stable distributions do not generally have a closed-form probability density function (PDF), rendering use non-trivial, and log-normal mixtures require tuning multiple parameters, adding additional complexity.}\\%
 % Moved the footnote from \Cref{ch:networkdefs}, where it created an overly long footnote while providing no real new information.  These sorts of details could be properly integrated here into the conclusion.  Move out of footnote and place in mainbody text.
