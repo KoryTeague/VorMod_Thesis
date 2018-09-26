@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: September 24, 2018
+% REVISED: September 25, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -1763,26 +1763,16 @@ In this thesis I considered the problem of BS selection and dynamic slicing in t
 
 \Cref{ch:approaches} provided two approaches for solving the VNB's optimization program.  The first approach was a direct solution, converting the stochastic program into its deterministic equivalent program and sampling it into a solvably-tractable form.  The second approach applied a genetic algorithm as a heuristic for determining resource selection.  To provide a slicing of the selected resources, a pared down form of the deterministic equivalent program that solves only the second stage is applied to the solution of the genetic algorithm. 
 
-\Cref{ch:sim} considered the effectiveness of the two approaches via three separate simulations.  The first simulation was a proof of concept and showed that the two approaches converge to a solution and that the SSLT demand model worked as expected.  The latter two simulations served as test cases which modify RP resources and SP demand to more closely reflect real world resources and demand.  The second simulation, Case I, simulated homogeneous (i.e., macrocell) resources and the third simulation, Case II, simulated heterogeneous (i.e., macrocell and microcell) resources.
+\Cref{ch:sim} considered the effectiveness of the two approaches via three separate simulations.  The first simulation was a proof of concept and showed that the two approaches converge to a solution and that the SSLT demand model worked as expected.  The latter two simulations served as test cases which modify RP resources and SP demand to more closely reflect real world resources and demand.  The second simulation, Case I, simulated homogeneous (i.e., macrocell) resources and the third simulation, Case II, simulated heterogeneous (i.e., macrocell and microcell) resources.  Except for highlighting the impact of resource coverage range on the problem, the differences between the various simulations do not cause significant changes in the approaches' effectiveness.
 
-The GA approach has an improved run time trend compared to the sDEP.  Across all three simulations, the GA approach converged to a solution in far less CPU time than the sDEP approach; due to this, the GA exhibits a significant speedup ratio relative to the sDEP, as shown in \Cref{tab:VWNConstructionRunTimes}.  
+The GA approach has an improved run time trend compared to the sDEP.  Across all simulations, the GA approach converged to a solution in far less CPU time than the sDEP approach; as shown in \Cref{tab:VWNConstructionRunTimes}, the GA exhibits a consistent and significant speedup ratio relative to the sDEP, even when comparing the adjusted\footnote{The adjusted time is the minimum limit of the wall clock time the sDEP approach could have taken to complete.  The adjusted time is one-eighth the CPU time; in practice the actual wall clock time is greater than the adjusted time, but was shown in \Cref{ch:sim} to be less than one-seventh the CPU time and approaches one-eighth as the sDEP run time increases.} sDEP run time.  The sDEP approach's run time is directly dependent on the number of possible connections between demand points and BSs across all scenarios; the sDEP is capable of ignoring demand points that are out of range of resources (i.e, where $u_{ms}=0$).  Generally, as the resources, demand points, and scenarios increase, run time increases exponentially; this is also impacted by BS coverage radius, as shown be the relatively low impact of the microcells added to Case II over Case I.  The GA approach's run time is only directly dependent on the number of resources, the number of pixels of the demand intensity function, the number of generations before the GA halts, and the number of individuals per generation of the GA.  Compared to the sDEP approach, the GA approach is trends to be more time-feasible, as the number of generations\footnote{Each generation is independent and happens sequentially.}, the number of pixels\footnote{Each additional pixel can cause one additional addition in the integral of each fitness calculation.}, and the number of resources\footnote{Each additional resource linearly increases the summation of the fitness calculation.} linearly impact run time, and the number of individuals\footnote{For elitism, individuals are sorted according to fitness each generation.} linearithmically (O($n \log n$)) impacts run time.
 
 \begin{table}[ht]
 	\centering
 	\caption{Average Simulation Speedup Ratios}
 	\begin{tabular}{|c|c|c|c|} 
 		\hline
-		\textbf{Simulation} & \textbf{Type} & \textbf{CPU} & \textbf{Adjusted} \\
-		\hline
-		\multirow{9}{*}{Preliminary} & $O=5$ & 0.701 & 0.0876 \\
-		& $O=10$ & 3.22 & 0.402 \\
-		& $O=15$ & 5.50 & 0.688 \\
-		& $O=20$ & 4.39 & 0.548 \\
-		& $O=25$ & 12.4 & 1.55 \\
-		& $O=30$ & 14.8 & 1.85 \\
-		& $O=35$ & 21.0 & 2.62 \\
-		& $O=40$ & 44.3 & 5.54 \\
-		& $O=45$ & 48.0 & 6.00 \\
+		\textbf{Simulation} & \textbf{Solution Category} & \textbf{CPU} & \textbf{Adjusted} \\
 		\hline
 		\multirow{2}{*}{Preliminary} & Transition ($\alpha \in \left\{ 25,\, 30,\, 35,\, 40,\, 45 \right\}$) & 40.9 & 5.11 \\
 		& Steady ($\alpha \geq 50$) & 10.3 & 1.29 \\
@@ -1797,22 +1787,54 @@ The GA approach has an improved run time trend compared to the sDEP.  Across all
 	\label{tab:VWNConstructionRunTimes}
 \end{table}
 
-GA-constructed VWNs have marginal to no demand satisfaction error compared to sDEP-constructed VWNs of the same cost.
-
-Both approaches are controllable to construct VWNs of variable cost.
-
-%It showed that the GA approach converged to a solution in much less time than the sDEP, providing a speedup factor of up to 46.3x.  When comparing same cost solutions, the GA introduced only a marginal amount of error---0.3\% less demand satisfaction---for scenarios the sDEP was optimized for and marginally outperformed the sDEP---0.0\%--0.2\% more demand satisfaction---for scenarios the sDEP was not optimized for.  This highlighted the primary limitations of the two approaches.  First, the sDEP, while a direct solution of the original stochastic program, directly trades solution feasibility for accuracy by controlling the number of scenarios and demand points per scenario.  The scenarios in $\hat{\Omega}$ were sufficient to provide a close approximation of the demand field, but the demand satisfaction decreased with more scenarios containing more demand points, showing that a tighter approximation was possible but ignored for feasibility.  Second, the GA targets 100\% demand satisfaction, and was not able to be tuned to other solutions.  This limits the GA in effectiveness, and only allows the GA to be directly compared to the sDEP for similar cost, near 100\% demand satisfaction solutions.
+GA-constructed VWNs have marginal to no demand satisfaction error compared to sDEP-constructed VWNs of the same cost.  For the preliminary simulation, it was shown that the GA approach incurred a 0.3\% demand satisfaction error compared to the sDEP approach when satisfying demand the sDEP was optimized for.  However, when comparing against new scenarios with more distributed demand, the GA solution reached 100\% demand satisfaction while the sDEP only reached 99.8\%--99.9\%.  The GA approach marginally outperforming the sDEP approach for these scenarios highlights that the sDEP approach is capable of not providing an optimal solution if the set of demand scenarios is not fully representative of the original demand field; this is the aforementioned trade between optimality of the solution and the number of demand points and the number of scenarios.  For Case I and Case II, the GA provided 0.00\% demand satisfaction error compared to the sDEP.  This is due to increasing the number of generations of the halting conditions and the increased BS coverage radius size relative to the region the network was constructed for.  For each same-cost solution the approaches provided, both approaches provided the same demand satisfaction.  The addition of heterogeneous resources in Case II allowed for more quantization in the cost and demand satisfaction of the two approaches, but only allowed for the sDEP to marginally outperform the GA approach.
 
 \section{Considerations for Future Work} \label{sec:futurework}
 
-\noindent -- Other traffic demand models (log-normal mixtures, $\alpha$-stable)\info{See note.\\Integrate.}\footnote{In general, network traffic and the resource deployments that they are meant to model tend to exhibit characteristics of heavy-tailed spatial distributions.  It has been shown that traffic distributions in cellular networks can be more accurately approximated as a mixture of log-normal distributions~\cite{5936263, 6757900}; Lee et al.~\cite{6757900} describe that nonmixtures capture the distribution for a single moment while mixtures capture the distribution as it changes with time and place.  Similarly, Zhou et al.~\cite{7202841} have shown that distributions of deployed BSs can be accurately approximated as a $\alpha$-stable distribution.  The latter case might be explained through the central limit theorem, as the sum of power-law distributed (Paretian tailed) random variables, such as those describing traffic in telephone networks~\cite{PhysRevE.72.026116}, will tend towards an $\alpha$-stable distribution.  I use neither in this thesis as $\alpha$-stable distributions do not generally have a closed-form probability density function (PDF), rendering use non-trivial, and log-normal mixtures require tuning multiple parameters, adding additional complexity.}\\%
-% Moved the footnote from \Cref{ch:networkdefs}, where it created an overly long footnote while providing no real new information.  These sorts of details could be properly integrated here into the conclusion.  Move out of footnote and place in mainbody text.
--- Rate normalization that varies with distance (i.e., non-binary $\tilde{u}_{ms}$)\\%
--- Other heuristic approaches (e.g., particle swarm optimization, simulated annealing, deep learning approaches)\\%
--- \info{$\beta$ already works this way for the GA implementation, as it applies a constant to $\lambda\left( x,\, y \right)$.} Altering $\alpha$ to vary according to the demand points of the various SPs, allowing for each SP to independently control the desired demand satisfaction of their network.\\%
--- Handling varying values of $b_s$ within the GA\\%
--- Improve the GA implementation such that it uses some form of integration of $\lambda\left( x,\, y \right)$\\%
--- Adjust the demand of each demand point to be based on the expected number of demand points, not the exact amount of demand in the region; allow for different numbers of demand points than a fixed value so that it accurately reflects a PPP.
+This thesis considered the problem of resource selection and adaptive slicing from the perspective of the VNB in a virtualized wireless networking context.  To tackle this problem, it explored the problem in a very specific context and while making several large assumptions.  It is apparent that there is further work to fully  investigate just this problem of resource selection within the VNB in the context of the presented architecture.  Apparent avenues of investigation and further work follows.
+
+\subsubsection{Further Simulations; Additional Cases}
+
+During the simulation and writing stages of this thesis, several simulations that were considered as part of this work were discarded.  \Cref{ch:sim} includes preliminary simulations from a paper submitted to a conference and two specific simulation cases (Case I analyzing one SP with homogeneous resources and Case II analyzing one SP with heterogeneous resources).  However, a further investigation into at least two addition cases (Cases III and IV) were intended.  Case III was to consider the impact of an additional SP with similar but separate demands to the first.  Case IV was to expand on Case III by considering several SPs, each with distinct demands informed by possible services that could be provided in this context.  These two simulation cases are of specific interest due to the context virtualization this architecture and work was built within.
+
+Investigating these cases, as well as any additional ones, could prove highly informative.
+
+\subsubsection{Improved Normalized Link Capacity Modeling}
+
+A major assumption made in \Cref{ch:vnbmodel} is that $u_{ms}$, the normalized capacity of the link between BS $s \in \mathcal{S}$ to the demand at point $m \in \mathcal{M}$, is binary.  The definition provided for the capability of a nuanced $u_{ms}$, however the simplification ensures that $\Omega$ is finite and simplified the definition of the DEP and sDEP of \Cref{sec:dep}.  However, by forcing $u_{ms}$ to be binary, demand points are either capable of a perfect link with a BS that it is in range of, or absolutely incapable of any communication.  This is inherently unrealistic, and a weakness of the model.
+
+Implementing other definitions of $u_{ms}$, such as a simple linear trend from full connectivity to null connectivity or other models that take into account real world limitations of these links, could prove valuable in simulation.  This implementation would require some rework on the DEP/sDEP derivation, but would likely leave the final sDEP implementation untouched.
+
+\subsubsection{DEP Sample Average Approximation Estimation Analysis}
+
+The sDEP formulation removes the large (or infinite) set of scenarios, $\Omega$, and replaces it with a set of scenarios sampled from $\Omega$, $\hat{\Omega}$.  As this is a sampling process, there is a loss of information.  The sDEP optimizes not for $\Omega$, but for $\hat{\Omega}$.  With enough scenarios and demand points within those scenarios, $\hat{\Omega}$ becomes a viable approximation of $\Omega$.  In the simulations of \Cref{ch:sim}, values of $M$ and $O$ were selected to force the sDEP to be close approximation of the DEP.  For the preliminary simulations, this likely underestimated the required values, as indicated by the noticeable loss of demand satisfaction by increasing the size and distribution of demand in the scenarios not in $\hat{\Omega}$ and the sDEP approach being outperformed by the GA approach.  Further, the required values were likely overestimated for Cases I and II, decreasing the run time performance of the sDEP approach.
+
+In this context, the sDEP is called the sample average approximation (SAA) of the DEP.  The analysis of the accuracy of the SAA estimator would provide insight to how many scenarios and demand points are necessary for the sDEP to provide an arbitrarily close approximation of the DEP and, by extension, the original two-stage stochastic optimization program.  Further work considering this estimator would improve the understanding of the approach and could improve its run time performance.
+
+\subsubsection{Demand Point Adjustments}
+
+
+
+\textit{Adjust the demand of each demand point to be based on the expected number of demand points, not the exact amount of demand in the region; allow for different numbers of demand points than a fixed value so that it accurately reflects a PPP.}
+
+\subsubsection{GA Improvements}
+
+\textit{Integration and Parallelization; Improve the GA implementation such that it uses some form of integration of $\lambda\left( x,\, y \right)$}
+
+\subsubsection{Other Traffic Demand Models}
+
+In this work, it was assumed that all cellular traffic demand was distributed according to a log-normal distribution, and specifically used a proposed model---the SSLT demand model---to generate realistic-looking demand.  This was done because it has been shown that log-normal distributions can approximate real-world cellular network traffic demand~\cite{686105}.  However, further research has shown that traffic can also be approximated according to a Weibull distribution or more accurately described by a log-normal mixture~\cite{5936263, 6757900}.  Further, Zhou et al.~\cite{7202841} have shown that distributions of deployed BSs can be accurately approximated as an $\alpha$-stable distribution.  This latter distribution is possibly explained through the central limit theorem, as the sum of power-law (Paretian tailed) random variables, such as those describing traffic in telephone networks~\cite{PhysRevE.72.026116}, will tend towards an $\alpha$-stable distribution.
+
+None of these distributions were considered within the context of this thesis as they added complexity for likely little gain.  For instance, $\alpha$-stable distributions do not generally have a closed form PDF, rendering use non-trivial, and log-normal mixtures require tuning distribution parameters\footnote{\cite{6757900} has empircal results for a three-distribution log-normal mixture.} for each distribution in the mixture.  Using some of these distributions for deploying demand or resources could provide additional insight.
+
+\subsubsection{Alternative Heuristic Approaches}
+
+\textit{Other heuristic approaches (e.g., particle swarm optimization, simulated annealing, deep learning approaches)}
+
+\subsubsection{SP Specific $\alpha$ and $\beta$}
+
+\info{$\beta$ already works this way for the GA implementation, as it applies a constant to $\lambda\left( x,\, y \right)$.}%
+\textit{Altering $\alpha$ to vary according to the demand points of the various SPs, allowing for each SP to independently control the desired demand satisfaction of their network.}
 \fi
 
 \iffalse
