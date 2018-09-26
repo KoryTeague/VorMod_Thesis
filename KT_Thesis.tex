@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: September 25, 2018
+% REVISED: September 26, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -1795,7 +1795,7 @@ This thesis considered the problem of resource selection and adaptive slicing fr
 
 \subsubsection{Further Simulations; Additional Cases}
 
-During the simulation and writing stages of this thesis, several simulations that were considered as part of this work were discarded.  \Cref{ch:sim} includes preliminary simulations from a paper submitted to a conference and two specific simulation cases (Case I analyzing one SP with homogeneous resources and Case II analyzing one SP with heterogeneous resources).  However, a further investigation into at least two addition cases (Cases III and IV) were intended.  Case III was to consider the impact of an additional SP with similar but separate demands to the first.  Case IV was to expand on Case III by considering several SPs, each with distinct demands informed by possible services that could be provided in this context.  These two simulation cases are of specific interest due to the context virtualization this architecture and work was built within.
+During the simulation and writing stages of this thesis, several simulations that were considered as part of this work were discarded.  \Cref{ch:sim} includes preliminary simulations from a paper submitted to a conference and two specific simulation cases (Case I analyzing one SP with homogeneous resources and Case II analyzing one SP with heterogeneous resources).  A further investigation into at least two addition cases (Cases III and IV) were intended.  Case III was to consider the impact of an additional SP with similar but separate demands to the first.  Case IV was to expand on Case III by considering several SPs, each with distinct demands informed by possible services that could be provided in this context.  These two simulation cases are of specific interest due to the context virtualization this architecture and work was built within.
 
 Investigating these cases, as well as any additional ones, could prove highly informative.
 
@@ -1807,19 +1807,19 @@ Implementing other definitions of $u_{ms}$, such as a simple linear trend from f
 
 \subsubsection{DEP Sample Average Approximation Estimation Analysis}
 
-The sDEP formulation removes the large (or infinite) set of scenarios, $\Omega$, and replaces it with a set of scenarios sampled from $\Omega$, $\hat{\Omega}$.  As this is a sampling process, there is a loss of information.  The sDEP optimizes not for $\Omega$, but for $\hat{\Omega}$.  With enough scenarios and demand points within those scenarios, $\hat{\Omega}$ becomes a viable approximation of $\Omega$.  In the simulations of \Cref{ch:sim}, values of $M$ and $O$ were selected to force the sDEP to be close approximation of the DEP.  For the preliminary simulations, this likely underestimated the required values, as indicated by the noticeable loss of demand satisfaction by increasing the size and distribution of demand in the scenarios not in $\hat{\Omega}$ and the sDEP approach being outperformed by the GA approach.  Further, the required values were likely overestimated for Cases I and II, decreasing the run time performance of the sDEP approach.
+The sDEP formulation removes the large (or infinite) set of scenarios, $\Omega$, and replaces it with a set of scenarios sampled from $\Omega$, $\hat{\Omega}$.  As this is a sampling process, there is a loss of information; the sDEP optimizes not for $\Omega$, but for $\hat{\Omega}$.  With enough scenarios and demand points within those scenarios, $\hat{\Omega}$ becomes a viable approximation of $\Omega$.  In the simulations of \Cref{ch:sim}, values of $M$ and $O$ were selected to force the sDEP to be close approximation of the DEP.  For the preliminary simulations, this likely underestimated the required values, as indicated by the noticeable loss of demand satisfaction by increasing the size and distribution of demand in the scenarios not in $\hat{\Omega}$ and the sDEP approach being outperformed by the GA approach.  Further, the required values were likely overestimated for Cases I and II, decreasing the run time performance of the sDEP approach.
 
 In this context, the sDEP is called the sample average approximation (SAA) of the DEP.  The analysis of the accuracy of the SAA estimator would provide insight to how many scenarios and demand points are necessary for the sDEP to provide an arbitrarily close approximation of the DEP and, by extension, the original two-stage stochastic optimization program.  Further work considering this estimator would improve the understanding of the approach and could improve its run time performance.
 
 \subsubsection{Demand Point Adjustments}
 
-
-
-\textit{Adjust the demand of each demand point to be based on the expected number of demand points, not the exact amount of demand in the region; allow for different numbers of demand points than a fixed value so that it accurately reflects a PPP.}
+Each scenario contained a fixed number of demand points per scenario where the demand of the demand intensity field is homogeneously distributed to all demand points of the scenario.  This means that there are no scenarios in $\Omega$ where there is more or less demand than what is indicated by the demand intensity function.  Allowing for the number of demand points per scenario to vary for each scenario would allow each scenario to more properly reflect a PPP and more accurately reflect real world demand.
 
 \subsubsection{GA Improvements}
 
-\textit{Integration and Parallelization; Improve the GA implementation such that it uses some form of integration of $\lambda\left( x,\, y \right)$}
+The GA fitness calculation calls for an integration of the demand contained within each Voronoi cell of selected resources.  During simulations, this is accomplished by performing a pixel-by-pixel sum of each pixel's demand.  In practical applications, this may be the best that can be done, but since perfect knowledge of the demand intensity function (the SSLT model) exists in the simulations, it may be possible to properly integrate over a specified domain of the function.  The primary obstacle to this is that the log-normal distribution and the SSLT model does not have a closed-form integral over a two dimensional region.
+
+As implemented, the GA is single threaded while the sDEP is multithreaded.  Both approaches were primarily compared in terms of CPU run time, eliminating this difference.  Updating the GA implementation to be parallelized would allow the approaches to be compared in terms of wall clock time.  The GA's largest time expense is computing the individual fitness; as each individual's fitness calculation is independent, this could be parallelized.
 
 \subsubsection{Other Traffic Demand Models}
 
@@ -1829,12 +1829,11 @@ None of these distributions were considered within the context of this thesis as
 
 \subsubsection{Alternative Heuristic Approaches}
 
-\textit{Other heuristic approaches (e.g., particle swarm optimization, simulated annealing, deep learning approaches)}
+The only heuristic approach I considered in this work was the genetic algorithm.  Other heuristic algorithms may also be highly appropriate for this task, such as particle swarm optimization, simulated annealing, or some variety of deep learning techniques (see \Cref{subsec:optreview_meta}).  Investigating these approaches could inform that another heuristic is more appropriate or effective at solving the task within the VNB.
 
 \subsubsection{SP Specific $\alpha$ and $\beta$}
 
-\info{$\beta$ already works this way for the GA implementation, as it applies a constant to $\lambda\left( x,\, y \right)$.}%
-\textit{Altering $\alpha$ to vary according to the demand points of the various SPs, allowing for each SP to independently control the desired demand satisfaction of their network.}
+Through $\alpha$ and $\beta$, the sDEP and GA approaches are controllable to target specific values of demand satisfaction, allowing the VNB to construct a less expensive VWN if less than 100\% demand satisfaction is viable for the SPs.  However, as implemented, both $\alpha$ and $\beta$ impact all SPs considered by the VNB equally; each SP would be provided a VWN targeting the same amount of demand satisfaction.  It could be highly beneficial in the context of virtualization to modify the original stochastic program and approach implementations to allow $\alpha$ and $\beta$ to vary according to each SP.  Doing so would allow for SPs of varying demand satisfaction needs to coexist within a single VNB.
 \fi
 
 \iffalse
