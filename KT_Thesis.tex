@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: October 1, 2018
+% REVISED: October 3, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -187,19 +187,18 @@ Electrical Engineering
 
 Allen B. MacKenzie, Chair \\
 Luiz DaSilva \\
-R. Michael Buehrer \\
-Mohammad J. Abdel-Rahman
+R. Michael Buehrer
+% Mohammad isn't on my committee, he shouldn't be listed here
+%Mohammad J. Abdel-Rahman
 
 \vfill
 
-% Date, location of defense?
-August 1, 2018 (TBD)\\
+October 22, 2018\\
 Blacksburg, Virginia
 
 \vfill
 
-Keywords: TBD
-\\
+Keywords: Wireless Network Virtualization, Resource Allocation, Two-Stage Stochastic Optimization, Genetic Algorithm \\
 Copyright 2018, Kory A. Teague
 
 \end{center}
@@ -228,8 +227,6 @@ Kory A. Teague
 Wireless network virtualization is a promising avenue of research for next-generation 5G cellular networks.  This work investigates the problem of selecting base stations to construct virtual networks for a set of service providers, and adaptive slicing of the resources between the service provider's to satisfy the service provider demands.  A two-stage stochastic optimization framework is introduced to solve this problem, and two methods are presented for approximating the stochastic model.  The first method uses a sampling approach applied to the deterministic equivalent program of the stochastic model.  The second method uses a genetic algorithm for base station selection and adaptively slicing via a single-stage linear optimization problem.  A number of scenarios are simulated using a log-normal model designed to emulate demand from real world cellular networks.  Simulations indicate that the first approach can provide a reasonably tight solution, but is constrained as the time expense grows exponentially with the number of parameters.  The second approach provides a significant improvement in run time with the introduction of marginal error.
 
 \vfill
-
-% GRANT INFORMATION
 
 This work received support in part from the National Science Foundation via work involved with the Wireless @ Virginia Tech research group.
 
@@ -920,24 +917,24 @@ In this chapter I evaluate the effectiveness of the sDEP (\Cref{sec:dep}) and GA
 
 \subsubsection{General Setup}
 
-Unless stated otherwise, simulations are configured with the following assumptions.  BS locations are modeled as a stationary PPP with a fixed number of BSs.  Demand point locations are generated independently for each SP $n \in \mathcal{N}$ in each scenario as a non-stationary PPP using $\lambda_n\left( x,\, y \right),\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right]$, as the spatial intensity function, as described in \Cref{sec:networkdefs} (\cref{eq:nsPPPaccrej}).  Demand points have homogeneous demand (\cref{eq:demandintegral,eq:pointdemand}).  To compute $u_{ms}^{\left( \omega \right)}$, it is assumed that there is perfect propagation between demand points and BSs within the BSs' coverage radii (\cref{eq:umns_simp}).  To compute the fitness function for the GA approach (\cref{eq:GAFit,eq:GACost}), $\lambda_n$ is discretized into a grid of equal-sized square pixels with a given side length.  The demand of a given pixel is the product of $\lambda_n$ at the center of the pixel and the area of the pixel.  The demand allocated to a selected resource $s \in \mathcal{S}' \subseteq \mathcal{S}$ is the sum of the demand of all pixels within $V_s$, the resource's Voronoi cell.
+Unless stated otherwise, simulations are configured with the following assumptions.  BS locations are modeled as a stationary PPP with a fixed number of BSs.  Demand point locations are generated independently for each SP $n \in \mathcal{N}$ in each scenario as a non-stationary PPP using $\lambda_n\left( x,\, y \right),\, x \in \left[ 0,\, X \right],\, y \in \left[ 0,\, Y \right]$, as the spatial intensity function, as described in \Cref{sec:networkdefs} (\cref{eq:nsPPPaccrej}).  Demand points have homogeneous demand (\cref{eq:demandintegral,eq:pointdemand}).  To compute $u_{ms}^{\left( \omega \right)}$, it is assumed that there is perfect links between demand points and BSs within the BSs' coverage radii (\cref{eq:umns_simp}).  To compute the fitness function for the GA approach (\cref{eq:GAFit,eq:GACost}), $\lambda_n$ is discretized into a grid of equal-sized square pixels with a given side length.  The demand of a given pixel is the product of $\lambda_n$ at the center of the pixel and the area of the pixel.  The demand allocated to a selected resource $s \in \mathcal{S}' \subseteq \mathcal{S}$ is the sum of the demand of all pixels within $V_s$, the resource's Voronoi cell.
 
 Simulations were run on an Intel Core i7-4790K 4.00 GHz 4 real/8 virtual core CPU with 16 GB of DDR3 RAM.  CPLEX~\cite{Cplex} was used to solve the sDEP model (\cref{eq:sDEPO,eq:sDEPC1,eq:sDEPC2,eq:sDEPC3,eq:sDEPC4}) and the adaptive slicing model (\cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}), and MATLAB was used to implement the GA and to generate the simulated region.  During the simulations, extraneous processes were culled to allow maximal use of computer resources.  For a given comparison to the sDEP, the GA results were provided from 50 independent runs using an identical data set except for the set of initial individuals; 95\% confidence intervals were computed via the bootstrap method.  The sDEP approach was solved across multiple values of $\alpha$.
 
 \section{Preliminary Simulations} \label{sec:prelim}
 
-This first considered problem is an initial simulation testing the performance of the sDEP and GA approaches for a general problem intended to be solved in less than 15 minutes.  This test was intended to show that the two approaches work correctly and present preliminary results to inform later test cases.  Initial results were compiled and collated in a paper submitted to the International Conference on Computing, Networking and Communications (ICNC 2019)~\cite{KTeague:BSSelection} and expounded on here.
+This first considered problem is an initial simulation testing the performance of the sDEP and GA approaches for a general problem intended to be solved in less than 15 minutes.  This test was intended to show that the two approaches work correctly and present preliminary results to inform later test cases.  Initial results were compiled and collated in a forthcoming paper accepted to the 2019 International Conference on Computing, Networking and Communications (ICNC)~\cite{KTeague:BSSelection} and expounded on here.
 
 \subsection{Setup} \label{subsec:prelim_setup}
 
-For these preliminary simulations, I use the parameter values shown in \Cref{tab:Prelim_SimVal}.  There is only one SP, and its demand intensity function, $\lambda$, is generated using default location and scale parameters for the SSLT model ($\sigma = 0,\, \mu = 1$).  $\lambda$ is pixelated into a 100 by 100 grid of square pixels with 20 m side length; $\mathcal{R}$ is a region 2 km by 2 km in size illustrated in \Cref{fig:Prelim_NetworkArea}.  The first listed maximum angular frequency, $\omega_{\max}$, is expressed in units of cycles per pixel; in terms of absolute distance, $\omega_{\max}$ is scaled according to the side length (i.e., absolute $\omega_{\max} = \nicefrac{\pi}{300}$ cycles per meter) and parenthetically stated.  Resources are homogeneous and constructed to saturate the region's demands both in terms of coverage and capacity.
+For these preliminary simulations, I use the parameter values shown in \Cref{tab:Prelim_SimVal}.  There is only one SP, and its demand intensity function, $\lambda$, is generated using default location and scale parameters for the SSLT model ($\sigma = 0,\, \mu = 1$).  $\lambda$ is pixelated into a 100 by 100 grid of square pixels with 20 m side length; $\mathcal{R}$ is a region 2 km by 2 km in size illustrated in \Cref{fig:Prelim_NetworkArea}.  The first listed maximum angular frequency, $\omega_{\max}$, is expressed in units of cycles per pixel; in terms of absolute distance, $\omega_{\max}$ is scaled according to the side length (i.e., absolute $\omega_{\max} = \nicefrac{\pi}{300}$ cycles per meter) and parenthetically stated.  Resources are homogeneous and constructed to satisfy the region's demands both in terms of coverage and capacity.
 
 \begin{table}[!htp]
 	\centering
 	\caption{Numerical Values of Relevant Parameters for Preliminary Simulations}
 	\begin{tabular}{|c|c|} 
 		\hline
-		Width, Height of Geographic Area ($X$) & 2 km x 2 km \\
+		Width, Length of Geographic Area ($X$) & 2 km x 2 km \\
 		\hline
 		Number of BSs ($S$) & 60 \\ 
 		\hline 
