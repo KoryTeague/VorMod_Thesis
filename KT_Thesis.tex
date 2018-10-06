@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: October 3, 2018
+% REVISED: October 5, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -913,7 +913,7 @@ The process of applying the GA approach is similar to the process used to apply 
 \pagebreak
 \chapter{Simulations and Results} \label{ch:sim}
 
-In this chapter I evaluate the effectiveness of the sDEP (\Cref{sec:dep}) and GA (\Cref{sec:ga}) approaches as approximations of the two-stage stochastic optimization program presented in \Cref{sec:stochopt}.  These approaches are set up as a series of simulations and compare the costs, demand satisfaction, computation time, and general trends.  First, a set of preliminary results to evaluate the appropriateness of the simulations are presented.  Two cases that more closely represent the needs of an urban cellular network SP and the available resources to satisfy those needs are simulated; one case considers RPs with homogeneous resources while the other case considers RPs with heterogeneous resources.
+In this chapter I evaluate the effectiveness of the sDEP (\Cref{sec:dep}) and GA (\Cref{sec:ga}) approaches as approximations of the two-stage stochastic optimization program presented in \Cref{sec:stochopt}.  These approaches are set up as a series of simulations and compare the costs, demand satisfaction, computation time, and general trends.  First, a set of preliminary results to evaluate the appropriateness of the simulations are presented.  Two cases that represent the needs of an urban cellular network SP and the available resources to satisfy those needs are simulated; one case considers RPs with homogeneous resources while the other case considers RPs with heterogeneous resources.
 
 \subsubsection{General Setup}
 
@@ -1018,7 +1018,7 @@ For these preliminary simulations, I use the parameter values shown in \Cref{tab
 
 \subsection{Results} \label{subsec:prelim_results}
 
-In this section I present the results of these preliminary simulations.  First, run time results of the two approaches will be presented and comparisons made.  Second, the network cost results will be presented and compared, followed by, third, the network demand satisfaction results.  Finally, this section will end with my conclusions of these simulations
+In this section I present the results of these preliminary simulations.  \unsure{Consider presenting run time results later; after demand satisfaction}First, run time results of the two approaches will be presented and comparisons made.  Second, the network cost results will be presented and compared, followed by, third, the network demand satisfaction results.  Finally, this section will end with my conclusions of these simulations
 
 \subsubsection{Run Time}
 
@@ -1281,7 +1281,7 @@ This test case is constructed considering the following considerations and param
 	\caption{Numerical Values of Relevant Parameters for Case I}
 	\begin{tabular}{|c|c|} 
 	\hline
-		Width, Height of Geographic Area ($X$) & 3 km x 3 km \\
+		Width, Length of Geographic Area ($X$) & 3 km x 3 km \\
 		\hline
 		Number of BSs ($S$) & 22 \\ 
 		\hline 
@@ -1352,6 +1352,9 @@ This test case is constructed considering the following considerations and param
 
 In the previous section, the GA approach gave results that targeted 100\% demand satisfaction for the SP.  This locked the GA solutions such that they can only be directly compared to sDEP solutions which also achieve 100\% demand satisfaction.  Further, this forced a limitation of the GA approach that does not directly impact the sDEP approach.
 
+\info{See Comment}%
+%If I understand what you are doing here, then this is weird. Satisfying a demand which is 80% of the original demand is not the same as satisfying 80% of the demand. The latter is more a statement about probability. Or should be.
+%Namely, if the goal is to satisfy 80% of the demand, then we should be able to choose which 80%. If you just scale the demand, then we lose this choice. 
 To consider other demand satisfaction targets, the total demand of the region can be scaled.  Let the positive real number $\beta$ be a weighting coefficient of the demand considered by the GA.  Further, let the \emph{effective} demand allocated to a selected resource $s \in \mathcal{S}' \subseteq \mathcal{S}$ for purposes of selection by the GA be $\sum_{n \in \mathcal{N}} \iint_{V_s} \lambda_n'\left( x,\, y \right) dx dy = \beta \sum_{n \in \mathcal{N}} \iint_{V_s} \lambda_n\left( x,\, y \right) dx dy$ where $\lambda_n'\left( x,\, y \right) = \beta \cdot \lambda_n\left( x,\, y \right)$.  Resource $s$ is now considered overcapacity if this effective demand allocation exceeds $r_s$.
 
 This affects the fitness heuristic (\cref{eq:GAFit}) of the GA by changing the cost of a given individual, $\textbf{z}^{\left\{ ig \right\}}$, to be
