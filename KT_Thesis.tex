@@ -222,9 +222,7 @@ Kory A. Teague
 
 \end{center}
 
-%Wireless network virtualization is a promising avenue of research for next-generation 5G cellular networks.  Virtualization focuses on the concept of active resource sharing and the building of a network designed for specific demands, decreasing operational expenditures, and improving demand satisfaction of cellular networks.  This work investigates the problem of selecting base stations (BSs) to construct a virtual network that meets the the specific demands of a service provider, and adaptive slicing of the resources between the service provider's demand points.  A two-stage stochastic optimization framework is introduced to model the problem of joint BS selection and adaptive slicing.  Two methods were presented for determining an approximation for the two-stage stochastic optimization model.  The first method uses a sampling approach applied to the deterministic equivalent program of the stochastic model.  The second method uses a genetic algorithm for BS selection and adaptively slicing via a single-stage linear optimization problem.  For testing, a number of scenarios were generated using a log-normal model designed to emulate demand from real world cellular networks.  Simulations indicate that the first approach can provide a reasonably tight solution, but is constrained as the time expense grows exponentially with the number of parameters.  The second approach provides a vast improvement in run time with the introduction of notable error.
-
-Wireless network virtualization is a promising avenue of research for next-generation 5G cellular networks.  This work investigates the problem of selecting base stations to construct virtual networks for a set of service providers, and adaptive slicing of the resources between the service provider's to satisfy the service provider demands.  A two-stage stochastic optimization framework is introduced to solve this problem, and two methods are presented for approximating the stochastic model.  The first method uses a sampling approach applied to the deterministic equivalent program of the stochastic model.  The second method uses a genetic algorithm for base station selection and adaptively slicing via a single-stage linear optimization problem.  A number of scenarios are simulated using a log-normal model designed to emulate demand from real world cellular networks.  Simulations indicate that the first approach can provide a reasonably tight solution, but is constrained as the time expense grows exponentially with the number of parameters.  The second approach provides a significant improvement in run time with the introduction of marginal error.
+Wireless network virtualization is a promising avenue of research for next-generation 5G cellular networks.  This work investigates the problem of selecting base stations to construct virtual networks for a set of service providers, and adaptive slicing of the resources between the service providers to satisfy service provider demands.  A two-stage stochastic optimization framework is introduced to solve this problem, and two methods are presented for approximating the stochastic model.  The first method uses a sampling approach applied to the deterministic equivalent program of the stochastic model.  The second method uses a genetic algorithm for base station selection and adaptively slicing via a single-stage linear optimization problem.  A number of scenarios are simulated using a log-normal model designed to emulate demand from real world cellular networks.  Simulations indicate that the first approach can provide a reasonably tight solution, but is constrained as the time expense grows exponentially with the number of parameters.  The second approach provides a significant improvement in run time with the introduction of marginal error.
 
 \vfill
 
@@ -272,11 +270,10 @@ This work received support in part from the National Science Foundation via work
 	\acro{ZB}{Zetabytes}
 \end{acronym}
 
-\pagenumbering{arabic}
 \pagestyle{myheadings}
 
-\iftrue
 \chapter{Introduction} \label{ch:intro}
+\pagenumbering{arabic}
 
 Mobile carriers have seen explosive growth in both the volume of users and the demands of those users within the networks they operate.  New and evolving data-driven applications, such as audio/video streaming, social networking, and the Internet-of-Things (IoT) have also placed increasing demand upon the networks.  In 2016, the amount of IP data handled by mobile networks exceeded 86 Exabytes (EB); it is projected to reach almost 200 EB in 2018, and 580 EB in 2021~\cite{ciscoVNI2017}.  Due to this exponential growth, incremental approaches to improve the network will fail to satisfy demand.  As this growth continues in the near future, new architectures like 5G and its associated technologies will be needed to keep pace with the demand.
 
@@ -421,9 +418,7 @@ The objective of this thesis is to develop two approaches to joint resource allo
 \section{Thesis Outline} \label{sec:outline}
 
 This thesis is organized as follows.  \Cref{ch:vnbmodel} defines the model used for the resource allocation methods explored in this thesis.  Further, \Cref{ch:vnbmodel} also details the two-stage stochastic optimization problem which optimally performs resource selection and slicing as a basis of approaches presented within this work.  \Cref{ch:approaches} establishes the two approaches investigated to provide solutions to the optimization problem posed in \Cref{ch:vnbmodel}: a sampled deterministic equivalent program which solves the problem as a whole and a genetic algorithm that simplifies the problem by providing an estimated optimal resource selection.  \Cref{ch:sim} tests these two approaches by presenting four data sets that mimic real world cellular networks and evaluates the results.  \Cref{ch:conc} contains the conclusions and proposed future work in this area.
-\fi
 
-\iftrue
 \pagebreak
 \chapter{Virtual Network Builder Model} \label{ch:vnbmodel}
 
@@ -725,7 +720,6 @@ $\delta_{ms}$ is the slice of BS $s \in \mathcal{S}$ that is allocated to demand
 
 The stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}) models the problem faced by a VNB that wishes to construct VWNs for and balance the needs of the various SPs.  However, this program is not directly solvable, as mixed integer programming optimization tools cannot be used to solve stochastic optimization programs.  \Cref{ch:approaches} poses two approaches for solving this program.
 
-\iftrue
 \pagebreak
 \chapter{Approximation Approaches} \label{ch:approaches}
 
@@ -907,9 +901,7 @@ For both of these halting conditions, a minimum number of generations, $G_{\min}
 In each case, the chromosome of the fittest individual when the GA halts is an approximate solution for the VNB's resource selection, $z_s$.  As the GA only handles the resource selection, it only represents a solution of the first stage (\cref{eq:SOPS1O,eq:SOPS1C1}) of the original stochastic optimization program (\cref{eq:SOPS1O,eq:SOPS1C1,eq:SOPS2O,eq:SOPS2C1,eq:SOPS2C2,eq:SOPS2C3,eq:SOPS2C4}).  That is, while joint resource selection has occurred and the process was informed by the demand to be satisfied (i.e., $\lambda_n$), the selected resources still need to be sliced to determine the allocations of those resources to specific VWNs.  This process of solving the second stage of the original optimization program can be adaptively handled to a hypothetical or real set of demand points using the adaptive slicing model (\cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}) of \Cref{subsec:dep_slicing}.
 
 The process of applying the GA approach is similar to the process used to apply the DEP approach of \Cref{sec:dep}.  An SP coordinates with a VNB, communicates its demands in the form of a demand intensity function, $\lambda \left( x,\, y \right)$, and the VNB concatenates the new demand into $\mathcal{N}$.  Then, the GA processes over $\lambda_n,\, n \in \mathcal{N}$ until either halting condition occurs or the maximum number of generations is reached.  The solution provided by the GA indicates the VNB's joint resource selection.  Finally, for any observed realization of demand points, the adaptive slicing model (\cref{eq:ASMO,eq:ASMC1,eq:ASMC2,eq:ASMC3}) is solved with that fixed resource selection, handling VWN construction in the short term.  The GA is rerun later as $\lambda_n$ changes for long term VWN construction.
-\fi
 
-\iftrue
 \pagebreak
 \chapter{Simulations and Results} \label{ch:sim}
 
@@ -1018,7 +1010,7 @@ For these preliminary simulations, I use the parameter values shown in \Cref{tab
 
 \subsection{Results} \label{subsec:prelim_results}
 
-In this section I present the results of these preliminary simulations.  \unsure{M: It's a little odd that run time results are your first metric.\\Might flip these to the end.}First, run time results of the two approaches will be presented and comparisons made.  Second, the network cost results will be presented and compared, followed by, third, the network demand satisfaction results.  Finally, this section will end with my conclusions of these simulations
+In this section I present the results of these preliminary simulations.  First, run time results of the two approaches will be presented and comparisons made.  Second, the network cost results will be presented and compared, followed by, third, the network demand satisfaction results.  Finally, this section will end with my conclusions of these simulations
 
 \subsubsection{Run Time}
 
@@ -1352,9 +1344,6 @@ This test case is constructed considering the following considerations and param
 
 In the previous section, the GA approach gave results that targeted 100\% demand satisfaction for the SP.  This locked the GA solutions such that they can only be directly compared to sDEP solutions which also achieve 100\% demand satisfaction.  Further, this forced a limitation of the GA approach that does not directly impact the sDEP approach.
 
-\info{See Comment}%
-%M: If I understand what you are doing here, then this is weird. Satisfying a demand which is 80% of the original demand is not the same as satisfying 80% of the demand. The latter is more a statement about probability. Or should be.
-%M: Namely, if the goal is to satisfy 80% of the demand, then we should be able to choose which 80%. If you just scale the demand, then we lose this choice. 
 To consider other demand satisfaction targets, the total demand of the region can be scaled.  Let the positive real number $\beta$ be a weighting coefficient of the demand considered by the GA.  Further, let the \emph{effective} demand allocated to a selected resource $s \in \mathcal{S}' \subseteq \mathcal{S}$ for purposes of selection by the GA be $\sum_{n \in \mathcal{N}} \iint_{V_s} \lambda_n'\left( x,\, y \right) dx dy = \beta \sum_{n \in \mathcal{N}} \iint_{V_s} \lambda_n\left( x,\, y \right) dx dy$ where $\lambda_n'\left( x,\, y \right) = \beta \cdot \lambda_n\left( x,\, y \right)$.  Resource $s$ is now considered overcapacity if this effective demand allocation exceeds $r_s$.
 
 This affects the fitness heuristic (\cref{eq:GAFit}) of the GA by changing the cost of a given individual, $\textbf{z}^{\left\{ ig \right\}}$, to be
@@ -1421,7 +1410,6 @@ The GA's run time (\Cref{fig:CaseI_GARunTimeErrorbar}) varies according to $\bet
 	\label{fig:CaseI_GARunTimeHists}
 \end{figure}
 
-\info{M: To my mind, this discussion of run time is being given too much space and prominence.\\I'm just not sure a detailed analysis of run time is the point.}%
 As $\beta$ increases, the cost of the GA-selected network expectedly increases as a response to the increasing demand.  \Cref{fig:CaseI_GAComparisonCostRunTime} presents the costs of the GA solutions in contrast to the run time taken to converge and halt.  The trend with respect to $\beta$ escalates fairly quickly and provides a variety of solutions with only two repeats.  Like with run times, these solutions are highly consistent as a result of the longer-to-satisfy halting conditions.  All but the $\beta = 0.5$ solutions have identical cost---though not identical selection---solutions across 50 executions of the GA.  Even for the $\beta = 0.5$ solutions, the GA is very consistent, selecting 7 BSs in 42 of the GA's 50 executions (84\%) and 8 BS for the remaining 8 (16\%).
 
 \begin{figure}[htp]
@@ -1656,7 +1644,7 @@ With the inclusion of the microcells, the VNB is capable of more nuanced constru
 	\label{fig:CaseII_VoronoiDemandAllocation_sDEP}
 \end{figure}
 
-Each additional microcell increases the overall demand satisfaction of the constructed network, but fails to fully satisfy without an additional macrocell.  To achieve 100\% demand satisfaction, the network must satisfy 19.97 Gbps\footnote{One scenario includes 90 demand points with each demanding 221.89 Mbps.} of demand, which requires 10 macrocells or 9 macrocells and 20 microcells to satisfy; since there are only 18 microcells available, there are insufficient microcells to bridge the gap between 9 and 10 macrocells\info{M: This is very weird and skews your results.\\See comment on \Cref{tab:CaseII_SimVal}.}.  This is further reflected in \Cref{fig:CaseII_sDEPComparisonSatCaseI}; for $\alpha \in \left[ 10,\, 18 \right]$, the sDEP has approximately 98\% demand satisfaction, and reaches 100\% for $\alpha \geq 20$.
+Each additional microcell increases the overall demand satisfaction of the constructed network, but fails to fully satisfy without an additional macrocell.  To achieve 100\% demand satisfaction, the network must satisfy 19.97 Gbps\footnote{One scenario includes 90 demand points with each demanding 221.89 Mbps.} of demand, which requires 10 macrocells or 9 macrocells and 20 microcells to satisfy; since there are only 18 microcells available, there are insufficient microcells to bridge the gap between 9 and 10 macrocells.  This is further reflected in \Cref{fig:CaseII_sDEPComparisonSatCaseI}; for $\alpha \in \left[ 10,\, 18 \right]$, the sDEP has approximately 98\% demand satisfaction, and reaches 100\% for $\alpha \geq 20$.
 
 Testing the solutions for new scenarios not in $\hat{\Omega}$ shows that increasing the number of demand points continues to better distribute demand and increased demand satisfaction.  \Cref{fig:CaseII_sDEPComparisonSatEvalCaseI} shows the demand satisfaction trend for the same range as \Cref{fig:CaseII_sDEPComparisonsCaseI} for both Case I and Case II with respect to the scenarios in $\hat{\Omega}$ and new scenarios not in $\hat{\Omega}$.  While there was no room for changes in Case I, the imperfect satisfaction results that are available due to inhomogeneity show improvement with more distributed demand.
 
@@ -1735,9 +1723,6 @@ It is expected to see the GA perform less efficiently than the sDEP as a result 
 	\label{fig:CaseII_ComparisonCostvSat_CaseICaseII}
 \end{figure}
 
-\fi
-
-\iftrue
 \pagebreak
 \chapter{Summary and Conclusions} \label{ch:conc}
 
@@ -1749,7 +1734,7 @@ In this thesis I considered the problem of BS selection and dynamic slicing in t
 
 \Cref{ch:sim} considered the effectiveness of the two approaches via three separate simulations.  The first simulation was a proof of concept and showed that the two approaches converge to a solution and that the SSLT demand model worked as expected.  The latter two simulations served as test cases which modify RP resources and SP demand to more closely reflect real world resources and demand.  The second simulation, Case I, simulated homogeneous (i.e., macrocell) resources and the third simulation, Case II, simulated heterogeneous (i.e., macrocell and microcell) resources.  Except for highlighting the impact of resource coverage range on the problem, the differences between the various simulations do not cause significant changes in the approaches' effectiveness.
 
-The GA approach has an improved run time compared to the sDEP.  Across all simulations, the GA approach converged to a solution in far less CPU time than the sDEP approach; as shown in \Cref{tab:VWNConstructionRunTimes}, the GA exhibits a consistent and significant speedup ratio relative to the sDEP, even when comparing the adjusted\footnote{The adjusted time is the minimum limit of the wall clock time the sDEP approach could have taken to complete.  The adjusted time is one-eighth the CPU time; in practice the actual wall clock time is greater than the adjusted time, but was shown in \Cref{ch:sim} to be less than one-seventh the CPU time and approaches one-eighth as the sDEP run time increases.} sDEP run time.  The sDEP approach's run time is directly dependent on the number of possible connections between demand points and BSs across all scenarios; the sDEP is capable of ignoring demand points that are out of range of resources (i.e, where $u_{ms}=0$).  Generally, as the resources, demand points, and scenarios increase, run time increases exponentially; \info{M: I hope this is not due to the low capacity given to the microcells.}this is also impacted by BS coverage radius, as shown by the relatively low impact of the microcells added to Case II over Case I.  The GA approach's run time is only directly dependent on the number of resources, the number of pixels of the demand intensity function, the number of generations before the GA halts, and the number of individuals per generation of the GA.  Compared to the sDEP approach, the GA approach trends to be more time-feasible, as the number of generations\footnote{Each generation is independent and happens sequentially.}, the number of pixels\footnote{Each additional pixel can cause one additional addition in the integral of each fitness calculation.}, and the number of resources\footnote{Each additional resource linearly increases the summation of the fitness calculation.} linearly impact run time.  The number of individuals\footnote{For elitism, individuals are sorted according to fitness each generation.} impact run time with O($n \log n$) complexity.
+The GA approach has an improved run time compared to the sDEP.  Across all simulations, the GA approach converged to a solution in far less CPU time than the sDEP approach; as shown in \Cref{tab:VWNConstructionRunTimes}, the GA exhibits a consistent and significant speedup ratio relative to the sDEP, even when comparing the adjusted\footnote{The adjusted time is the minimum limit of the wall clock time the sDEP approach could have taken to complete.  The adjusted time is one-eighth the CPU time; in practice the actual wall clock time is greater than the adjusted time, but was shown in \Cref{ch:sim} to be less than one-seventh the CPU time and approaches one-eighth as the sDEP run time increases.} sDEP run time.  The sDEP approach's run time is directly dependent on the number of possible connections between demand points and BSs across all scenarios; the sDEP is capable of ignoring demand points that are out of range of resources (i.e, where $u_{ms}=0$).  Generally, as the resources, demand points, and scenarios increase, run time increases exponentially; this is also impacted by BS coverage radius, as shown by the relatively low impact of the microcells added to Case II over Case I.  The GA approach's run time is only directly dependent on the number of resources, the number of pixels of the demand intensity function, the number of generations before the GA halts, and the number of individuals per generation of the GA.  Compared to the sDEP approach, the GA approach trends to be more time-feasible, as the number of generations\footnote{Each generation is independent and happens sequentially.}, the number of pixels\footnote{Each additional pixel can cause one additional addition in the integral of each fitness calculation.}, and the number of resources\footnote{Each additional resource linearly increases the summation of the fitness calculation.} linearly impact run time.  The number of individuals\footnote{For elitism, individuals are sorted according to fitness each generation.} impact run time with O($n \log n$) complexity.
 
 \begin{table}[ht]
 	\centering
@@ -1771,7 +1756,7 @@ The GA approach has an improved run time compared to the sDEP.  Across all simul
 	\label{tab:VWNConstructionRunTimes}
 \end{table}
 
-GA-constructed VWNs have \info{M: Still a strange concept to me.}marginal to no demand satisfaction error compared to sDEP-constructed VWNs of the same cost.  For the preliminary simulation, it was shown that the GA approach incurred a 0.3\% demand satisfaction error compared to the sDEP approach when satisfying demand the sDEP was optimized for.  However, when comparing against new scenarios with more distributed demand, the GA solution reached 100\% demand satisfaction while the sDEP only reached 99.8\%--99.9\%.  The GA approach marginally outperforming the sDEP approach for these scenarios highlights that the sDEP approach is capable of not providing an optimal solution if the set of demand scenarios is not representative of the original demand field; this is the aforementioned trade-off between optimality of the solution and the number of demand points and the number of scenarios.  For Case I and Case II, the GA achieved 0.00\% demand satisfaction error compared to the sDEP.  This is due to increasing the number of generations of the halting conditions and the increased BS coverage radius size relative to the region the network was constructed for.  For each same-cost solution the approaches provided, both approaches provided the same demand satisfaction.  The addition of heterogeneous resources in Case II allowed for more quantization in the cost and demand satisfaction of the two approaches, but only allowed for the sDEP to marginally outperform the GA approach in terms of demand satisfaction.
+GA-constructed VWNs have marginal to no demand satisfaction error compared to sDEP-constructed VWNs of the same cost.  For the preliminary simulation, it was shown that the GA approach incurred a 0.3\% demand satisfaction error compared to the sDEP approach when satisfying demand the sDEP was optimized for.  However, when comparing against new scenarios with more distributed demand, the GA solution reached 100\% demand satisfaction while the sDEP only reached 99.8\%--99.9\%.  The GA approach marginally outperforming the sDEP approach for these scenarios highlights that the sDEP approach is capable of not providing an optimal solution if the set of demand scenarios is not representative of the original demand field; this is the aforementioned trade-off between optimality of the solution and the number of demand points and the number of scenarios.  For Case I and Case II, the GA achieved 0.00\% demand satisfaction error compared to the sDEP.  This is due to increasing the number of generations of the halting conditions and the increased BS coverage radius size relative to the region the network was constructed for.  For each same-cost solution the approaches provided, both approaches provided the same demand satisfaction.  The addition of heterogeneous resources in Case II allowed for more quantization in the cost and demand satisfaction of the two approaches, but only allowed for the sDEP to marginally outperform the GA approach in terms of demand satisfaction.
 
 Both the sDEP and GA approaches are capable of solving the problem of resource selection and adaptive slicing within the VNB.  However, while the sDEP approach is theoretically more accurate than the GA approach, simulations show that GA approach introduces marginal to no additional error in terms of the constructed VWN's ability to satisfy SP demand.  Further, the GA approach consistently converges to these nearly-optimal solutions with significantly less run time than the sDEP approach.  The GA approach signifies a significant speedup within the VNB over the sDEP approach without hindering the VNB's ability to construct VWN's that capably satisfy the SP's demand.
 
@@ -1818,10 +1803,6 @@ The only heuristic approach I considered in this work was the genetic algorithm.
 \subsubsection{SP Specific $\alpha$ and $\beta$}
 
 Through $\alpha$ and $\beta$, the sDEP and GA approaches are controllable to target specific values of demand satisfaction, allowing the VNB to construct a less expensive VWN if less than 100\% demand satisfaction is viable for the SPs.  However, as implemented, both $\alpha$ and $\beta$ impact all SPs considered by the VNB equally; each SP would be provided a VWN targeting the same amount of demand satisfaction.  It could be highly beneficial in the context of virtualization to modify the original stochastic program and approach implementations to allow $\alpha$ and $\beta$ to vary according to each SP.  Doing so would allow for SPs of varying demand satisfaction needs to coexist within a single VNB.
-
-\unsure{M: This is an awkward way to end a thesis, but I'm not sure I have a suggestion.\\Ha.}
-\fi
-\fi
 
 \bibliography{KT_Thesis}
 \bibliographystyle{IEEEtran}
