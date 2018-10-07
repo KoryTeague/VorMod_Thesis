@@ -32,12 +32,15 @@
 \usepackage{amsfonts}
 \usepackage{bbm}
 \usepackage{xargs}
-%\usepackage{float}
 \usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage{setspace}
 \usepackage{nicefrac}
 \usepackage{multirow}
+%\usepackage{selectp}
+\usepackage{acronym}
+
+\bibliographystyle{IEEEtran}
 
 \newif\ifisdoublespacing
 
@@ -48,15 +51,11 @@
 	\renewcommand{\baselinestretch}{2}
 \fi
 
-%\onehalfspacing
-%\doublespacing
-
 \usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
 \newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
 \newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
 \newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
 \newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
-%\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
 
 \newcommand\defeq{\mathrel{\overset{\makebox[0pt]{\mbox{\normalfont\tiny\sffamily def}}}{=}}}
 \newcommand{\crefrangeconjunction}{--}
@@ -132,7 +131,7 @@
   \fi
   \endgroup
 }
-% End of \widebar setup
+% End of \widebar implementation
 
 % widebar command implementation
 \newcommand*\mean[1]{\widebar{#1}}
@@ -151,8 +150,6 @@
 \DeclareMathOperator{\var}{Var}
 
 \allowdisplaybreaks
-
-\usepackage{acronym}
 
 \hyphenation{vir-tu-al-iz-a-tion vir-tu-al-ized au-to-cor-re-la-tion com-mu-ni-cat-ing di-ver-si-fy-ing}
 
@@ -1805,6 +1802,5 @@ The only heuristic approach I considered in this work was the genetic algorithm.
 Through $\alpha$ and $\beta$, the sDEP and GA approaches are controllable to target specific values of demand satisfaction, allowing the VNB to construct a less expensive VWN if less than 100\% demand satisfaction is viable for the SPs.  However, as implemented, both $\alpha$ and $\beta$ impact all SPs considered by the VNB equally; each SP would be provided a VWN targeting the same amount of demand satisfaction.  It could be highly beneficial in the context of virtualization to modify the original stochastic program and approach implementations to allow $\alpha$ and $\beta$ to vary according to each SP.  Doing so would allow for SPs of varying demand satisfaction needs to coexist within a single VNB.
 
 \bibliography{KT_Thesis}
-\bibliographystyle{IEEEtran}
 
 \end{document}
