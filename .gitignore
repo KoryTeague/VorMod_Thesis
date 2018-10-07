@@ -6,7 +6,7 @@
 *.log
 *.lot
 *.out
-*.pdf
+KT_Thesis.pdf
 *.toc
 *.gz
 *.bak
