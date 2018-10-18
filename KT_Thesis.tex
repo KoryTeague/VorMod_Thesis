@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: October 7, 2018
+% REVISED: October 18, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -61,6 +61,8 @@
 \newcommand{\crefrangeconjunction}{--}
 \newcommand{\creflastconjunction}{, and~}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
+
+\crefformat{footnote}{#2\footnotemark[#1]#3}
 
 % Start of \widebar implementation
 \makeatletter
@@ -918,12 +920,12 @@ This first considered problem is an initial simulation testing the performance o
 
 For these preliminary simulations, I use the parameter values shown in \Cref{tab:Prelim_SimVal}.  There is only one SP, and its demand intensity function, $\lambda$, is generated using default location and scale parameters for the SSLT model ($\sigma = 0,\, \mu = 1$).  $\lambda$ is pixelated into a 100 by 100 grid of square pixels with 20 m side length; $\mathcal{R}$ is a region 2 km by 2 km in size illustrated in \Cref{fig:Prelim_NetworkArea}.  The first listed maximum angular frequency, $\omega_{\max}$, is expressed in units of cycles per pixel; in terms of absolute distance, $\omega_{\max}$ is scaled according to the side length (i.e., absolute $\omega_{\max} = \nicefrac{\pi}{300}$ cycles per meter) and parenthetically stated.  Resources are homogeneous and constructed to satisfy the region's demands both in terms of coverage and capacity.
 
-\begin{table}[!htp]
+\begin{table}[p]
 	\centering
 	\caption{Numerical Values of Relevant Parameters for Preliminary Simulations}
 	\begin{tabular}{|c|c|} 
 		\hline
-		Width, Length of Geographic Area ($X$) & 2 km x 2 km \\
+		Width, Length of Geographic Area ($X$ x $Y$) & 2 km x 2 km \\
 		\hline
 		Number of BSs ($S$) & 60 \\ 
 		\hline 
@@ -1129,13 +1131,13 @@ Demand satisfaction approaches 100\% until reaching it for all sDEP solutions co
 	\centering
 	\begin{subfigure}{.7\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{Figures/Prelim_VoronoiDemandAllocation_sDEP_7BS}
+		\includegraphics[width=1\linewidth]{Figures/Prelim_VoronoiDemandAllocation_sDEP_7BS_snip2}
 		\caption{\small 7-BS Solution (78.1\% Demand Satisfaction; $\alpha = 10$)}
 		\label{fig:Prelim_VorDemAlloc_sDEP7}
 	\end{subfigure} \\
 	\begin{subfigure}{.7\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{Figures/Prelim_VoronoiDemandAllocation_sDEP_12BS}
+		\includegraphics[width=1\linewidth]{Figures/Prelim_VoronoiDemandAllocation_sDEP_12BS_snip2}
 		\caption{\small 12-BS Solution (100\% Demand Satisfaction; $\alpha \in \left[ \expnumber{4.6}{2},\, \expnumber{1.0}{4} \right]$)}
 		\label{fig:Prelim_VorDemAlloc_sDEP12}
 	\end{subfigure}
@@ -1226,7 +1228,7 @@ Notably, the 12-BS solution, shown in \Cref{fig:Prelim_VorDemAlloc_GA}, reaches 
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[height=0.4\textheight]{Figures/Prelim_VoronoiDemandAllocation_GA_12BS}
+	\includegraphics[height=0.4\textheight]{Figures/Prelim_VoronoiDemandAllocation_GA_12BS_snip2}
 	\caption[One GA resource selection and slicing solution for the preliminary simulations]{GA resource selection and slicing for one scenario \emph{not} in $\hat{\Omega}$.  Circles indicate BSs and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
 	\label{fig:Prelim_VorDemAlloc_GA}
 \end{figure}
@@ -1265,12 +1267,12 @@ This test case is constructed considering the following considerations and param
 	\label{fig:CaseI_NetworkArea}
 \end{figure}
 
-\begin{table}[!htp]
+\begin{table}[p]
 	\centering
 	\caption{Numerical Values of Relevant Parameters for Case I}
 	\begin{tabular}{|c|c|} 
 	\hline
-		Width, Length of Geographic Area ($X$) & 3 km x 3 km \\
+		Width, Length of Geographic Area ($X$ x $Y$) & 3 km x 3 km \\
 		\hline
 		Number of BSs ($S$) & 22 \\ 
 		\hline 
@@ -1294,7 +1296,7 @@ This test case is constructed considering the following considerations and param
 		\hline
 		SSLT Approximation Depth ($L$) & 50 \\ 
 		\hline
-		SSLT Maximum Angular Frequency ($\omega_{\max}$) & 0.19010 (0.012673) \\
+		SSLT Maximum Angular Frequency ($\omega_{\max}$) & 0.1901 (0.01267) \\
 		\hline 
 		SSLT Location Parameter ($\sigma$) & 18.93 \\ 
 		\hline 
@@ -1363,7 +1365,7 @@ In this section I present the results of the Case I simulations.  The results of
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseI_sDEPComparisonCostRuntime}
-	\caption[Comparison of sDEP approach run time and costs for Case I simulations]{Comparison of sDEP CPU run time and VWN construction cost}
+	\caption[Comparison of sDEP approach run time and cost for Case I simulations]{Comparison of sDEP CPU run time and VWN construction cost}
 	\label{fig:CaseI_sDEPComparisonCostRunTime}
 \end{figure}
 
@@ -1372,7 +1374,7 @@ This rapid transition from the trivial no-allocation solution ($\alpha < 10$) to
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseI_sDEPComparisonCostSat}
-	\caption[Comparison of sDEP approach costs and demand satisfaction for Case I simulations]{Comparison of sDEP VWN construction cost and associated proportional demand satisfaction.  Both original scenarios (those in $\hat{\Omega}$) that the sDEP is optimized for and new scenarios (not in $\hat{\Omega}$) have identical demand satisfaction.}
+	\caption[Comparison of sDEP approach cost and demand satisfaction for Case I simulations]{Comparison of sDEP VWN construction cost and associated proportional demand satisfaction.  Both original scenarios (those in $\hat{\Omega}$) that the sDEP is optimized for and new scenarios (not in $\hat{\Omega}$) have identical demand satisfaction.}
 	\label{fig:CaseI_sDEPComparisonCostSat}
 \end{figure}
 
@@ -1380,7 +1382,7 @@ The data set chosen is too forgiving on the available resources.  Since resource
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[height=0.4\textheight]{Figures/CaseI_VoronoiDemandAllocation_sDEP_10BS}
+	\includegraphics[height=0.4\textheight]{Figures/CaseI_VoronoiDemandAllocation_sDEP_10BS_snip2}
 	\caption[One sDEP resource selection and slicing solution for Case I]{sDEP resource selection and slicing for one scenario in $\hat{\Omega}$.  Circles indicate BSs and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
 	\label{fig:CaseI_VoronoiDemandAllocation_sDEP}
 \end{figure}
@@ -1421,7 +1423,7 @@ As $\beta$ increases, the cost of the GA-selected network expectedly increases a
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseI_GAComparisonCostSat}
-	\caption[Comparison of GA approach cost and demand satisfaction for Case I simulations]{Comparison of GA cost and run time trends with 95\% confidence intervals.}
+	\caption[Comparison of GA approach cost and demand satisfaction for Case I simulations]{Comparison of GA cost and run time trends with 95\% confidence intervals}
 	\label{fig:CaseI_GAComparisonCostSat}
 \end{figure}
 
@@ -1497,81 +1499,82 @@ In this section I present the second test case that builds on the work of the pr
 
 \subsection{Case II Setup} \label{subsec:caseII_setup}
 
-This test case is constructed with the same considerations and parameters as Case I (\Cref{sec:caseI}), with the following exceptions.  Resources are heterogeneous, with most constructed to represent small macrocells and the rest constructed to represent microcells.  Macrocells are placed according to a stationary PPP.  Microcells are placed according to a non-stationary PPP using $\lambda$ as the intensity function, representing BSs placed to satisfy specific demand needs.  The size of the region and the number of BSs, demand points, and scenarios were chosen such that the sDEP would converge to a solution in just under a time limit of one hour wall clock time.  The parameter values used are shown in \Cref{tab:CaseII_SimVal}, and the resources and demand in $\mathcal{R}$ is shown in \Cref{fig:CaseII_NetworkArea}.
+This test case is constructed with the same considerations and parameters as Case I (\Cref{sec:caseI}), with the following exceptions.  Resources are heterogeneous, with most constructed to represent small macrocells and the rest constructed to represent microcells.  Macrocells are placed according to a stationary PPP.  Microcells are placed according to a non-stationary PPP using $\lambda$ as the intensity function, representing BSs placed to satisfy specific demand needs.  The size of the region and the number of BSs, demand points, and scenarios were chosen such that the sDEP would converge to a solution in just under a time limit of one hour wall clock time\footnote{\label{foot:caseII_setup}The inclusion of microcells decreased the sDEP run time compared to Case I; this is further described in \Cref{subsec:caseII_results}.  As such, the number of BSs, demand points, and scenarios increased to raise the run time to approximately one hour wall clock time.  Further, the increased number of resources---macrocells and microcells---increased the total amount of demand serviceable by the BSs.  Accordingly, the region was increased in size, increasing the total demand to be satisfied.}.  The GA was run 15 times for each value of $\beta$ to determine means and confidence intervals.  The parameter values used are shown in \Cref{tab:CaseII_SimVal}, and the resources and demand in $\mathcal{R}$ are shown in \Cref{fig:CaseII_NetworkArea}.
 
 \begin{table}[p]
 	\centering
 	\caption{Numerical Values of Relevant Parameters for Case II}
 	\begin{tabular}{|c|c|} 
 		\hline
-		Width, Length of Geographic Area ($X$) & 3 km x 3 km \\
+		Width, Length of Geographic Area ($X$ x $Y$) & 6.25 km x 6.25 km \\ 
 		\hline
 		Number of BSs ($S$) &
 		\begin{tabular}{c|c}
-			\multirow{2}{*}{40 (Total)} & 22 (Macrocells) \\ & 18 (Microcells) \\
-		\end{tabular} \\
+			\multirow{2}{*}{75 (Total)} & 25 (Macrocells) \\ & 50 (Microcells) \\ 
+		\end{tabular} \\ 
 		\hline
-		Number of Demand Points ($M$) & 90 \\ 
+		Number of Demand Points ($M$) & 150 \\ 
 		\hline 
-		Number of SPs ($N$) & 1 \\
+		Number of SPs ($N$) & 1 \\ 
 		\hline
-		Number of Sampled Scenarios ($O$) & 30 \\ 
+		Number of Sampled Scenarios ($O$) & 45 \\ 
 		\hline 
-		\multirow{2}{*}{sDEP Objective Weights ($\alpha$)} & $\left\{ 6,\, 8,\, \ldots,\, 30 \right\}$ \\
-		& $\left\{ 40,\, 50,\, \ldots,\, 100 \right\}$ \\
+		\multirow{3}{*}{sDEP Objective Weights ($\alpha$)} & $\left\{ 1,\, 2,\, \ldots,\, 16 \right\}$ \\ 
+		& $\left\{ 18,\, 21,\, \ldots,\, 30 \right\}$ \\ 
+		& $\left\{ 40,\, 50,\, \ldots,\, 100 \right\}$ \\ 
 		\hline 
-		\multirow{2}{*}{BS Cost ($c_s$)} & 1 (Macrocells) \\
-		& 0.04 (Microcells) \\
+		\multirow{2}{*}{BS Cost ($c_s$)} & 1 (Macrocells) \\ 
+		& 0.2 (Microcells) \\ 
 		\hline
-		\multirow{2}{*}{BS Capacity ($r_s$)} & 2 Gbps (Macrocells) \\
-		& 100 Mbps (Microcells) \\
+		\multirow{2}{*}{BS Capacity ($r_s$)} & 2 Gbps (Macrocells) \\ 
+		& 500 Mbps (Microcells) \\ 
 		\hline
-		\multirow{2}{*}{BS Range ($b_s$)} & 1500 m (Macrocells) \\
-		& 250 m (Microcells) \\
+		\multirow{2}{*}{BS Range ($b_s$)} & 2000 m (Macrocells) \\ 
+		& 250 m (Microcells) \\ 
 		\hline 
-		Point Traffic Demand ($d$) & 221.89 Mbps \\ 
+		Point Traffic Demand ($d$) & 137.13 Mbps \\ 
 		\hline 
 		\hline
 		SSLT Approximation Depth ($L$) & 50 \\ 
 		\hline
-		SSLT Maximum Angular Frequency ($\omega_{\max}$) & 0.19010 (0.012673) \\
+		SSLT Maximum Angular Frequency ($\omega_{\max}$) & 0.1901 (0.01267) \\ 
 		\hline 
-		SSLT Location Parameter ($\sigma$) & 18.93 \\ 
+		SSLT Location Parameter ($\sigma$) & 17.80 \\ 
 		\hline 
-		SSLT Scale Parameter ($\mu$) & 2.3991 \\ 
+		SSLT Scale Parameter ($\mu$) & 2.119 \\ 
 		\hline 
 		\hline
 		Maximum Number of Generations ($G$) & 4000 \\ 
 		\hline
-		Minimum Number of Generations ($G_{\min}$) & 450 \\
+		Minimum Number of Generations ($G_{\min}$) & 450 \\ 
 		\hline
-		Unchanged Generations Before Fitness Halt ($G_{\text{fit}}$) & 300 \\
+		Unchanged Generations Before Fitness Halt ($G_{\text{fit}}$) & 300 \\ 
 		\hline 
-		Unchanged Generations Before Genome Halt ($G_{\text{gen}}$) & 600 \\
+		Unchanged Generations Before Genome Halt ($G_{\text{gen}}$) & 600 \\ 
 		\hline 
 		Number of Individuals per Generation ($I$) & 80 \\ 
 		\hline
-		Number of Elite Individuals per Generation & 4 \\
+		Number of Elite Individuals per Generation & 4 \\ 
 		\hline 
 		Probability of Crossover ($p_\text{xov}$) & 0.7 \\ 
 		\hline
-		Probability of Mutation per bit ($p_\text{mut}$) & $\nicefrac{1}{S} = 0.0455$ \\
+		Probability of Mutation per bit ($p_\text{mut}$) & $\nicefrac{1}{S} = 0.0133$ \\ 
 		\hline 
-		Overcoverage Cost ($c_\text{cov}$) & 3 \\
+		Overcoverage Cost ($c_\text{cov}$) & 3 \\ 
 		\hline
 		Overcapacity Cost ($c_\text{cap}$) & 1.015 \\ 
 		\hline
-		Pixel Grid Size & 200 x 200, 15 m \\ 
+		Pixel Grid Size & 250 x 250, 25 m \\ 
 		\hline
-		\multirow{2}{*}{GA Demand Weights ($\beta$)} & $\{ 0.5,\, 0.6,\, 0.7,\, 0.8,\, 0.9,$ \\
-		& $1.0,\, 1.5,\, 2.0,\, 2.5 \}$ \\
+		\multirow{2}{*}{GA Demand Weights ($\beta$)} & $\{ 0.5,\, 0.6,\, 0.7,\, 0.8,\, 0.9,$ \\ 
+		& $1.0,\, 1.5,\, 2.0,\, 2.5 \}$ \\ 
 		\hline
 		\hline
-		Number of Additional Evaluation Scenarios ($\not\in \hat{\Omega}$) & 100 \\
+		Number of Additional Evaluation Scenarios ($\not\in \hat{\Omega}$) & 100 \\ 
 		\hline
-		Number of Additional Scenario Demand Points ($M$) & 300 \\
+		Number of Additional Scenario Demand Points ($M$) & 300 \\ 
 		\hline
-		Additional Demand Point Demand ($d$) & 66.547 Mbps \\
+		Additional Demand Point Demand ($d$) & 68.565 Mbps \\ 
 		\hline
 	\end{tabular}
 	\label{tab:CaseII_SimVal}
@@ -1601,124 +1604,186 @@ In this section I present the results of the Case II simulations.  The results o
 
 \subsubsection{Approach 1: The Sampled Deterministic Equivalent Program}
 
-Due to the increased number of available resources, the sDEP approach took longer to solve for all values of $\alpha$.  For $\alpha \geq 12$ the sDEP approach exceeded the time limit of 1 hour wall clock time\footnote{Ideally, there are 28,800 seconds CPU time (8 cores) in 1 hour wall clock time.  These solutions terminated at 28,200 seconds CPU time, reaching 97.95\% of the ideal and a parallelism speedup ratio of 7.8x.  This is an improvement over the 7.1x speedup of the preliminary simulations (\Cref{sec:prelim}), and are closer to the limit presented by the \nicefrac{1}{8} adjusted run time in figures.}.  As a result, these solutions are not guaranteed to be optimal, only the most optimal solution found by CPLEX.  $\alpha = 6$ presents a trivial, 0-BS selection solution, and $\alpha \in \left\{ 8,\, 10 \right\}$ are the only sDEP solutions that provided optimal non-trivial solutions within the 1 hour time limit; $\alpha = 8$ completed in less than 1 second CPU time, and $\alpha = 10$ completed in 16,000 seconds CPU time.  As a comparison, the sDEP Case I results averaged 15,000 seconds outside of the transition between the 9- and 10-BS solutions.
-
-With the inclusion of the microcells, the VNB is capable of more nuanced constructions.  \Cref{fig:CaseII_sDEPComparisonCostCaseI} shows the cost trend of the sDEP approach for the range of $\alpha \in \left[ 10,\, 20 \right]$; $\alpha = 8$ constructs a network of 0.44 cost, and $\alpha \geq 20$ constructs a network with 10 cost.  At $\alpha = 10$, the sDEP constructs a network with 9.6 cost (9 macrocells, 15 microcells) (\Cref{fig:CaseII_VoronoiDemandAllocation_sDEP_9-15}).  This cost steadily increases with additional microcells up to $\alpha = 16$ with 9.72 cost (9 macrocells, 18 microcells) (\Cref{fig:CaseII_VoronoiDemandAllocation_sDEP_9-18}).
+Due to the increased number of available resources, the sDEP approach generally took longer to solve than Case I.  As shown in \Cref{fig:CaseII_sDEPComparisonCostRuntime}, the sDEP approach exceeded the allowed 1 hour wall clock time\footnote{Ideally, there are 28,800 seconds CPU time (8 cores) in 1 hour wall clock time.  These solutions terminated at approximately 27,600 seconds CPU time, reaching 95.75\% of the ideal and a parallelism speedup ratio of 7.7x.  This is an improvement over the 7.1x speedup of the preliminary simulations (\Cref{sec:prelim}), and is closer to the limit presented by the \nicefrac{1}{8} adjusted run time in the figures.} for $\alpha = 18$ and $27 \leq \alpha \leq 90$.  As a result, the solutions found for those values of $\alpha$ are not guaranteed to to be optimal, only the most optimal solution found by CPLEX in that time.  However, the three solutions of $\alpha \in \left\{ 21,\, 24,\, 100 \right\}$ terminated within the allotted time limit, and provide known-optimal selections for the sDEP; these align with and suggest that the possibly non-optimal solutions of same cost---$27 \leq \alpha \leq 50$ (10 cost; 9 macrocells, 5 microcells) for $\alpha \in \left\{ 21,\, 24 \right\}$ and $60 \leq \alpha \leq 90$ (10.2 cost; 9 macrocells, 6 microcells) for $\alpha = 100$---are optimal.
 
 \begin{figure}[htp]
 	\centering
-	\begin{subfigure}{.49\textwidth}
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/CaseII_sDEPComparisonCostCaseI}
-		\caption{\small Costs}
-		\label{fig:CaseII_sDEPComparisonCostCaseI}
-	\end{subfigure} \hfill
-	\begin{subfigure}{.49\textwidth}
-		\centering
-		\includegraphics[width=1\linewidth]{Figures/CaseII_sDEPComparisonSatCaseI}
-		\caption{\small Demand Satisfaction}
-		\label{fig:CaseII_sDEPComparisonSatCaseI}
-	\end{subfigure}
-	\caption[Comparison of sDEP solutions between Case I and Case II]{Comparison of sDEP solutions between Case I and Case II.  The non-trivial $\alpha = 8$ Case II solution is not shown, but selected a network with 0.44 cost and 5.51\% demand satisfaction. $\alpha = 8$ for Case I is a trivial 0-BS, 0\% demand satisfaction solution.}
-	\label{fig:CaseII_sDEPComparisonsCaseI}
+	\includegraphics[height=0.4\textheight]{Figures/CaseII_sDEPComparisonCostRuntime}
+	\caption[Comparison of sDEP approach run time and costs for Case II simulations]{Comparison of sDEP run time and VWN construction cost}
+	\label{fig:CaseII_sDEPComparisonCostRuntime}
 \end{figure}
+
+As expected due to previous results, the sDEP run time trends to be most computationally expensive in regions of $\alpha$ surrounding solutions that transition from less to more expensive with respect to VWN cost.  For instance, the VWN increases in cost from $\alpha = 50$ and $\alpha = 60$, with most of the time limit exceeding results surrounding this transition.  The $\alpha = 18$ result implies that the cost transition from $\alpha = 18$ to $\alpha = 20$ occurs far closer to the former than the latter.  The drop in run time for $\alpha = 100$ implies that the sDEP has reached a stable solution, and that the next transition to a higher cost selection would require values of $\alpha$ far in excess of 100.
+
+The remaining solutions that do not exceed the wall clock time limit demonstrate the sDEP responds very well to microcells.  As mentioned in \Cref{subsec:caseII_setup}\cref{foot:caseII_setup}, the inclusion of microcells in the Case I setup decreased the run time of the sDEP approach.  This is because the microcells are both more cost efficient (i.e., capacity per cost)\footnote{$\text{Microcell cost efficiency} = \nicefrac{500 \text{ Mbps}}{0.2} = \expnumber{2.5}{9}$ and $\text{Macrocell cost efficiency} = \nicefrac{2 \text{ Gbps}}{1} = \expnumber{2.0}{9}$} and have fewer possible links (i.e., nonzero values in $u_{ms}$)\footnote{This is a result of microcells having a smaller $b_s$ than macrocells.  Microcells have fewer demand points in range.} for the solver to consider than the macrocells.  The solver was able to simplify the data set by ignoring the apparently less effective macrocells, where possible.  Despite the significant increase to the overall number of resources, demand points, and scenarios, the Case II solutions that completed within the allotted wall clock time limit completed in only slightly more time than the steady state solutions of $\alpha \geq 14$ in Case I.
+
+Further, the inclusion of microcells allowed for several solutions with very low run time.  For $11 \leq \alpha \leq 16$, the sDEP approach provided solutions of 9.8 cost (8 macrocells, 9 microcells) in as little as 2300 seconds and less than 5300 seconds.  Other, far more time-complex solutions provide selections of higher cost, but the sDEP is capable of providing solutions with low run times if less than full selection is desired or allowed.  In terms of run time, a pool of RP-available resources containing mostly resources with very low coverage but high capacity, like microcells, would likely work very well in the sDEP approach, just so long as there are sufficient resources to provide coverage.
+
+With the inclusion of microcells, the VNB is capable of more nuanced constructions.  While in Case I there was a single non-trivial solution that provided less than 100\% demand satisfaction, Case II provides an array of solutions that span several ranges of demand satisfaction.  This can be seen in \Cref{fig:CaseII_sDepComparisonCostSat}.  There are five distinct non-trivial selections: two containing only microcells, and three containing macrocells; these are tabulated in \Cref{tab:CaseII_sDEPCostSat}.  For the two microcell-only solutions, $\alpha$ is sufficiently high for the microcells to be cost-effective enough to be considered, but not sufficiently high enough for macrocells.  Once $\alpha \geq 11$, $\alpha$ is sufficiently high to consider macrocells worthwhile.  It appears that, for the sDEP formulation, the sDEP will provide solutions that are all-or-nothing for the category of resources that are sufficiently cost-effective for a given $\alpha$; if there were more categories of resources, there would likely be additional strata of solutions as additional categories of resources become sufficiently cost-effective as $\alpha$ increases.
+
+\begin{figure}[ht]
+	\centering
+	\includegraphics[height=0.4\textheight]{Figures/CaseII_sDEPComparisonCostSat}
+	\caption[Comparison of sDEP approach cost and demand satisfaction for Case II simulations]{Comparison of sDEP VWN construction cost and associated proportional demand satisfaction.\iffalse  Both original scenarios (those in $\hat{\Omega}$) that the sDEP is optimized for and new scenarios (not in $\hat{\Omega}$) have identical demand satisfaction.\fi}
+	\label{fig:CaseII_sDepComparisonCostSat}
+\end{figure}
+
+\begin{table}[ht]
+	\centering
+	\caption[Cost and Demand Satisfaction Results of Various sDEP-Constructed VWNs for Case II Simulations]{Cost and Demand Satisfaction Results of Various sDEP-Constructed VWNs}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{$\alpha$} & \textbf{Macrocells} & \textbf{Microcells} & \textbf{Cost} & \textbf{Demand Satisfaction} \\ 
+		\hline
+		$\alpha \leq 8$ & 0 & 0 & 0 & 0\% \\ 
+		\hline
+		$\alpha = 9$ & 0 & 7 & 1.4 & 16.54\% \\ 
+		\hline
+		$\alpha = 10$ & 0 & 8 & 1.6 & 18.62\% \\ 
+		\hline
+		$11 \leq \alpha \leq 18$ & 8 & 9 & 9.8 & 98.26\% \\ 
+		\hline
+		$21 \leq \alpha \leq 50$ & 9 & 5 & 10.0 & 99.25\% \\ 
+		\hline
+		$\alpha \geq 60$ & 9 & 6 & 10.2 & 99.63\% \\ 
+		\hline
+	\end{tabular}
+	\label{tab:CaseII_sDEPCostSat}
+\end{table}
+
+There are two very low demand satisfaction solutions in $\alpha = \left\{ 9,\, 10 \right\}$ which only select microcells.  These solutions have too little overall demand satisfaction---16.54\% and 18.62\%, respectively---to be of much use to any network requiring coverage, but demand points remaining near the highest demand clusters are fairly well satisfied.  This is shown for a single scenario of $\alpha = 10$ in \Cref{fig:CaseII_VoronoiDemandAllocation_sDEP_a10_denoted}, where 43 out of 150 demand points have a link to a selected microcell; the demands of these 43 linked demand points are 67.84\% satisfied.
 
 \begin{figure}[p]
 	\centering
-	\begin{subfigure}{.7\textwidth}
+	\begin{subfigure}{.65\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{Figures/CaseII_VoronoiDemandAllocation_sDEP_9-15}
-		\caption{\small 9 Macrocells, 15 Microcells (97.57\% Demand Satisfaction; $\alpha = 10$)}
-		\label{fig:CaseII_VoronoiDemandAllocation_sDEP_9-15}
+		\includegraphics[width=1\linewidth]{Figures/CaseII_VoronoiDemandAllocation_sDEP_a10_denoted}
+		\caption{\small $\alpha = 10$; 0 Macrocells, 8 Microcells; Microcells selected for the VWN by the VNB are highlighted by a red circle, and the number of demand points linked and local demand satisfaction denoted}
+		\label{fig:CaseII_VoronoiDemandAllocation_sDEP_a10_denoted}
 	\end{subfigure} \\
-	\begin{subfigure}{.7\textwidth}
+	\begin{subfigure}{.65\textwidth}
 		\centering
-		\includegraphics[width=1\linewidth]{Figures/CaseII_VoronoiDemandAllocation_sDEP_9-18}
-		\caption{\small 9 Macrocells, 18 Microcells (98.50\% Demand Satisfaction; $\alpha = 16$)}
-		\label{fig:CaseII_VoronoiDemandAllocation_sDEP_9-18}
+		\includegraphics[width=1\linewidth]{CaseII_VoronoiDemandAllocation_sDEP_a100_snip2}
+		\caption{\small $\alpha = 100$; 9 Macrocells, 6 Microcells}
+		\label{fig:CaseII_VoronoiDemandAllocation_sDEP_a100}
 	\end{subfigure}
-	\caption[One sDEP resource selection and slicing solution for Case II]{sDEP resource selection and slicing for one scenario in $\hat{\Omega}$.  Circles indicate macrocells, squares indicate microcells, and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
+	\caption[Two sDEP resource selection and slicing solutions for Case II]{sDEP resource selection and slicing for one scenario in $\hat{\Omega}$.  Circles indicate macrocells, squares indicate microcells, and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
 	\label{fig:CaseII_VoronoiDemandAllocation_sDEP}
 \end{figure}
 
-Each additional microcell increases the overall demand satisfaction of the constructed network, but fails to fully satisfy without an additional macrocell.  To achieve 100\% demand satisfaction, the network must satisfy 19.97 Gbps\footnote{One scenario includes 90 demand points with each demanding 221.89 Mbps.} of demand, which requires 10 macrocells or 9 macrocells and 20 microcells to satisfy; since there are only 18 microcells available, there are insufficient microcells to bridge the gap between 9 and 10 macrocells.  This is further reflected in \Cref{fig:CaseII_sDEPComparisonSatCaseI}; for $\alpha \in \left[ 10,\, 18 \right]$, the sDEP has approximately 98\% demand satisfaction, and reaches 100\% for $\alpha \geq 20$.
+The three macrocell-including selections provide significant demand satisfaction.  For $\alpha \geq 11$, macrocells are included, which provide the necessary coverage for the general network, and for those points where there are either no microcells available to select, or not enough demand points to warrant selecting microcells.  One such solution is shown in \Cref{fig:CaseII_VoronoiDemandAllocation_sDEP_a100}.
 
-Testing the solutions for new scenarios not in $\hat{\Omega}$ shows that increasing the number of demand points continues to better distribute demand and increased demand satisfaction.  \Cref{fig:CaseII_sDEPComparisonSatEvalCaseI} shows the demand satisfaction trend for the same range as \Cref{fig:CaseII_sDEPComparisonsCaseI} for both Case I and Case II with respect to the scenarios in $\hat{\Omega}$ and new scenarios not in $\hat{\Omega}$.  While there was no room for changes in Case I, the imperfect satisfaction results that are available due to inhomogeneity show improvement with more distributed demand.
+Testing the solutions for new scenarios not in $\hat{\Omega}$ shows that increasing the number of demand points continues to better distribute demand and increased demand satisfaction.  \Cref{fig:CaseII_sDEPComparisonSatEval} shows the demand satisfaction of both the original test scenarios ($\hat{\Omega}$) and new test scenarios for the solutions that provide high demand satsifaction; $\alpha \in \left\{ 9,\, 10 \right\}$ are not shown, but demand satisfaction improved slightly for these points.  As in Case I, the new set of scenarios includes more demand points per scenario, more thoroughly distributing the demand of the original demand field.  For the 9.8 and 10 cost networks, the new scenarios reach a higher demand satisfaction, as expected due to the more thorough distribution.  For the 10.2 cost networks, however, the original optimized scenarios perform better.  As long as the scenarios in $\hat{\Omega}$ properly represent the originating demand field, this is expected.  For all of these solutions, for both the original and new scenarios, 100\% demand satisfaction is not reached.
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[height=0.4\textheight]{Figures/CaseII_sDEPComparisonSatEvalCaseI}
-	\caption[Comparison of Case I and Case II demand satisfaction of scenarios both in and not in $\hat{\Omega}$]{Comparison of demand satisfaction of scenarios both in and not in $\hat{\Omega}$}
-	\label{fig:CaseII_sDEPComparisonSatEvalCaseI}
+	\includegraphics[height=0.4\textheight]{Figures/CaseII_sDEPComparisonSatEval}
+	\caption[Comparison of demand satisfaction of scenarios both in and not in $\hat{\Omega}$ for Case II simulations]{Comparison of demand satisfaction of scenarios both in and not in $\hat{\Omega}$}
+	\label{fig:CaseII_sDEPComparisonSatEval}
 \end{figure}
 
 \subsubsection{Approach 2: The Genetic Algorithm}
 
-The GA behaves very similarly for Case II as it did in Case I.  As \Cref{fig:CaseII_GAComparisonCostRunTimeCaseI} shows, Case II converges with low run times for $\beta < 0.8$ coordinating to the fitness halting condition, higher run times for $\beta > 0.8$ coordinating to the genome halting condition, and $\beta = 0.8$ as a transition.  However, the GA for Case II took 25\% to 50\% additional run time to converge, reaching approximately 1050 seconds CPU time for $\beta > 0.8$.  This coordinates with the 18 additional resources the GA must consider for Case II compared to Case I.
+The GA behaves very similarly for Case II as it did for Case I.  As \Cref{fig:CaseII_GAComparisonCostRunTime} shows, Case II converges with low run times for $\beta \in \left\{ 0.5,\, 0.6 \right\}$ corresponding to the fitness halting condition, and higher run times for $\beta \geq 0.9$ corresponding to the genome halting condition; $\beta \in \left\{ 0.7,\, 0.8 \right\}$ also terminates with the genome halting condition, but acts as a transition with lower termination times than for $\beta \geq 0.9$.  Overall, the run time approximately quadrupled from Case I: fitness halted solutions in Case I averaged 264 seconds run time while Case II averaged 977 seconds for an increase of 3.70x; and genome halted solutions in Case I averaged 760 seconds while Case II averaged 3,380 seconds for an increase of 4.45x.  This is explained by the increasing number of BSs from 22 to 75---more than triple---and by the increasing number of pixels in the demand field from 40,000 to 62,500---more than a 50\% increase.
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[height=0.4\textheight]{Figures/CaseII_GAComparisonCostRunTimeCaseI}
-	\caption{Comparison of GA cost and run time between Case I and Case II}
-	\label{fig:CaseII_GAComparisonCostRunTimeCaseI}
+	\includegraphics[height=0.4\textheight]{Figures/CaseII_GAComparisonCostRunTime}
+	\caption[Comparison of GA approach cost and run time for Case II simulations]{Comparison of GA cost and run time trends with 95\% confidence intervals}
+	\label{fig:CaseII_GAComparisonCostRunTime}
 \end{figure}
 
-Despite the increased computation time, the GA solutions barely changed in terms of cost.  Case II is fairly consistent, though notably less consistent than Case I.  The results are tabulated in \Cref{tab:CaseII_ComparisonCostSat}, along with the associated demand satisfactions for those solutions; all equal cost GA solutions had equal demand satisfaction.  Despite the additional microcell resources to utilize, the GA largely ignores those resources, opting to use macrocells for $\beta < 0.8$ with only 6 exceptions.  As with Case I, all VWNs of cost greater than or equal to 10 provided 100\% demand satisfaction.  The only cost outside of that range that was not found in Case I is 9.04, as provided from three runs of the GA with $\beta = 0.7$; these three results represent an outlying, less-than-optimal result compared to the other $\beta = 0.7$ solutions.  Further, $\beta = 0.5$ deviated far more often than in Case I, converging to a 7-BS solution only 52\% of the time, compared to 84\% in Case I.
+The large spectrum of $\beta$ provides a wide array of solutions, ranging from an average of 8.2 for $\beta = 0.5$ to 26.64 for $\beta = 2.5$.  These solutions for $\beta$ are fairly consistent, but far less consistent than in Case I; the addition of microcells both introduced resources that have ranges small enough for coverage to matter to the problem and also introduced heterogeneity in resource ranges.  These less consistent results imply that the introduced heterogeneity produced more local maxima in the fitness function.
 
-\begin{table}[htp]
-	\centering
-	\caption[Cost and Demand Satisfaction Results of Various GA-Constructed VWNs for Case II]{Cost and Demand Satisfaction Results of Various GA-Constructed VWNs}
-	\begin{tabular}{|c|c|c|} 
-		\hline
-		\textbf{Cost} & \textbf{Demand Satisfaction} & \textbf{GA $\beta$ (Number of Solutions)} \\
-		\hline
-		7 & 70.11\% & 0.5 (26) \\
-		\hline
-		\multirow{2}{*}{8} & \multirow{2}{*}{80.12\%} & 0.5 (24)\\
-		& & 0.6 (50) \\
-		\hline
-		9 & 90.14\% & 0.7 (47) \\
-		\hline
-		9.04 & 90.52\% & 0.7 (3) \\
-		\hline
-		10 & 100\% & 0.8 (47) \\
-		\hline
-		12.08 & 100\% & 0.8 (3) \\
-		\hline
-		\multirow{2}{*}{13} & \multirow{2}{*}{100\%} & 0.9 (50) \\
-		& & 1.0 (50) \\
-		\hline
-		17.08 & 100\% & 1.5 (50) \\
-		\hline
-		17.16 & 100\% & 2.0 (50) \\
-		\hline
-		19.08 & 100\% & 2.5 (50) \\
-		\hline
-	\end{tabular}
-	\label{tab:CaseII_ComparisonCostSat}
-\end{table}
-
-As the solutions for Case II trended towards the more expensive, the GA demand satisfaction was higher for the same value of $\beta$.  This is primarily noticeable for $\beta = 0.5$, which had a higher mean cost over Case I; other deviations occur in the range of $\beta \geq 0.8$, which has universally shown more than 100\% demand satisfaction.  These trends can be seen in \Cref{fig:CaseII_GAComparisonCostSatCaseI}.
+Unlike with Case I, all solutions, including the fitness halting condition solutions of $\beta \in \left\{ 0.5,\, 0.6 \right\}$, failed to provide enough resources to provide 100\% coverage of the region.  Every solution provided by the GA had at least one pixel of the demand field that was allocated to a BS that was beyond the range of that BS.  That is, every solution included a BS that was overcoverage.  This is because, as shown in \Cref{fig:CaseII_BSCoverageAreas}, there was a blind spot in the bottom-left of the region that was not within the coverage area of any BS.  Any demand located in the uncovered region is impossible to satisfy by the VNB.
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[height=0.4\textheight]{Figures/CaseII_GAComparisonCostSatCaseI}
-	\caption{Comparison of GA cost and demand satisfaction between Case I and Case II}
-	\label{fig:CaseII_GAComparisonCostSatCaseI}
+	\includegraphics[height=0.4\textheight]{Figures/CaseII_BSCoverageAreas}
+	\caption[BS coverage areas used in the model for Case II simulations]{BS coverage areas.  Blue regions indicate coverage only by a macrocell, orange regions indicate coverage by at least a microcell, and white regions are not covered by any BS.}
+	\label{fig:CaseII_BSCoverageAreas}
+\end{figure}
+
+The introduction of heterogeneity causes the demand satisfaction trend to exponentially approach 100\%, unlike the linearity exhibited in Case I.  A comparison of cost and demand satisfaction is shown in \Cref{fig:CaseII_GAComparisonCostSat}.  For both fitness halted sets of solutions (i.e., $\beta \in \left\{ 0.5,\, 0.6 \right\}$), demand satisfaction is approximately 80\% to 85\%.  For $\beta \in \left\{ 0.7,\, 0.8 \right\}$, demand satisfaction rises to 95\% to 97\%.  Finally, for $\beta \geq 0.9$ demand satisfaction exceeds 99\%, and trends to reach 99.63\% for $\beta \in \left\{ 2.0,\, 2.5 \right\}$.
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[height=0.4\textheight]{Figures/CaseII_GAComparisonCostSat}
+	\caption[Comparison of GA approach cost and demand satisfaction for Case II simulations]{Comparison of GA cost and demand satisfaction trends with 95\% confidence intervals}
+	\label{fig:CaseII_GAComparisonCostSat}
+\end{figure}
+	
+In \Cref{fig:CaseII_GAComparisonCostSat}, the slight variation in solution costs appears to correlate to a wider-than-expected variation in demand satisfaction.  For example,  $\beta \in \left\{ 0.5,\, 0.6,\, 0.7 \right\}$ have seemingly wide demand satisfaction confidence intervals.  However, as shown in \Cref{fig:CaseII_GAScatterCostSat}, the cost-satisfaction trend remains fairly consistent, and maps to the trend shown in \Cref{fig:CaseII_GAComparisonCostSat}.  For each value of $\beta$, the lower-cost solutions provide less demand satisfaction, the higher-cost solutions provide more demand satisfaction, and exponentially approach 100\%.
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[height=0.4\textheight]{Figures/CaseII_GAScatterCostSat}
+	\caption[Various GA approach solution costs and associated demand satisfactions for Case II simulations]{Various GA solution costs and associated demand satisfactions.  Line of best fit is an exponentially approaching function.}
+	\label{fig:CaseII_GAScatterCostSat}
+\end{figure} 
+
+The demand satisfaction results for the new set of scenarios not in $\hat{\Omega}$ differ only marginally compared to the scenarios of $\hat{\Omega}$.
+
+Two example GA solutions are shown in \Cref{fig:CaseII_VoronoiDemandAllocation_GA}.  \Cref{fig:CaseII_VoronoiDemandAllocation_GA_b0-5Min_snip2} shows the minimum cost and demand satisfaction (7.4 cost; 7 macrocells, 2 microcells; 71.51\%) result for $\beta = 0.5$, and  \Cref{fig:CaseII_VoronoiDemandAllocation_GA_b0-7Max_snip2} shows the maximum cost and demand satisfaction (11.4 cost; 10 macrocells, 7 microcells; 97.80\%) result for $\beta = 0.7$.
+
+\begin{figure}[p]
+	\centering
+	\begin{subfigure}{.65\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/CaseII_VoronoiDemandAllocation_GA_b0-5Min_snip2}
+		\caption{\small $\beta = 0.5$; 7.4 Cost; 7 Macrocells, 2 Microcells; 71.51\% Demand Satisfaction}
+		\label{fig:CaseII_VoronoiDemandAllocation_GA_b0-5Min_snip2}
+	\end{subfigure} \\
+	\begin{subfigure}{.65\textwidth}
+		\centering
+		\includegraphics[width=1\linewidth]{Figures/CaseII_VoronoiDemandAllocation_GA_b0-7Max_snip2}
+		\caption{\small $\beta = 0.7$; 11.4 Cost; 10 Macrocells, 7 Microcells; 97.80\% Demand Satisfaction}
+		\label{fig:CaseII_VoronoiDemandAllocation_GA_b0-7Max_snip2}
+	\end{subfigure}
+	\caption[Two GA resource selection and slicing solutions for Case II]{GA resource selection and slicing for one scenario in $\hat{\Omega}$.  Circles indicate macrocells, squares indicate microcells, and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
+	\label{fig:CaseII_VoronoiDemandAllocation_GA}
 \end{figure}
 
 \subsubsection{Comparisons and Conclusions}
 
-Both the sDEP and GA approaches appear to be largely unimpacted by the addition of heterogeneity to the VNB's resource pool, at least for this test case.  Both approaches resulted in increased run times, which is expected with the increased number of resources; the GA's run time increased by approximately 25\% to 50\% while the sDEP failed to resolve within the allotted time limit of 1 hour wall clock time.  Cost was impacted, but largely in the context of additional granularity.  The sDEP was impacted more, as the addition of microcells allowed the sDEP to provide nuanced differentiation between 9 and 10 macrocell allocation.  In contrast, the GA was impacted by making the results less consistent; Case I resulted in only 8 deviations (all $\beta = 0.5$) from the best solution across 450 different runs of the GA whereas Case II resulted in 30 (24 for $\beta = 0.5$, 3 for $\beta = 0.7$, 3 for $\beta = 0.8$).  That is, the addition of microcells resulted in 200\% more error for $\beta = 0.5$ than the test without.  This could be the result of changes in the data set that are not reflected solely by the inclusion of microcells, however.
+The sDEP specifically benefited from the introduction of microcells.  The microcells reduced the overall run time, effectively allowing the sDEP to handle a much larger data set.  Further, the variety of resources provided for more solutions: Case I provided two distinct results of notice while Case II provided five.  Further, these results presented in notable strata, where each category of resource became available for use in turn as $\alpha$ increased.  That is, at low levels of $\alpha$, only microcells could be used; for higher, both microcells and macrocells.  The sDEP approach was unable to reach 100\% demand satisfaction.  However, it is apparent from the GA results that 100\% was impossible as the bottom-left corner of the region was not covered by any available BSs.
 
-It is expected to see the GA perform less efficiently than the sDEP as a result of its heuristic and approximations.  However, results have shown thus far that the GA performs very similarly to the sDEP.  \Cref{fig:CaseII_ComparisonCostvSat_CaseICaseII} shows the cost efficiency of the sDEP and GA approaches for both Case I and Case II.  When only considering the homogeneous resources of Case I, the GA performs exactly as cost effectively as the sDEP, though the GA was able to force sub-90\% demand satisfaction networks while the sDEP could not.  With the addition of microcells in Case II, the sDEP performed slightly better through nuanced steps; this is shown as the slightest improvement in \Cref{fig:CaseII_ComparisonCostvSat_CaseICaseII} over the effectively identical sDEP Case I, GA Case I, and GA Case II results.  For this data set, the GA has a visible, but insignificant amount of error compared to the sDEP.  At the cost of this insignificant error, the GA provides a solution with a notable speedup ratio, shown in \Cref{fig:CaseI_GASpeedup} to reach in excess of 50x.
+Comparatively, the GA performed less well.  The parameters of additional resources do not directly impact the run time of the GA; the addition of one more macrocell will increase run time just as much as the addition of one more microcell.  The cost and demand satisfaction trends of the GA approach also behave more as expected, where demand satisfaction exponentially approaches 100\% in Case II, unlike the linear trend demonstrated in Case I.
+
+Overall, Case II further demonstrates that the GA approach has a better run time performance trend compared to the sDEP.  While the sDEP run time improved with the addition of microcells, and even found two microcell-only solutions in much less time than the GA, the sDEP required a longer run time for all solutions that provided significant coverage of the region.  This is visualized as speedup ratios in \Cref{fig:CaseII_GASpeedupRatios2}.  Compared to the fastest GA solutions, the GA completed in less time than all sDEP solutions with $\alpha \geq 11$; for only the $\alpha \geq 18$ solutions, the GA provided an average speedup ratio of 26.39x.  
 
 \begin{figure}[htp]
 	\centering
-	\includegraphics[height=0.4\textheight]{Figures/CaseII_ComparisonCostvSat_CaseICaseII}
-	\caption{Cost effectiveness of sDEP and GA approaches demonstrated by Case I and Case II}
-	\label{fig:CaseII_ComparisonCostvSat_CaseICaseII}
+	\includegraphics[height=0.4\textheight]{Figures/CaseII_GASpeedupRatios2}
+	\caption[Case II GA speedup ratios]{GA speedup ratios of different category solutions.  Dotted black lines are the speedup ratio relative to the mean of the GA solution run times in that category.  Adjusted speedup ratios are considering the adjusted run time of the sDEP, which is a lower bound for the wall clock time.}
+	\label{fig:CaseII_GASpeedupRatios2}
 \end{figure}
+
+The addition of heterogeneity also presents error in the GA solution compared to the sDEP as a trade-off for the achieved speedup ratio.  \Cref{fig:CaseII_sDEPGASatError} maps the cost-demand satisfaction relationship of the GA to sDEP-constructed networks of the same cost.  The sDEP approach only provided three solutions in the range of network costs provided by the GA.  The delta and percent error for these solutions are tabulated in \Cref{tab:CaseII_sDEPGASatError}; for these same-cost networks, the GA approach introduced at or just under 5\% demand satisfaction error.  Further, while the GA was able to construct more distinct solutions compared to the sDEP, it did this somewhat inconsistently for constant values of $\beta$.
+
+\begin{figure}[htp]
+	\centering
+	\includegraphics[height=0.4\textheight]{Figures/CaseII_sDEPGASatError}
+	\caption[GA and sDEP approach demand satisfactions with GA error for Case II simulations]{GA and sDEP approach demand satisfactions with demarcated GA satisfaction error}
+	\label{fig:CaseII_sDEPGASatError}
+\end{figure}
+
+\begin{table}[htp]
+	\centering
+	\caption{Demand Satisfaction Comparison for Case II GA and sDEP Approaches}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{VWN Cost} & \textbf{sDEP Sat} & \textbf{GA Sat} & \textbf{$\Delta$ Error} & \textbf{Percent Error} \\
+		\hline
+		9.8 & 98.26\% & 93.40\% & -4.860\% & -4.95\% \\
+		\hline
+		10 & 99.25\% & 94.22 & -5.030\% & -5.07\% \\
+		\hline
+		10.2 & 99.63\% & 94.93\% & -4.700\% & -4.72\% \\
+		\hline
+	\end{tabular}
+	\label{tab:CaseII_sDEPGASatError}
+\end{table}
 
 \pagebreak
 \chapter{Summary and Conclusions} \label{ch:conc}
@@ -1731,7 +1796,7 @@ In this thesis I considered the problem of BS selection and dynamic slicing in t
 
 \Cref{ch:sim} considered the effectiveness of the two approaches via three separate simulations.  The first simulation was a proof of concept and showed that the two approaches converge to a solution and that the SSLT demand model worked as expected.  The latter two simulations served as test cases which modify RP resources and SP demand to more closely reflect real world resources and demand.  The second simulation, Case I, simulated homogeneous (i.e., macrocell) resources and the third simulation, Case II, simulated heterogeneous (i.e., macrocell and microcell) resources.  Except for highlighting the impact of resource coverage range on the problem, the differences between the various simulations do not cause significant changes in the approaches' effectiveness.
 
-The GA approach has an improved run time compared to the sDEP.  Across all simulations, the GA approach converged to a solution in far less CPU time than the sDEP approach; as shown in \Cref{tab:VWNConstructionRunTimes}, the GA exhibits a consistent and significant speedup ratio relative to the sDEP, even when comparing the adjusted\footnote{The adjusted time is the minimum limit of the wall clock time the sDEP approach could have taken to complete.  The adjusted time is one-eighth the CPU time; in practice the actual wall clock time is greater than the adjusted time, but was shown in \Cref{ch:sim} to be less than one-seventh the CPU time and approaches one-eighth as the sDEP run time increases.} sDEP run time.  The sDEP approach's run time is directly dependent on the number of possible connections between demand points and BSs across all scenarios; the sDEP is capable of ignoring demand points that are out of range of resources (i.e, where $u_{ms}=0$).  Generally, as the resources, demand points, and scenarios increase, run time increases exponentially; this is also impacted by BS coverage radius, as shown by the relatively low impact of the microcells added to Case II over Case I.  The GA approach's run time is only directly dependent on the number of resources, the number of pixels of the demand intensity function, the number of generations before the GA halts, and the number of individuals per generation of the GA.  Compared to the sDEP approach, the GA approach trends to be more time-feasible, as the number of generations\footnote{Each generation is independent and happens sequentially.}, the number of pixels\footnote{Each additional pixel can cause one additional addition in the integral of each fitness calculation.}, and the number of resources\footnote{Each additional resource linearly increases the summation of the fitness calculation.} linearly impact run time.  The number of individuals\footnote{For elitism, individuals are sorted according to fitness each generation.} impact run time with O($n \log n$) complexity.
+The GA approach has an improved run time compared to the sDEP.  Across all simulations, the GA approach converged to a solution in far less CPU time than the sDEP approach; as shown in \Cref{tab:VWNConstructionRunTimes}, the GA exhibits a significant speedup ratio relative to the sDEP, even when comparing the adjusted\footnote{The adjusted time is the minimum limit of the wall clock time the sDEP approach could have taken to complete.  The adjusted time is one-eighth the CPU time; in practice the actual wall clock time is greater than the adjusted time, but was shown in \Cref{ch:sim} to be less than one-seventh the CPU time and approaches one-eighth as the sDEP run time increases.} sDEP run time.  Even for Case II, where the GA outperformed the sDEP less significantly than in Case I, the GA has better time-complexity trends than the sDEP, and the GA will outperform the sDEP as the data set increases in size and complexity.  The sDEP approach's run time is directly dependent on the number of possible connections between demand points and BSs across all scenarios; the sDEP is capable of ignoring demand points that are out of range of resources (i.e, where $u_{ms}=0$).  Generally, as the resources, demand points, and scenarios increase, run time increases exponentially; this is also impacted by BS coverage radius, as shown by the relatively low impact of the microcells added to Case II over Case I.  The GA approach's run time is only directly dependent on the number of resources, the number of pixels of the demand intensity function, the number of generations before the GA halts, and the number of individuals per generation of the GA.  Compared to the sDEP approach, the GA approach trends to be more time-feasible, as the number of generations\footnote{Each generation is independent and happens sequentially.}, the number of pixels\footnote{Each additional pixel can cause one additional addition in the integral of each fitness calculation.}, and the number of resources\footnote{Each additional resource linearly increases the summation of the fitness calculation.} linearly impact run time.  The number of individuals\footnote{Individuals are sorted according to fitness each generation while determining elitism.} impact run time with O($n \log n$) complexity.
 
 \begin{table}[ht]
 	\centering
@@ -1746,16 +1811,16 @@ The GA approach has an improved run time compared to the sDEP.  Across all simul
 		\multirow{2}{*}{Case I} & GA Fitness Halt ($\beta < 0.8$) & 56.3 & 7.04 \\
 		& GA Genome Halt ($\beta > 0.8$) & 19.6 & 2.45 \\
 		\hline
-		\multirow{2}{*}{Case II} & GA Fitness Halt ($\beta < 0.8$) & 77.5 & 9.69 \\
-		& GA Genome Halt ($\beta > 0.8$) & 27.7 & 3.46 \\
+		\multirow{2}{*}{Case II} & GA Fitness Halt ($\beta < 0.7$) & 26.39 & 3.298 \\
+		& GA Genome Halt ($\beta > 0.8$) & 7.634 & 0.9542 \\
 		\hline
 	\end{tabular}
 	\label{tab:VWNConstructionRunTimes}
 \end{table}
 
-GA-constructed VWNs have marginal to no demand satisfaction error compared to sDEP-constructed VWNs of the same cost.  For the preliminary simulation, it was shown that the GA approach incurred a 0.3\% demand satisfaction error compared to the sDEP approach when satisfying demand the sDEP was optimized for.  However, when comparing against new scenarios with more distributed demand, the GA solution reached 100\% demand satisfaction while the sDEP only reached 99.8\%--99.9\%.  The GA approach marginally outperforming the sDEP approach for these scenarios highlights that the sDEP approach is capable of not providing an optimal solution if the set of demand scenarios is not representative of the original demand field; this is the aforementioned trade-off between optimality of the solution and the number of demand points and the number of scenarios.  For Case I and Case II, the GA achieved 0.00\% demand satisfaction error compared to the sDEP.  This is due to increasing the number of generations of the halting conditions and the increased BS coverage radius size relative to the region the network was constructed for.  For each same-cost solution the approaches provided, both approaches provided the same demand satisfaction.  The addition of heterogeneous resources in Case II allowed for more quantization in the cost and demand satisfaction of the two approaches, but only allowed for the sDEP to marginally outperform the GA approach in terms of demand satisfaction.
+Depending on the simulation, GA-constructed VWNs have marginal to notable demand satisfaction error compared to sDEP-constructed VWNs of the same cost.  For the preliminary simulation, it was shown that the GA approach incurred a 0.3\% demand satisfaction error compared to the sDEP approach when satisfying demand the sDEP was optimized for.  However, when comparing against new scenarios with more distributed demand, the GA solution reached 100\% demand satisfaction while the sDEP only reached 99.8\%--99.9\%.  The GA approach marginally outperforming the sDEP approach for these scenarios highlights that the sDEP approach is capable of not providing an optimal solution if the set of demand scenarios is not representative of the original demand field; this is the aforementioned trade-off between optimality of the solution and the number of demand points and the number of scenarios.  For Case I, the GA achieved 0.00\% demand satisfaction error compared to the sDEP.  This is due to increasing the number of generations of the halting conditions and the increased BS coverage radius size relative to the region the network was constructed for.  For each same-cost solution the approaches provided, both approaches provided the same demand satisfaction.  The addition of heterogeneous resources in Case II allowed for more quantization in the cost and demand satisfaction of the two approaches, and allowed the sDEP to outperform the GA approach in terms of demand satisfaction.  Same-cost networks in Case II introduced approximately 5\% error in demand satisfaction in the GA-constructed networks compared to the sDEP-constructed networks.
 
-Both the sDEP and GA approaches are capable of solving the problem of resource selection and adaptive slicing within the VNB.  However, while the sDEP approach is theoretically more accurate than the GA approach, simulations show that GA approach introduces marginal to no additional error in terms of the constructed VWN's ability to satisfy SP demand.  Further, the GA approach consistently converges to these nearly-optimal solutions with significantly less run time than the sDEP approach.  The GA approach signifies a significant speedup within the VNB over the sDEP approach without hindering the VNB's ability to construct VWN's that capably satisfy the SP's demand.
+Both the sDEP and GA approaches are capable of solving the problem of resource selection and adaptive slicing within the VNB.  The sDEP approach is theoretically more accurate than the GA approach, and simulations support this assertion.  However, the GA approach provides solutions with notable, but not overly significant, error while consistent converging with significantly less run time than the sDEP approach.  Depending on the setup and parameters of the network, the GA approach can signify a significant speedup within the VNB over the sDEP approach while at best only marginally hindering the VNB's ability to construct VWN's that capably satisfy the SP's demand.  In worse cases, the GA still provides a significant speedup within the VNB at the cost of notable satisfaction error.
 
 \section{Considerations for Future Work} \label{sec:futurework}
 
