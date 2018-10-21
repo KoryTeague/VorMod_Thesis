@@ -776,7 +776,7 @@ Instead, it is valuable to have a model which assigns only an adaptive slicing o
 
 \begin{tcolorbox}[floatplacement = !ht, float, title = Adaptive Slicing Model]
 \begin{align}
-& \argmin_{\left\{ \delta_{ms} \right\}} \left\{ \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms} \; u_{ms} \right\} \label{eq:ASMO}\\
+& \argmax_{\left\{ \delta_{ms} \right\}} \left\{ \sum_{m \in \mathcal{M}} \sum_{s \in \mathcal{S}} \delta_{ms} \; u_{ms} \right\} \label{eq:ASMO}\\
 & \text{subject to:}  \nonumber \\
 & \hspace{0.4in} \sum_{s \in \mathcal{S}} \delta_{ms} \; u_{ms} \leq d_m,\, \forall m \in \mathcal{M} \label{eq:ASMC1}\\
 & \hspace{0.4in} \sum_{m \in \mathcal{M}} \delta_{ms} \leq r_s \; z_s,\, \forall s \in \mathcal{S}. \label{eq:ASMC2}\\
