@@ -1,9 +1,9 @@
 %
 % PROJECT: Thesis for ETD, defense
-%   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks (Working Title)
+%   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: October 18, 2018
+% REVISED: October 24, 2018
 
 %\documentclass[12pt,dvips]{report}
 %\documentclass[12pt]{report}
@@ -1013,12 +1013,12 @@ In this section I present the results of these preliminary simulations.  First, 
 
 \subsubsection{Run Time}
 
-\Cref{fig:Prelim_GARunTime} shows the run time trend of the GA approach as a histogram PDF.  Across 50 independent simulations, the GA approach converges to a solution in 94 to 209 seconds, averaging 125.9 seconds (CPU time) with a 95\% confidence interval of (118.4, 135.4).  These results are heavily weighted towards the low end, with more than 20\% of simulations terminating in under 100 seconds.
+\Cref{fig:Prelim_GARunTime} shows the run time trend of the GA approach as a density-normalized histogram.  Across 50 independent simulations, the GA approach converges to a solution in 94 to 209 seconds, averaging 125.9 seconds (CPU time) with a 95\% confidence interval of (118.4, 135.4).  These results are heavily weighted towards the low end, with more than 20\% of simulations terminating in under 100 seconds.
 
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/Prelim_GARuntime50}
-	\caption[Preliminary simulations GA CPU run time PDF]{GA approach CPU run time PDF over 50 runs.  Mean (125.9 secs) shown in orange, 95\% confidence interval (118.4, 135.4) shown in dashed black.}
+	\caption[Preliminary simulations GA CPU run time histogram]{GA approach CPU run time histogram over 50 runs.  Mean (125.9 secs) shown in orange, 95\% confidence interval (118.4, 135.4) shown in dashed black.}
 	\label{fig:Prelim_GARunTime}
 \end{figure}
 
@@ -1062,12 +1062,12 @@ This trend continues for higher values of $\alpha$.  As shown in \Cref{fig:Preli
 	\label{fig:Prelim_sDEPCompCostRunTimeExpanded}
 \end{figure}
 
-The GA approach settles on solutions with four different values of network cost.  \Cref{fig:Prelim_GACostsPDF} visualizes these four types of solutions as a histogram PDF of the 50 GA simulations.  Half of the simulations ended with a selection of 13 BSs.  However, almost half ended with 14 or 15 selected BSs as the optimal selection; this implies that the GA is terminating too early for the solutions to properly converge to the fitter 13-BS solution.  This is further implied by the single 12-BS solution, which, like all of the other solutions, is neither overcoverage nor overcapacity.  The 12-BS solution is completely feasible and more fit than all 49 other solutions.
+The GA approach settles on solutions with four different values of network cost.  \Cref{fig:Prelim_GACostsPDF} visualizes these four types of solutions as a density-normalized histogram of the 50 GA simulations.  Half of the simulations ended with a selection of 13 BSs.  However, almost half ended with 14 or 15 selected BSs as the optimal selection; this implies that the GA is terminating too early for the solutions to properly converge to the fitter 13-BS solution.  This is further implied by the single 12-BS solution, which, like all of the other solutions, is neither overcoverage nor overcapacity.  The 12-BS solution is completely feasible and more fit than all 49 other solutions.
 
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/Prelim_GACostsPDF}
-	\caption[GA approach VWN cost trend for preliminary simulations]{PDF of constructed VWN costs of the GA approach.  Mean (13.6 BSs) shown in orange, 95\% confidence interval (13.4, 13.82) shown in dashed black.}
+	\caption[GA approach VWN cost trend for preliminary simulations]{Density-normalized histogram of constructed VWN costs of the GA approach.  Mean (13.6 BSs) shown in orange, 95\% confidence interval (13.4, 13.82) shown in dashed black.}
 	\label{fig:Prelim_GACostsPDF}
 \end{figure}
 
@@ -1400,12 +1400,12 @@ The GA's run time (\Cref{fig:CaseI_GARunTimeErrorbar}) varies according to $\bet
 	\label{fig:CaseI_GARunTimeErrorbar}
 \end{figure}
 
-\Cref{fig:CaseI_GARunTimeHists} presents the run times of the various solutions in greater detail as histogram PDFs, and clearly shows the separation of these three categories.  Except for $\beta = 0.5$, the GA is highly consistent in terms of CPU run time as a result of increasing the number of generations that must be satisfied for the halting conditions.  The solutions of the first category each have an average of less than 300 seconds run time, the second at approximately 700 seconds and higher, and the third transitions between the two at just under 500 seconds.  All solutions of the GA in the preliminary simulations terminated using the fitness halting condition, but did so almost universally below 200 seconds.  This increase is due to the increased number of pixels in the field (10000 to 40000) and the increase to $G_{\text{fit}}$ (150 to 300).
+\Cref{fig:CaseI_GARunTimeHists} presents the run times of the various solutions in greater detail as density-normalized histograms, and clearly shows the separation of these three categories.  Except for $\beta = 0.5$, the GA is highly consistent in terms of CPU run time as a result of increasing the number of generations that must be satisfied for the halting conditions.  The solutions of the first category each have an average of less than 300 seconds run time, the second at approximately 700 seconds and higher, and the third transitions between the two at just under 500 seconds.  All solutions of the GA in the preliminary simulations terminated using the fitness halting condition, but did so almost universally below 200 seconds.  This increase is due to the increased number of pixels in the field (10000 to 40000) and the increase to $G_{\text{fit}}$ (150 to 300).
 
 \begin{figure}[p]
 	\centering
 	\includegraphics[angle=90,origin=c,height=0.8\textheight]{Figures/CaseI_GARunTime50_9HistogramsTall}
-	\caption[Case I GA CPU run time histogram PDFs]{GA CPU run time trend in further depth than \Cref{fig:CaseI_GARunTimeErrorbar} as histogram PDFs.  For each $\beta$, means are shown in orange and 95\% confidence intervals in dashed black.}
+	\caption[Case I GA CPU run time trends]{GA CPU run time trend in further depth than \Cref{fig:CaseI_GARunTimeErrorbar} as density-normalized histograms.  For each $\beta$, means are shown in orange and 95\% confidence intervals in dashed black.}
 	\label{fig:CaseI_GARunTimeHists}
 \end{figure}
 
@@ -1835,6 +1835,10 @@ This thesis considered the problem of resource selection and adaptive slicing fr
 A major assumption made in \Cref{ch:vnbmodel} is that $u_{ms}$, the normalized capacity of the link between BS $s \in \mathcal{S}$ to the demand at point $m \in \mathcal{M}$, is binary.  The definition provided for the capability of a nuanced $u_{ms}$, however the simplification ensures that $\Omega$ is finite and simplified the definition of the DEP and sDEP of \Cref{sec:dep}.  However, by forcing $u_{ms}$ to be binary, demand points are either capable of a perfect link with a BS that it is in range of, or incapable of any communication.  This is inherently unrealistic and a weakness of the model.
 
 Implementing other definitions of $u_{ms}$, such as a simple linear trend from full connectivity to null connectivity or other models that take into account real world limitations of these links, could prove valuable in simulation.
+
+\subsubsection{Improved BS Modeling}
+
+\change{Fill out this section.\\All it takes is a sentence or two.\\Discuss the lack of complexity in BS modeling, such as interference between BSs, or the spatial correlation of BSs provided by the same RP}
 
 \subsubsection{DEP Sample Average Approximation Estimation Analysis}
 
