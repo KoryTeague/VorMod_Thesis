@@ -162,9 +162,7 @@
 \begin{center}
 
 % TITLE
-{\Large 
-Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks
-}
+{\Large Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks}
 
 \vfill
 
@@ -187,8 +185,6 @@ Electrical Engineering
 Allen B. MacKenzie, Chair \\
 Luiz DaSilva \\
 R. Michael Buehrer
-% Mohammad isn't on my committee, he shouldn't be listed here
-%Mohammad J. Abdel-Rahman
 
 \vfill
 
@@ -241,7 +237,6 @@ This work received support in part from the National Science Foundation via work
 \chapter*{List of Acronyms}
 \begin{acronym}
 	\acro{3GPP}{Third-Generation Partnership Project}
-	\acro{5G-NR}{5G New Radio}
 	\acro{BS}{Base Station}
 	\acro{CapEx}{Capital Expenditures}
 	\acro{DEP}{Deterministic Equivalent Program}
@@ -253,6 +248,7 @@ This work received support in part from the National Science Foundation via work
 	\acro{mmWave}{Millimeter Wave}
 	\acro{MNO}{Mobile Network Operator}
 	\acro{MVNO}{Mobile Virtual Network Operator}
+	\acro{nsPPP}{Non-Stationary Poisson Point Process}
 	\acro{NVS}{Network Virtualization Substrate}
 	\acro{NwoB}{Networks without Borders}
 	\acro{OpEx}{Operational Expenditures}
@@ -298,7 +294,7 @@ The third strategy involves the use of massive MIMO to increase spectral efficie
 
 5G must supply these rates at much higher energy and cost efficiencies, ideally matching or exceeding the capacity increases to avoid increasing overall network energy use and OpEx.  However, technologies that have been investigated to adequately increase the capacity of the network have several major hurdles to meet in order to be implemented at the desired energy and cost efficiencies.  Massive MIMO requires the deployment of a vast number of antennas, which requires new BS architectures that have issues with scalability and cost.  Millimeter-wave is more expensive than the more mature hardware of typical cellular bands.  Decreasing cell size for cellular densification allows for smaller, cheaper BSs, but this decreased cost may not keep pace with the required number of increased deployments.~\cite{6824752}
 
-3GPP (the Third-Generation Partnership Project) is currently working on finalizing the standard for 5G implementations.  In December 2017, 3GPP froze the first half of release 15 of the 5G standard, covering 5G New Radio (5G-NR) which establishes specifications for new standalone 5G deployments.  It is expected that 3GPP will freeze the second half of release 15, establishing the specifications of non-standalone 5G which utilizes existing LTE networks, in Summer of 2018.  Further work on release 16 and beyond is still in progress.
+3GPP (the Third-Generation Partnership Project) is currently working on finalizing the standard for 5G implementations.  In December 2017, 3GPP froze the first half of release 15 of the 5G standard, covering 5G New Radio which establishes specifications for new standalone 5G deployments.  It is expected that 3GPP will freeze the second half of release 15, establishing the specifications of non-standalone 5G which utilizes existing LTE networks, in Summer of 2018.  Further work on release 16 and beyond is still in progress.
 
 \section{Virtualization, Virtualized Wireless Networks, and the Networks without Borders Paradigm} \label{sec:virtualization}
 
@@ -799,7 +795,7 @@ A genetic algorithm is an iterative metaheuristic algorithm inspired by the conc
 \begin{figure}[ht]
 \centering
 \includegraphics[width=1\linewidth]{Genetic_Algorithm_Basic}
-\caption[Genetic Algorithm Block Diagram]{\small Block diagram of the GA approach.  This is for a typical genetic algorithm utilizing elitism and enforcing generational uniqueness.}
+\caption[Genetic algorithm block diagram]{\small Block diagram of the GA approach.  This is for a typical genetic algorithm utilizing elitism and enforcing generational uniqueness.}
 \label{fig:ga_block}
 \end{figure}
 
@@ -1027,7 +1023,7 @@ In this section I present the results of these preliminary simulations.  First, 
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/Prelim_VOSGA_SpeedupRatio_AbsComp_alpha20}
-	\caption[Preliminary simulation run time comparison of the GA and sDEP approaches with fixed $\alpha$]{Run time comparison of the GA and sDEP approaches with $\alpha = 20$ and varying numbers of sampled scenarios; sDEP confidence intervals shown as errorbars, GA confidence intervals too small to display}
+	\caption[Run time comparison of the preliminary simulations GA and sDEP approaches with fixed $\alpha$]{Run time comparison of the GA and sDEP approaches with $\alpha = 20$ and varying numbers of sampled scenarios; sDEP confidence intervals shown as errorbars, GA confidence intervals too small to display}
 	\label{fig:Prelim_AlgSpeedupRunTime}
 \end{figure}
 
@@ -1038,7 +1034,7 @@ CPLEX is capable of parallelizing across the PC's 8 CPU cores, allowing for the 
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/Prelim_O25_CPUTime_VOSGA25ScenarioSet}
-	\caption[Preliminary simulation run time comparison of the GA and sDEP approaches with fixed scenarios]{Run time comparison of the GA and sDEP approaches with 25 scenarios and varying values of $\alpha$}
+	\caption[Run time comparison of the preliminary simulations GA and sDEP approaches with fixed number of scenarios]{Run time comparison of the GA and sDEP approaches with 25 scenarios and varying values of $\alpha$}
 	\label{fig:Prelim_O25_CPUTime}
 \end{figure}
 
@@ -1049,7 +1045,7 @@ The spike of CPU run times corresponds to the regions of $\alpha$ that the sDEP 
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/Prelim_O25sDEPComparisonCostRunTime}
-	\caption[Preliminary simulation comparison of sDEP run time and VWN cost]{Comparison of sDEP CPU run time and VWN construction cost}
+	\caption[Comparison of the preliminary simulations sDEP run time and VWN cost]{Comparison of sDEP CPU run time and VWN construction cost}
 	\label{fig:Prelim_sDEPCompCostRunTime}
 \end{figure}
 
@@ -1058,7 +1054,7 @@ This trend continues for higher values of $\alpha$.  As shown in \Cref{fig:Preli
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/Prelim_O25sDEPComparisonCostRunTimeExpandedAlpha}
-	\caption[Expanded preliminary simulation comparison of sDEP run time and cost]{Comparison of sDEP CPU run time and VWN construction cost for further values of $\alpha$.}
+	\caption[Expanded comparison of the preliminary simulations sDEP run time and cost]{Comparison of sDEP CPU run time and VWN construction cost for further values of $\alpha$.}
 	\label{fig:Prelim_sDEPCompCostRunTimeExpanded}
 \end{figure}
 
@@ -1067,7 +1063,7 @@ The GA approach settles on solutions with four different values of network cost.
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/Prelim_GACostsPDF}
-	\caption[GA approach VWN cost trend for preliminary simulations]{Density-normalized histogram of constructed VWN costs of the GA approach.  Mean (13.6 BSs) shown in orange, 95\% confidence interval (13.4, 13.82) shown in dashed black.}
+	\caption[GA approach VWN cost trend for the preliminary simulations]{Density-normalized histogram of constructed VWN costs of the GA approach.  Mean (13.6 BSs) shown in orange, 95\% confidence interval (13.4, 13.82) shown in dashed black.}
 	\label{fig:Prelim_GACostsPDF}
 \end{figure}
 
@@ -1076,7 +1072,7 @@ The GA approach settles on solutions with four different values of network cost.
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/Prelim_GARunTimesVCosts_cis}
-	\caption[GA approach VWN cost and run time trend for preliminary simulations]{Various GA simulation solution costs and associate CPU run times.  Means shown in orange, 95\% confidence intervals shown in dashed black.}
+	\caption[GA approach VWN cost and run time trend for the preliminary simulations]{Various GA simulation solution costs and associate CPU run times.  Means shown in orange, 95\% confidence intervals shown in dashed black.}
 	\label{fig:Prelim_GARunTimesVCosts}
 \end{figure}
 
@@ -1085,7 +1081,7 @@ The trade off for the GA's improved run time is that the solution provided is ex
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/Prelim_O25sDEPGACostComparison_Expanded2}
-	\caption[Preliminary simulation constructed VWN costs]{Constructed VWN Costs for sDEP and GA approaches.}
+	\caption[Constructed VWN cost results for the preliminary simulations]{Constructed VWN Costs for sDEP and GA approaches.}
 	\label{fig:Prelim_VWNCompCost}
 \end{figure}
 
@@ -1098,7 +1094,7 @@ There is a direct correlation between the number of BSs in the VWN and its capab
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/Prelim_O25_VOSDemandSatisfaction}
-	\caption[Preliminary simulation sDEP demand satisfaction]{Demand satisfaction of various sDEP constructed VWns.}
+	\caption[Preliminary simulations sDEP demand satisfaction]{Demand satisfaction of various sDEP constructed VWNs.}
 	\label{fig:Prelim_VOSDemandSatisfaction}
 \end{figure}
 
@@ -1141,7 +1137,7 @@ Demand satisfaction approaches 100\% until reaching it for all sDEP solutions co
 		\caption{\small 12-BS Solution (100\% Demand Satisfaction; $\alpha \in \left[ \expnumber{4.6}{2},\, \expnumber{1.0}{4} \right]$)}
 		\label{fig:Prelim_VorDemAlloc_sDEP12}
 	\end{subfigure}
-	\caption[One sDEP resource selection and slicing solution for the preliminary simulations]{sDEP resource selection and slicing for one scenario in $\hat{\Omega}$.  Circles indicate BSs and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
+	\caption[One preliminary simulations sDEP resource selection and slicing solution]{sDEP resource selection and slicing for one scenario in $\hat{\Omega}$.  Circles indicate BSs and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
 	\label{fig:Prelim_VorDemAlloc_sDEP}
 \end{figure}
 
@@ -1154,7 +1150,7 @@ The GA approach performs fairly well, exceeding 99\% demand satisfaction for all
 \begin{figure}[ht]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/Prelim_GAEval_VAE_HistogramBoxplot}
-	\caption[Preliminary simulation GA demand satisfaction]{Proportional demand satisfaction of the GA approaches as a histogram and box-and-wisker plot.  Histogram mean shown in orange, 95\% confidence intervals shown in dashed black. Black dots indicate medians, blue bars the inner quartiles (25\%--50\% and 50\%--75\%), blue lines the outer quartiles (0\%--25\% and 75\%--100\%), and empty circles the outliers.}
+	\caption[Preliminary simulations GA demand satisfaction]{Proportional demand satisfaction of the GA approaches as a histogram and box-and-wisker plot.  Histogram mean shown in orange, 95\% confidence intervals shown in dashed black. Black dots indicate medians, blue bars the inner quartiles (25\%--50\% and 50\%--75\%), blue lines the outer quartiles (0\%--25\% and 75\%--100\%), and empty circles the outliers.}
 	\label{fig:Prelim_GAEval_Histogram}
 \end{figure}
 
@@ -1229,7 +1225,7 @@ Notably, the 12-BS solution, shown in \Cref{fig:Prelim_VorDemAlloc_GA}, reaches 
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/Prelim_VoronoiDemandAllocation_GA_12BS_snip2}
-	\caption[One GA resource selection and slicing solution for the preliminary simulations]{GA resource selection and slicing for one scenario \emph{not} in $\hat{\Omega}$.  Circles indicate BSs and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
+	\caption[One preliminary simulations GA resource selection and slicing solution]{GA resource selection and slicing for one scenario \emph{not} in $\hat{\Omega}$.  Circles indicate BSs and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
 	\label{fig:Prelim_VorDemAlloc_GA}
 \end{figure}
 
@@ -1269,7 +1265,7 @@ This test case is constructed considering the following considerations and param
 
 \begin{table}[p]
 	\centering
-	\caption{Numerical Values of Relevant Parameters for Case I}
+	\caption{Numerical Values of Relevant Parameters for Case I Simulations}
 	\begin{tabular}{|c|c|} 
 	\hline
 		Width, Length of Geographic Area ($X$ x $Y$) & 3 km x 3 km \\
@@ -1365,7 +1361,7 @@ In this section I present the results of the Case I simulations.  The results of
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseI_sDEPComparisonCostRuntime}
-	\caption[Comparison of sDEP approach run time and cost for Case I simulations]{Comparison of sDEP CPU run time and VWN construction cost}
+	\caption[Comparison of Case I sDEP approach run time and cost]{Comparison of sDEP CPU run time and VWN construction cost}
 	\label{fig:CaseI_sDEPComparisonCostRunTime}
 \end{figure}
 
@@ -1374,7 +1370,7 @@ This rapid transition from the trivial no-allocation solution ($\alpha < 10$) to
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseI_sDEPComparisonCostSat}
-	\caption[Comparison of sDEP approach cost and demand satisfaction for Case I simulations]{Comparison of sDEP VWN construction cost and associated proportional demand satisfaction.  Both original scenarios (those in $\hat{\Omega}$) that the sDEP is optimized for and new scenarios (not in $\hat{\Omega}$) have identical demand satisfaction.}
+	\caption[Comparison of Case I sDEP approach cost and demand satisfaction]{Comparison of sDEP VWN construction cost and associated proportional demand satisfaction.  Both original scenarios (those in $\hat{\Omega}$) that the sDEP is optimized for and new scenarios (not in $\hat{\Omega}$) have identical demand satisfaction.}
 	\label{fig:CaseI_sDEPComparisonCostSat}
 \end{figure}
 
@@ -1383,7 +1379,7 @@ The data set chosen is too forgiving on the available resources.  Since resource
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseI_VoronoiDemandAllocation_sDEP_10BS_snip2}
-	\caption[One sDEP resource selection and slicing solution for Case I]{sDEP resource selection and slicing for one scenario in $\hat{\Omega}$.  Circles indicate BSs and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
+	\caption[One Case I sDEP resource selection and slicing solution]{sDEP resource selection and slicing for one scenario in $\hat{\Omega}$.  Circles indicate BSs and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
 	\label{fig:CaseI_VoronoiDemandAllocation_sDEP}
 \end{figure}
 
@@ -1405,7 +1401,7 @@ The GA's run time (\Cref{fig:CaseI_GARunTimeErrorbar}) varies according to $\bet
 \begin{figure}[p]
 	\centering
 	\includegraphics[angle=90,origin=c,height=0.8\textheight]{Figures/CaseI_GARunTime50_9HistogramsTall}
-	\caption[Case I GA CPU run time trends]{GA CPU run time trend in further depth than \Cref{fig:CaseI_GARunTimeErrorbar} as density-normalized histograms.  For each $\beta$, means are shown in orange and 95\% confidence intervals in dashed black.}
+	\caption[Detailed Case I GA CPU run time trends]{GA CPU run time trend in further depth than \Cref{fig:CaseI_GARunTimeErrorbar} as density-normalized histograms.  For each $\beta$, means are shown in orange and 95\% confidence intervals in dashed black.}
 	\label{fig:CaseI_GARunTimeHists}
 \end{figure}
 
@@ -1414,7 +1410,7 @@ As $\beta$ increases, the cost of the GA-selected network expectedly increases a
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseI_GAComparisonCostRuntime}
-	\caption[Comparison of GA approach cost and run time for Case I simulations]{Comparison of GA cost and run time trends with 95\% confidence intervals}
+	\caption[Comparison of Case I GA approach cost and run time]{Comparison of GA cost and run time trends with 95\% confidence intervals}
 	\label{fig:CaseI_GAComparisonCostRunTime}
 \end{figure}
 
@@ -1423,7 +1419,7 @@ As $\beta$ increases, the cost of the GA-selected network expectedly increases a
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseI_GAComparisonCostSat}
-	\caption[Comparison of GA approach cost and demand satisfaction for Case I simulations]{Comparison of GA cost and run time trends with 95\% confidence intervals}
+	\caption[Comparison of Case I GA approach cost and demand satisfaction]{Comparison of GA cost and run time trends with 95\% confidence intervals}
 	\label{fig:CaseI_GAComparisonCostSat}
 \end{figure}
 
@@ -1432,7 +1428,7 @@ The differences between the first and second categories of solutions is indicati
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseI_GAScaledSatisfaction}
-	\caption[GA demand satisfaction with $\beta$-scaled demands for Case I simulations]{GA demand satisfaction with $\beta$-scaled demands}
+	\caption[Case I GA demand satisfaction with $\beta$-scaled demands]{GA demand satisfaction with $\beta$-scaled demands}
 	\label{fig:CaseI_GAScaledSatisfaction}
 \end{figure}
 
@@ -1457,7 +1453,7 @@ Further, as tabulated by \Cref{tab:CaseI_ComparisonCostSat}, same cost networks 
 
 \begin{table}[htp]
 	\centering
-	\caption[Cost and Demand Satisfaction Results of Case I Approaches]{Cost and Demand Satisfaction Results of Various sDEP- and GA-Constructed VWNs}
+	\caption[Case I Cost and Demand Satisfaction Results]{Cost and Demand Satisfaction Results of Various sDEP- and GA-Constructed VWNs}
 	\begin{tabular}{|c|c|c|c|} 
 		\hline
 		\textbf{Cost} & \textbf{Demand Satisfaction} & \textbf{sDEP $\alpha$} & \textbf{GA $\beta$ (Number of Solutions)} \\
@@ -1609,7 +1605,7 @@ Due to the increased number of available resources, the sDEP approach generally 
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseII_sDEPComparisonCostRuntime}
-	\caption[Comparison of sDEP approach run time and costs for Case II simulations]{Comparison of sDEP run time and VWN construction cost}
+	\caption[Comparison of Case II sDEP approach run time and costs]{Comparison of sDEP run time and VWN construction cost}
 	\label{fig:CaseII_sDEPComparisonCostRuntime}
 \end{figure}
 
@@ -1624,13 +1620,13 @@ With the inclusion of microcells, the VNB is capable of more nuanced constructio
 \begin{figure}[ht]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseII_sDEPComparisonCostSat}
-	\caption[Comparison of sDEP approach cost and demand satisfaction for Case II simulations]{Comparison of sDEP VWN construction cost and associated proportional demand satisfaction.\iffalse  Both original scenarios (those in $\hat{\Omega}$) that the sDEP is optimized for and new scenarios (not in $\hat{\Omega}$) have identical demand satisfaction.\fi}
+	\caption[Comparison of Case II sDEP approach cost and demand satisfaction]{Comparison of sDEP VWN construction cost and associated proportional demand satisfaction.\iffalse  Both original scenarios (those in $\hat{\Omega}$) that the sDEP is optimized for and new scenarios (not in $\hat{\Omega}$) have identical demand satisfaction.\fi}
 	\label{fig:CaseII_sDepComparisonCostSat}
 \end{figure}
 
 \begin{table}[ht]
 	\centering
-	\caption[Cost and Demand Satisfaction Results of Various sDEP-Constructed VWNs for Case II Simulations]{Cost and Demand Satisfaction Results of Various sDEP-Constructed VWNs}
+	\caption[Case II Cost and Demand Satisfaction Results of Various sDEP-Constructed VWNs]{Cost and Demand Satisfaction Results of Various sDEP-Constructed VWNs}
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		\textbf{$\alpha$} & \textbf{Macrocells} & \textbf{Microcells} & \textbf{Cost} & \textbf{Demand Satisfaction} \\ 
@@ -1667,7 +1663,7 @@ There are two very low demand satisfaction solutions in $\alpha = \left\{ 9,\, 1
 		\caption{\small $\alpha = 100$; 9 Macrocells, 6 Microcells}
 		\label{fig:CaseII_VoronoiDemandAllocation_sDEP_a100}
 	\end{subfigure}
-	\caption[Two sDEP resource selection and slicing solutions for Case II]{sDEP resource selection and slicing for one scenario in $\hat{\Omega}$.  Circles indicate macrocells, squares indicate microcells, and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
+	\caption[Two Case II sDEP resource selection and slicing solutions]{sDEP resource selection and slicing for one scenario in $\hat{\Omega}$.  Circles indicate macrocells, squares indicate microcells, and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
 	\label{fig:CaseII_VoronoiDemandAllocation_sDEP}
 \end{figure}
 
@@ -1678,7 +1674,7 @@ Testing the solutions for new scenarios not in $\hat{\Omega}$ shows that increas
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseII_sDEPComparisonSatEval}
-	\caption[Comparison of demand satisfaction of scenarios both in and not in $\hat{\Omega}$ for Case II simulations]{Comparison of demand satisfaction of scenarios both in and not in $\hat{\Omega}$}
+	\caption[Comparison of Case II demand satisfaction of scenarios both in and not in $\hat{\Omega}$]{Comparison of demand satisfaction of scenarios both in and not in $\hat{\Omega}$}
 	\label{fig:CaseII_sDEPComparisonSatEval}
 \end{figure}
 
@@ -1689,7 +1685,7 @@ The GA behaves very similarly for Case II as it did for Case I.  As \Cref{fig:Ca
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseII_GAComparisonCostRunTime}
-	\caption[Comparison of GA approach cost and run time for Case II simulations]{Comparison of GA cost and run time trends with 95\% confidence intervals}
+	\caption[Comparison of Case II GA approach cost and run time]{Comparison of GA cost and run time trends with 95\% confidence intervals}
 	\label{fig:CaseII_GAComparisonCostRunTime}
 \end{figure}
 
@@ -1709,7 +1705,7 @@ The introduction of heterogeneity causes the demand satisfaction trend to expone
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseII_GAComparisonCostSat}
-	\caption[Comparison of GA approach cost and demand satisfaction for Case II simulations]{Comparison of GA cost and demand satisfaction trends with 95\% confidence intervals}
+	\caption[Comparison of Case II GA approach cost and demand satisfaction]{Comparison of GA cost and demand satisfaction trends with 95\% confidence intervals}
 	\label{fig:CaseII_GAComparisonCostSat}
 \end{figure}
 	
@@ -1718,7 +1714,7 @@ In \Cref{fig:CaseII_GAComparisonCostSat}, the slight variation in solution costs
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseII_GAScatterCostSat}
-	\caption[Various GA approach solution costs and associated demand satisfactions for Case II simulations]{Various GA solution costs and associated demand satisfactions.  Line of best fit is an exponentially approaching function.}
+	\caption[Various Case II GA approach solution costs and associated demand satisfactions]{Various GA solution costs and associated demand satisfactions.  Line of best fit is an exponentially approaching function.}
 	\label{fig:CaseII_GAScatterCostSat}
 \end{figure} 
 
@@ -1740,7 +1736,7 @@ Two example GA solutions are shown in \Cref{fig:CaseII_VoronoiDemandAllocation_G
 		\caption{\small $\beta = 0.7$; 11.4 Cost; 10 Macrocells, 7 Microcells; 97.80\% Demand Satisfaction}
 		\label{fig:CaseII_VoronoiDemandAllocation_GA_b0-7Max_snip2}
 	\end{subfigure}
-	\caption[Two GA resource selection and slicing solutions for Case II]{GA resource selection and slicing for one scenario in $\hat{\Omega}$.  Circles indicate macrocells, squares indicate microcells, and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
+	\caption[Two Case II GA resource selection and slicing solutions]{GA resource selection and slicing for one scenario in $\hat{\Omega}$.  Circles indicate macrocells, squares indicate microcells, and diamonds indicate demand points.  Lines connecting BSs to demand points indicate that the BS is sliced to the demand point (i.e., that a link between the BS and demand point exists).  The color filling a BS indicates the proportion the BS's capacity is sliced, and the color filling a demand point indicates the proportion of the demand point's demands that have been satisfied.}
 	\label{fig:CaseII_VoronoiDemandAllocation_GA}
 \end{figure}
 
@@ -1764,13 +1760,13 @@ The addition of heterogeneity also presents error in the GA solution compared to
 \begin{figure}[htp]
 	\centering
 	\includegraphics[height=0.4\textheight]{Figures/CaseII_sDEPGASatError}
-	\caption[GA and sDEP approach demand satisfactions with GA error for Case II simulations]{GA and sDEP approach demand satisfactions with demarcated GA satisfaction error}
+	\caption[Case II GA and sDEP approach demand satisfactions with GA error]{GA and sDEP approach demand satisfactions with demarcated GA satisfaction error}
 	\label{fig:CaseII_sDEPGASatError}
 \end{figure}
 
 \begin{table}[htp]
 	\centering
-	\caption{Demand Satisfaction Comparison for Case II GA and sDEP Approaches}
+	\caption[Demand Satisfaction Comparison for Case II GA and sDEP Approaches]{Demand Satisfaction Comparison for GA and sDEP Approaches}
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
 		\textbf{VWN Cost} & \textbf{sDEP Sat} & \textbf{GA Sat} & \textbf{$\Delta$ Error} & \textbf{Percent Error} \\
