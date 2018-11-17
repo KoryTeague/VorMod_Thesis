@@ -3,11 +3,8 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: October 26, 2018
+% REVISED: November 16, 2018
 
-%\documentclass[12pt,dvips]{report}
-%\documentclass[12pt]{report}
-%\documentclass[12pt,dvipsnames,draft]{report}
 \documentclass[12pt,dvipsnames]{report}
 
 \setlength{\textwidth}{6.5in}
@@ -16,8 +13,6 @@
 \setlength{\oddsidemargin}{0in}
 \setlength{\topmargin}{0in}
 
-% MacKenzie hates the lack of indentations; Grad College requires it.
-%\setlength{\parindent}{0pt}
 \setlength{\parskip}{0.1in}
 
 \usepackage{cite}
@@ -37,8 +32,9 @@
 \usepackage{setspace}
 \usepackage{nicefrac}
 \usepackage{multirow}
-%\usepackage{selectp}
 \usepackage{acronym}
+\usepackage[nottoc,numbib]{tocbibind}
+%\usepackage{selectp}
 
 \bibliographystyle{IEEEtran}
 
@@ -183,8 +179,8 @@ Electrical Engineering
 \vfill
 
 Allen B. MacKenzie, Chair \\
-Luiz DaSilva \\
-R. Michael Buehrer
+Richard M. Buehrer \\
+Luiz A. DaSilva
 
 \vfill
 
@@ -218,6 +214,41 @@ Kory A. Teague
 \end{center}
 
 Wireless network virtualization is a promising avenue of research for next-generation 5G cellular networks.  This work investigates the problem of selecting base stations to construct virtual networks for a set of service providers, and adaptive slicing of the resources between the service providers to satisfy service provider demands.  A two-stage stochastic optimization framework is introduced to solve this problem, and two methods are presented for approximating the stochastic model.  The first method uses a sampling approach applied to the deterministic equivalent program of the stochastic model.  The second method uses a genetic algorithm for base station selection and adaptively slicing via a single-stage linear optimization problem.  A number of scenarios are simulated using a log-normal model designed to emulate demand from real world cellular networks.  Simulations indicate that the first approach can provide a reasonably tight solution, but is constrained as the time expense grows exponentially with the number of parameters.  The second approach provides a significant improvement in run time with the introduction of marginal error.
+
+\pagebreak
+
+\thispagestyle{empty}
+\begin{center}
+
+{\large Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks}
+
+\vfill
+
+Kory A. Teague
+
+\vfill
+
+(GENERAL AUDIENCE ABSTRACT)
+
+\vfill
+
+\end{center}
+
+\change{Write general audience abstract}%
+\emph{Wireless network virtualization is a promising avenue of research for next-generation 5G cellular networks.  This work investigates the problem of selecting base stations to construct virtual networks for a set of service providers, and adaptive slicing of the resources between the service providers to satisfy service provider demands.  A two-stage stochastic optimization framework is introduced to solve this problem, and two methods are presented for approximating the stochastic model.  The first method uses a sampling approach applied to the deterministic equivalent program of the stochastic model.  The second method uses a genetic algorithm for base station selection and adaptively slicing via a single-stage linear optimization problem.  A number of scenarios are simulated using a log-normal model designed to emulate demand from real world cellular networks.  Simulations indicate that the first approach can provide a reasonably tight solution, but is constrained as the time expense grows exponentially with the number of parameters.  The second approach provides a significant improvement in run time with the introduction of marginal error.}
+
+Next-generation 5G cellular networks 
+
+\pagebreak
+
+\begin{center}
+
+{\large Acknowledgments}
+
+\end{center}
+
+\change{Write acknowledgments}%
+Blargh
 
 \vfill
 
