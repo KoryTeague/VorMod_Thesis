@@ -3,7 +3,7 @@
 %   TITLE: Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks
 %  AUTHOR: Kory Teague
 % SAVE AS: KT_Thesis.tex
-% REVISED: November 16, 2018
+% REVISED: November 18, 2018
 
 \documentclass[12pt,dvipsnames]{report}
 
@@ -34,7 +34,9 @@
 \usepackage{multirow}
 \usepackage{acronym}
 \usepackage[nottoc,numbib]{tocbibind}
-%\usepackage{selectp}
+\usepackage{selectp}
+
+%\outputonly{3}
 
 \bibliographystyle{IEEEtran}
 
@@ -234,10 +236,9 @@ Kory A. Teague
 
 \end{center}
 
-\change{Write general audience abstract}%
-\emph{Wireless network virtualization is a promising avenue of research for next-generation 5G cellular networks.  This work investigates the problem of selecting base stations to construct virtual networks for a set of service providers, and adaptive slicing of the resources between the service providers to satisfy service provider demands.  A two-stage stochastic optimization framework is introduced to solve this problem, and two methods are presented for approximating the stochastic model.  The first method uses a sampling approach applied to the deterministic equivalent program of the stochastic model.  The second method uses a genetic algorithm for base station selection and adaptively slicing via a single-stage linear optimization problem.  A number of scenarios are simulated using a log-normal model designed to emulate demand from real world cellular networks.  Simulations indicate that the first approach can provide a reasonably tight solution, but is constrained as the time expense grows exponentially with the number of parameters.  The second approach provides a significant improvement in run time with the introduction of marginal error.}
+%5G, the next generation cellular network standard, promises to provide significant improvements in terms of capacity over current generation standards.  For 5G to be successful, this must be accompanied by similarly significant efficiency improvements.  Wireless network virtualization is a promising technology that has been shown to improve the cost efficiency of current generation cellular networks.  By abstracting the physical resource, such as cell tower base stations, from the use of the resource, virtual resources are formed.  A virtual wireless network can be constructed from virtual resources that optimally satisfy demands.  This work investigates the problem of selecting available base stations to construct virtual wireless networks with minimal cost and then slice the selected resources to individual networks that optimally satisfy individual network demands.  This problem is framed in a directly-unsolvable stochastic optimization model and two methods are presented for approximating the stochastic model.  The first method samples the deterministic equivalent of the stochastic model to reduce it to a solvable and tractable form.  The second method uses a genetic algorithm to approximate resource selection.  Both approaches are simulated and evaluated utilizing a demand model constructed to emulate the statistics of an observed real world urban network.  Simulations indicate that the first approach can provide a reasonable tight solution, but is highly time constrained, and that the second approach provides a solution in significantly less time with the introduction of marginal error.
 
-Next-generation 5G cellular networks 
+5G, the next generation cellular network standard, promises to provide significant improvements over current generation standards.  For 5G to be successful, this must be accompanied by similarly significant efficiency improvements.  Wireless network virtualization is a promising technology that has been shown to improve the cost efficiency of current generation cellular networks.  By abstracting the physical resource---such as cell tower base stations---from the use of the resource, virtual resources are formed.  This work investigates the problem of selecting virtual resources (e.g., base stations) to construct virtual wireless networks with minimal cost and slice the selected resources to individual networks to optimally satisfy individual network demands.  This problem is framed in a stochastic optimization framework and two methods are presented for approximation.  The first method converts the framework into a deterministic equivalent and reduces it to a tractable form.  The second method uses a genetic algorithm to approximate resource selection.  Approaches are simulated and evaluated utilizing a demand model constructed to emulate the statistics of an observed real world urban network.  Simulations indicate that the first approach can provide a reasonably tight solution with significant time expense, and that the second approach provides a solution in significantly less time with the introduction of marginal error.
 
 \pagebreak
 
