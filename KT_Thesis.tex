@@ -33,10 +33,10 @@
 \usepackage{nicefrac}
 \usepackage{multirow}
 \usepackage{acronym}
-\usepackage[nottoc,numbib]{tocbibind}
-\usepackage{selectp}
+\usepackage[nottoc,notlot,notlof]{tocbibind}
 
-%\outputonly{3}
+\usepackage{selectp}
+%\outputonly{2-5}
 
 \bibliographystyle{IEEEtran}
 
@@ -203,19 +203,13 @@ Copyright 2018, Kory A. Teague
 
 {\large Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks}
 
-\vfill
-
 Kory A. Teague
 
-\vfill
-
-(ABSTRACT)
-
-\vfill
+ABSTRACT
 
 \end{center}
 
-Wireless network virtualization is a promising avenue of research for next-generation 5G cellular networks.  This work investigates the problem of selecting base stations to construct virtual networks for a set of service providers, and adaptive slicing of the resources between the service providers to satisfy service provider demands.  A two-stage stochastic optimization framework is introduced to solve this problem, and two methods are presented for approximating the stochastic model.  The first method uses a sampling approach applied to the deterministic equivalent program of the stochastic model.  The second method uses a genetic algorithm for base station selection and adaptively slicing via a single-stage linear optimization problem.  A number of scenarios are simulated using a log-normal model designed to emulate demand from real world cellular networks.  Simulations indicate that the first approach can provide a reasonably tight solution, but is constrained as the time expense grows exponentially with the number of parameters.  The second approach provides a significant improvement in run time with the introduction of marginal error.
+Wireless network virtualization is a promising avenue of research for next-generation 5G cellular networks.  This work investigates the problem of selecting base stations to construct virtual networks for a set of service providers, and adaptive slicing of the resources between the service providers to satisfy service provider demands.  A two-stage stochastic optimization framework is introduced to solve this problem, and two approaches are presented for approximating the stochastic model.  The first approach uses a sampling approach applied to the deterministic equivalent program of the stochastic model.  The second approach uses a genetic algorithm for base station selection and a single-stage linear optimization problem for adaptive slicing.  A number of scenarios are simulated using a log-normal model designed to emulate demand from real world cellular networks.  Simulations indicate that the first approach can provide a reasonably tight solution, but is constrained as the time expense grows exponentially with the number of parameters.  The second approach provides a significant improvement in run time with the introduction of marginal error.
 
 \pagebreak
 
@@ -224,21 +218,13 @@ Wireless network virtualization is a promising avenue of research for next-gener
 
 {\large Approaches to Joint Base Station Selection and Adaptive Slicing in Virtualized Wireless Networks}
 
-\vfill
-
 Kory A. Teague
 
-\vfill
-
-(GENERAL AUDIENCE ABSTRACT)
-
-\vfill
+GENERAL AUDIENCE ABSTRACT
 
 \end{center}
 
-%5G, the next generation cellular network standard, promises to provide significant improvements in terms of capacity over current generation standards.  For 5G to be successful, this must be accompanied by similarly significant efficiency improvements.  Wireless network virtualization is a promising technology that has been shown to improve the cost efficiency of current generation cellular networks.  By abstracting the physical resource, such as cell tower base stations, from the use of the resource, virtual resources are formed.  A virtual wireless network can be constructed from virtual resources that optimally satisfy demands.  This work investigates the problem of selecting available base stations to construct virtual wireless networks with minimal cost and then slice the selected resources to individual networks that optimally satisfy individual network demands.  This problem is framed in a directly-unsolvable stochastic optimization model and two methods are presented for approximating the stochastic model.  The first method samples the deterministic equivalent of the stochastic model to reduce it to a solvable and tractable form.  The second method uses a genetic algorithm to approximate resource selection.  Both approaches are simulated and evaluated utilizing a demand model constructed to emulate the statistics of an observed real world urban network.  Simulations indicate that the first approach can provide a reasonable tight solution, but is highly time constrained, and that the second approach provides a solution in significantly less time with the introduction of marginal error.
-
-5G, the next generation cellular network standard, promises to provide significant improvements over current generation standards.  For 5G to be successful, this must be accompanied by similarly significant efficiency improvements.  Wireless network virtualization is a promising technology that has been shown to improve the cost efficiency of current generation cellular networks.  By abstracting the physical resource---such as cell tower base stations---from the use of the resource, virtual resources are formed.  This work investigates the problem of selecting virtual resources (e.g., base stations) to construct virtual wireless networks with minimal cost and slice the selected resources to individual networks to optimally satisfy individual network demands.  This problem is framed in a stochastic optimization framework and two methods are presented for approximation.  The first method converts the framework into a deterministic equivalent and reduces it to a tractable form.  The second method uses a genetic algorithm to approximate resource selection.  Approaches are simulated and evaluated utilizing a demand model constructed to emulate the statistics of an observed real world urban network.  Simulations indicate that the first approach can provide a reasonably tight solution with significant time expense, and that the second approach provides a solution in significantly less time with the introduction of marginal error.
+5G, the next generation cellular network standard, promises to provide significant improvements over current generation standards.  For 5G to be successful, this must be accompanied by similarly significant efficiency improvements.  Wireless network virtualization is a promising technology that has been shown to improve the cost efficiency of current generation cellular networks.  By abstracting the physical resource---such as cell tower base stations---from the use of the resource, virtual resources are formed.  This work investigates the problem of selecting virtual resources (e.g., base stations) to construct virtual wireless networks with minimal cost and slicing the selected resources to individual networks to optimally satisfy individual network demands.  This problem is framed in a stochastic optimization framework and two approaches are presented for approximation.  The first approach converts the framework into a deterministic equivalent and reduces it to a tractable form.  The second approach uses a genetic algorithm to approximate resource selection.  Approaches are simulated and evaluated utilizing a demand model constructed to emulate the statistics of an observed real world urban network.  Simulations indicate that the first approach can provide a reasonably tight solution with significant time expense, and that the second approach provides a solution in significantly less time with the introduction of marginal error.
 
 \pagebreak
 
@@ -248,8 +234,21 @@ Kory A. Teague
 
 \end{center}
 
-\change{Write acknowledgments}%
-Blargh
+I would like to thank everyone in the wireless virtualization research group.  At times I've been quiet, and others rambling, but throughout the process your open ears and advice have been exceptionally valuable at discovering the faults in my research and methodology and how to improve.
+
+I would like to thank my committee, Dr. MacKenzie, Dr. DaSilva, and Dr. Buehrer, for giving me the chance to defend my work.  Dr. Buehrer, thank you for being the voice of unconsidered perspectives; your questions were insightful to the areas my research was weak and made the defense itself far more dynamic and less stressful.  Dr. DaSilva, thank you for listening to my presentations throughout the research process; your suggestions a couple years ago provided the conceptual foundation for one of the approaches used in my work and helped set me on my path through my research.
+
+Dr. MacKenzie, thank you for everything that you have provided me during my short time at Virginia Tech.  I have not been the most consistent graduate student you could have asked for, and I made a lot of mistakes, but you stuck with and allowed me to keep pushing through despite everything.  Your patience was far more than I could have asked for.  Without you, I would not be done with my Masters and this thesis would not be written.  Thank you for giving me this chance.
+
+Mohammad, of everyone directly involved in my graduate studies, I have you to thank the most.  For two years of my research, you worked with me at every step.  Your knowledge of stochastic optimization provided the foundation of this work; you gave me what I needed to truly begin my research.  When I was lost or confused, you provided direction.  When I was wrong, you pointed me towards what was right.  It pains me that you were not on my committee nor at my defense.  You absolutely deserved to be there, and I wish I had thought to take the steps so that you could have been.  Dr. Mohammad Abdel-Rahman, thank you for everything.
+
+Finally, I would like to thank my sister and my parents for all of the advice and support they have provided over the years.  There were days, even weeks and months, that I contemplated calling it quits, but your support gave me the drive I needed to push through to the end.  To my dad specifically, thank you for all of the time you spent discussing my research with me, reading my thesis, and ensuring everything made coherent sense.  You are the best editor I could have asked for.
+
+\vfill
+
+\noindent Thank you all,
+
+Kory A. Teague
 
 \vfill
 
